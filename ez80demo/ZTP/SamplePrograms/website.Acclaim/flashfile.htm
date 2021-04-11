@@ -1,0 +1,347 @@
+<html>
+
+<head>
+<title>Zilog File System Readme for ZTP 1</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<style type="text/css">
+A:link {text-decoration: none; color:#2E4DB8; }
+A:visited {text-decoration: none;  color:#2E4DB8; }
+A:active {text-decoration: none; color: #blue; }
+A:hover	{font-weight: bold; color: black; }
+
+</style>
+</head>
+
+<body>
+<div align="center"><center>
+
+<table border="0" width="800" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="100%"><p align="center"><font face="Arial" size="4" color="#000080"><strong>Zilog
+    File System Readme for ZTP 1.4.0 Release</strong></font></p>
+    <p align="center"><font face="Arial" size="2"><a href="zilog.jpg">Zilog JPEG</a> | <a
+    href="/">Home</a></font></p>
+    <p><font face="Arial" size="2" color="#000000"><br>
+    <strong>Table of Contents:</strong><br>
+    1.&nbsp;&nbsp;&nbsp; Introduction:&nbsp;&nbsp; <br>
+    2.&nbsp;&nbsp;&nbsp; The salient features of ZFS:&nbsp;&nbsp; <br>
+    3.&nbsp;&nbsp;&nbsp; Known Issues present in this release:&nbsp;&nbsp;&nbsp; <br>
+    4.&nbsp;&nbsp;&nbsp; ZFS exported APIs for user programming:&nbsp;&nbsp;&nbsp; <br>
+    5.&nbsp;&nbsp;&nbsp; How to work with file system present in ZTP (Shell):&nbsp; <br>
+    6.&nbsp;&nbsp;&nbsp; ZFS configuration:&nbsp;&nbsp;&nbsp; <br>
+    <br>
+    <br>
+    <strong>1.&nbsp;&nbsp;&nbsp; Introduction:</strong><br>
+    <br>
+    Zilog File System (herein after referred as ZFS) is implemented that stores the files and
+    directories in a native format defined by Zilog. The Zilog File System can be used to
+    store files and directories in Flash as well as in RAM. Currently, the ZFS is available
+    for eZ80F91 Acclaim Micro-controllers and eZ80 Micro-Processors such as eZ80L92 where in
+    the files and directories can be stored either on RAM or external flash (Micron) or on
+    both media.<br>
+    <br>
+    The ZFS provides an easy interface APIs which are similar to the commonly used file APIs
+    such as fopen, fread, fwrite, fclose etc which require no changes in the application to
+    integrate into the ZFS.<br>
+    <br>
+    <strong>2.&nbsp;&nbsp;&nbsp; The salient features of ZFS:</strong></font><ul>
+      <li><font face="Arial" size="2" color="#000000">The ZFS core is independent of the
+        underlying memory device i.e. file system should work seamlessly with any kind of memory
+        device provided in the evaluation kit.</font></li>
+      <li><font face="Arial" size="2" color="#000000">Supports volumes (like C:\, D:\ or
+        partitions) and easy configuration of the volumes.</font></li>
+      <li><font face="Arial" size="2" color="#000000">Provide configuration parameters such as max
+        number of directories to be created max number of files to be opened at a time and other
+        parameters related to volume will help in working of the system in less sized memory.</font></li>
+      <li><font face="Arial" size="2" color="#000000">Support multiple volume access be whether
+        they are in RAM or in FLASH or in both devices simultaneously</font></li>
+      <li><font face="Arial" size="2" color="#000000">Implements full-fledged directory operation
+        support.</font></li>
+      <li><font face="Arial" size="2" color="#000000">Implements easy configuration of the system.</font></li>
+      <li><font face="Arial" size="2" color="#000000">Implements in pure ANSI &#145;C&#146;
+        standard</font></li>
+      <li><font face="Arial" size="2" color="#000000">Provide way to port the file system core
+        easily to other toolset.</font></li>
+      <li><font face="Arial" size="2" color="#000000">Support all basic file and directory
+        operations and are multi-thread safe.</font></li>
+      <li><font face="Arial" size="2" color="#000000">Provide the reading of the file contents
+        when the same file is opened for write.</font></li>
+      <li><font face="Arial" size="2" color="#000000">Implements the garbage collection for FLASH
+        device to allow maximum usage of device memory to store the files/directories.</font></li>
+      <li><font face="Arial" size="2" color="#000000">Re-entrant file system.</font></li>
+      <li><font face="Arial" size="2" color="#000000">Support the &#145;.&#146; in filenames or
+        directory names to distinguish between the file name and extension part.</font></li>
+      <li><font face="Arial" size="2" color="#000000">Multiple simultaneous file open for reading
+        and writing<br>
+        </font></li>
+    </ul>
+    <p><strong><font face="Arial" size="2" color="#000000">3.&nbsp;&nbsp;&nbsp; Known Issues
+    present in this release:</font></strong><ul>
+      <li><font face="Arial" size="2" color="#000000">None<br>
+        </font></li>
+    </ul>
+    <p><strong><font face="Arial" size="2" color="#000000">4.&nbsp;&nbsp;&nbsp; ZFS exported
+    APIs for user programming:</font></strong><ul>
+      <li><font face="Arial" size="2" color="#000000">ZFSChdir &#150; Changes the Current Working
+        Directory</font></li>
+      <li><font face="Arial" size="2" color="#000000">ZFSDelete &#150; Delete a existing file</font></li>
+      <li><font face="Arial" size="2" color="#000000">ZFSDeleteDir &#150; Delete a existing
+        directory, option to delete recursively</font></li>
+      <li><font face="Arial" size="2" color="#000000">ZFSFormat &#150; Format the volume</font></li>
+      <li><font face="Arial" size="2" color="#000000">ZFSGetCwd &#150; Return the current working
+        directory</font></li>
+      <li><font face="Arial" size="2" color="#000000">ZFSGetCwdLen &#150; Return the current
+        working directory length</font></li>
+      <li><font face="Arial" size="2" color="#000000">ZFSGetDirFileCount &#150; Returns the number
+        of files and directories present in a directory</font></li>
+      <li><font face="Arial" size="2" color="#000000">ZFSGetErrNum &#150; Returns the error number
+        incase the error is occurred (fopen)</font></li>
+      <li><font face="Arial" size="2" color="#000000">ZFSGetVolumeCount &#150; Gets the number of
+        volumes present in the system.</font></li>
+      <li><font face="Arial" size="2" color="#000000">ZFSGetVolumeParams &#150; Gets the volume
+        parameters such as free space, dirty space and valid space present in the volume.</font></li>
+      <li><font face="Arial" size="2" color="#000000">ZFSInit &#150; Initializes the file system</font></li>
+      <li><font face="Arial" size="2" color="#000000">ZFSList &#150; Returns the file/directory
+        information present in a directory</font></li>
+      <li><font face="Arial" size="2" color="#000000">ZFSMkdir &#150; Creates a directory</font></li>
+      <li><font face="Arial" size="2" color="#000000">ZFSRename &#150; Renames a file</font></li>
+      <li><font face="Arial" size="2" color="#000000">ZFSRenameDir &#150; Renames a directory</font></li>
+      <li><font face="Arial" size="2" color="#000000">ZFSShutdown &#150; Shuts down the file
+        system</font></li>
+      <li><font face="Arial" size="2" color="#000000">fopen &#150; Opens a file for read/writing</font></li>
+      <li><font face="Arial" size="2" color="#000000">fclose &#150; Closes an opened file</font></li>
+      <li><font face="Arial" size="2" color="#000000">fputc &#150; Stores a character into the
+        file</font></li>
+      <li><font face="Arial" size="2" color="#000000">fputs &#150; Stores a string into the file</font></li>
+      <li><font face="Arial" size="2" color="#000000">fgetc &#150; Gets a character from a file</font></li>
+      <li><font face="Arial" size="2" color="#000000">fgets &#150; Gets a string from a file</font></li>
+      <li><font face="Arial" size="2" color="#000000">fread &#150; Reads the given number of bytes
+        from a file</font></li>
+      <li><font face="Arial" size="2" color="#000000">fwrite &#150; Writes the given number of
+        bytes into the file</font></li>
+      <li><font face="Arial" size="2" color="#000000">fseek &#150; Alters the position of read in
+        the file</font></li>
+      <li><font face="Arial" size="2" color="#000000">ftell &#150; Returns current position for
+        read/writing in the file</font></li>
+      <li><font face="Arial" size="2" color="#000000">feof &#150; Determines whether it is an end
+        of file or not </font></li>
+    </ul>
+    <p><font face="Arial" size="2" color="#000000"><br>
+    <strong>5.&nbsp;&nbsp;&nbsp; How to work with file system present in ZTP (Shell):</strong><br>
+    <br>
+    The following list of File System commands are provided to the user which can be executed
+    from the shell prompt.</font><ul>
+      <li><font face="Arial" size="2" color="#000000">md &lt;directory Name&gt;<br>
+        o&nbsp;&nbsp;&nbsp; Creates a directory.<br>
+        </font></li>
+      <li><font face="Arial" size="2" color="#000000">cd &lt;directory Name &gt;<br>
+        o&nbsp;&nbsp;&nbsp; Changes the current directory.<br>
+        Note:<br>
+        ·
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        .. Changes to the parent directory.<br>
+        ·&nbsp;&nbsp;&nbsp; / Changes to the root directory of the current volume<br>
+        </font></li>
+      <li><font face="Arial" size="2" color="#000000">del &lt;file Name&gt;<br>
+        o&nbsp;&nbsp;&nbsp; Deletes the specified file.<br>
+        </font></li>
+      <li><font face="Arial" size="2" color="#000000">deltree&nbsp;&nbsp;&nbsp; &lt;directory
+        Name&gt;<br>
+        o&nbsp;&nbsp;&nbsp; Removes all directories and files in the specified directory in
+        addition to the directory itself. <br>
+        </font></li>
+      <li><font face="Arial" size="2" color="#000000">deldir&nbsp;&nbsp;&nbsp; &lt;directory
+        Name&gt;<br>
+        o&nbsp;&nbsp;&nbsp; Deletes a empty directory.<br>
+        </font></li>
+      <li><font face="Arial" size="2" color="#000000">ren &lt;Filename1&gt; &lt;FileName2&gt;<br>
+        o&nbsp;&nbsp;&nbsp; Renames a file. Renames fileName1 to fileName2.<br>
+        </font></li>
+      <li><font face="Arial" size="2" color="#000000">rendir &lt;directory Name1&gt; &lt;directory
+        Name2&gt;<br>
+        o&nbsp;&nbsp;&nbsp; Renames the specified directory.<br>
+        </font></li>
+      <li><font face="Arial" size="2" color="#000000">move &lt;srcFileName&gt; &lt;Destination
+        Directory&gt;<br>
+        o&nbsp;&nbsp;&nbsp; Moves the specified file to the destination directory. The name of the
+        destination file is same as the source file.<br>
+        </font></li>
+      <li><font face="Arial" size="2" color="#000000">copy &lt;srcFileName&gt; &lt;Destination
+        Directory Name&gt;<br>
+        o&nbsp;&nbsp;&nbsp; Copies the specified file to the destination directory.<br>
+        </font></li>
+      <li><font face="Arial" size="2" color="#000000">cwd<br>
+        o&nbsp;&nbsp;&nbsp; Displays the name of the current working directory.<br>
+        </font></li>
+      <li><font face="Arial" size="2" color="#000000">dir &lt;Directory Name&gt;<br>
+        o&nbsp;&nbsp;&nbsp; Displays the list of files and subdirectories present in the
+        directory.<br>
+        o&nbsp;&nbsp;&nbsp; If the argument (&lt;Directory Name&gt;) is not present, displays the
+        list of files and sub directories present in the current working directory.<br>
+        </font></li>
+      <li><font face="Arial" size="2" color="#000000">type &lt; File Name&gt;<br>
+        o&nbsp;&nbsp;&nbsp; Displays the contents of the file<br>
+        </font></li>
+      <li><font face="Arial" size="2" color="#000000">vol<br>
+        o&nbsp;&nbsp;&nbsp; Gets the volume information present in the system<br>
+        <br>
+        <strong>6.&nbsp;&nbsp;&nbsp; ZFS configuration:</strong><br>
+        <br>
+        </font><font face="Arial" size="1" color="#000000"><strong>Persistence about the
+        files/directories present in flash.</strong></font><font face="Arial" size="2"
+        color="#000000"><br>
+        <br>
+        There is an option of enabling the persistence related to the files and directories
+        present in the flash media. The macro <strong>ERASE_FLASH=0</strong>, should be placed in <em><strong>Project
+        Settings-&gt;Pre-Processor</strong></em> if persistency needed. In this case, if the flash
+        is not formatted properly in native file system format, then it will be formatted. If
+        persistence is not needed, <strong>ERASE_FLASH=1</strong> should be placed in <em><strong>Project
+        Settings-&gt;Pre-Processor</strong></em>. In this case, the flash will be formatted with
+        native file system format. By default <strong>ERASE_FLASH=0</strong> is placed in <em><strong>Project
+        Settings-&gt;Pre-Processor</strong></em>.<br>
+        <br>
+        There is a file called <strong>zfscfg.c </strong>and <strong>zfscfg.h</strong> file that
+        are distributed with this release. <br>
+        <br>
+        The <strong>&lt;ZTP Installed directory&gt;\RZK\&lt;Target Processor&gt;\Inc\FS\zfscfg.h</strong>
+        file contains below macros which user may need to change to configure the file system (<strong>Target
+        Processor</strong> may be eZ80F91, eZ80F92, eZ80F93, eZ80L92, <strong>ZTP Installed
+        Directory</strong> is the directory chosen during the installation of the ZTP product).<br>
+        <br>
+        <strong>ZFS_MAX_FILE_OPEN_COUNT :</strong> This macro contains the number which provides
+        the maximum number of files open instances be present at a time. Please note that this is
+        not a per-volume value and it is a per system value.<br>
+        <br>
+        <strong>ZFS_MAX_DIRS_SUPPORTED:</strong> This macro specifies the maximum number of
+        directories that can be created in a system. Please note that this is not a per-volume
+        value and it is a per system value.<br>
+        <br>
+        <strong>ZFS_TOTAL_NUM_BLOCKS:</strong> This macro specifies the total number of blocks
+        present in the file system storage area specified in the system. (If there are two volumes
+        present and each volume has 4 blocks and 6 blocks respectively, then this macro should be
+        set to 10).<br>
+        <br>
+        <br>
+        <strong>ZFS_TOTAL_NUM_SECTORS:</strong> This macro specifies the total number of sectors
+        present in the file system storage area specified in the system. (If there are two volumes
+        present and each volume has 100 blocks and 200 blocks respectively, then this macro should
+        be set to 300).<br>
+        <br>
+        <strong>ZFS_TOTAL_NUM_VOLUMES:</strong> This macro specifies the total number of volumes
+        present in the configuration.<br>
+        <br>
+        <br>
+        <strong>F91\Inc\zfscfg.c</strong><br>
+        <br>
+        // user configurable structure<br>
+        typedef struct {<br>
+        INT8&nbsp;&nbsp;&nbsp; vol_name[ ZFS_MAX_VOL_NAME_LEN + 1] ;<br>
+        UINT8&nbsp;&nbsp;&nbsp; vol_type ;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //
+        ZFS_RAM_DEV_TYPE, ZFS_EXT_FLASH_DEV_TYPE, <br>
+        UINT8* vol_addr ;&nbsp;&nbsp;&nbsp;&nbsp; // starting address of file storage area of a <br>
+        // volume<br>
+        UINT&nbsp;&nbsp;&nbsp; vol_size ;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // volume size
+        in bytes<br>
+        UINT&nbsp;&nbsp;&nbsp; vol_blks ;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // number of
+        blocks present in the volume. (for <br>
+        // RAM it will be 1, for flash, it is mapped to <br>
+        // 1 number of erasable units<br>
+        UINT&nbsp;&nbsp;&nbsp; vol_secs ;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // number of
+        sectors present in this volume. <br>
+        // (Total volume size/ZFS_SEC_SIZE)<br>
+        &nbsp;&nbsp;&nbsp; <br>
+        &nbsp;&nbsp;&nbsp; // function pointers for all driver entries and other routines that
+        require the different search algorithm<br>
+        &nbsp;&nbsp;&nbsp; // function pointers for all devices<br>
+        &nbsp;&nbsp;&nbsp; DRV_INIT
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        pfn_drv_init ;<br>
+        &nbsp;&nbsp;&nbsp; DRV_READ
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        pfn_drv_read ;<br>
+        &nbsp;&nbsp;&nbsp; DRV_WRITE
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        pfn_drv_write ;<br>
+        &nbsp;&nbsp;&nbsp; DRV_ERASE
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        pfn_drv_erase ;<br>
+        &nbsp;&nbsp;&nbsp; DRV_CLOSE
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        pfn_drv_close ;<br>
+        <br>
+        &nbsp;&nbsp;&nbsp; // function pointers for ZFS routines<br>
+        <br>
+        } ZFS_CONFIG_t, *PZFS_CONFIG_t ;<br>
+        <br>
+        <br>
+        The above structure is present in <strong>zfscfg.c</strong> file and should be modified as
+        below:<br>
+        <br>
+        <br>
+        <strong>Sample configuration where in file storage area is in RAM:</strong><br>
+        ZFS_CONFIG_t g_zfs_cfg[ ZFS_TOTAL_NUM_VOLUMES ] = {&nbsp;&nbsp;&nbsp; <br>
+        {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;RAM&quot;,
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        // vol name<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ZFS_RAM_DEV_TYPE,
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // vol type<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (UINT8*)0x20000,
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // vol_start_addr<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x50000,
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        // vol_size<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1,
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        // vol_blocks<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0x50000/ZFS_SEC_SIZE),
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // number of sectors<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RamDrv_Init, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RamDrv_Read,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RamDrv_Write,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RamDrv_Erase,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RamDrv_Close<br>
+        &nbsp;&nbsp;&nbsp; }<br>
+        } ;<br>
+        The values of vol_name, vol_addr, vol_size, vol_blks, vol_secs may be changed depending on
+        the memory mapping and configuration.<br>
+        <br>
+        <strong>Sample configuration where in file storage area is in RAM:</strong><br>
+        ZFS_CONFIG_t g_zfs_cfg[ ZFS_TOTAL_NUM_VOLUMES ] = {&nbsp;&nbsp;&nbsp; <br>
+        &nbsp;&nbsp;&nbsp; {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;EXTF&quot;,
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        // vol name<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ZFS_EXT_FLASH_DEV_TYPE,
+        &nbsp;&nbsp;&nbsp;&nbsp; // vol type<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (UINT8*)0xA0000,
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // vol_start_addr<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x60000,
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        // vol_size<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3,
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        // vol_blocks<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0x60000/ZFS_SEC_SIZE),
+        &nbsp;&nbsp;&nbsp;&nbsp; // number of sectors<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FSFlashDrv_Ext_Init, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FSFlashDrv_Ext_Read,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FSFlashDrv_Ext_Write,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FSFlashDrv_Ext_Erase,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FSFlashDrv_Ext_Close<br>
+        &nbsp;&nbsp;&nbsp; }<br>
+        } ;<br>
+        The values of vol_name, vol_addr, vol_size, vol_blks, vol_secs may be changed depending on
+        the memory mapping and configuration.</font></li>
+      <li><font face="Arial" size="2" color="#000000"><br>
+        <br>
+        <em><strong>Note: The configuration parameters should be set to correct values, otherwise
+        the behavior of the file system is undefined. </strong></em><br>
+        </font></li>
+    </ul>
+    </td>
+  </tr>
+</table>
+</center></div>
+</body>
+</html>

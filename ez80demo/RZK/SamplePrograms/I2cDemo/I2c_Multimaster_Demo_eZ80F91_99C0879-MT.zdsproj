@@ -1,0 +1,390 @@
+<project type="Executable" project-type="Standard" configuration="Copy_to_RAM" created-by="05020901" modified-by="d:5.3.0:17021001" ZDSII="ZDSII - eZ80Acclaim! 5.3.0 (Build 17030704)">
+<cpu>eZ80F91</cpu>
+
+<!-- file information -->
+<files>
+<file filter-key="">..\..\Conf\eZ80eval.c</file>
+<file filter-key="">..\..\Conf\eZ80Hw_Conf_ZDS.c</file>
+<file filter-key="">..\..\Conf\get_heap.asm</file>
+<file filter-key="">.\gpio_interrupt.asm</file>
+<file filter-key="">..\..\Conf\i2c_conf.c</file>
+<file filter-key="">.\i2C_Multimaster_demo.c</file>
+<file filter-key="">.\Multimasteri2C.c</file>
+<file filter-key="">..\..\Conf\RZK_Conf.c</file>
+<file filter-key="">..\..\Conf\uart_conf.c</file>
+<file filter-key="flash">Copy_to_RAM\I2C_Multimaster_Demo_eZ80F91_99C0879-MT_Copy_to_RAM.hex</file>
+</files>
+
+<!-- configuration information -->
+<configurations>
+<configuration name="RAM" >
+<tools>
+<tool name="Assembler">
+<options>
+<option name="define" type="string" change-action="assemble">_EZ80ACCLAIM!=1</option>
+<option name="include" type="string" change-action="assemble"></option>
+<option name="list" type="boolean" change-action="none">true</option>
+<option name="listmac" type="boolean" change-action="none">false</option>
+<option name="name" type="boolean" change-action="none">true</option>
+<option name="pagelen" type="integer" change-action="none">0</option>
+<option name="pagewidth" type="integer" change-action="none">500</option>
+<option name="quiet" type="boolean" change-action="none">true</option>
+<option name="sdiopt" type="boolean" change-action="compile">true</option>
+</options>
+</tool>
+<tool name="Compiler">
+<options>
+<option name="padbranch" type="string" change-action="compile">Off</option>
+<option name="define" type="string" change-action="compile">_EZ80F91,_EZ80ACCLAIM!,RZKDBG,RZKPI,RZKFS,RAM_MAP,RZK=1,RZKLIB=1</option>
+<option name="genprintf" type="boolean" change-action="compile">false</option>
+<option name="keepasm" type="boolean" change-action="none">false</option>
+<option name="keeplst" type="boolean" change-action="none">true</option>
+<option name="list" type="boolean" change-action="none">false</option>
+<option name="listinc" type="boolean" change-action="none">false</option>
+<option name="modsect" type="boolean" change-action="compile">false</option>
+<option name="optspeed" type="boolean" change-action="compile">false</option>
+<option name="promote" type="boolean" change-action="compile">true</option>
+<option name="reduceopt" type="boolean" change-action="compile">true</option>
+<option name="stdinc" type="string" change-action="compile"></option>
+<option name="usrinc" type="string" change-action="compile">..\..\Inc</option>
+<option name="watch" type="boolean" change-action="none">false</option>
+<option name="multithread" type="boolean" change-action="compile">false</option>
+</options>
+</tool>
+<tool name="Debugger">
+<options>
+<option name="target" type="string" change-action="rebuild">eZ80F91_99C0879_RAM</option>
+<option name="debugtool" type="string" change-action="none">USBSmartCable</option>
+<option name="usepageerase" type="boolean" change-action="none">true</option>
+</options>
+</tool>
+<tool name="FlashProgrammer">
+<options>
+<option name="erasebeforeburn" type="boolean" change-action="none">false</option>
+<option name="eraseinfopage" type="boolean" change-action="none">false</option>
+<option name="enableinfopage" type="boolean" change-action="none">false</option>
+<option name="includeserial" type="boolean" change-action="none">false</option>
+<option name="offset" type="integer" change-action="none">0</option>
+<option name="snenable" type="boolean" change-action="none">false</option>
+<option name="sn" type="string" change-action="none">000000000000000000000000</option>
+<option name="snsize" type="integer" change-action="none">1</option>
+<option name="snstep" type="integer" change-action="none">000000000000000000000000</option>
+<option name="snstepformat" type="integer" change-action="none">0</option>
+<option name="snaddress" type="string" change-action="none">0</option>
+<option name="snformat" type="integer" change-action="none">0</option>
+<option name="snbigendian" type="boolean" change-action="none">true</option>
+<option name="singleval" type="string" change-action="none">0</option>
+<option name="singlevalformat" type="integer" change-action="none">0</option>
+<option name="usepageerase" type="boolean" change-action="none">false</option>
+<option name="useinfopage" type="boolean" change-action="none">false</option>
+</options>
+</tool>
+<tool name="General">
+<options>
+<option name="warn" type="boolean" change-action="none">true</option>
+<option name="debug" type="boolean" change-action="assemble">true</option>
+<option name="debugcache" type="boolean" change-action="none">true</option>
+<option name="igcase" type="boolean" change-action="assemble">false</option>
+<option name="outputdir" type="string" change-action="compile">RAM\</option>
+</options>
+</tool>
+<tool name="Librarian">
+<options>
+<option name="outfile" type="string" change-action="build"></option>
+</options>
+</tool>
+<tool name="Linker">
+<options>
+<option name="directives" type="string" change-action="build"></option>
+<option name="createnew" type="boolean" change-action="build">true</option>
+<option name="exeform" type="string" change-action="build">OMF695</option>
+<option name="linkctlfile" type="string" change-action="build"></option>
+<option name="map" type="boolean" change-action="none">true</option>
+<option name="maxhexlen" type="integer" change-action="build">64</option>
+<option name="objlibmods" type="string" change-action="build">..\..\Lib\RZKDebugPI.lib,..\..\Lib\RZKeZ80F91.lib,..\..\Lib\BSPeZ80F91.lib</option>
+<option name="of" type="string" change-action="build">RAM\I2C_Multimaster_Demo_eZ80F91_99C0879-MT_RAM</option>
+<option name="quiet" type="boolean" change-action="none">false</option>
+<option name="relist" type="boolean" change-action="build">false</option>
+<option name="startuptype" type="string" change-action="build">Standard</option>
+<option name="startuplnkcmds" type="boolean" change-action="build">true</option>
+<option name="usecrun" type="boolean" change-action="build">true</option>
+<option name="warnoverlap" type="boolean" change-action="none">true</option>
+<option name="xref" type="boolean" change-action="none">false</option>
+<option name="undefisfatal" type="boolean" change-action="none">true</option>
+<option name="warnisfatal" type="boolean" change-action="none">false</option>
+<option name="sort" type="string" change-action="none">NAME</option>
+<option name="padhex" type="boolean" change-action="build">false</option>
+<option name="fplib" type="string" change-action="build">Dummy</option>
+<option name="useadddirectives" type="boolean" change-action="build">false</option>
+<option name="linkconfig" type="string" change-action="build">Standard</option>
+<option name="flashinfo" type="string" change-action="build">0-1FF</option>
+<option name="ram" type="string" change-action="build">040000-07FFFF</option>
+<option name="rom" type="string" change-action="build">000000-03FFFF</option>
+<option name="extio" type="string" change-action="build">0-FFFF</option>
+<option name="intio" type="string" change-action="build">0-FF</option>
+</options>
+</tool>
+<tool name="Middleware">
+<options>
+<option name="usezsl" type="boolean" change-action="rebuild">false</option>
+<option name="zslports" type="string" change-action="rebuild"></option>
+<option name="zsluarts" type="string" change-action="rebuild"></option>
+<option name="userzk" type="boolean" change-action="rebuild">false</option>
+<option name="rzkconfigpi" type="boolean" change-action="rebuild">false</option>
+<option name="rzkconfigmini" type="boolean" change-action="rebuild">false</option>
+<option name="rzkcomps" type="string" change-action="rebuild"></option>
+</options>
+</tool>
+</tools>
+</configuration>
+<configuration name="Flash" >
+<tools>
+<tool name="Assembler">
+<options>
+<option name="define" type="string" change-action="assemble">_EZ80ACCLAIM!=1</option>
+<option name="include" type="string" change-action="assemble"></option>
+<option name="list" type="boolean" change-action="none">true</option>
+<option name="listmac" type="boolean" change-action="none">false</option>
+<option name="name" type="boolean" change-action="none">true</option>
+<option name="pagelen" type="integer" change-action="none">0</option>
+<option name="pagewidth" type="integer" change-action="none">500</option>
+<option name="quiet" type="boolean" change-action="none">true</option>
+<option name="sdiopt" type="boolean" change-action="compile">true</option>
+</options>
+</tool>
+<tool name="Compiler">
+<options>
+<option name="padbranch" type="string" change-action="compile">Off</option>
+<option name="define" type="string" change-action="compile">_EZ80F91,_EZ80ACCLAIM!,RZKDBG,RZKPI,RZKFS,STANDALONE,RZK=1,RZKLIB=1</option>
+<option name="genprintf" type="boolean" change-action="compile">false</option>
+<option name="keepasm" type="boolean" change-action="none">false</option>
+<option name="keeplst" type="boolean" change-action="none">true</option>
+<option name="list" type="boolean" change-action="none">false</option>
+<option name="listinc" type="boolean" change-action="none">false</option>
+<option name="modsect" type="boolean" change-action="compile">false</option>
+<option name="optspeed" type="boolean" change-action="compile">false</option>
+<option name="promote" type="boolean" change-action="compile">true</option>
+<option name="reduceopt" type="boolean" change-action="compile">true</option>
+<option name="stdinc" type="string" change-action="compile"></option>
+<option name="usrinc" type="string" change-action="compile">..\..\Inc</option>
+<option name="watch" type="boolean" change-action="none">false</option>
+<option name="multithread" type="boolean" change-action="compile">false</option>
+</options>
+</tool>
+<tool name="Debugger">
+<options>
+<option name="target" type="string" change-action="rebuild">eZ80F91_99C0879-MT_Flash</option>
+<option name="debugtool" type="string" change-action="none">USBSmartCable</option>
+<option name="usepageerase" type="boolean" change-action="none">true</option>
+</options>
+</tool>
+<tool name="FlashProgrammer">
+<options>
+<option name="erasebeforeburn" type="boolean" change-action="none">true</option>
+<option name="eraseinfopage" type="boolean" change-action="none">false</option>
+<option name="enableinfopage" type="boolean" change-action="none">false</option>
+<option name="includeserial" type="boolean" change-action="none">false</option>
+<option name="offset" type="integer" change-action="none">0</option>
+<option name="snenable" type="boolean" change-action="none">false</option>
+<option name="sn" type="string" change-action="none">000000000000000000000000</option>
+<option name="snsize" type="integer" change-action="none">1</option>
+<option name="snstep" type="integer" change-action="none">000000000000000000000000</option>
+<option name="snstepformat" type="integer" change-action="none">0</option>
+<option name="snaddress" type="string" change-action="none">0</option>
+<option name="snformat" type="integer" change-action="none">0</option>
+<option name="snbigendian" type="boolean" change-action="none">true</option>
+<option name="singleval" type="string" change-action="none">0</option>
+<option name="singlevalformat" type="integer" change-action="none">0</option>
+<option name="usepageerase" type="boolean" change-action="none">false</option>
+<option name="useinfopage" type="boolean" change-action="none">false</option>
+</options>
+</tool>
+<tool name="General">
+<options>
+<option name="warn" type="boolean" change-action="none">true</option>
+<option name="debug" type="boolean" change-action="assemble">true</option>
+<option name="debugcache" type="boolean" change-action="none">true</option>
+<option name="igcase" type="boolean" change-action="assemble">false</option>
+<option name="outputdir" type="string" change-action="compile">Flash\</option>
+</options>
+</tool>
+<tool name="Librarian">
+<options>
+<option name="outfile" type="string" change-action="build"></option>
+</options>
+</tool>
+<tool name="Linker">
+<options>
+<option name="directives" type="string" change-action="build"></option>
+<option name="createnew" type="boolean" change-action="build">true</option>
+<option name="exeform" type="string" change-action="build">OMF695,INTEL32</option>
+<option name="linkctlfile" type="string" change-action="build"></option>
+<option name="map" type="boolean" change-action="none">true</option>
+<option name="maxhexlen" type="integer" change-action="build">64</option>
+<option name="objlibmods" type="string" change-action="build">..\..\Lib\RZKDebugPI.lib,..\..\Lib\RZKeZ80F91.lib,..\..\Lib\BSPeZ80F91.lib</option>
+<option name="of" type="string" change-action="build">Flash\I2C_Multimaster_Demo_eZ80F91_99C0879-MT_Flash</option>
+<option name="quiet" type="boolean" change-action="none">false</option>
+<option name="relist" type="boolean" change-action="build">false</option>
+<option name="startuptype" type="string" change-action="build">Standard</option>
+<option name="startuplnkcmds" type="boolean" change-action="build">true</option>
+<option name="usecrun" type="boolean" change-action="build">true</option>
+<option name="warnoverlap" type="boolean" change-action="none">true</option>
+<option name="xref" type="boolean" change-action="none">false</option>
+<option name="undefisfatal" type="boolean" change-action="none">true</option>
+<option name="warnisfatal" type="boolean" change-action="none">false</option>
+<option name="sort" type="string" change-action="none">NAME</option>
+<option name="padhex" type="boolean" change-action="build">false</option>
+<option name="fplib" type="string" change-action="build">Dummy</option>
+<option name="useadddirectives" type="boolean" change-action="build">false</option>
+<option name="linkconfig" type="string" change-action="build">Standard</option>
+<option name="flashinfo" type="string" change-action="build">0-1FF</option>
+<option name="ram" type="string" change-action="build">C00000-C7FFFF</option>
+<option name="rom" type="string" change-action="build">000000-03FFFF</option>
+<option name="extio" type="string" change-action="build">0-FFFF</option>
+<option name="intio" type="string" change-action="build">0-FF</option>
+</options>
+</tool>
+<tool name="Middleware">
+<options>
+<option name="usezsl" type="boolean" change-action="rebuild">false</option>
+<option name="zslports" type="string" change-action="rebuild"></option>
+<option name="zsluarts" type="string" change-action="rebuild"></option>
+<option name="userzk" type="boolean" change-action="rebuild">false</option>
+<option name="rzkconfigpi" type="boolean" change-action="rebuild">false</option>
+<option name="rzkconfigmini" type="boolean" change-action="rebuild">false</option>
+<option name="rzkcomps" type="string" change-action="rebuild"></option>
+</options>
+</tool>
+</tools>
+</configuration>
+<configuration name="Copy_to_RAM" >
+<tools>
+<tool name="Assembler">
+<options>
+<option name="define" type="string" change-action="assemble">_EZ80ACCLAIM!=1</option>
+<option name="include" type="string" change-action="assemble"></option>
+<option name="list" type="boolean" change-action="none">true</option>
+<option name="listmac" type="boolean" change-action="none">false</option>
+<option name="name" type="boolean" change-action="none">true</option>
+<option name="pagelen" type="integer" change-action="none">0</option>
+<option name="pagewidth" type="integer" change-action="none">500</option>
+<option name="quiet" type="boolean" change-action="none">true</option>
+<option name="sdiopt" type="boolean" change-action="compile">true</option>
+</options>
+</tool>
+<tool name="Compiler">
+<options>
+<option name="padbranch" type="string" change-action="compile">Off</option>
+<option name="define" type="string" change-action="compile">_EZ80F91,_EZ80ACCLAIM!,RZKDBG,RZKPI,RZKFS,STANDALONE,RZK=1,RZKLIB=1</option>
+<option name="genprintf" type="boolean" change-action="compile">false</option>
+<option name="keepasm" type="boolean" change-action="none">false</option>
+<option name="keeplst" type="boolean" change-action="none">true</option>
+<option name="list" type="boolean" change-action="none">false</option>
+<option name="listinc" type="boolean" change-action="none">false</option>
+<option name="modsect" type="boolean" change-action="compile">false</option>
+<option name="optspeed" type="boolean" change-action="compile">false</option>
+<option name="promote" type="boolean" change-action="compile">true</option>
+<option name="reduceopt" type="boolean" change-action="compile">true</option>
+<option name="stdinc" type="string" change-action="compile"></option>
+<option name="usrinc" type="string" change-action="compile">..\..\Inc</option>
+<option name="watch" type="boolean" change-action="none">false</option>
+<option name="multithread" type="boolean" change-action="compile">false</option>
+</options>
+</tool>
+<tool name="Debugger">
+<options>
+<option name="target" type="string" change-action="rebuild">eZ80F91_99C0879-MT_Flash</option>
+<option name="debugtool" type="string" change-action="none">USBSmartCable</option>
+<option name="usepageerase" type="boolean" change-action="none">true</option>
+</options>
+</tool>
+<tool name="FlashProgrammer">
+<options>
+<option name="erasebeforeburn" type="boolean" change-action="none">true</option>
+<option name="eraseinfopage" type="boolean" change-action="none">false</option>
+<option name="enableinfopage" type="boolean" change-action="none">false</option>
+<option name="includeserial" type="boolean" change-action="none">false</option>
+<option name="offset" type="integer" change-action="none">0</option>
+<option name="snenable" type="boolean" change-action="none">false</option>
+<option name="sn" type="string" change-action="none">000000000000000000000000</option>
+<option name="snsize" type="integer" change-action="none">1</option>
+<option name="snstep" type="integer" change-action="none">000000000000000000000000</option>
+<option name="snstepformat" type="integer" change-action="none">0</option>
+<option name="snaddress" type="string" change-action="none">0</option>
+<option name="snformat" type="integer" change-action="none">0</option>
+<option name="snbigendian" type="boolean" change-action="none">true</option>
+<option name="singleval" type="string" change-action="none">0</option>
+<option name="singlevalformat" type="integer" change-action="none">0</option>
+<option name="usepageerase" type="boolean" change-action="none">false</option>
+<option name="useinfopage" type="boolean" change-action="none">false</option>
+</options>
+</tool>
+<tool name="General">
+<options>
+<option name="warn" type="boolean" change-action="none">true</option>
+<option name="debug" type="boolean" change-action="assemble">true</option>
+<option name="debugcache" type="boolean" change-action="none">true</option>
+<option name="igcase" type="boolean" change-action="assemble">false</option>
+<option name="outputdir" type="string" change-action="compile">Copy_to_RAM\</option>
+</options>
+</tool>
+<tool name="Librarian">
+<options>
+<option name="outfile" type="string" change-action="build"></option>
+</options>
+</tool>
+<tool name="Linker">
+<options>
+<option name="directives" type="string" change-action="build">CHANGE TEXT IS CODE</option>
+<option name="createnew" type="boolean" change-action="build">true</option>
+<option name="exeform" type="string" change-action="build">OMF695,INTEL32</option>
+<option name="linkctlfile" type="string" change-action="build"></option>
+<option name="map" type="boolean" change-action="none">true</option>
+<option name="maxhexlen" type="integer" change-action="build">64</option>
+<option name="objlibmods" type="string" change-action="build">..\..\Lib\RZKDebugPI.lib,..\..\Lib\RZKeZ80F91.lib,..\..\Lib\BSPeZ80F91.lib</option>
+<option name="of" type="string" change-action="build">Copy_to_RAM\I2C_Multimaster_Demo_eZ80F91_99C0879-MT_Copy_to_RAM</option>
+<option name="quiet" type="boolean" change-action="none">false</option>
+<option name="relist" type="boolean" change-action="build">false</option>
+<option name="startuptype" type="string" change-action="build">Standard</option>
+<option name="startuplnkcmds" type="boolean" change-action="build">true</option>
+<option name="usecrun" type="boolean" change-action="build">true</option>
+<option name="warnoverlap" type="boolean" change-action="none">true</option>
+<option name="xref" type="boolean" change-action="none">false</option>
+<option name="undefisfatal" type="boolean" change-action="none">true</option>
+<option name="warnisfatal" type="boolean" change-action="none">false</option>
+<option name="sort" type="string" change-action="none">NAME</option>
+<option name="padhex" type="boolean" change-action="build">false</option>
+<option name="fplib" type="string" change-action="build">Dummy</option>
+<option name="useadddirectives" type="boolean" change-action="build">true</option>
+<option name="linkconfig" type="string" change-action="build">CopyToRam</option>
+<option name="flashinfo" type="string" change-action="build">0-1FF</option>
+<option name="ram" type="string" change-action="build">C00000-C7FFFF</option>
+<option name="rom" type="string" change-action="build">000000-03FFFF</option>
+<option name="extio" type="string" change-action="build">0-FFFF</option>
+<option name="intio" type="string" change-action="build">0-FF</option>
+</options>
+</tool>
+<tool name="Middleware">
+<options>
+<option name="usezsl" type="boolean" change-action="rebuild">false</option>
+<option name="zslports" type="string" change-action="rebuild"></option>
+<option name="zsluarts" type="string" change-action="rebuild"></option>
+<option name="userzk" type="boolean" change-action="rebuild">false</option>
+<option name="rzkconfigpi" type="boolean" change-action="rebuild">false</option>
+<option name="rzkconfigmini" type="boolean" change-action="rebuild">false</option>
+<option name="rzkcomps" type="string" change-action="rebuild"></option>
+</options>
+</tool>
+</tools>
+</configuration>
+</configurations>
+
+<!-- watch information -->
+<watch-elements>
+</watch-elements>
+
+<!-- breakpoint information -->
+<breakpoints>
+</breakpoints>
+
+</project>

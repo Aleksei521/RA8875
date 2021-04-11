@@ -1,0 +1,116 @@
+<html>
+
+<head>
+<title>ZGATE Threshold Filter</title>
+<style TYPE="text/css">
+ body
+ {
+   color:#000000;
+   font-family:Verdana;
+ }
+ table
+ {
+   font-size:14px;
+ }
+ h6
+ {
+   color:#004400;
+   font-size:16px;
+ }
+</style>
+</head>
+
+<body>
+
+
+<script type="text/javascript" src="Thresh.js">
+</script>
+
+
+
+
+<script type="text/javascript">
+
+   var ZgateCmdStr = "ZGATE_thresh";
+
+
+   function DoSubmit( form )
+   {
+      var Interval = form.elements[0].value;
+      var Low      = form.elements[1].value;
+      var Hi       = form.elements[2].value;
+
+      Interval = parseInt( Interval, 10 );
+      Low = parseInt( Low, 10 );
+      Hi = parseInt( Hi, 10 );
+      
+      if( (Interval >= 10) && (Interval <= 1800) )
+      {
+         if( (Low >= 20) && (Hi >= 100) )
+         { 
+            if( (Hi >= (2 * Low)) && (Low <= (Hi /2)) )
+            {
+               form.setAttribute( "method", "post" ); 
+               form.setAttribute( "action", "/ZGATE_Conf" ); 
+
+               form.submit();
+               return;
+            }
+         }
+      }
+      alert( "Invalid input(s)" );
+   }
+
+
+   function DoCancel( form ) 
+   {	
+      form.elements[0].value = Thresh_Interval;
+      form.elements[1].value = Thresh_LW;
+      form.elements[2].value = Thresh_HW;
+   }
+
+
+   document.write( '' +
+      '<div><table border="0" width="500">' +
+      '  <tr><td colspan="2">' +
+      '    <br><h6>ZGATE&#153 Threshold Filering Configuration</h6>' +
+      '  </td></tr>' +
+      '  <tr><td>' +
+      '    Filtering Mode:</td><td><b>' + Thresh_Mode + '</b>' +
+      '  </td></tr>' +
+      '</table></div>' );
+
+
+
+   if( Thresh_Mode != "Disabled" )
+   {
+      var Input_Html = 'INPUT TYPE=text size=4 maxlength=4 ';
+
+      document.write( '<FORM id="FormId">' );
+      document.write( '<table border="0" width="400">');
+
+
+      document.write('<tr><td>Interval</td><td>(10..1800)</td><td><' + Input_Html + 
+         'VALUE =' + Thresh_Interval + ' NAME=thresh_Int></td></tr>' );
+      document.write('<tr><td>Lower Threshold</td><td>(>= 20, <= 1/2 Upper)</td><td><' + Input_Html +
+         'VALUE=' + Thresh_LW + ' NAME=thresh_Lo></td></tr>' );
+      document.write('<tr><td>Upper Threshold</td><td>(>= 100, >= 2x Lower)</td><td><' + Input_Html +
+         'VALUE=' + Thresh_HW + ' NAME=thresh_Hi></td></tr>' );
+
+      document.write( '</table>' )
+
+
+      document.write('<table border="0" width="400"><tr align="center"><br>' );
+      document.write('<td width="200"><INPUT TYPE="button" VALUE="Update" onClick="DoSubmit(this.form)"></td>')
+      document.write('<td width="200"><INPUT TYPE="button" VALUE="Cancel" onClick="DoCancel(this.form)"></td>')
+      document.write('</tr></table>' );
+
+      document.write( "</FORM>" );
+   }
+</script>
+
+
+
+
+</body>
+</html>

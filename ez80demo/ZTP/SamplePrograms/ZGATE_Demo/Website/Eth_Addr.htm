@@ -1,0 +1,66 @@
+<html>
+
+<head>
+<title>ZGATE Eth Address</title>
+</head>
+
+<body>
+
+
+<script type="text/javascript" src="Eth_Addr.js">
+</script>
+
+
+<script type="text/javascript" src="table.js">
+</script>
+
+
+<script type="text/javascript">
+var TableType = "Ethernet MAC Address";
+var ItemType = "Eth Addr";
+var MaxCols = 3;
+var NewEntryHTML = 'INPUT TYPE=text size=17 maxlength=17 NAME=InputValue';
+var ZgateCmdStr = "ZGATE_eth_addr";
+
+var WL_Desc = 'Each item in the list represents the source address field of a received Ethernet frame. ' +
+   'ZGATE&#153 forwards received Ethernet frames sent by any of the listed Ethernet MAC addresses. ' +  
+   'ZGATE&#153 discards received Ethernet frames if the source address field does not match any of the listed values.';
+
+var BL_Desc = 'Each item in the list represents the source address field of a received Ethernet frame. ' +
+   'ZGATE&#153 discards received Ethernet frames sent by any of the listed Ethernet MAC addresses. ' +  
+   'ZGATE&#153 forwards received Ethernet frames if the source address field does not match any of the listed values.';
+
+var Disabled_Desc = 'Ethernet source address filtering disabled.';
+
+
+
+function IsEntryValid( IpAddr )
+{
+   var SubAddr;
+   var Value;
+
+
+   SubAddr = IpAddr.split(":");
+   if( SubAddr.length == 6 )
+   {
+      for( i in SubAddr )
+      {
+         Value = parseInt( SubAddr[i], 16 );
+         if( Value > 255 )
+         {  // Invalid
+            return( 0 );
+         }
+      }
+      return( 1 );
+   }
+   return( 0 );
+}
+
+
+GenerateTable();
+</script>
+
+
+
+</body>
+</html>

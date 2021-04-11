@@ -1,0 +1,96 @@
+<html>
+
+<head>
+<title>ZGATE Startup</title>
+<style TYPE="text/css">
+ body
+ {
+   color:#000000;
+   font-family:Verdana;
+ }
+ table
+ {
+   font-size:14px;
+ }
+ h6
+ {
+   color:#004400;
+   font-size:16px;
+ }
+</style>
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+
+function SetBootCfg( ZgateCmdStr ) 
+{
+   var form;
+   var el;
+
+
+   form = document.getElementById( "SubmitForm" );
+   if( form == null )
+   {
+      form = document.createElement( "form" ); 
+      form.setAttribute( "method", "post" ); 
+      form.setAttribute( "action", "/ZGATE_Conf" ); 
+      form.setAttribute( "id", "SubmitForm" ); 
+   }
+
+   el = document.createElement( "input" );
+   el.setAttribute( "type", "hidden" );
+   el.setAttribute( "name", ZgateCmdStr );
+   el.setAttribute( "value", "get" );
+
+   form.insertBefore( el, form.firstChild );
+   document.body.appendChild( form ); 
+
+   form.submit();
+}
+</script>
+
+
+
+
+<div align="left">
+<table border="0" width="820">
+  <tr><td colspan="2">
+  <h6>ZGATE&#153 Startup Settings</h6>
+  </td></tr>
+
+  <tr><td>
+    <br>
+    The following configuration settings are used each time the system is restarted:
+  </td></tr>
+
+  <tr><td>
+  <iframe src="Boot_Cfg_cgi" frameborder="0" scrolling="no" height="210" width="100%"></iframe>
+  </td></tr>
+
+  <tr><td>
+  <br>
+  Click the 'Use Dynamic" button to use the current configuration options the next time the system is restarted.
+  </td></tr>
+
+  <tr><td>
+  <input type="button" value="Use Dynamic" onClick="SetBootCfg('ZGATE_save')">
+  </td></tr>
+
+  <tr><td>
+  <br>
+  Click the 'Use Default' button to use the factory default configuration settings the next time the system is restarted.
+  </td></tr>
+
+  <tr><td>
+  <input type="button" value="Use Default" onClick="SetBootCfg('ZGATE_restore')">
+  </td></tr>
+</table>
+
+
+
+
+</body>
+</html>

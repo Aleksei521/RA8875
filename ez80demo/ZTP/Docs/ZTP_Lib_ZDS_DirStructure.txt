@@ -1,0 +1,70 @@
+
+Directory structure for ZTP 2.5.0 Library release
+=================================================
+
+The ZTP library version 2.5.0 is integrated with ZDSII_eZ80Acclaim!_5.3.0 and 
+is automatically installed by the ZDSII_eZ80Acclaim!_5.3.0 install program.
+
+The default location of RZK and ZTP components is
+C:\Zilog\ZDSII_eZ80Acclaim!_5.3.0\ZTP2.5.0
+
+The following subdirectories are created beneath the ZTP2.5.0 folder:
+
+ZTP2.5.0
+|
+|--RZK
+|  |
+|  |--Conf           RZK configuration files
+|  |    
+|  |--Docs           RZK related documents and help files
+|  |
+|  |--eZ80_BSP       Source code files for all the supported peripherals
+|  |  |--Emac        Contains EMAC driver for eZ80F91 and CS8900 chipsets
+|  |  |--Flash       Contains FLASH drivers for internal and external devices
+|  |  |--I2C         Contains I2C driver implementation
+|  |  |--RTC         Contains RTC driver implementation
+|  |  |--SPI         Contains SPI driver implementation
+|  |  |--UART        Contains UART driver implementation
+|  |  |--WDT         Contains the Watch Dog Timer routines
+|  |
+|  |--Inc            RZK, BSP and File System header files
+|  |
+|  |--Lib            RZK Libraries (Core, BSP, and File System) for all supported eZ80 targets
+|  |
+|  |--SamplePrograms
+|     |--F91MiniDemo Simple RZK project targetting the F91 Mini-Module (eZ80F910200KITG)
+|     |--FS_APP      Demonstrates basic use of the Zilog File System (ZFS)
+|     |--FS_Shell    Demonstrates how to create a shell for processing user commands
+|     |--gpiodemo    Demonstrates how to manipulate GPIO port pins
+|     |--I2cDemo     Sample code using the RZK I2C driver
+|     |--intrmsgq    Demonstrates sharing RZK message queues with an interrupt thread
+|     |--routerApp   Demonstrates the use of RZK semaphores, event groups and partitions
+|     |--RtcDemo     Demonstrates the use of the BSP Real Time Clock (RTC) driver
+|     |--SerialDemo  Demonstrates the use of the BSP UART driver
+|    
+|--ZTP
+   |--Conf           ZTP configuration files
+   |
+   |--Docs           ZTP related documents and help files
+   |
+   |--Inc            ZTP header files
+   |
+   |--Lib            ZTP libraries and stub files
+   |
+   |--SamplePrograms
+      |--eZNetConfig          Demonstrates remote ZTP configuration and firmware update
+      |--FTPClientDemo        Demonstrates use of FTP Client API
+      |--MinimalConfigDemo    Demonstrates how to minimize ZTP memory footprint
+      |--PingDemo             Demonstrates use of Ping API
+      |--Serial2TCPDemo       Demonstrates data transfer between serial and TCP/IP Link
+      |--TCPUDPDemo           Demonstrates network data transfer using TCP and UDP sockets
+      |--website.Acclaim      Demonstrates how to create an embedded Website library
+      |--website.Mini         Simplified Website library with reduced memory footprint
+      |--ZGATE_Demo           Demonstration program for the ZGATE Embedded Security Firewall
+      |--ZTPDemo              Demonstrates features of the ZTP TCP/IP software suite
+      |--ZTPDemo_BootLoader   Demonstrates how to integrate RZK/ ZTP projects with eZ80 Boot Loader
+
+
+
+
+

@@ -1,0 +1,5 @@
+/* Lib Command File - NoEMAC Debug */
+
+-warn
+"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\NoEMAC.lib"=\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\NoEMAC.obj"

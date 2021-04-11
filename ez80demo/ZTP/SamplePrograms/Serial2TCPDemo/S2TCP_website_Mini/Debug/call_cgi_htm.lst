@@ -1,0 +1,556 @@
+Zilog eZ80 Macro Assembler Version 4.2 (17030704)                                                                                                                                                               13-Apr-17     11:36:09     page:   1
+
+
+PC     Object              I  Line    Source 
+                           A     1    ; Zilog eZ80 ANSI C Compiler Release 3.4
+                           A     2    ; -nomodsect -optsize -noreduceopt -nopadbranch -debug
+                           A     3    ; -peephole -globalopt -localcse -const=ROM 
+                           A     4    	FILE	".\call_cgi_htm.c"
+                           A     5    	.assume ADL=1
+                           A     6    .DEBUG "C"
+                           A     7    	SEGMENT CODE
+                           A     8    .BEGREC "staticpage",6
+                           A     9    .DEFINE "contents"
+                           A    10    .VALUE 0
+                           A    11    .CLASS 8
+                           A    12    .TYPE 44
+                           A    13    .ENDEF
+                           A    14    .DEFINE "size"
+                           A    15    .VALUE 3
+                           A    16    .CLASS 8
+                           A    17    .TYPE 4
+                           A    18    .ENDEF
+                           A    19    .ENDREC "staticpage"
+                           A    20    .BEGREC "webpage",12
+                           A    21    .DEFINE "type"
+                           A    22    .VALUE 0
+                           A    23    .CLASS 8
+                           A    24    .TYPE 4
+                           A    25    .ENDEF
+                           A    26    .DEFINE "path"
+                           A    27    .VALUE 3
+                           A    28    .CLASS 8
+                           A    29    .TYPE 34
+                           A    30    .ENDEF
+                           A    31    .DEFINE "mimetype"
+                           A    32    .VALUE 6
+                           A    33    .CLASS 8
+                           A    34    .TYPE 34
+                           A    35    .ENDEF
+                           A    36    .DEFINE "content"
+                           A    37    .VALUE 9
+                           A    38    .CLASS 8
+                           A    39    .TAG "NONAME0"
+                           A    40    .TYPE 8
+                           A    41    .ENDEF
+                           A    42    .ENDREC "webpage"
+                           A    43    .BEGREC "NONAME0",3
+                           A    44    .DEFINE "spage"
+                           A    45    .VALUE 0
+                           A    46    .CLASS 11
+                           A    47    .TAG "staticpage"
+                           A    48    .TYPE 40
+                           A    49    .ENDEF
+                           A    50    .DEFINE "cgi"
+                           A    51    .VALUE 0
+                           A    52    .CLASS 11
+                           A    53    .TYPE 548
+                           A    54    .ENDEF
+                           A    55    .ENDREC "NONAME0"
+                           A    56    .BEGREC "header_rec",6
+                           A    57    .DEFINE "name"
+                           A    58    .VALUE 0
+                           A    59    .CLASS 8
+                           A    60    .TYPE 34
+                           A    61    .ENDEF
+                           A    62    .DEFINE "val"
+                           A    63    .VALUE 3
+                           A    64    .CLASS 8
+                           A    65    .TYPE 4
+                           A    66    .ENDEF
+                           A    67    .ENDREC "header_rec"
+                           A    68    .BEGREC "http_hdr",6
+                           A    69    .DEFINE "key"
+                           A    70    .VALUE 0
+                           A    71    .CLASS 8
+                           A    72    .TYPE 4
+                           A    73    .ENDEF
+                           A    74    .DEFINE "value"
+                           A    75    .VALUE 3
+                           A    76    .CLASS 8
+                           A    77    .TYPE 34
+                           A    78    .ENDEF
+                           A    79    .ENDREC "http_hdr"
+                           A    80    .BEGREC "http_params",6
+                           A    81    .DEFINE "key"
+                           A    82    .VALUE 0
+                           A    83    .CLASS 8
+                           A    84    .TYPE 34
+                           A    85    .ENDEF
+                           A    86    .DEFINE "value"
+                           A    87    .VALUE 3
+                           A    88    .CLASS 8
+                           A    89    .TYPE 34
+                           A    90    .ENDEF
+                           A    91    .ENDREC "http_params"
+                           A    92    .BEGREC "http_request",1351
+                           A    93    .DEFINE "method"
+                           A    94    .VALUE 0
+                           A    95    .CLASS 8
+                           A    96    .TYPE 4
+                           A    97    .ENDEF
+                           A    98    .DEFINE "reply"
+                           A    99    .VALUE 3
+                           A   100    .CLASS 8
+                           A   101    .TYPE 4
+                           A   102    .ENDEF
+                           A   103    .DEFINE "numheaders"
+                           A   104    .VALUE 6
+                           A   105    .CLASS 8
+                           A   106    .TYPE 4
+                           A   107    .ENDEF
+                           A   108    .DEFINE "numparams"
+                           A   109    .VALUE 9
+                           A   110    .CLASS 8
+                           A   111    .TYPE 4
+                           A   112    .ENDEF
+                           A   113    .DEFINE "numrespheaders"
+                           A   114    .VALUE 12
+                           A   115    .CLASS 8
+                           A   116    .TYPE 4
+                           A   117    .ENDEF
+                           A   118    .DEFINE "fd"
+                           A   119    .VALUE 15
+                           A   120    .CLASS 8
+                           A   121    .TYPE 4
+                           A   122    .ENDEF
+                           A   123    .DEFINE "getch"
+                           A   124    .VALUE 18
+                           A   125    .CLASS 8
+                           A   126    .TYPE 548
+                           A   127    .ENDEF
+                           A   128    .DEFINE "write"
+                           A   129    .VALUE 21
+                           A   130    .CLASS 8
+                           A   131    .TYPE 548
+                           A   132    .ENDEF
+                           A   133    .DEFINE "rqstheaders"
+                           A   134    .VALUE 24
+                           A   135    .CLASS 8
+                           A   136    .DIM 16
+                           A   137    .TAG "http_hdr"
+                           A   138    .TYPE 104
+                           A   139    .ENDEF
+                           A   140    .DEFINE "respheaders"
+                           A   141    .VALUE 120
+                           A   142    .CLASS 8
+                           A   143    .DIM 16
+                           A   144    .TAG "http_hdr"
+                           A   145    .TYPE 104
+                           A   146    .ENDEF
+                           A   147    .DEFINE "params"
+                           A   148    .VALUE 216
+                           A   149    .CLASS 8
+                           A   150    .DIM 16
+                           A   151    .TAG "http_params"
+                           A   152    .TYPE 104
+                           A   153    .ENDEF
+                           A   154    .DEFINE "methods"
+                           A   155    .VALUE 312
+                           A   156    .CLASS 8
+                           A   157    .TAG "http_method"
+                           A   158    .TYPE 40
+                           A   159    .ENDEF
+                           A   160    .DEFINE "website"
+                           A   161    .VALUE 315
+                           A   162    .CLASS 8
+                           A   163    .TAG "webpage"
+                           A   164    .TYPE 40
+                           A   165    .ENDEF
+                           A   166    .DEFINE "headers"
+                           A   167    .VALUE 318
+                           A   168    .CLASS 8
+                           A   169    .TAG "header_rec"
+                           A   170    .TYPE 40
+                           A   171    .ENDEF
+                           A   172    .DEFINE "buffer"
+                           A   173    .VALUE 321
+                           A   174    .CLASS 8
+                           A   175    .DIM 1024
+                           A   176    .TYPE 98
+                           A   177    .ENDEF
+                           A   178    .DEFINE "bufstart"
+                           A   179    .VALUE 1345
+                           A   180    .CLASS 8
+                           A   181    .TYPE 34
+                           A   182    .ENDEF
+                           A   183    .DEFINE "extraheader"
+                           A   184    .VALUE 1348
+                           A   185    .CLASS 8
+                           A   186    .TYPE 34
+                           A   187    .ENDEF
+                           A   188    .ENDREC "http_request"
+                           A   189    .BEGREC "http_method",9
+                           A   190    .DEFINE "key"
+                           A   191    .VALUE 0
+                           A   192    .CLASS 8
+                           A   193    .TYPE 4
+                           A   194    .ENDEF
+                           A   195    .DEFINE "name"
+                           A   196    .VALUE 3
+                           A   197    .CLASS 8
+                           A   198    .TYPE 34
+                           A   199    .ENDEF
+                           A   200    .DEFINE "method"
+                           A   201    .VALUE 6
+                           A   202    .CLASS 8
+                           A   203    .TYPE 545
+                           A   204    .ENDEF
+                           A   205    .ENDREC "http_method"
+                           A   206    	SEGMENT TEXT
+000000                     A   207    _call_cgi_htm_data:
+000000 3C                  A   208    	DB	60
+000001 68                  A   209    	DB	104
+000002 74                  A   210    	DB	116
+000003 6D                  A   211    	DB	109
+000004 6C                  A   212    	DB	108
+000005 3E                  A   213    	DB	62
+000006 0D                  A   214    	DB	13
+000007 0A                  A   215    	DB	10
+000008 0D                  A   216    	DB	13
+000009 0A                  A   217    	DB	10
+00000A 3C                  A   218    	DB	60
+00000B 68                  A   219    	DB	104
+00000C 65                  A   220    	DB	101
+00000D 61                  A   221    	DB	97
+00000E 64                  A   222    	DB	100
+00000F 3E                  A   223    	DB	62
+000010 0D                  A   224    	DB	13
+000011 0A                  A   225    	DB	10
+000012 3C                  A   226    	DB	60
+000013 74                  A   227    	DB	116
+000014 69                  A   228    	DB	105
+000015 74                  A   229    	DB	116
+000016 6C                  A   230    	DB	108
+000017 65                  A   231    	DB	101
+000018 3E                  A   232    	DB	62
+000019 4E                  A   233    	DB	78
+00001A 65                  A   234    	DB	101
+00001B 77                  A   235    	DB	119
+00001C 20                  A   236    	DB	32
+00001D 50                  A   237    	DB	80
+00001E 61                  A   238    	DB	97
+00001F 67                  A   239    	DB	103
+000020 65                  A   240    	DB	101
+000021 20                  A   241    	DB	32
+000022 32                  A   242    	DB	50
+000023 3C                  A   243    	DB	60
+000024 2F                  A   244    	DB	47
+000025 74                  A   245    	DB	116
+000026 69                  A   246    	DB	105
+000027 74                  A   247    	DB	116
+000028 6C                  A   248    	DB	108
+000029 65                  A   249    	DB	101
+00002A 3E                  A   250    	DB	62
+00002B 0D                  A   251    	DB	13
+00002C 0A                  A   252    	DB	10
+00002D 3C                  A   253    	DB	60
+00002E 6D                  A   254    	DB	109
+00002F 65                  A   255    	DB	101
+000030 74                  A   256    	DB	116
+000031 61                  A   257    	DB	97
+000032 20                  A   258    	DB	32
+000033 6E                  A   259    	DB	110
+000034 61                  A   260    	DB	97
+000035 6D                  A   261    	DB	109
+000036 65                  A   262    	DB	101
+000037 3D                  A   263    	DB	61
+000038 22                  A   264    	DB	34
+000039 47                  A   265    	DB	71
+00003A 45                  A   266    	DB	69
+00003B 4E                  A   267    	DB	78
+00003C 45                  A   268    	DB	69
+00003D 52                  A   269    	DB	82
+00003E 41                  A   270    	DB	65
+00003F 54                  A   271    	DB	84
+000040 4F                  A   272    	DB	79
+000041 52                  A   273    	DB	82
+000042 22                  A   274    	DB	34
+000043 20                  A   275    	DB	32
+000044 63                  A   276    	DB	99
+000045 6F                  A   277    	DB	111
+000046 6E                  A   278    	DB	110
+000047 74                  A   279    	DB	116
+000048 65                  A   280    	DB	101
+000049 6E                  A   281    	DB	110
+00004A 74                  A   282    	DB	116
+00004B 3D                  A   283    	DB	61
+00004C 22                  A   284    	DB	34
+00004D 4D                  A   285    	DB	77
+00004E 69                  A   286    	DB	105
+00004F 63                  A   287    	DB	99
+000050 72                  A   288    	DB	114
+000051 6F                  A   289    	DB	111
+000052 73                  A   290    	DB	115
+000053 6F                  A   291    	DB	111
+000054 66                  A   292    	DB	102
+000055 74                  A   293    	DB	116
+000056 20                  A   294    	DB	32
+000057 46                  A   295    	DB	70
+000058 72                  A   296    	DB	114
+000059 6F                  A   297    	DB	111
+00005A 6E                  A   298    	DB	110
+00005B 74                  A   299    	DB	116
+00005C 50                  A   300    	DB	80
+00005D 61                  A   301    	DB	97
+00005E 67                  A   302    	DB	103
+00005F 65                  A   303    	DB	101
+000060 20                  A   304    	DB	32
+000061 33                  A   305    	DB	51
+000062 2E                  A   306    	DB	46
+000063 30                  A   307    	DB	48
+000064 22                  A   308    	DB	34
+000065 3E                  A   309    	DB	62
+000066 0D                  A   310    	DB	13
+000067 0A                  A   311    	DB	10
+000068 3C                  A   312    	DB	60
+000069 73                  A   313    	DB	115
+00006A 63                  A   314    	DB	99
+00006B 72                  A   315    	DB	114
+00006C 69                  A   316    	DB	105
+00006D 70                  A   317    	DB	112
+00006E 74                  A   318    	DB	116
+00006F 20                  A   319    	DB	32
+000070 6C                  A   320    	DB	108
+000071 61                  A   321    	DB	97
+000072 6E                  A   322    	DB	110
+000073 67                  A   323    	DB	103
+000074 75                  A   324    	DB	117
+000075 61                  A   325    	DB	97
+000076 67                  A   326    	DB	103
+000077 65                  A   327    	DB	101
+000078 3D                  A   328    	DB	61
+000079 22                  A   329    	DB	34
+00007A 6A                  A   330    	DB	106
+00007B 61                  A   331    	DB	97
+00007C 76                  A   332    	DB	118
+00007D 61                  A   333    	DB	97
+00007E 73                  A   334    	DB	115
+00007F 63                  A   335    	DB	99
+000080 72                  A   336    	DB	114
+000081 69                  A   337    	DB	105
+000082 70                  A   338    	DB	112
+000083 74                  A   339    	DB	116
+000084 22                  A   340    	DB	34
+000085 3E                  A   341    	DB	62
+000086 0D                  A   342    	DB	13
+000087 0A                  A   343    	DB	10
+000088 0D                  A   344    	DB	13
+000089 0A                  A   345    	DB	10
+00008A 66                  A   346    	DB	102
+00008B 75                  A   347    	DB	117
+00008C 6E                  A   348    	DB	110
+00008D 63                  A   349    	DB	99
+00008E 74                  A   350    	DB	116
+00008F 69                  A   351    	DB	105
+000090 6F                  A   352    	DB	111
+000091 6E                  A   353    	DB	110
+000092 20                  A   354    	DB	32
+000093 64                  A   355    	DB	100
+000094 28                  A   356    	DB	40
+000095 29                  A   357    	DB	41
+000096 0D                  A   358    	DB	13
+000097 0A                  A   359    	DB	10
+000098 7B                  A   360    	DB	123
+000099 0D                  A   361    	DB	13
+00009A 0A                  A   362    	DB	10
+00009B 73                  A   363    	DB	115
+00009C 65                  A   364    	DB	101
+00009D 74                  A   365    	DB	116
+00009E 54                  A   366    	DB	84
+00009F 69                  A   367    	DB	105
+0000A0 6D                  A   368    	DB	109
+0000A1 65                  A   369    	DB	101
+0000A2 6F                  A   370    	DB	111
+0000A3 75                  A   371    	DB	117
+0000A4 74                  A   372    	DB	116
+0000A5 28                  A   373    	DB	40
+0000A6 27                  A   374    	DB	39
+0000A7 64                  A   375    	DB	100
+0000A8 6F                  A   376    	DB	111
+0000A9 63                  A   377    	DB	99
+0000AA 75                  A   378    	DB	117
+0000AB 6D                  A   379    	DB	109
+0000AC 65                  A   380    	DB	101
+0000AD 6E                  A   381    	DB	110
+0000AE 74                  A   382    	DB	116
+0000AF 2E                  A   383    	DB	46
+0000B0 6C                  A   384    	DB	108
+0000B1 6F                  A   385    	DB	111
+0000B2 63                  A   386    	DB	99
+0000B3 61                  A   387    	DB	97
+0000B4 74                  A   388    	DB	116
+0000B5 69                  A   389    	DB	105
+0000B6 6F                  A   390    	DB	111
+0000B7 6E                  A   391    	DB	110
+0000B8 2E                  A   392    	DB	46
+0000B9 68                  A   393    	DB	104
+0000BA 72                  A   394    	DB	114
+0000BB 65                  A   395    	DB	101
+0000BC 66                  A   396    	DB	102
+0000BD 3D                  A   397    	DB	61
+0000BE 22                  A   398    	DB	34
+0000BF 2F                  A   399    	DB	47
+0000C0 63                  A   400    	DB	99
+0000C1 67                  A   401    	DB	103
+0000C2 69                  A   402    	DB	105
+0000C3 2D                  A   403    	DB	45
+0000C4 62                  A   404    	DB	98
+0000C5 69                  A   405    	DB	105
+0000C6 6E                  A   406    	DB	110
+0000C7 2F                  A   407    	DB	47
+0000C8 63                  A   408    	DB	99
+0000C9 61                  A   409    	DB	97
+0000CA 6C                  A   410    	DB	108
+0000CB 6C                  A   411    	DB	108
+0000CC 5F                  A   412    	DB	95
+0000CD 63                  A   413    	DB	99
+0000CE 67                  A   414    	DB	103
+0000CF 69                  A   415    	DB	105
+0000D0 22                  A   416    	DB	34
+0000D1 27                  A   417    	DB	39
+0000D2 2C                  A   418    	DB	44
+0000D3 34                  A   419    	DB	52
+0000D4 30                  A   420    	DB	48
+0000D5 30                  A   421    	DB	48
+0000D6 30                  A   422    	DB	48
+0000D7 29                  A   423    	DB	41
+0000D8 3B                  A   424    	DB	59
+0000D9 0D                  A   425    	DB	13
+0000DA 0A                  A   426    	DB	10
+0000DB 7D                  A   427    	DB	125
+0000DC 0D                  A   428    	DB	13
+0000DD 0A                  A   429    	DB	10
+0000DE 3C                  A   430    	DB	60
+0000DF 2F                  A   431    	DB	47
+0000E0 73                  A   432    	DB	115
+0000E1 63                  A   433    	DB	99
+0000E2 72                  A   434    	DB	114
+0000E3 69                  A   435    	DB	105
+0000E4 70                  A   436    	DB	112
+0000E5 74                  A   437    	DB	116
+0000E6 3E                  A   438    	DB	62
+0000E7 0D                  A   439    	DB	13
+0000E8 0A                  A   440    	DB	10
+0000E9 3C                  A   441    	DB	60
+0000EA 2F                  A   442    	DB	47
+0000EB 68                  A   443    	DB	104
+0000EC 65                  A   444    	DB	101
+0000ED 61                  A   445    	DB	97
+0000EE 64                  A   446    	DB	100
+0000EF 3E                  A   447    	DB	62
+0000F0 0D                  A   448    	DB	13
+0000F1 0A                  A   449    	DB	10
+0000F2 0D                  A   450    	DB	13
+0000F3 0A                  A   451    	DB	10
+0000F4 3C                  A   452    	DB	60
+0000F5 62                  A   453    	DB	98
+0000F6 6F                  A   454    	DB	111
+0000F7 64                  A   455    	DB	100
+0000F8 79                  A   456    	DB	121
+0000F9 20                  A   457    	DB	32
+0000FA 6F                  A   458    	DB	111
+0000FB 6E                  A   459    	DB	110
+0000FC 4C                  A   460    	DB	76
+0000FD 6F                  A   461    	DB	111
+0000FE 61                  A   462    	DB	97
+0000FF 64                  A   463    	DB	100
+000100 3D                  A   464    	DB	61
+000101 22                  A   465    	DB	34
+000102 64                  A   466    	DB	100
+000103 28                  A   467    	DB	40
+000104 29                  A   468    	DB	41
+000105 22                  A   469    	DB	34
+000106 3E                  A   470    	DB	62
+000107 0D                  A   471    	DB	13
+000108 0A                  A   472    	DB	10
+000109 3C                  A   473    	DB	60
+00010A 2F                  A   474    	DB	47
+00010B 62                  A   475    	DB	98
+00010C 6F                  A   476    	DB	111
+00010D 64                  A   477    	DB	100
+00010E 79                  A   478    	DB	121
+00010F 3E                  A   479    	DB	62
+000110 0D                  A   480    	DB	13
+000111 0A                  A   481    	DB	10
+000112 3C                  A   482    	DB	60
+000113 2F                  A   483    	DB	47
+000114 68                  A   484    	DB	104
+000115 74                  A   485    	DB	116
+000116 6D                  A   486    	DB	109
+000117 6C                  A   487    	DB	108
+000118 3E                  A   488    	DB	62
+000119 0D                  A   489    	DB	13
+00011A 0A                  A   490    	DB	10
+00011B 0D                  A   491    	DB	13
+00011C 0A                  A   492    	DB	10
+                           A   493    .DEFINE "call_cgi_htm_data"
+                           A   494    .ALIAS "_call_cgi_htm_data"
+                           A   495    .CLASS 84
+                           A   496    .VALUE _call_cgi_htm_data
+                           A   497    .DIM 285
+                           A   498    .TYPE 108
+                           A   499    .ENDEF
+00011D                     A   500    _call_cgi_htm:
+00011D 000000              A   501    	DW24	_call_cgi_htm_data
+000120 1D01                A   502    	DW	285
+000122 00                  A   503    	DB	0
+                           A   504    .DEFINE "call_cgi_htm"
+                           A   505    .ALIAS "_call_cgi_htm"
+                           A   506    .CLASS 84
+                           A   507    .VALUE _call_cgi_htm
+                           A   508    .TAG "staticpage"
+                           A   509    .TYPE 8
+                           A   510    .ENDEF
+                           A   511    	XDEF _call_cgi_htm
+                           A   512    	XDEF _call_cgi_htm_data
+                           A   513    ;    1	/* THIS IS AN AUTOMATICALLY GENERATED FILE */
+                           A   514    ;    2	/* DO NOT EDIT - CHANGES MADE TO THIS FILE WILL BE LOST */
+                           A   515    ;    3	#include <http.h>
+                           A   516    ;    4	const unsigned char call_cgi_htm_data[] = {
+                           A   517    ;    5		0x3c,0x68,0x74,0x6d,0x6c,0x3e,0x0d,0x0a,0x0d,0x0a,
+                           A   518    ;    6		0x3c,0x68,0x65,0x61,0x64,0x3e,0x0d,0x0a,0x3c,0x74,
+                           A   519    ;    7		0x69,0x74,0x6c,0x65,0x3e,0x4e,0x65,0x77,0x20,0x50,
+                           A   520    ;    8		0x61,0x67,0x65,0x20,0x32,0x3c,0x2f,0x74,0x69,0x74,
+                           A   521    ;    9		0x6c,0x65,0x3e,0x0d,0x0a,0x3c,0x6d,0x65,0x74,0x61,
+                           A   522    ;   10		0x20,0x6e,0x61,0x6d,0x65,0x3d,0x22,0x47,0x45,0x4e,
+                           A   523    ;   11		0x45,0x52,0x41,0x54,0x4f,0x52,0x22,0x20,0x63,0x6f,
+                           A   524    ;   12		0x6e,0x74,0x65,0x6e,0x74,0x3d,0x22,0x4d,0x69,0x63,
+                           A   525    ;   13		0x72,0x6f,0x73,0x6f,0x66,0x74,0x20,0x46,0x72,0x6f,
+                           A   526    ;   14		0x6e,0x74,0x50,0x61,0x67,0x65,0x20,0x33,0x2e,0x30,
+                           A   527    ;   15		0x22,0x3e,0x0d,0x0a,0x3c,0x73,0x63,0x72,0x69,0x70,
+                           A   528    ;   16		0x74,0x20,0x6c,0x61,0x6e,0x67,0x75,0x61,0x67,0x65,
+                           A   529    ;   17		0x3d,0x22,0x6a,0x61,0x76,0x61,0x73,0x63,0x72,0x69,
+                           A   530    ;   18		0x70,0x74,0x22,0x3e,0x0d,0x0a,0x0d,0x0a,0x66,0x75,
+                           A   531    ;   19		0x6e,0x63,0x74,0x69,0x6f,0x6e,0x20,0x64,0x28,0x29,
+                           A   532    ;   20		0x0d,0x0a,0x7b,0x0d,0x0a,0x73,0x65,0x74,0x54,0x69,
+                           A   533    ;   21		0x6d,0x65,0x6f,0x75,0x74,0x28,0x27,0x64,0x6f,0x63,
+                           A   534    ;   22		0x75,0x6d,0x65,0x6e,0x74,0x2e,0x6c,0x6f,0x63,0x61,
+                           A   535    ;   23		0x74,0x69,0x6f,0x6e,0x2e,0x68,0x72,0x65,0x66,0x3d,
+                           A   536    ;   24		0x22,0x2f,0x63,0x67,0x69,0x2d,0x62,0x69,0x6e,0x2f,
+                           A   537    ;   25		0x63,0x61,0x6c,0x6c,0x5f,0x63,0x67,0x69,0x22,0x27,
+                           A   538    ;   26		0x2c,0x34,0x30,0x30,0x30,0x29,0x3b,0x0d,0x0a,0x7d,
+                           A   539    ;   27		0x0d,0x0a,0x3c,0x2f,0x73,0x63,0x72,0x69,0x70,0x74,
+                           A   540    ;   28		0x3e,0x0d,0x0a,0x3c,0x2f,0x68,0x65,0x61,0x64,0x3e,
+                           A   541    ;   29		0x0d,0x0a,0x0d,0x0a,0x3c,0x62,0x6f,0x64,0x79,0x20,
+                           A   542    ;   30		0x6f,0x6e,0x4c,0x6f,0x61,0x64,0x3d,0x22,0x64,0x28,
+                           A   543    ;   31		0x29,0x22,0x3e,0x0d,0x0a,0x3c,0x2f,0x62,0x6f,0x64,
+                           A   544    ;   32		0x79,0x3e,0x0d,0x0a,0x3c,0x2f,0x68,0x74,0x6d,0x6c,
+                           A   545    ;   33		0x3e,0x0d,0x0a,0x0d,0x0a,};
+                           A   546    ;   34	const struct staticpage call_cgi_htm={(unsigned char *)call_cgi_htm_data,sizeof(call_cgi_htm_data)};
+                           A   547    	END
+
+
+Errors: 0
+Warnings: 0
+Lines Assembled: 548

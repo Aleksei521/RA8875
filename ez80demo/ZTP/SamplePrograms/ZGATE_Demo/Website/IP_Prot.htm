@@ -1,0 +1,54 @@
+<html>
+
+<head>
+<title>ZGATE IP Protocol</title>
+</head>
+
+<body>
+
+
+<script type="text/javascript" src="IP_Prot.js">
+</script>
+
+
+<script type="text/javascript" src="table.js">
+</script>
+
+
+<script type="text/javascript">
+var TableType = "IP Protocol";
+var ItemType = "IP Prot";
+var MaxCols = 5;
+var NewEntryHTML = 'INPUT TYPE=text size=3 maxlength=3 NAME=InputValue';
+var ZgateCmdStr = "ZGATE_ip_prot";
+
+var WL_Desc = 'Each item in the list represents the Protocol field of a received IP datagram. ' +
+   'ZGATE&#153 forwards received IP datagrams with a Protocol field matching any of the listed values. ' +
+   'ZGATE&#153 discards received IP datagrams if the Protocol field does not match any of the listed values.';
+
+var BL_Desc = 'Each item in the list represents the Protocol field of a received IP datagram. ' +
+   'ZGATE&#153 discards received IP datagrams with a Protocol field matching any of the listed values. ' +
+   'ZGATE&#153 forwards received IP datagrams if the Protocol field does not match any of the listed values.';
+
+var Disabled_Desc = 'IP protocol filtering is disabled.';
+
+
+
+function IsEntryValid( Protocol )
+{
+   Protocol = parseInt( Protocol, 10 );
+   if( isNaN(Protocol) || (Protocol < 1) || (Protocol > 0xFE)  )
+   {
+      return( 0 );
+   }
+   return( 1 );
+}
+
+
+GenerateTable();
+</script>
+
+
+
+</body>
+</html>

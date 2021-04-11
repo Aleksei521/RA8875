@@ -1,0 +1,844 @@
+Zilog eZ80 Macro Assembler Version 4.2 (17030704)                                                                                                                                                               13-Apr-17     11:32:24     page:   1
+
+
+PC     Object              I  Line    Source 
+                           A     1    ; Zilog eZ80 ANSI C Compiler Release 3.4
+                           A     2    ; -nomodsect -optsize -noreduceopt -nopadbranch -debug
+                           A     3    ; -peephole -globalopt -localcse -const=ROM 
+                           A     4    	FILE	"..\Src\shell_conf.c"
+                           A     5    	.assume ADL=1
+                           A     6    .DEBUG "C"
+                           A     7    	SEGMENT CODE
+                           A     8    .BEGREC "fmt_type",19
+                           A     9    .DEFINE "status"
+                           A    10    .VALUE 0
+                           A    11    .CLASS 8
+                           A    12    .TYPE 12
+                           A    13    .ENDEF
+                           A    14    .DEFINE "flags"
+                           A    15    .VALUE 1
+                           A    16    .CLASS 8
+                           A    17    .TYPE 12
+                           A    18    .ENDEF
+                           A    19    .DEFINE "size"
+                           A    20    .VALUE 2
+                           A    21    .CLASS 8
+                           A    22    .TYPE 2
+                           A    23    .ENDEF
+                           A    24    .DEFINE "chr"
+                           A    25    .VALUE 3
+                           A    26    .CLASS 8
+                           A    27    .TYPE 2
+                           A    28    .ENDEF
+                           A    29    .DEFINE "type"
+                           A    30    .VALUE 4
+                           A    31    .CLASS 8
+                           A    32    .TYPE 2
+                           A    33    .ENDEF
+                           A    34    .DEFINE "field_width"
+                           A    35    .VALUE 5
+                           A    36    .CLASS 8
+                           A    37    .TYPE 2
+                           A    38    .ENDEF
+                           A    39    .DEFINE "precision"
+                           A    40    .VALUE 6
+                           A    41    .CLASS 8
+                           A    42    .TYPE 2
+                           A    43    .ENDEF
+                           A    44    .DEFINE "set_begin"
+                           A    45    .VALUE 7
+                           A    46    .CLASS 8
+                           A    47    .TYPE 34
+                           A    48    .ENDEF
+                           A    49    .DEFINE "set_end"
+                           A    50    .VALUE 10
+                           A    51    .CLASS 8
+                           A    52    .TYPE 34
+                           A    53    .ENDEF
+                           A    54    .DEFINE "pad_whole"
+                           A    55    .VALUE 13
+                           A    56    .CLASS 8
+                           A    57    .TYPE 12
+                           A    58    .ENDEF
+                           A    59    .DEFINE "pad_pre_fract"
+                           A    60    .VALUE 14
+                           A    61    .CLASS 8
+                           A    62    .TYPE 12
+                           A    63    .ENDEF
+                           A    64    .DEFINE "pad_post_fract"
+                           A    65    .VALUE 15
+                           A    66    .CLASS 8
+                           A    67    .TYPE 12
+                           A    68    .ENDEF
+                           A    69    .DEFINE "pad_at"
+                           A    70    .VALUE 16
+                           A    71    .CLASS 8
+                           A    72    .TYPE 34
+                           A    73    .ENDEF
+                           A    74    .ENDREC "fmt_type"
+                           A    75    .BEGREC "flt_info",12
+                           A    76    .DEFINE "flags"
+                           A    77    .VALUE 0
+                           A    78    .CLASS 8
+                           A    79    .TYPE 12
+                           A    80    .ENDEF
+                           A    81    .DEFINE "exp"
+                           A    82    .VALUE 1
+                           A    83    .CLASS 8
+                           A    84    .TYPE 2
+                           A    85    .ENDEF
+                           A    86    .DEFINE "digits"
+                           A    87    .VALUE 2
+                           A    88    .CLASS 8
+                           A    89    .DIM 10
+                           A    90    .TYPE 108
+                           A    91    .ENDEF
+                           A    92    .ENDREC "flt_info"
+                           A    93    .BEGREC "devCap",4
+                           A    94    .DEFINE "devType"
+                           A    95    .VALUE 0
+                           A    96    .CLASS 8
+                           A    97    .TYPE 12
+                           A    98    .ENDEF
+                           A    99    .DEFINE "devHdl"
+                           A   100    .VALUE 1
+                           A   101    .CLASS 8
+                           A   102    .TYPE 33
+                           A   103    .ENDEF
+                           A   104    .ENDREC "devCap"
+                           A   105    .BEGREC "RZK_DEVICE_CB_t",54
+                           A   106    .DEFINE "InUse"
+                           A   107    .VALUE 0
+                           A   108    .CLASS 8
+                           A   109    .TYPE 12
+                           A   110    .ENDEF
+                           A   111    .DEFINE "devName"
+                           A   112    .VALUE 1
+                           A   113    .CLASS 8
+                           A   114    .DIM 12
+                           A   115    .TYPE 98
+                           A   116    .ENDEF
+                           A   117    .DEFINE "fnInit"
+                           A   118    .VALUE 13
+                           A   119    .CLASS 8
+                           A   120    .TYPE 549
+                           A   121    .ENDEF
+                           A   122    .DEFINE "fnStop"
+                           A   123    .VALUE 16
+                           A   124    .CLASS 8
+                           A   125    .TYPE 549
+                           A   126    .ENDEF
+                           A   127    .DEFINE "fnOpen"
+                           A   128    .VALUE 19
+                           A   129    .CLASS 8
+                           A   130    .TYPE 549
+                           A   131    .ENDEF
+                           A   132    .DEFINE "fnClose"
+                           A   133    .VALUE 22
+                           A   134    .CLASS 8
+                           A   135    .TYPE 549
+                           A   136    .ENDEF
+                           A   137    .DEFINE "fnRead"
+                           A   138    .VALUE 25
+                           A   139    .CLASS 8
+                           A   140    .TYPE 549
+                           A   141    .ENDEF
+                           A   142    .DEFINE "fnWrite"
+                           A   143    .VALUE 28
+                           A   144    .CLASS 8
+                           A   145    .TYPE 549
+                           A   146    .ENDEF
+                           A   147    .DEFINE "fnSeek"
+                           A   148    .VALUE 31
+                           A   149    .CLASS 8
+                           A   150    .TYPE 549
+                           A   151    .ENDEF
+                           A   152    .DEFINE "fnGetc"
+                           A   153    .VALUE 34
+                           A   154    .CLASS 8
+                           A   155    .TYPE 549
+                           A   156    .ENDEF
+                           A   157    .DEFINE "fnPutc"
+                           A   158    .VALUE 37
+                           A   159    .CLASS 8
+                           A   160    .TYPE 549
+                           A   161    .ENDEF
+                           A   162    .DEFINE "fnIoctl"
+                           A   163    .VALUE 40
+                           A   164    .CLASS 8
+                           A   165    .TYPE 549
+                           A   166    .ENDEF
+                           A   167    .DEFINE "dvintvector"
+                           A   168    .VALUE 43
+                           A   169    .CLASS 8
+                           A   170    .TYPE 33
+                           A   171    .ENDEF
+                           A   172    .DEFINE "dvivec"
+                           A   173    .VALUE 46
+                           A   174    .CLASS 8
+                           A   175    .TYPE 13
+                           A   176    .ENDEF
+                           A   177    .DEFINE "dvinputoutput"
+                           A   178    .VALUE 48
+                           A   179    .CLASS 8
+                           A   180    .TYPE 44
+                           A   181    .ENDEF
+                           A   182    .DEFINE "devMode"
+                           A   183    .VALUE 51
+                           A   184    .CLASS 8
+                           A   185    .TYPE 2
+                           A   186    .ENDEF
+                           A   187    .DEFINE "dvminor"
+                           A   188    .VALUE 52
+                           A   189    .CLASS 8
+                           A   190    .TYPE 13
+                           A   191    .ENDEF
+                           A   192    .ENDREC "RZK_DEVICE_CB_t"
+                           A   193    .BEGREC "CPU_REG",32
+                           A   194    .DEFINE "regAFz"
+                           A   195    .VALUE 0
+                           A   196    .CLASS 8
+                           A   197    .TYPE 15
+                           A   198    .ENDEF
+                           A   199    .DEFINE "regBCz"
+                           A   200    .VALUE 4
+                           A   201    .CLASS 8
+                           A   202    .TYPE 15
+                           A   203    .ENDEF
+                           A   204    .DEFINE "regDEz"
+                           A   205    .VALUE 8
+                           A   206    .CLASS 8
+                           A   207    .TYPE 15
+                           A   208    .ENDEF
+                           A   209    .DEFINE "regHLz"
+                           A   210    .VALUE 12
+                           A   211    .CLASS 8
+                           A   212    .TYPE 15
+                           A   213    .ENDEF
+                           A   214    .DEFINE "regIXz"
+                           A   215    .VALUE 16
+                           A   216    .CLASS 8
+                           A   217    .TYPE 15
+                           A   218    .ENDEF
+                           A   219    .DEFINE "regIYz"
+                           A   220    .VALUE 20
+                           A   221    .CLASS 8
+                           A   222    .TYPE 15
+                           A   223    .ENDEF
+                           A   224    .DEFINE "regPCz"
+                           A   225    .VALUE 24
+                           A   226    .CLASS 8
+                           A   227    .TYPE 15
+                           A   228    .ENDEF
+                           A   229    .DEFINE "regSPz"
+                           A   230    .VALUE 28
+                           A   231    .CLASS 8
+                           A   232    .TYPE 15
+                           A   233    .ENDEF
+                           A   234    .ENDREC "CPU_REG"
+                           A   235    .BEGREC "THREADPARAMS_STRUCT_t",22
+                           A   236    .DEFINE "szName"
+                           A   237    .VALUE 0
+                           A   238    .CLASS 8
+                           A   239    .DIM 12
+                           A   240    .TYPE 108
+                           A   241    .ENDEF
+                           A   242    .DEFINE "uState"
+                           A   243    .VALUE 12
+                           A   244    .CLASS 8
+                           A   245    .TYPE 12
+                           A   246    .ENDEF
+                           A   247    .DEFINE "uBankSelector"
+                           A   248    .VALUE 13
+                           A   249    .CLASS 8
+                           A   250    .TYPE 12
+                           A   251    .ENDEF
+                           A   252    .DEFINE "uOperationMode"
+                           A   253    .VALUE 14
+                           A   254    .CLASS 8
+                           A   255    .TYPE 12
+                           A   256    .ENDEF
+                           A   257    .DEFINE "tQuantum"
+                           A   258    .VALUE 15
+                           A   259    .CLASS 8
+                           A   260    .TYPE 14
+                           A   261    .ENDEF
+                           A   262    .DEFINE "cPriority"
+                           A   263    .VALUE 18
+                           A   264    .CLASS 8
+                           A   265    .TYPE 12
+                           A   266    .ENDEF
+                           A   267    .DEFINE "sSignalReceive"
+                           A   268    .VALUE 19
+                           A   269    .CLASS 8
+                           A   270    .TYPE 14
+                           A   271    .ENDEF
+                           A   272    .ENDREC "THREADPARAMS_STRUCT_t"
+                           A   273    .BEGREC "RZK_THREAD_CB",127
+                           A   274    .DEFINE "CB"
+                           A   275    .VALUE 0
+                           A   276    .CLASS 8
+                           A   277    .DIM 127
+                           A   278    .TYPE 108
+                           A   279    .ENDEF
+                           A   280    .ENDREC "RZK_THREAD_CB"
+                           A   281    .BEGREC "shvars",308
+                           A   282    .DEFINE "shlast"
+                           A   283    .VALUE 0
+                           A   284    .CLASS 8
+                           A   285    .TYPE 15
+                           A   286    .ENDEF
+                           A   287    .DEFINE "shlogon"
+                           A   288    .VALUE 4
+                           A   289    .CLASS 8
+                           A   290    .TYPE 15
+                           A   291    .ENDEF
+                           A   292    .DEFINE "shused"
+                           A   293    .VALUE 8
+                           A   294    .CLASS 8
+                           A   295    .TYPE 12
+                           A   296    .ENDEF
+                           A   297    .DEFINE "shuser"
+                           A   298    .VALUE 9
+                           A   299    .CLASS 8
+                           A   300    .DIM 9
+                           A   301    .TYPE 98
+                           A   302    .ENDEF
+                           A   303    .DEFINE "shmach"
+                           A   304    .VALUE 18
+                           A   305    .CLASS 8
+                           A   306    .DIM 64
+                           A   307    .TYPE 98
+                           A   308    .ENDEF
+                           A   309    .DEFINE "shbuf"
+                           A   310    .VALUE 82
+                           A   311    .CLASS 8
+                           A   312    .DIM 80
+                           A   313    .TYPE 98
+                           A   314    .ENDEF
+                           A   315    .DEFINE "shtok"
+                           A   316    .VALUE 162
+                           A   317    .CLASS 8
+                           A   318    .DIM 16
+                           A   319    .TYPE 354
+                           A   320    .ENDEF
+                           A   321    .DEFINE "shtktyp"
+                           A   322    .VALUE 210
+                           A   323    .CLASS 8
+                           A   324    .DIM 16
+                           A   325    .TYPE 98
+                           A   326    .ENDEF
+                           A   327    .DEFINE "shargst"
+                           A   328    .VALUE 226
+                           A   329    .CLASS 8
+                           A   330    .DIM 82
+                           A   331    .TYPE 98
+                           A   332    .ENDEF
+                           A   333    .ENDREC "shvars"
+                           A   334    .BEGREC "cmdent",13
+                           A   335    .DEFINE "cmdnam"
+                           A   336    .VALUE 0
+                           A   337    .CLASS 8
+                           A   338    .TYPE 34
+                           A   339    .ENDEF
+                           A   340    .DEFINE "cbuiltin"
+                           A   341    .VALUE 3
+                           A   342    .CLASS 8
+                           A   343    .TYPE 12
+                           A   344    .ENDEF
+                           A   345    .DEFINE "cproc"
+                           A   346    .VALUE 4
+                           A   347    .CLASS 8
+                           A   348    .TYPE 547
+                           A   349    .ENDEF
+                           A   350    .DEFINE "cnext"
+                           A   351    .VALUE 7
+                           A   352    .CLASS 8
+                           A   353    .TAG "cmdent"
+                           A   354    .TYPE 40
+                           A   355    .ENDEF
+                           A   356    .DEFINE "helpDesc"
+                           A   357    .VALUE 10
+                           A   358    .CLASS 8
+                           A   359    .TYPE 34
+                           A   360    .ENDEF
+                           A   361    .ENDREC "cmdent"
+                           A   362    	SEGMENT STRSECT
+000000                     A   363    L__0:
+000000 6364                A   364    	DB	"cd"
+000002 00                  A   365    	DB	0
+000003                     A   366    L__1:
+000003 4368616E 67657320   A   367    	DB	"Changes the current working directory"
+00000B 74686520 63757272 
+000013 656E7420 776F726B 
+00001B 696E6720 64697265 
+000023 63746F72 79 
+000028 0A00                A   368    	DB	10,0
+00002A                     A   369    L__2:
+00002A 636F7079            A   370    	DB	"copy"
+00002E 00                  A   371    	DB	0
+00002F                     A   372    L__3:
+00002F 436F7069 65732061   A   373    	DB	"Copies a file from current directory to the directory provided"
+000037 2066696C 65206672 
+00003F 6F6D2063 75727265 
+000047 6E742064 69726563 
+00004F 746F7279 20746F20 
+000057 74686520 64697265 
+00005F 63746F72 79207072 
+000067 6F766964 6564 
+00006D 0A00                A   374    	DB	10,0
+00006F                     A   375    L__4:
+00006F 63726561 7465       A   376    	DB	"create"
+000075 00                  A   377    	DB	0
+000076                     A   378    L__5:
+000076 43726561 74657320   A   379    	DB	"Creates a file"
+00007E 61206669 6C65 
+000084 0A00                A   380    	DB	10,0
+000086                     A   381    L__6:
+000086 637764              A   382    	DB	"cwd"
+000089 00                  A   383    	DB	0
+00008A                     A   384    L__7:
+00008A 5072696E 74732074   A   385    	DB	"Prints the current working directory on the console"
+000092 68652063 75727265 
+00009A 6E742077 6F726B69 
+0000A2 6E672064 69726563 
+0000AA 746F7279 206F6E20 
+0000B2 74686520 636F6E73 
+0000BA 6F6C65 
+0000BD 0A00                A   386    	DB	10,0
+0000BF                     A   387    L__8:
+0000BF 64656C              A   388    	DB	"del"
+0000C2 00                  A   389    	DB	0
+0000C3                     A   390    L__9:
+0000C3 44656C65 74657320   A   391    	DB	"Deletes a file"
+0000CB 61206669 6C65 
+0000D1 0A00                A   392    	DB	10,0
+0000D3                     A   393    L__10:
+0000D3 64656C74 726565     A   394    	DB	"deltree"
+0000DA 00                  A   395    	DB	0
+0000DB                     A   396    L__11:
+0000DB 44656C65 74657320   A   397    	DB	"Deletes all files and sub-directories present in the given directory"
+0000E3 616C6C20 66696C65 
+0000EB 7320616E 64207375 
+0000F3 622D6469 72656374 
+0000FB 6F726965 73207072 
+000103 6573656E 7420696E 
+00010B 20746865 20676976 
+000113 656E2064 69726563 
+00011B 746F7279 
+00011F 0A00                A   398    	DB	10,0
+000121                     A   399    L__12:
+000121 64656C64 6972       A   400    	DB	"deldir"
+000127 00                  A   401    	DB	0
+000128                     A   402    L__13:
+000128 44656C65 74657320   A   403    	DB	"Deletes an empty directory"
+000130 616E2065 6D707479 
+000138 20646972 6563746F 
+000140 7279 
+000142 0A00                A   404    	DB	10,0
+000144                     A   405    L__14:
+000144 646972              A   406    	DB	"dir"
+000147 00                  A   407    	DB	0
+000148                     A   408    L__15:
+000148 44697370 6C617973   A   409    	DB	"Displays the files/directories present in the current directory"
+000150 20746865 2066696C 
+000158 65732F64 69726563 
+000160 746F7269 65732070 
+000168 72657365 6E742069 
+000170 6E207468 65206375 
+000178 7272656E 74206469 
+000180 72656374 6F7279 
+000187 0A00                A   410    	DB	10,0
+000189                     A   411    L__16:
+000189 666F726D 6174       A   412    	DB	"format"
+00018F 00                  A   413    	DB	0
+000190                     A   414    L__17:
+000190 466F726D 61747320   A   415    	DB	"Formats the volume with Zilog File System native format"
+000198 74686520 766F6C75 
+0001A0 6D652077 69746820 
+0001A8 5A696C6F 67204669 
+0001B0 6C652053 79737465 
+0001B8 6D206E61 74697665 
+0001C0 20666F72 6D6174 
+0001C7 0A00                A   416    	DB	10,0
+0001C9                     A   417    L__18:
+0001C9 67657474 696D65     A   418    	DB	"gettime"
+0001D0 00                  A   419    	DB	0
+0001D1                     A   420    L__19:
+0001D1 54686520 67657474   A   421    	DB	"The gettime shell command prints the current date and time to a standard output"
+0001D9 696D6520 7368656C 
+0001E1 6C20636F 6D6D616E 
+0001E9 64207072 696E7473 
+0001F1 20746865 20637572 
+0001F9 72656E74 20646174 
+000201 6520616E 64207469 
+000209 6D652074 6F206120 
+000211 7374616E 64617264 
+000219 206F7574 707574 
+000220 0A00                A   422    	DB	10,0
+000222                     A   423    L__20:
+000222 68656C70            A   424    	DB	"help"
+000226 00                  A   425    	DB	0
+000227                     A   426    L__21:
+000227 54686520 3F207368   A   427    	DB	"The ? shell command without any argument displays the set of commands that can be executed from the shell's command prompt. When ? is followed by a command name it prints help for that specific command"
+00022F 656C6C20 636F6D6D 
+000237 616E6420 77697468 
+00023F 6F757420 616E7920 
+000247 61726775 6D656E74 
+00024F 20646973 706C6179 
+000257 73207468 65207365 
+00025F 74206F66 20636F6D 
+000267 6D616E64 73207468 
+00026F 61742063 616E2062 
+000277 65206578 65637574 
+00027F 65642066 726F6D20 
+000287 74686520 7368656C 
+00028F 6C277320 636F6D6D 
+000297 616E6420 70726F6D 
+00029F 70742E20 5768656E 
+0002A7 203F2069 7320666F 
+0002AF 6C6C6F77 65642062 
+0002B7 79206120 636F6D6D 
+0002BF 616E6420 6E616D65 
+0002C7 20697420 7072696E 
+0002CF 74732068 656C7020 
+0002D7 666F7220 74686174 
+0002DF 20737065 63696669 
+0002E7 6320636F 6D6D616E 
+0002EF 64 
+0002F0 0A00                A   428    	DB	10,0
+0002F2                     A   429    L__22:
+0002F2 6D64                A   430    	DB	"md"
+0002F4 00                  A   431    	DB	0
+0002F5                     A   432    L__23:
+0002F5 43726561 74657320   A   433    	DB	"Creates a directory in the specified path"
+0002FD 61206469 72656374 
+000305 6F727920 696E2074 
+00030D 68652073 70656369 
+000315 66696564 20706174 
+00031D 68 
+00031E 0A00                A   434    	DB	10,0
+000320                     A   435    L__24:
+000320 6D6F7665            A   436    	DB	"move"
+000324 00                  A   437    	DB	0
+000325                     A   438    L__25:
+000325 4D6F7665 73206120   A   439    	DB	"Moves a file from current directory to the directory provided"
+00032D 66696C65 2066726F 
+000335 6D206375 7272656E 
+00033D 74206469 72656374 
+000345 6F727920 746F2074 
+00034D 68652064 69726563 
+000355 746F7279 2070726F 
+00035D 76696465 64 
+000362 0A00                A   440    	DB	10,0
+000364                     A   441    L__26:
+000364 72656E              A   442    	DB	"ren"
+000367 00                  A   443    	DB	0
+000368                     A   444    L__27:
+000368 52656E61 6D657320   A   445    	DB	"Renames a file to new name provided"
+000370 61206669 6C652074 
+000378 6F206E65 77206E61 
+000380 6D652070 726F7669 
+000388 646564 
+00038B 0A00                A   446    	DB	10,0
+00038D                     A   447    L__28:
+00038D 72656E64 6972       A   448    	DB	"rendir"
+000393 00                  A   449    	DB	0
+000394                     A   450    L__29:
+000394 52656E61 6D657320   A   451    	DB	"Renames the directory to new name provided"
+00039C 74686520 64697265 
+0003A4 63746F72 7920746F 
+0003AC 206E6577 206E616D 
+0003B4 65207072 6F766964 
+0003BC 6564 
+0003BE 0A00                A   452    	DB	10,0
+0003C0                     A   453    L__30:
+0003C0 73657474 696D65     A   454    	DB	"settime"
+0003C7 00                  A   455    	DB	0
+0003C8                     A   456    L__31:
+0003C8 54686520 73657474   A   457    	DB	"The settime shell command sets the current date and time to a standard outputsets current date and time"
+0003D0 696D6520 7368656C 
+0003D8 6C20636F 6D6D616E 
+0003E0 64207365 74732074 
+0003E8 68652063 75727265 
+0003F0 6E742064 61746520 
+0003F8 616E6420 74696D65 
+000400 20746F20 61207374 
+000408 616E6461 7264206F 
+000410 75747075 74736574 
+000418 73206375 7272656E 
+000420 74206461 74652061 
+000428 6E642074 696D65 
+00042F 0A00                A   458    	DB	10,0
+000431                     A   459    L__32:
+000431 74797065            A   460    	DB	"type"
+000435 00                  A   461    	DB	0
+000436                     A   462    L__33:
+000436 44697370 6C617973   A   463    	DB	"Displays the contents of the file onto the console"
+00043E 20746865 20636F6E 
+000446 74656E74 73206F66 
+00044E 20746865 2066696C 
+000456 65206F6E 746F2074 
+00045E 68652063 6F6E736F 
+000466 6C65 
+000468 0A00                A   464    	DB	10,0
+00046A                     A   465    L__34:
+00046A 766F6C              A   466    	DB	"vol"
+00046D 00                  A   467    	DB	0
+00046E                     A   468    L__35:
+00046E 44697370 6C617973   A   469    	DB	"Displays the volume information on the console"
+000476 20746865 20766F6C 
+00047E 756D6520 696E666F 
+000486 726D6174 696F6E20 
+00048E 6F6E2074 68652063 
+000496 6F6E736F 6C65 
+00049C 0A00                A   470    	DB	10,0
+00049E                     A   471    L__36:
+00049E 3F                  A   472    	DB	"?"
+00049F 00                  A   473    	DB	0
+0004A0                     A   474    L__37:
+0004A0 54686520 3F207368   A   475    	DB	"The ? shell command without any argument displays the set of commands that can be executed from the shell's command prompt. When ? is followed by a command name it prints help for that specific command"
+0004A8 656C6C20 636F6D6D 
+0004B0 616E6420 77697468 
+0004B8 6F757420 616E7920 
+0004C0 61726775 6D656E74 
+0004C8 20646973 706C6179 
+0004D0 73207468 65207365 
+0004D8 74206F66 20636F6D 
+0004E0 6D616E64 73207468 
+0004E8 61742063 616E2062 
+0004F0 65206578 65637574 
+0004F8 65642066 726F6D20 
+000500 74686520 7368656C 
+000508 6C277320 636F6D6D 
+000510 616E6420 70726F6D 
+000518 70742E20 5768656E 
+000520 203F2069 7320666F 
+000528 6C6C6F77 65642062 
+000530 79206120 636F6D6D 
+000538 616E6420 6E616D65 
+000540 20697420 7072696E 
+000548 74732068 656C7020 
+000550 666F7220 74686174 
+000558 20737065 63696669 
+000560 6320636F 6D6D616E 
+000568 64 
+000569 0A00                A   476    	DB	10,0
+                           A   477    	SEGMENT DATA
+000000                     A   478    _defaultcmds:
+000000 000000              A   479    	DW24	L__0
+000003 01                  A   480    	DB	1
+000004 000000              A   481    	DW24	_Shell_ZFSChdir
+000007 000000              A   482    	DW24	0
+00000A 030000              A   483    	DW24	L__1
+00000D 2A0000              A   484    	DW24	L__2
+000010 01                  A   485    	DB	1
+000011 000000              A   486    	DW24	_Shell_ZFSCopyMoveFile
+000014 000000              A   487    	DW24	0
+000017 2F0000              A   488    	DW24	L__3
+00001A 6F0000              A   489    	DW24	L__4
+00001D 01                  A   490    	DB	1
+00001E 000000              A   491    	DW24	_Shell_ZFSCreateFile
+000021 000000              A   492    	DW24	0
+000024 760000              A   493    	DW24	L__5
+000027 860000              A   494    	DW24	L__6
+00002A 01                  A   495    	DB	1
+00002B 000000              A   496    	DW24	_Shell_ZFSGetCWD
+00002E 000000              A   497    	DW24	0
+000031 8A0000              A   498    	DW24	L__7
+000034 BF0000              A   499    	DW24	L__8
+000037 01                  A   500    	DB	1
+000038 000000              A   501    	DW24	_Shell_ZFSDelFile
+00003B 000000              A   502    	DW24	0
+00003E C30000              A   503    	DW24	L__9
+000041 D30000              A   504    	DW24	L__10
+000044 01                  A   505    	DB	1
+000045 000000              A   506    	DW24	_Shell_ZFSDelDirAll
+000048 000000              A   507    	DW24	0
+00004B DB0000              A   508    	DW24	L__11
+00004E 210100              A   509    	DW24	L__12
+000051 01                  A   510    	DB	1
+000052 000000              A   511    	DW24	_Shell_ZFSDelDir
+000055 000000              A   512    	DW24	0
+000058 280100              A   513    	DW24	L__13
+00005B 440100              A   514    	DW24	L__14
+00005E 01                  A   515    	DB	1
+00005F 000000              A   516    	DW24	_Shell_ZFSListFileDirs
+000062 000000              A   517    	DW24	0
+000065 480100              A   518    	DW24	L__15
+000068 890100              A   519    	DW24	L__16
+00006B 01                  A   520    	DB	1
+00006C 000000              A   521    	DW24	_Shell_ZFSFormat
+00006F 000000              A   522    	DW24	0
+000072 900100              A   523    	DW24	L__17
+000075 C90100              A   524    	DW24	L__18
+000078 01                  A   525    	DB	1
+000079 000000              A   526    	DW24	_Shell_getdatetime
+00007C 000000              A   527    	DW24	0
+00007F D10100              A   528    	DW24	L__19
+000082 220200              A   529    	DW24	L__20
+000085 01                  A   530    	DB	1
+000086 000000              A   531    	DW24	_Shell_ZFSHelp
+000089 000000              A   532    	DW24	0
+00008C 270200              A   533    	DW24	L__21
+00008F F20200              A   534    	DW24	L__22
+000092 01                  A   535    	DB	1
+000093 000000              A   536    	DW24	_Shell_ZFSMkdir
+000096 000000              A   537    	DW24	0
+000099 F50200              A   538    	DW24	L__23
+00009C 200300              A   539    	DW24	L__24
+00009F 01                  A   540    	DB	1
+0000A0 000000              A   541    	DW24	_Shell_ZFSCopyMoveFile
+0000A3 000000              A   542    	DW24	0
+0000A6 250300              A   543    	DW24	L__25
+0000A9 640300              A   544    	DW24	L__26
+0000AC 01                  A   545    	DB	1
+0000AD 000000              A   546    	DW24	_Shell_ZFSRenFile
+0000B0 000000              A   547    	DW24	0
+0000B3 680300              A   548    	DW24	L__27
+0000B6 8D0300              A   549    	DW24	L__28
+0000B9 01                  A   550    	DB	1
+0000BA 000000              A   551    	DW24	_Shell_ZFSRenDir
+0000BD 000000              A   552    	DW24	0
+0000C0 940300              A   553    	DW24	L__29
+0000C3 C00300              A   554    	DW24	L__30
+0000C6 01                  A   555    	DB	1
+0000C7 000000              A   556    	DW24	_Shell_setdatetime
+0000CA 000000              A   557    	DW24	0
+0000CD C80300              A   558    	DW24	L__31
+0000D0 310400              A   559    	DW24	L__32
+0000D3 01                  A   560    	DB	1
+0000D4 000000              A   561    	DW24	_Shell_ZFSDispFile
+0000D7 000000              A   562    	DW24	0
+0000DA 360400              A   563    	DW24	L__33
+0000DD 6A0400              A   564    	DW24	L__34
+0000E0 01                  A   565    	DB	1
+0000E1 000000              A   566    	DW24	_Shell_ZFSGetVolumeInfo
+0000E4 000000              A   567    	DW24	0
+0000E7 6E0400              A   568    	DW24	L__35
+0000EA 9E0400              A   569    	DW24	L__36
+0000ED 01                  A   570    	DB	1
+0000EE 000000              A   571    	DW24	_Shell_ZFSHelp
+0000F1 000000              A   572    	DW24	0
+0000F4 A00400              A   573    	DW24	L__37
+                           A   574    .DEFINE "defaultcmds"
+                           A   575    .ALIAS "_defaultcmds"
+                           A   576    .CLASS 69
+                           A   577    .VALUE _defaultcmds
+                           A   578    .DIM 19
+                           A   579    .TAG "cmdent"
+                           A   580    .TYPE 104
+                           A   581    .ENDEF
+0000F7                     A   582    _ndefaultcmds:
+0000F7 1300                A   583    	DW	19
+                           A   584    .DEFINE "ndefaultcmds"
+                           A   585    .ALIAS "_ndefaultcmds"
+                           A   586    .CLASS 69
+                           A   587    .VALUE _ndefaultcmds
+                           A   588    .TYPE 13
+                           A   589    .ENDEF
+                           A   590    	XREF _Shell_ZFSFormat:ROM
+                           A   591    	XREF _Shell_ZFSCreateFile:ROM
+                           A   592    	XREF _Shell_setdatetime:ROM
+                           A   593    	XREF _Shell_getdatetime:ROM
+                           A   594    	XREF _Shell_ZFSHelp:ROM
+                           A   595    	XREF _Shell_ZFSGetVolumeInfo:ROM
+                           A   596    	XREF _Shell_ZFSDispFile:ROM
+                           A   597    	XREF _Shell_ZFSListFileDirs:ROM
+                           A   598    	XREF _Shell_ZFSGetCWD:ROM
+                           A   599    	XREF _Shell_ZFSCopyMoveFile:ROM
+                           A   600    	XREF _Shell_ZFSRenDir:ROM
+                           A   601    	XREF _Shell_ZFSRenFile:ROM
+                           A   602    	XREF _Shell_ZFSDelDir:ROM
+                           A   603    	XREF _Shell_ZFSDelDirAll:ROM
+                           A   604    	XREF _Shell_ZFSDelFile:ROM
+                           A   605    	XREF _Shell_ZFSChdir:ROM
+                           A   606    	XREF _Shell_ZFSMkdir:ROM
+                           A   607    	XDEF _ndefaultcmds
+                           A   608    	XDEF _defaultcmds
+                           A   609    ;    1	/************************************************************************************
+                           A   610    ;    2	 * File       :     shell_conf.c
+                           A   611    ;    3	 *
+                           A   612    ;    4	 * Description:		This file contains the configuration details for the
+                           A   613    ;    5	 *					shell.
+                           A   614    ;    6	 *
+                           A   615    ;    7	 * Copyright 2016 ZiLOG Inc.  ALL RIGHTS RESERVED.
+                           A   616    ;    8	 *
+                           A   617    ;    9	 * This file contains unpublished confidential and proprietary information
+                           A   618    ;   10	 * of ZiLOG, Inc.
+                           A   619    ;   11	 * NO PART OF THIS WORK MAY BE DUPLICATED, STORED, PUBLISHED OR DISCLOSED 
+                           A   620    ;   12	 * IN ANY FORM WITHOUT THE PRIOR WRITTEN CONSENT OF ZiLOG, INC.
+                           A   621    ;   13	 * This is not a license and no use of any kind of this work is authorized
+                           A   622    ;   14	 * in the absence of a written license granted by ZiLOG, Inc. in ZiLOG's 
+                           A   623    ;   15	 * sole discretion 
+                           A   624    ;   16	 ************************************************************************************/
+                           A   625    ;   17	 /************************************************************************************
+                           A   626    ;   18	 * Copyright 2001, Metro Link, Inc.
+                           A   627    ;   19	 * All Rights Reserved
+                           A   628    ;   20	 *
+                           A   629    ;   21	 * This is UNPUBLISHED PROPRIETARY SOURCE CODE of Metro Link, Inc. and may
+                           A   630    ;   22	 * contain proprietary, confidential and trade secret information of
+                           A   631    ;   23	 * Metro Link, Inc. and/or its partners.
+                           A   632    ;   24	 *  
+                           A   633    ;   25	 * The contents of this file may not be disclosed to third parties, copied or
+                           A   634    ;   26	 * duplicated in any form, in whole or in part, without the prior written
+                           A   635    ;   27	 * permission of Metro Link, Inc.
+                           A   636    ;   28	 *
+                           A   637    ;   29	 ************************************************************************************/
+                           A   638    ;   30	
+                           A   639    ;   31	#include <stdio.h>
+                           A   640    ;   32	#include <stdarg.h>
+                           A   641    ;   33	#include <string.h>
+                           A   642    ;   34	#include "ZSysgen.h"
+                           A   643    ;   35	#include "ZTypes.h"
+                           A   644    ;   36	#include "ZDevice.h"
+                           A   645    ;   37	#include "ZThread.h"
+                           A   646    ;   38	#include "shell.h"
+                           A   647    ;   39	#include "fs_shell.h"
+                           A   648    ;   40	
+                           A   649    ;   41	/**
+                           A   650    ;   42	 * @name shell_conf.c
+                           A   651    ;   43	 * @memo Default Debug Shell Commands
+                           A   652    ;   44	 * @doc These are default settings used by the Debug Shell. This file should
+                           A   653    ;   45	 * be included in a project, and modified as needed.
+                           A   654    ;   46	 */
+                           A   655    ;   47	
+                           A   656    ;   48	/*@{*/
+                           A   657    ;   49	/**
+                           A   658    ;   50	 * @doc A default set of all non-network related commands.  These commands are
+                           A   659    ;   51	 * made available by default - there is no need to call shell_add_commands()
+                           A   660    ;   52	 * to make them available.
+                           A   661    ;   53	 */
+                           A   662    ;   54	struct	cmdent	defaultcmds[]  = {
+                           A   663    ;   55		{ "cd",		TRUE,		(SHELL_CMD)Shell_ZFSChdir,		(struct cmdent*)NULL, "Changes the current working directory\n" },
+                           A   664    ;   56		{ "copy",	TRUE,		(SHELL_CMD)Shell_ZFSCopyMoveFile,	(struct cmdent*)NULL, "Copies a file from current directory to the directory provided\n" },
+                           A   665    ;   57		{ "create",	TRUE,		(SHELL_CMD)Shell_ZFSCreateFile,		(struct cmdent*)NULL, "Creates a file\n" },
+                           A   666    ;   58		{ "cwd",	TRUE,		(SHELL_CMD)Shell_ZFSGetCWD,			(struct cmdent*)NULL, "Prints the current working directory on the console\n" },
+                           A   667    ;   59		{ "del",	TRUE,		(SHELL_CMD)Shell_ZFSDelFile,		(struct cmdent*)NULL, "Deletes a file\n" },
+                           A   668    ;   60		{ "deltree",TRUE,		(SHELL_CMD)Shell_ZFSDelDirAll,		(struct cmdent*)NULL, "Deletes all files and sub-directories present in the given directory\n" },
+                           A   669    ;   61		{ "deldir",	TRUE,		(SHELL_CMD)Shell_ZFSDelDir,			(struct cmdent*)NULL, "Deletes an empty directory\n" },
+                           A   670    ;   62		{ "dir",	TRUE,		(SHELL_CMD)Shell_ZFSListFileDirs,	(struct cmdent*)NULL, "Displays the files/directories present in the current directory\n" },
+                           A   671    ;   63		{ "format", TRUE,		(SHELL_CMD)Shell_ZFSFormat,  		(struct cmdent*)NULL, "Formats the volume with Zilog File System native format\n" },
+                           A   672    ;   64		{ "gettime",TRUE,		(SHELL_CMD)Shell_getdatetime,		(struct cmdent*)NULL, "The gettime shell command prints the current date and time to a standard output\n" },
+                           A   673    ;   65		{ "help",	TRUE,		(SHELL_CMD)Shell_ZFSHelp,			(struct cmdent*)NULL, "The ? shell command without any argument displays the set of commands that can be executed from the shell's command 
+                           A   674    ;   66		{ "md",		TRUE,		(SHELL_CMD)Shell_ZFSMkdir,			(struct cmdent*)NULL, "Creates a directory in the specified path\n" },
+                           A   675    ;   67		{ "move",	TRUE,		(SHELL_CMD)Shell_ZFSCopyMoveFile,	(struct cmdent*)NULL, "Moves a file from current directory to the directory provided\n" },
+                           A   676    ;   68		{ "ren",	TRUE,		(SHELL_CMD)Shell_ZFSRenFile,		(struct cmdent*)NULL, "Renames a file to new name provided\n" },
+                           A   677    ;   69		{ "rendir",	TRUE,		(SHELL_CMD)Shell_ZFSRenDir,			(struct cmdent*)NULL, "Renames the directory to new name provided\n" },
+                           A   678    ;   70		{ "settime",TRUE,		(SHELL_CMD)Shell_setdatetime,		(struct cmdent*)NULL, "The settime shell command sets the current date and time to a standard outputsets current date and time\n" },
+                           A   679    ;   71		{ "type",	TRUE,		(SHELL_CMD)Shell_ZFSDispFile,		(struct cmdent*)NULL, "Displays the contents of the file onto the console\n" },
+                           A   680    ;   72		{ "vol",	TRUE,		(SHELL_CMD)Shell_ZFSGetVolumeInfo,	(struct cmdent*)NULL, "Displays the volume information on the console\n" },
+                           A   681    ;   73		{ "?",		TRUE,		(SHELL_CMD)Shell_ZFSHelp,			(struct cmdent*)NULL, "The ? shell command without any argument displays the set of commands that can be executed from the shell's command 
+                           A   682    ;   74	};	/* shell commands */
+                           A   683    ;   75	
+                           A   684    ;   76	/**
+                           A   685    ;   77	 * @doc The number of entries in the defaultcmds[] array.  If the defaultcmds
+                           A   686    ;   78	 * array is modified, ndefaultcmds must be adjusted accordingly.
+                           A   687    ;   79	 */
+                           A   688    ;   80	UINT16 ndefaultcmds=sizeof(defaultcmds)/sizeof(struct cmdent);
+                           A   689    	END
+
+
+Errors: 0
+Warnings: 0
+Lines Assembled: 690

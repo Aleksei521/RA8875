@@ -1,0 +1,1222 @@
+/*
+ * File       :     snmib.c
+ *
+ * Description:  This file contains the initialization of all the mib variables.
+ *
+ * Copyright 2004 ZiLOG Inc.  ALL RIGHTS RESERVED.
+ *
+ * This file contains unpublished confidential and proprietary information
+ * of ZiLOG, Inc.
+ * NO PART OF THIS WORK MAY BE DUPLICATED, STORED, PUBLISHED OR DISCLOSED 
+ * IN ANY FORM WITHOUT THE PRIOR WRITTEN CONSENT OF ZiLOG, INC.
+ * This is not a license and no use of any kind of this work is authorized
+ * in the absence of a written license granted by ZiLOG, Inc. in ZiLOG's 
+ * sole discretion 
+ */
+
+#ifdef	SNMP
+#ifndef SNMPV3
+
+/** SNMP Include Files **/
+#include "snmpv1.h"
+#include "snmpmib.h"
+#include "snmpStdMIBs.h"
+#include "snmpvars.h"
+#include "asn1.h"
+
+/** Extern variables **/
+extern OID SysObjectID;
+extern SNMPDisplayStr ZipsVersion;
+SNMP_TABLE_S sn_table[] ;
+
+
+/* Variables used by the SNMP Demo project */
+SNMPMIBData g_snmpMIBInfo[] = {
+	{  g_snmpMgmt, 1, T_AGGREGATE,  NULL, READ_ONLY,  NULL, NULL	 }, 
+	{  g_snmpMib2, 2, T_AGGREGATE,  NULL, READ_ONLY,  NULL, NULL	 },
+	 
+// System Group
+//system.		
+	{ g_snmpSystem, 3, T_AGGREGATE, NULL, READ_ONLY, NULL,	NULL },	  
+//system.sysDescr,
+	{ g_snmpSystemDecsr, 5, SN_DISPLAY_STR, &g_sysDescr, READ_ONLY,	snleaf, NULL },
+	{ g_snmpSysObjectID, 5, ASN1_OBJID, &g_sysObjectID, READ_ONLY, snleaf, NULL },
+//system.sysUpTime
+	{ g_snmpSysUpTime, 5, ASN1_TIMETICKS, &SysUpTime, READ_ONLY, snleaf, NULL },
+//system.sysContact	
+	{ g_snmpSysContact,	5, SN_DISPLAY_STR, 	&g_sysContact,READ_WRITE, snleaf, NULL },
+//system.sysName	
+	{ g_snmpSysName, 5, SN_DISPLAY_STR,&g_sysName,READ_WRITE, snleaf, NULL },
+//system.sysLocation	
+	{ 	 			
+	  g_snmpSysLocation, 	
+	  5, 
+	  SN_DISPLAY_STR, 	
+	  &g_sysLocation,				
+	  READ_WRITE,  	    
+	  snleaf, 	
+	  NULL
+	},
+//system.sysServices
+	{ g_snmpSysServices, 	
+	  5, 
+	  ASN1_INT,	     	
+	  &g_sysServices,				
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	},
+// Interface Group
+	{ 
+	  g_snmpIfGrp, 	
+	  3, 
+	  T_AGGREGATE,		
+	  NULL,					
+	  READ_ONLY, 	   
+	  NULL,	
+	  NULL
+	},
+//if.ifNumber	
+	{ 					
+	  g_snmpIfNumber, 	
+	  5, 
+	  ASN1_INT,			
+	  &IfNumber,					
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	},
+//if.ifTable	
+	{ 
+	  g_snmpIfTable, 		
+	  4, 
+	  T_AGGREGATE,		
+	  NULL,					
+	  READ_WRITE,	   
+	  NULL, 	
+	  NULL
+	 },
+//if.IfEntry	 
+	{ 			
+	  g_snmpIfEntry, 	
+	  5, 
+	  T_TABLE,			
+	  &sn_table[T_IFTABLE],	
+	  READ_WRITE,	   
+	  sntable,  
+	  NULL
+	},
+// Address Translation Group 
+	{ g_snmpAtGrp, 			
+	  3, 
+	  T_AGGREGATE,		
+	  NULL,		      	
+	  READ_WRITE,	   
+	  NULL,  
+	  NULL
+	},
+//at.atTable", 				
+	{ g_snmpAtTable, 		
+	  4, 
+	  T_AGGREGATE,		
+	  NULL,		      	
+	  READ_WRITE,	   
+	  NULL, 	
+	  NULL
+	},
+//at.atTable.atEntry	
+	{ g_snmpAtEntry, 	
+	  5, 
+	  T_TABLE,			
+	  &sn_table[T_ATTABLE], 	
+	  READ_WRITE, 	   
+	  sntable,  
+	  NULL
+	},
+// IP Group
+	{ g_snmpIpGrp, 			
+	  3, 
+	  T_AGGREGATE,	 	  
+	  NULL,					
+	  READ_WRITE,	   
+	  NULL, 	
+	  NULL
+	},
+//ip.ipForwarding	
+	{ g_snmpIpForwarding, 	
+	  5, 
+	  ASN1_INT,  
+	  &IpForwarding,			
+	  READ_ONLY,	    
+	  snleaf,   
+	  NULL
+	},
+//ip.ipDefaultTTL	
+	{ 		 				
+	  g_ipDefaultTTL, 	
+	  5, 
+	  ASN1_INT,	      
+	  &IpDefaultTTL,			
+	  READ_WRITE,	    
+	  snleaf, 	
+	  NULL
+	},
+//ip.ipInReceives	
+	{ g_ipInReceives, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IpInReceives,			
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	},
+//ip.ipInHdrErrors	
+	{ g_ipInHdrErrors, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IpInHdrErrors,			
+	  READ_ONLY, 	    
+	  snleaf,	
+	  NULL
+	},
+//ip.ipInAddrErrors	
+	{ g_ipInAddrErrors, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IpInAddrErrors,			
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	},
+//ip.ipForwDatagrams	
+	{ g_ipForwDatagrams, 	
+	  5, 
+	  ASN1_COUNTER, 
+	  &IpForwDatagrams,		
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	},
+//ip.ipInUnknownProtos	
+	{ g_ipInUnknownProtos, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IpInUnknownProtos,		
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	},
+//ip.ipInDiscards	
+	{ 						
+	  g_ipInDiscards, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IpInDiscards,			
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	},
+//ip.ipInDelivers
+	{ g_ipInDelivers, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IpInDelivers,			
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	},
+//ip.ipOutRequests	
+	{ g_ipOutRequests, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IpOutRequests,			
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	},
+//ip.ipOutDiscards	
+	{ 						
+	  g_ipOutDiscards, 	
+	  5, 
+	  ASN1_COUNTER,	    
+	  &IpOutDiscards,			
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	},
+//ip.ipOutNoRoutes		
+	{  						
+	  g_ipOutNoRoutes, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IpOutNoRoutes,			
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	},
+//ip.ipReasmTimeout	
+	{ g_ipReasmTimeout, 	
+	  5, 
+	  ASN1_INT,	 	   
+	  &IpReasmTimeout,			
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	},
+//ip.ipReasmReqds	
+	{ g_ipReasmReqds, 	
+	  5, 
+	  ASN1_COUNTER, 	 
+	  &IpReasmReqds,	   	
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	},
+//ip.ipReasmOKs	
+	{ g_ipReasmOKs, 	
+	  5, 
+	  ASN1_COUNTER,	 	
+	  &IpReasmOKs,			   
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	},
+//ip.ipReasmFails	
+	{ g_ipReasmFails, 	
+	  5, 
+	  ASN1_COUNTER, 	
+	  &IpReasmFails,		   
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	},
+//ip.ipFragOKs	
+	{ 
+	  g_ipFragOKs, 	
+	  5, 
+	  ASN1_COUNTER,	 	
+	  &IpFragOKs,		   	
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	},
+//ip.ipFragFails	
+	{ g_ipFragFails, 	
+	  5, 
+	  ASN1_COUNTER,  	
+	  &IpFragFails,			   
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	},
+//ip.ipFragCreates	
+	{ g_ipFragCreates, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IpFragCreates,			
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	},
+//ip.ipAddrTable	
+	
+	{ g_ipAddrTable, 		
+	  4, 
+	  T_AGGREGATE,		
+	  NULL,		      	
+	  READ_ONLY,	   
+	  NULL, 	
+	  NULL
+	},
+//ip.ipAddrEntry	
+	{ g_ipAddrEntry, 	
+	  5, 
+	  T_TABLE,	      
+	  &sn_table[T_AETABLE],	
+	  READ_ONLY,    
+	  sntable, 	
+	  NULL
+	},
+//ip.ipRoutingDiscards
+	{ g_ipRoutingDiscards, 	
+	  5, 
+	  ASN1_COUNTER,	
+	  &IpRoutingDiscards, 	
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	},
+// ICMP Group
+	{ 							
+	  g_icmp, 			
+	  3, 
+	  T_AGGREGATE,	   
+	  NULL,					
+	  READ_ONLY, 	   
+	  NULL, 	
+	  NULL
+	},
+//icmp.icmpInMsgs	
+	{  					
+	  g_icmpInMsgs, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpInMsgs,				
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	},
+//icmp.icmpInErrors	
+	{ 				
+	  g_icmpInErrors, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpInErrors,			
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	},
+//icmp.icmpInDestUnreachs
+	{ 					
+	  g_icmpInDestUnreachs, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpInDestUnreachs,	
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	},
+//icmp.icmpInTimeExcds	
+	{ 					
+	  g_icmpInTimeExcds, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpInTimeExcds,		
+	  READ_ONLY, 
+	    
+	  snleaf, 	
+	  NULL
+	},
+//icmp.icmpInParmProbs	
+	{ 					
+	  g_icmpInParmProbs, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpInParmProbs,		
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	},
+//icmp.icmpInSrcQuenchs	
+	{ 					
+	  g_icmpInSrcQuenchs, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpInSrcQuenchs,		
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	},
+//icmp.icmpInRedirects	
+	{ 					
+	  g_icmpInRedirects, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpInRedirects,		
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	},
+//icmp.icmpInEchos	
+	{ 					
+	  g_icmpInEchos, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpInEchos,				
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	},
+//icmp.icmpInEchoReps	
+	{  					
+	  g_icmpInEchoReps, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpInEchoReps,			
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	},
+//icmp.icmpInTimestamps	
+	{					
+	  g_icmpInTimestamps, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpInTimestamps,		
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	},
+//icmp.icmpInTimestampReps	
+	{ 					
+	  g_icmpInTimestampReps, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpInTimestampReps,	
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	},
+//icmp.icmpInAddrMasks	
+	{ 					
+	  g_icmpInAddrMasks, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpInAddrMasks, 		
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	},
+//icmp.icmpInAddrMaskReps	
+	{ 					
+	  g_icmpInAddrMaskReps, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpInAddrMaskReps,	
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	},
+//icmp.icmpOutMsgs	
+	{  					
+	  g_icmpOutMsgs, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpOutMsgs, 			
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	},
+//icmp.icmpOutErrors	
+	{				
+	  g_icmpOutErrors, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpOutErrors, 			
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	},
+//icmp.icmpOutDestUnreachs	
+	{ 					
+	  g_icmpOutDestUnreachs, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpOutDestUnreachs,	
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	  },
+//icmp.icmpOutTimeExcds	  
+	{  					
+	  g_icmpOutTimeExcds, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpOutTimeExcds, 		
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	  },
+//icmp.icmpOutParmProbs	  
+	{ 					
+	  g_icmpOutParmProbs, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpOutParmProbs, 		
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL},
+//icmp.icmpOutSrcQuenchs	  
+	{ 					
+	  g_icmpOutSrcQuenchs, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpOutSrcQuenchs, 	
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	  },
+//icmp.icmpOutRedirects	  
+	{ 					
+	  g_icmpOutRedirects, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpOutRedirects, 		
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	  },
+//icmp.icmpOutEchos	  
+	{ 					
+	  g_icmpOutEchos, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpOutEchos, 			
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	  },
+//icmp.icmpOutEchoReps	  
+	{ 					
+	  g_icmpOutEchoReps, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpOutEchoReps, 		
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	  },
+//icmp.icmpOutTimestamps	  
+	{  					
+	  g_icmpOutTimestamps, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpOutTimestamps, 	
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	  },
+//icmp.icmpOutTimestampReps	  
+	{ 					
+	  g_icmpOutTimestampReps, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpOutTimestampReps, 
+	  READ_ONLY, 
+	    
+	  snleaf, 	
+	  NULL
+	  },
+//icmp.icmpOutAddrMasks	  
+	{ 					
+	  g_icmpOutAddrMasks, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpOutAddrMasks, 		
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	  },
+//icmp.icmpOutAddrMaskReps	  
+	{ 					
+	  g_icmpOutAddrMaskReps, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &IcmpOutAddrMaskReps, 	
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	  },
+// TCP Group
+	{ 							
+	  g_tcp, 			
+	  3, 
+	  T_AGGREGATE,	   
+	  NULL,					
+	  READ_ONLY, 	  
+	  NULL, 	
+	  NULL
+	  },
+//tcp.tcpRtoAlgorithm	  
+	{ 						
+	  g_tcpRtoAlgorithm, 	
+	  5, 
+	  ASN1_INT,	      
+	  &TcpRtoAlgorithm,		
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	  },
+//tcp.tcpRtoMin	  
+	{ 						
+	  g_tcpRtoMin, 	
+	  5, 
+	  ASN1_INT,	      
+	  &TcpRtoMin,				
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	  },
+//tcp.tcpRtoMax	  
+	{ 						
+	  g_tcpRtoMax, 	
+	  5, 
+	  ASN1_INT,	      
+	  &TcpRtoMax,				
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	  },
+//tcp.tcpMaxConn	  
+	{ 						
+	  g_tcpMaxConn, 	
+	  5, 
+	  ASN1_INT,	      
+	  &TcpMaxConn,				
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	  },
+//tcp.tcpActiveOpens	  
+	{ 						
+	  g_tcpActiveOpens, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &TcpActiveOpens,			
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	  },
+//tcp.tcpPassiveOpens	  
+	{ 						
+	  g_tcpPassiveOpens, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &TcpPassiveOpens,		
+	  READ_ONLY, 	   
+	  snleaf, 	
+	  NULL
+	  },
+//tcp.tcpAttemptFails	  
+	{ 						
+	  g_tcpAttemptFails, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &TcpAttemptFails,		
+	  READ_ONLY,	    
+	  snleaf, 
+	  NULL
+	  },
+//tcp.tcpEstabResets	  
+	{  						
+	  g_tcpEstabResets, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &TcpEstabResets,			
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	  },
+//tcp.tcpCurrEstab	  
+	{ 						
+	  g_tcpCurrEstab, 	
+	  5, 
+	  ASN1_GAUGE,	   
+	  &TcpCurrEstab,			
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	},
+//tcp.tcpInSegs	
+	{  						
+	  g_tcpInSegs, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &TcpInSegs,				
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	},
+//tcp.tcpOutSegs	
+	{ 						
+	  g_tcpOutSegs, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &TcpOutSegs,				
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	},
+//tcp.tcpRetransSegs	
+	{ 						
+	  g_tcpRetransSegs, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &TcpRetransSegs,			
+	  READ_ONLY,	    
+	  snleaf, 	
+	  NULL
+	},
+//tcp.tcpConnTable	
+	{ 						
+	  g_tcpConnTable, 		
+	  4, 
+	  T_AGGREGATE,	   
+	  NULL,					
+	  READ_ONLY, 	   
+	  NULL, 	
+	  NULL
+	  },
+//tcp.tcpConnEntry	  
+	{  	
+	  g_tcpConnEntry, 	
+	  5, 
+	  T_TABLE,	      
+	  &sn_table[T_TCPTABLE],	
+	  READ_ONLY, 	   
+	  sntable,  
+	  NULL
+	},
+//tcp.tcpInErrors	
+	{  						
+	  g_tcpInErrors, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &TcpInErrors,				
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	},
+//tcp.tcpOutRsts	
+	{ 						
+	  g_tcpOutRsts, 	
+	  5, 
+	  ASN1_COUNTER,	   
+	  &TcpOutRsts,				
+	  READ_ONLY, 	    
+	  snleaf, 	
+	  NULL
+	},
+// UDP Group
+	{ 							
+	  g_udp, 			
+	  3, 
+	  T_AGGREGATE, 		
+	  NULL,	     			
+	  READ_ONLY,	   
+	  NULL,  
+	  NULL
+	},
+//udp.udpInDatagrams	
+	{ 						
+	  g_udpInDatagrams, 	
+	  5, 
+	  ASN1_COUNTER, 	
+	  &UdpInDatagrams,   		
+	  READ_ONLY, 	    
+	  snleaf,   
+	  NULL
+	},
+//udp.udpNoPorts	
+	{  						
+	  g_udpNoPorts, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &UdpNoPorts,      		
+	  READ_ONLY, 	    
+	  snleaf,   
+	  NULL
+	},
+//udp.udpInErrors	
+	{ 						
+	  g_udpInErrors, 	
+	  5, 
+	  ASN1_COUNTER, 	
+	  &UdpInErrors,       	
+	  READ_ONLY, 	    
+	  snleaf,   
+	  NULL
+	},
+//udp.udpOutDatagrams	
+	{ 						
+	  g_udpOutDatagrams, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &UdpOutDatagrams,     	
+	  READ_ONLY, 	    
+	  snleaf,   
+	  NULL
+	},
+//udp.udpTable	
+	{ 					
+	  g_udpTable, 		
+	  4, 
+	  T_AGGREGATE, 		
+	  NULL,	      		
+	  READ_ONLY, 	   
+	  NULL,  
+	  NULL
+	},
+//udp.udpEntry	
+	{ 		
+	  g_udpEntry, 	
+	  5, 
+	  T_TABLE, 			
+	  &sn_table[T_SUETABLE],	
+	  READ_ONLY,	   
+	  sntable,  
+	  NULL
+	},
+// SNMP Group
+	{ 					
+	  g_snmp, 		
+	  3, 
+	  T_AGGREGATE, 		
+	  NULL,	     			
+	  READ_ONLY,	  
+	  NULL, 
+	  NULL
+	},
+//snmp.snmpInPkts	
+	{ 		
+	  g_snmpInPkts, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpInPkts, 	     		
+	  READ_ONLY,	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpOutPkts	
+	{ 
+	  g_snmpOutPkts, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpOutPkts,      		
+	  READ_ONLY,     
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpInBadVersions	
+	{ 			
+	  g_snmpInBadVersions, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpInBadVersions, 	
+	  READ_ONLY, 	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpInBadCommunityNames	
+	{ 			
+	  g_snmpInBadCommunityNames, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpInBadCommunityNames,
+	  READ_ONLY,	   
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpInBadCommunityUses	
+	{ 			
+	  g_snmpInBadCommunityUses, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpInBadCommunityUses, 
+	  READ_ONLY,	   
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpInASNParseErrors	
+	{ 			
+	  g_snmpInASNParseErrors, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpInASNParseErrors, 
+	  READ_ONLY, 	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpInTooBigs	
+	{ 			
+	  g_snmpInTooBigs, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpInTooBigs,	      
+	  READ_ONLY,	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpInNoSuchNames	
+	{ 			
+	  g_snmpInNoSuchNames, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpInNoSuchNames,    
+	  READ_ONLY,	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpInBadValues	
+	{ 			
+	  g_snmpInBadValues, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpInBadValues, 	   
+	  READ_ONLY,	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpInReadOnlys	
+	{  			
+	  g_snmpInReadOnlys, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpInReadOnlys, 	   
+	  READ_ONLY,	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpInGenErrs	
+	{ 			
+	  g_snmpInGenErrs, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpInGenErrs, 	      
+	  READ_ONLY, 	    
+	  snleaf, 
+	  NULL
+	},
+//snmp.snmpInTotalReqVars	
+	{  			
+	  g_snmpInTotalReqVars, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpInTotalReqVars,   
+	  READ_ONLY, 	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpInTotalSetVars	
+	{ 			
+	  g_snmpInTotalSetVars, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpInTotalSetVars,   
+	  READ_ONLY, 	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpInGetRequests	
+	{  			
+	  g_snmpInGetRequests, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpInGetRequests,    
+	  READ_ONLY, 	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpInGetNexts	
+	{  			
+ 	  g_snmpInGetNexts, 	
+ 	  5, 
+ 	  ASN1_COUNTER,		
+ 	  &SnmpInGetNexts, 	   
+ 	  READ_ONLY,  	    
+ 	  snleaf,  
+ 	  NULL
+ 	},
+//snmp.snmpInSetRequests 	
+	{  			
+	  g_snmpInSetRequests, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpInSetRequests,    
+	  READ_ONLY, 	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpInGetResponses	
+	{ 			
+	  g_snmpInGetResponses, 	
+	  5,
+	  ASN1_COUNTER,		
+	  &SnmpInGetResponses,   
+	  READ_ONLY, 	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpInTraps	
+	{ 			
+	  g_snmpInTraps, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpInTraps, 	      
+	  READ_ONLY,	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpOutTooBigs	
+	{ 			
+	  g_snmpOutTooBigs, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpOutTooBigs, 	   
+	  READ_ONLY,	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpOutNoSuchNames	
+	{  			
+	  g_snmpOutNoSuchNames, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpOutNoSuchNames,   
+	  READ_ONLY,	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpOutBadValues	
+	{ 			
+	  g_snmpOutBadValues, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpOutBadValues, 	   
+	  READ_ONLY,	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpOutGenErrors	
+	{  			
+	  g_snmpOutGenErrors, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpOutGenErrors, 	   
+	  READ_ONLY,	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpOutGetRequests	
+	{ 			
+	  g_snmpOutGetRequests, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpOutGetRequests,   
+	  READ_ONLY,	   
+	  snleaf, 
+	  NULL
+	},
+//snmp.snmpOutGetNexts	
+	{ 			
+	  g_snmpOutGetNexts, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpOutGetNexts, 	  
+	  READ_ONLY,	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpOutSetRequests	
+	{ 			
+	  g_snmpOutSetRequests, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpOutSetRequests,   
+	  READ_ONLY,	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpOutGetResponses	
+	{ 			
+	  g_snmpOutGetResponses, 	
+	  5, 
+	  ASN1_COUNTER,    
+	  &SnmpOutGetResponses, 
+	  READ_ONLY, 	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpOutTraps	
+	{  			
+	  g_snmpOutTraps, 	
+	  5, 
+	  ASN1_COUNTER,		
+	  &SnmpOutTraps, 	      
+	  READ_ONLY,	    
+	  snleaf,  
+	  NULL
+	},
+//snmp.snmpEnableAuthenTraps	
+	{ 			
+	  g_snmpEnableAuthenTraps, 	
+	  5, 
+	  ASN1_INT,			
+	  &SnmpEnableAuthenTraps,
+	  READ_WRITE, 	    
+	  snleaf,  
+	  NULL
+	},
+// Experimental Extensions
+	{ g_expExtn,
+	  1, 
+	  T_AGGREGATE,		
+	  NULL,	     			
+	  READ_ONLY,	   
+	  NULL, 
+	  NULL
+	},
+// Private Extensions
+	{ g_privateExtn,
+	  1, 
+	  T_AGGREGATE,		
+	  NULL,	     			
+	  READ_ONLY, 
+	  NULL, 
+	  NULL
+	},
+// Enterprises	
+	{  g_EnterprisesGrp,
+	   2, 
+	   T_AGGREGATE,		
+	   NULL,	     			
+	   READ_ONLY, 	    
+	   NULL,
+	   NULL
+	},
+//ZiLOG	
+	{  g_zilogGrp, 	
+	   3, 
+	   T_AGGREGATE,		
+	   NULL,	     			
+	   READ_ONLY,	    
+	   NULL, 
+	   NULL
+	},
+
+//ZTP	  
+	{ g_ztpGrp, 	
+	  4, 
+	  T_AGGREGATE,		
+	  NULL,	     			
+	  READ_ONLY, 	   
+	  NULL, 
+	  NULL
+	},
+// Version	  
+	{  g_snmpVersion,
+	   6, 
+	   SN_DISPLAY_STR,  
+	   &ZipsVersion,
+	   READ_ONLY,	     
+	   snleaf,  
+	   NULL
+	}
+};
+
+/** Get the number of MIB entries **/
+UINT16 mib_entries = sizeof(g_snmpMIBInfo) / sizeof(SNMPMIBData);  
+
+SNMP_TABLE_S sn_table[] =
+{
+	{sif_get, sif_next, sif_set, SNUMF_IFTAB, SIF_INDEX_LEN },
+	{sat_get, sat_next, sat_set, SNUMF_ATTAB, SAT_INDEX_LEN },
+	{sae_get, sae_next, sae_set, SNUMF_AETAB, SAE_INDEX_LEN },
+	{stc_get, stc_next, stc_set, SNUMF_TCTAB, STC_INDEX_LEN },
+	{sue_get, sue_next, sue_set, SNUMF_UETAB, SUE_INDEX_LEN }
+};
+UINT16 sn_table_entries = sizeof(sn_table) / sizeof( SNMP_TABLE_S);
+
+#endif
+#endif	/* SNMP */
+

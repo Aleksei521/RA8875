@@ -1,0 +1,84 @@
+<html>
+
+<head>
+<title></title>
+</head>
+
+<body>
+<div align="left">
+
+<table border="0" cellpadding="0" cellspacing="0" width="600" height="366">
+  <tr>
+    <td valign="top" width="736" height="122"><div align="center"><center><table border="0"
+    width="100%" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="100%"><p align="center"><font face="Arial" size="3" color="#000000"><strong>Demo
+        using Javascripts</strong></font></p>
+        <p align="center"><strong><font face="Arial" size="2" color="#000080">CHECK BOX</font></strong></p>
+        <p><font face="Arial" size="2" color="#000080">This Javascript game tests hand-eye
+        co-ordination. The object of the game is simple. You have 20 seconds to place ticks in as
+        many boxes as possible. After 20 seconds, the script will stop scoring new ticks. Be
+        warned, double clicking a box will clear the tick and reduce your score. The timer starts
+        with your first click... Go!<br>
+        </font></p>
+        <div align="center"></div><div align="center"><script LANGUAGE="JavaScript">
+var total = 0
+var play = false
+
+function display(element) {		
+		var now = new Date()		
+		if (!play) {			
+		play = true			
+		startTime = now.getTime()		}	
+			if (now.getTime() - startTime > 20000) {			
+				element.checked = !element.checked			
+			return	
+		}		
+		if (element.checked)		
+	
+				total++
+		else		
+	
+				total--	
+	
+				element.form.num.value = total
+}
+
+function restart(form) {	
+	
+		total = 0	
+		play = false	
+	
+		for (var i = 1; i <= 100; ++i) {		
+	
+				form.elements[i].checked = false	
+		}
+}
+
+</script>
+<script
+        LANGUAGE="JavaScript">
+	document.write("<FORM><CENTER>")
+	document.write('<INPUT TYPE="text"  VALUE="0" NAME="num" SIZE=10 onFocus="this.blur()"><BR>')
+	document.write("<HR SIZE=1 WIDTH=40%>")
+	for (var i = 0; i < 10; ++i) {	
+		for (var j = 0; j < 10; ++j) {		
+				document.write('<INPUT TYPE="checkbox" onClick="display(this)">')	
+		}	
+		document.write("<BR>")
+	}
+	document.write("<HR SIZE=1 WIDTH=40% > ")
+		document.write('<INPUT TYPE="button" VALUE="restart" onClick="restart(this.form)">')
+		document.write("</CENTER></FORM>")
+
+</script>
+<p>&nbsp;</p>
+        </div></td>
+      </tr>
+    </table>
+    </center></div></td>
+  </tr>
+</table>
+</div>
+</body>
+</html>

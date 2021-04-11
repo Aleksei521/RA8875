@@ -1,0 +1,73 @@
+
+Directory structure for RZK 2.5.0 Source release
+================================================
+
+The RZK source code version 2.5.0 is integrated with ZDSII_eZ80Acclaim!_5.3.0 and 
+is automatically installed by the ZDSII_eZ80Acclaim!_5.3.0 install program.
+
+The default location of RZK source components is
+C:\Zilog\ZDSII_eZ80Acclaim!_5.3.0\ZTP2.5.0
+
+The following subdirectories are created beneath the ZTP2.5.0 folder:
+
+
+ZTP2.5.0
+|
+|--RZK
+   |
+   |--Conf           RZK configuration files
+   |    
+   |--Core
+   |  |
+   |  |--eZ80
+   |  |  |--Src      Target dependent source files
+   |  |      
+   |  |--Inc         Target independent header files
+   |  |
+   |  |--Src         Target independent source files common for eZ80
+   |     |--CFunctions        Queue manipulation routines
+   |     |--CommonLibraries   Common support functions
+   |     |--CQueues           Basic queueing routines
+   |     |--Startup           Initialization code
+   |     |--TimerUtility      Time conversion routine
+   |     |--ZClock            Routines to get/ set RZK clock
+   |     |--ZDeviceDriver     Device driver framework
+   |     |--ZEventGroups      Routine to implement RZK Event groups
+   |     |--ZMemory           Routines to implement RZK Partitions
+   |     |--ZRegion           Routines to implement RZK Regions
+   |     |--ZScheduler        RZK thread Scheduling code
+   |     |--ZSemaphore        Routines to implement RZK semaphores
+   |     |--ZThreads          RZK Thread management routines
+   |     |--ZTimer            Routines to implement RZK Timer objects
+   |     |--ZTimerISR         RZK system timer interrupt routine
+   |     |--ZUtils            Shared RZK utility routines
+   |
+   |--Docs           RZK related documents and help files
+   |
+   |--eZ80_BSP       Source code files for all the supported peripherals
+   |  |--Emac        Contains EMAC driver for eZ80F91 and CS8900 chip sets
+   |  |--Flash       Contains FLASH drivers for internal and external devices
+   |  |--I2C         Contains I2C driver implementation
+   |  |--RTC         Contains RTC driver implementation
+   |  |--SPI         Contains SPI driver implementation
+   |  |--UART        Contains UART driver implementation
+   |  |--WDT         Contains the Watch Dog Timer routines
+   |
+   --FileSystem
+   |  |--Inc         Header files
+   |  |--Src         Source files
+   |
+   |--Inc            RZK, BSP and File System header files
+   |
+   |--Lib            RZK Libraries (Core, BSP, and File System) for all supported eZ80 targets
+   |
+   |--SamplePrograms
+      |--F91MiniDemo Simple RZK project targetting the F91 Mini-Module (eZ80F910200KITG)
+      |--FS_APP      Demonstrates basic use of the Zilog File System (ZFS)
+      |--FS_Shell    Demonstrates how to create a shell for processing user commands
+      |--gpiodemo    Demonstrates how to manipulate GPIO port pins
+      |--I2cDemo     Sample code using the RZK I2C driver
+      |--intrmsgq    Demonstrates sharing RZK message queues with an interrupt thread
+      |--routerApp   Demonstrates the use of RZK semaphores, event groups and partitions
+      |--RtcDemo     Demonstrates the use of the BSP Real Time Clock (RTC) driver
+      |--SerialDemo  Demonstrates the use of the BSP UART driver

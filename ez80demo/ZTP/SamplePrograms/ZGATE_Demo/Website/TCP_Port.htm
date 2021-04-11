@@ -1,0 +1,53 @@
+<html>
+
+<head>
+<title>ZGATE TCP Ports</title>
+</head>
+
+<body>
+
+
+<script type="text/javascript" src="TCP_Ports.js">
+</script>
+
+
+<script type="text/javascript" src="table.js">
+</script>
+
+
+<script type="text/javascript">
+var TableType = "TCP";
+var ItemType = "TCP Port";
+var MaxCols = 5;
+var NewEntryHTML = 'INPUT TYPE=text size=5 maxlength=5 NAME=InputValue';
+var ZgateCmdStr = "ZGATE_tcp_port";
+
+var WL_Desc = 'Each item in the list represents a target TCP port number.  ' +
+   'ZGATE&#153 forwards received TCP data targeting applications bound to any of the listed port numbers. ' +
+   'ZGATE&#153 blocks received TCP data if the destination TCP port number does not match any of the listed values.';
+
+var BL_Desc = 'Each item in the list represents a target TCP port number.  ' +
+   'ZGATE&#153 discards received TCP data targeting applications bound to any of the listed port numbers. ' +
+   'ZGATE&#153 forwards received TCP data if the destination TCP port number does not match any of the listed values.';
+
+var Disabled_Desc = 'TCP destination port number filtering is disabled.';
+
+
+function IsEntryValid( PortNum )
+{
+   PortNum = parseInt( PortNum, 10 );
+   if( isNaN(PortNum) || (PortNum < 1) || (PortNum > 0xFFFF)  )
+   {
+      return( 0 );
+   }
+   return( 1 );
+}
+
+
+GenerateTable();
+</script>
+
+
+
+</body>
+</html>

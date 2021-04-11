@@ -1,0 +1,56 @@
+/* Lib Command File - BSPeZ80F92 Debug */
+
+-warn
+"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\BSPeZ80F92.lib"=\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\AddEMAC.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\AddI2C.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\AddRTC.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\AddSPI.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\AddUART.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\AM29LV008_Driver.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\AM29LV008_Driver_FSWrapper.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\AM29LV160_Driver.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\AM29LV160_Driver_FSWrapper.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\AT49BV162_Driver.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\AT49BV162_Driver_FSWrapper.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\CS8900.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\EMACisr.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\Ethaddr.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\Ethclose.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\Ethcontrol.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\Ethopen.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\Ethread.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\Ethwrite.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\I2C.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\I2Cisr.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\I2CMgr.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\IntFlash_Driver.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\IntFlash_Driver_FSWrapper.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\IntFlash_InfoPage_Driver.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\isrSPI.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\MT28F008_Driver.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\MT28F008_Driver_FSWrapper.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\netorder.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\nic_read.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\nic_write.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\RTCcontrol.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\RTCisr.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\RTCread.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\serial_chario.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\serial_close.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\serial_control.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\serial_init.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\serial_open.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\serial_read.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\serial_seek.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\serial_task.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\serial_write.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\SPI_close.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\SPI_control.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\SPI_open.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\SPI_readwrite.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\SPIisr.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\SPIresume.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\UART0isr.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\UART1isr.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\RZK\eZ80_BSP\Debug\WDT.obj"

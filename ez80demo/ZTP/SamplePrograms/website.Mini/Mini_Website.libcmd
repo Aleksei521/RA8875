@@ -1,0 +1,8 @@
+/* Lib Command File - website Debug */
+
+-warn
+"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Mini\Debug\Mini_Website.lib"=\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Mini\Debug\website.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Mini\Debug\main_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Mini\Debug\Acclmheading_jpg.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Mini\Debug\ez80acclaimchip_jpg.obj"

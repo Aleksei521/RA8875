@@ -1,0 +1,64 @@
+<html>
+
+<head>
+<title>ZGATE IP Address</title>
+</head>
+
+<body>
+
+
+<script type="text/javascript" src="IP_Addr.js">
+</script>
+
+
+<script type="text/javascript" src="table.js">
+</script>
+
+
+<script type="text/javascript">
+var TableType = "IP Address";
+var ItemType = "IP Addr";
+var MaxCols = 3;
+var NewEntryHTML = 'INPUT TYPE=text size=15 maxlength=15 NAME=InputValue';
+var ZgateCmdStr = "ZGATE_ip_addr";
+
+var WL_Desc = 'Each item in the list represents the source address field of a received IP datagram. ' +
+   'ZGATE&#153 forwards received IP datagrams sent by any of the listed IP addresses. ' +
+   'ZGATE&#153 blocks received IP datagrams if the source address field does not match any of the listed values.';
+
+var BL_Desc = 'Each item in the list represents the source address field of a received IP datagram. ' +
+   'ZGATE&#153 discards received IP datagrams sent by any of the listed IP addresses. ' +
+   'ZGATE&#153 forwards received IP datagrams if the source address field does not match any of the listed values.';
+
+var Disabled_Desc = 'IP source address filtering disabled.';
+
+
+
+function IsEntryValid( IpAddr )
+{
+   var SubAddr;
+
+
+   SubAddr = IpAddr.split(".");
+   if( SubAddr.length == 4 )
+   {
+      for( i in SubAddr )
+      {
+         if( SubAddr[i] > 255 )
+         {  // Invalid
+            return( 0 );
+         }
+      }
+      return( 1 );
+   }
+   return( 0 );
+}
+
+
+GenerateTable();
+</script>
+
+
+
+</body>
+</html>

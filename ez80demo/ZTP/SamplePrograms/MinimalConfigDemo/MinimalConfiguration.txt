@@ -1,0 +1,111 @@
+			ZTP Minimal Configurations.
+
+The Demo project provides the mainmal configuration of the ZiLOG TCP/IP 
+Software Suite. It includes only the RZK Core, Device drivers 
+( UART & EMAC ),ZTP Core( ARP, IP, TCP, UDP) and applications protocols 
+bootp/DHCP, DNS & Socket library.This Demo folder contains the project 
+workspace for the minimal configuration on eZ80F91.
+
+The details of the configuration are as below :
+
+	RZK
+Maximum number of message queues 		10
+Maximum number of eventgroup			3
+Maximum number of semaphore			10
+Maximum number of software timer		4
+Maximum number of partition			4
+Maximum number of regions			2
+Maximum number of region segment		50
+Maximum number of device control blocks		12
+
+UART0	device
+EMAC	device
+
+
+	ZTP
+Maximum number of IP receive Buffers		5
+Maximum number of TCP sockets			4
+Maximum number of UDP sockets			2
+TCP Receive buffer size				2048
+TCP Send buffer size				2048
+Maximum number of Ethernet interface		1
+Maximum number of Serial interface		0
+Maximum number of IP reassembly buffers		2
+Maximum size of IP reassembly buffer		3100
+
+
+This directory contains seven files 
+1. RZK_Conf_Minimal.c  	   - This file contains the RZK settings for 
+			      the above configurations.
+2. ZTP_Conf_Minimal.c  	   - This file contains the minimal initializations
+			      required.
+3. ZTPConfig_Minimal.c 	   - This file contains the ZTP settings 
+			      for the above configurations.
+4. ZTPConfig_Minimal.h 	   - This file contains the ZTP settings 
+			      for the above configurations.
+5. Main.Minimal.c      	   - This file contains a simple TCP 
+			      server socket demo.
+6. MinimalDemoWindows.exe  - This is the corresponding windows side 
+			      client executable for the demo.
+7. MinimalDemoWindows.c	   - This is the corresponding windows side 
+			      client program for the demo.
+
+
+
+Q How to run the demo?
+
+
+A In the Main.Minimal.c file, set appropriate values to the maximun buffer
+  size (MAX_BUF_SIZE), the local Server port number(LocalPort), the number 
+  of iterations(ITERATIONS). The default values of MAX_BUF_SIZE, local server
+  port number(LocalPort) and the number of iterations(ITERATIONS) are, 1200,
+  5000 and 20 respectively. There values are set in main.minimal.c. If the
+  user wants to change these values, he can search for these variables and
+  change their values. Note that these values must be entered when windows
+  application(MinimalDemoWindows.exe) is executed to run the minimal 
+  configuration demo.
+  Build the project and download the code on to the target.
+  The print on the console gives the values of the iterations, Server port 
+  number and the buffer size that was configured earlier. The ZTP code 
+  should be executed first. Then execute the MinimalDemoWindows.exe. Enter 
+  the same values of the iterations, buffer size and the port number as 
+  displayed on the ZTP console. 
+
+
+Q How to convert the other platform projects to Minimal confioguration ?
+
+A 1. Copy the .ZDSproj file to the Minimal Demo folder.
+  2. Delete rtc_conf.c, DataPer_Conf.c, RZK_Conf.c, ZTPInit_Conf.c,  
+     ZFS_Conf.c, main.c and ZTPConfig.c from the project.
+  3. Add Main.Minimal.c, RZK_Conf_Minimal.c, ZTL_Conf_Minimal.c and 
+     ZTPConfig_Minimal.c files to the project.
+  4. In the project navigate to Project->Settings->C->Preprocessor->Preprocessor
+     definations delete SNMP, RZKFS, & SHELL defines.
+  5. In the project navigate to Project->Settings->Linker->General
+     ->Object/Library module delete the settings and add the below settings
+
+
+     ..\..\..\RZK\Bsp\eZ80\Lib\BSPeZ80F91.lib,..\..\..\RZK\Core\eZ80\Lib\RZKDebugPI.lib,
+     ..\..\..\RZK\Core\eZ80\Lib\rzkez80F91.lib,..\..\..\RZK\FileSystem\eZ80\Lib\noFS.obj,
+     ..\..\..\ZTP\ZTPCore\LIB\ZTPCore.lib,..\..\..\ZTP\Apps\IGMP\lib\noigmp.obj,
+     ..\..\..\ZTP\Apps\RARP\lib\norarp.obj,..\..\..\ZTP\Apps\SNMP\Lib\nosnmp.obj,
+     ..\..\..\ZTP\Apps\ppp\Lib\noppp.obj,..\..\..\ZTP\Apps\CommProtoLib\CommoProtoLib.lib
+	
+    Note: Add the appropriate BSPXXXXXx.lib and rzkxxxxxxx.lib
+
+
+Q What is the footprint of the above configurations?
+
+A As a rough guide when considering footprint, the following metrics were 
+  obtained using the eZ80(R) Development Platform with the eZ80F91 Module 
+  attached and  "RAM" configuration and were compiled using ZDSII-eZ80Acclaim!(TM) v4.11.0
+  The below footprint figures are for the above mentioned configuration. 
+  The RAM and ROM requirment vary with the the application.The RAM requirment is given is 
+  only the static requirmant and there might be run time requirments as well.
+
+  The static ROM requirment is around 90 KB
+  The static RAM requirment is around 38 KB
+
+
+
+

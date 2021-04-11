@@ -1,0 +1,18 @@
+How to use Ping() API
+-----------------------------------------
+The pingdemo demonstrates the usage of ping() API.
+
+The syntax of ping() API is,
+byte ping(UINT32 dst, UINT32 count);
+
+An application can use the ping API to determine if a remote device is
+using a specific IP address. The dst parameter specifies the IP address of
+the device to which an ICMP Echo Request packet is sent. The ping
+packets is sent count number of times.
+
+The ping() API takes the IP address of target as the first argument and
+the number of times the ping packet to be sent as the second argument.
+
+The API waits for a response from the target device. If a response is
+received, then TRUE is returned. If this API fails to receive a response,
+then FALSE is returned.

@@ -1,0 +1,117 @@
+<html>
+
+<head>
+<title>ZGATE Logging</title>
+<style TYPE="text/css">
+ body
+ {
+   color:#000000;
+   font-family:Verdana;
+ }
+ table
+ {
+   font-size:14px;
+ }
+ h6
+ {
+   color:#004400;
+   font-size:16px;
+ }
+</style>
+</head>
+
+<body>
+
+
+<script type="text/javascript" src="Log_Cfg.js">
+</script>
+
+
+
+<script type="text/javascript">
+
+
+
+   function DoSubmit( form )
+   {
+      form.setAttribute( "method", "post" ); 
+      form.setAttribute( "action", "/ZGATE_Conf" ); 
+
+      form.submit();
+   }
+
+
+
+   function SetButtons( form ) 
+   {
+      var n = LogStr.indexOf( "Logging to screen " );
+      var str = LogStr.slice( n + 18 );
+      var sub = str.split( " " );
+
+
+      // Set state of Screen Logging radio buttons
+      if( sub[0] == "enabled" )
+      {
+         form.elements[0].checked = true;
+      }
+      else
+      {
+         form.elements[1].checked = true;
+      }
+
+      // Set state of File Logging radio buttons
+      if( sub[ sub.length -1 ] == "enabled" )
+      {
+         form.elements[2].checked = true;
+      }
+      else
+      {
+         form.elements[3].checked = true;
+      }
+   } 
+
+
+
+   document.write( '' +
+      '<div align="left"><FORM id="FormId"><table border="0" width="800" id="ZgateTableId">' +
+      '  <tr><td colspan="2">' +
+      '  <h6>ZGATE&#153 Logging Configuration</h6>' +
+      '  </td></tr>' +
+      '  <tr><td>' +
+      '    <br><b>Console Logging</b>' +
+      '  </td></tr>' +
+      '  <tr><td>' +
+      '    Select "Enable" to display ZGATE&#153 logging information on the console.<br>' +
+      '    Select "Disable" to prevent logging information from being displayed on the console.' +
+      '  </td>' +
+      '  <td><input type="radio" name="LogDisp" value="Enable"/>Enable' +
+      '      <input type="radio" name="LogDisp" value="Disable"/>Disable' +
+      '  </td></tr>' +
+      '  <tr><td>' +
+      '    <br><b>File System Logging</b>' +
+      '  </td></tr>' +
+      '  <tr><td>' +
+      '    Select "Enable" to allow ZGATE&#153 to write logging information in the file system<br>' +
+      '    Select "Disable" to prevent logging information from being written to the file system.' +
+      '  </td>' +
+      '  <td><input type="radio" name="LogFile" value="Enable"/>Enable' +
+      '      <input type="radio" name="LogFile" value="Disable"/>Disable' +
+      '  </td></tr>' +
+      '  <tr><td>' +
+      '    <br>' +
+      '    <em>Please note that logging information to the file system will degrade system performance.</em>' +
+      '  </td></tr>' +
+      '  <tr align="center">' +
+      '    <td><br><input type="button" VALUE="Update" onClick="DoSubmit(this.form)">' +
+      '    <input type="button" VALUE="Cancel" onClick="SetButtons(this.form)"></td>' +
+      '  <tr>' +
+      '</table></FORM></div>' );
+
+   SetButtons( document.getElementById("FormId") );
+
+</script>
+
+
+
+</body>
+</html>

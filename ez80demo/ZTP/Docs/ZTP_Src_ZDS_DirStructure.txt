@@ -1,0 +1,63 @@
+
+Directory structure for ZTP 2.5.0 Source release
+================================================
+
+The ZTP source code version 2.5.0 is integrated with ZDSII_eZ80Acclaim!_5.3.0 and 
+is automatically installed by the ZDSII_eZ80Acclaim!_5.3.0 install program.
+
+The default location of ZTP source components is
+C:\Zilog\ZDSII_eZ80Acclaim!_5.3.0\ZTP2.5.0
+
+The following subdirectories are created beneath the ZTP2.5.0 folder:
+
+ZTP2.5.0
+|
+|--ZTP
+   |
+   |--Apps              ZTP Application protocols
+   |   |--Common        Contains common utility routines
+   |   |--CommProtoLib  ZDS project file to build application protocol library CommoProtoLib.lib
+   |   |--Crypto        Source code for the MD5 message-digest (hash) algorithm 
+   |   |--DNS           Domain Name System (DNS) client source code
+   |   |--FTP           File Transfer Protocol (FTP) client and server source code
+   |   |--HTTP          Hypertext Transfer Protocol (HTTP) server source code
+   |   |--IGMP          Internet Group Management Protocol (IGMP) source code
+   |   |--Lib           ZTP utilities and run time library functions
+   |   |--PPP           Point to Point Protocol (PPP) source code
+   |   |--PPPoE         PPP over Ethernet (PPPoE) source code
+   |   |--Rarp          Reverse ARP (RARP) source code
+   |   |--Shell         ZTP console shell source code
+   |   |--SMTP          Simple Mail Transfer Protocol (SMTP) client source code
+   |   |--SNMP          Simple Network Management Protocol (SNMP) client source code
+   |   |--SNTP          Simple Network Time Protocol (SNTP) client source code
+   |   |--Telnet        Telnet client and server source code
+   |   |--Tftp          Trivial File Transfer Protocol (TFTP) client source code
+   |   |--TimeD         Time protocol client source code
+   |   |--tty           Teletype source code
+   |
+   |--Conf              ZTP configuration files
+   |
+   |--Docs              ZTP related documents and help files
+   |
+   |--Inc               ZTP header files
+   |
+   |--Lib               ZTP libraries and stub files
+   |
+   |--SamplePrograms
+   |  |--eZNetConfig          Demonstrates remote ZTP configuration and firmware update
+   |  |--FTPClientDemo        Demonstrates use of FTP Client API
+   |  |--MinimalConfigDemo    Demonstrates how to minimize ZTP memory footprint
+   |  |--PingDemo             Demonstrates use of Ping API
+   |  |--Serial2TCPDemo       Demonstrates data transfer between serial and TCP/IP Link
+   |  |--TCPUDPDemo           Demonstrates network data transfer using TCP and UDP sockets
+   |  |--website.Acclaim      Demonstrates how to create an embedded Website library
+   |  |--website.Mini         Simplified Website library with reduced memory footprint
+   |  |--ZGATE_Demo           Demonstration program for the ZGATE Embedded Security Firewall
+   |  |--ZTPDemo              Demonstrates features of the ZTP TCP/IP software suite
+   |  |--ZTPDemo_BootLoader   Demonstrates how to integrate RZK/ ZTP projects with eZ80 Boot Loader
+   |
+   |--ZTPCore              ZTP networking core (IP, ICMP, UDP and TCP) source code
+      |--Inc
+      |--Lib
+      |--Src
+   

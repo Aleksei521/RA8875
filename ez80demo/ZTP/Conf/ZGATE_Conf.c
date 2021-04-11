@@ -1,0 +1,55 @@
+/************************************************************************************************
+** File:        ZGATE_Conf.c
+** Description: Defines ZGATE default startup configuration if ZFS contains neither of the user
+**              defined configuration files (zg_rules.usr and zg_rules.def).
+**
+** Copyright 2012 Zilog Inc. ALL RIGHTS RESERVED.
+*
+*************************************************************************************************
+* The source code in this file was written by an authorized Zilog employee or a licensed 
+* consultant. The source code has been verified to the fullest extent possible. 
+*
+* Permission to use this code is granted on a royalty-free basis. However, users are cautioned to
+* authenticate the code contained herein. 
+* 
+* ZILOG DOES NOT GUARANTEE THE VERACITY OF THIS SOFTWARE; ANY SOFTWARE CONTAINED HEREIN IS
+* PROVIDED "AS IS." NO WARRANTIES ARE GIVEN, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING
+* IMPLIED WARRANTIES OF FITNESS FOR PARTICULAR PURPOSE OR MERCHANTABILITY. IN NO EVENT WILL ZILOG
+* BE LIABLE FOR ANY SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES OR ANY LIABILITY IN TORT,
+* NEGLIGENCE, OR OTHER LIABILITY INCURRED AS A RESULT OF THE USE OF THE SOFTWARE, EVEN IF ZILOG 
+* HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. ZILOG ALSO DOES NOT WARRANT THAT THE USE 
+* OF THE SOFTWARE, OR OF ANY INFORMATION CONTAINED THEREIN WILL NOT INFRINGE ANY PATENT, 
+* COPYRIGHT, OR TRADEMARK OF ANY THIRD PERSON OR ENTITY.
+
+* THE SOFTWARE IS NOT FAULT-TOLERANT AND IS NOT DESIGNED, MANUFACTURED OR INTENDED FOR USE IN 
+* CONJUNCTION WITH ON-LINE CONTROL EQUIPMENT, IN HAZARDOUS ENVIRONMENTS, IN APPLICATIONS 
+* REQUIRING FAIL-SAFE PERFORMANCE, OR WHERE THE FAILURE OF THE SOFTWARE COULD LEAD DIRECTLY TO 
+* DEATH, PERSONAL INJURY OR SEVERE PHYSICAL OR ENVIRONMENTAL DAMAGE (ALL OF THE FOREGOING, 
+* "HIGH RISK ACTIVITIES"). ZILOG SPECIFICALLY DISCLAIMS ANY EXPRESS OR IMPLIED WARRANTY TO HIGH 
+* RISK ACTIVITIES.
+*
+************************************************************************************************/
+
+const char *ZGATE_ConfigStrings[] =
+{
+   "G, INTERVAL=240",
+   "G, HW_THRESHOLD=2000",
+   "G, LW_THRESHOLD=500",
+   "G, LOG_TO_SCREEN=OFF",
+   "G, LOGGING=OFF",
+   "G, MAX_TH_LOGFILE_SIZE=5",
+   "G, MAX_LOGFILE_SIZE=10",	
+   "C, 1, ETH_ADDR_FILTER, NONE",
+   "C, 2, ETH_FRAME_FILTER, NONE",
+   "C, 3, IP_SRC_ADDR_FILTER, NONE",
+   "C, 4, IP_PROTOCOL_FILTER, WHITELIST",
+   "C, 5, TCP_PORT_FILTER, WHITELIST",
+   "C, 6, UDP_PORT_FILTER, WHITELIST",
+   "C, 7, ICMP_TYPE_FILTER, NONE",
+   "R, 1, WHITELIST, ENABLED, TCP_PORT, {1,7,20,21,22,23,25,37,42,43,57,80,88,107,115}",
+   "R, 2, WHITELIST, ENABLED, TCP_PORT, {162,179,264,443,546,547,992,8081}",
+   "R, 3, WHITELIST, ENABLED, UDP_PORT, {1,7,22,37,42,53,67,68,69,80,88,123,161,162}",
+   "R, 4, WHITELIST, ENABLED, UDP_PORT, {179,264,514,520,546,547,992}",
+   "R, 5, WHITELIST, ENABLED, IP_PROT, {1,2,3,4,6,8,9,17}",
+   ""
+}; 

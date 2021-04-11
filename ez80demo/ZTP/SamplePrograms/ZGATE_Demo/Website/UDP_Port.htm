@@ -1,0 +1,54 @@
+<html>
+
+<head>
+<title>ZGATE UDP Ports</title>
+</head>
+
+<body>
+
+
+<script type="text/javascript" src="UDP_Ports.js">
+</script>
+
+
+<script type="text/javascript" src="table.js">
+</script>
+
+
+<script type="text/javascript">
+var TableType = "UDP";
+var ItemType = "UDP Port";
+var MaxCols = 5;
+var NewEntryHTML = 'INPUT TYPE=text size=5 maxlength=5 NAME=InputValue';
+var ZgateCmdStr = "ZGATE_udp_port";
+
+
+var WL_Desc = 'Each item in the list represents a target UDP port number.  ' +
+   'ZGATE&#153 forwards received UDP datagrams targeting applications bound to any of the listed port numbers. ' +
+   'ZGATE&#153 blocks received UDP datagrams if the destination UDP port number does not match any of the listed values.';
+
+var BL_Desc = 'Each item in the list represents a target UDP port number.  ' +
+   'ZGATE&#153 discards received UDP datagrams targeting applications bound to any of the listed port numbers. ' +
+   'ZGATE&#153 forwards received UDP datagrams if the destination UDP port number does not match any of the listed values.';
+
+var Disabled_Desc = 'UDP destination port number filtering is disabled.';
+
+
+function IsEntryValid( PortNum )
+{
+   PortNum = parseInt( PortNum, 10 );
+   if( isNaN(PortNum) || (PortNum < 1) || (PortNum > 0xFFFF)  )
+   {
+      return( 0 );
+   }
+   return( 1 );
+}
+
+
+GenerateTable();
+</script>
+
+
+
+</body>
+</html>

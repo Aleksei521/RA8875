@@ -1,0 +1,54 @@
+<html>
+
+<head>
+<title>ZGATE Eth Frame Type</title>
+</head>
+
+<body>
+
+
+<script type="text/javascript" src="Eth_Type.js">
+</script>
+
+
+<script type="text/javascript" src="table.js">
+</script>
+
+
+<script type="text/javascript">
+var TableType = "Ethernet Frame Type";
+var ItemType = "Eth Type";
+var MaxCols = 5;
+var NewEntryHTML = 'INPUT TYPE=text size=5 maxlength=5 NAME=InputValue';
+var ZgateCmdStr = "ZGATE_eth_type";
+
+var WL_Desc = 'Each item in the list represents the Type field of a received Ethernet frame. ' +
+   'ZGATE&#153 forwards received Ethernet frames with a Type field matching any of the listed values. ' +
+   'ZGATE&#153 discards received Ethernet frames if the Type field does not match any of the listed values.';
+
+var BL_Desc = 'Each item in the list represents the Type field of a received Ethernet frame. ' +
+   'ZGATE&#153 discards received Ethernet frames with a Type field matching any of the listed values. ' +
+   'ZGATE&#153 forwards received Ethernet frames if the Type field does not match any of the listed values.';
+
+var Disabled_Desc = 'Ethernet frame type filtering is disabled.';
+
+
+
+function IsEntryValid( EthType )
+{
+   EthType = parseInt( EthType, 10 );
+   if( isNaN(EthType) || (EthType < 1) || (EthType > 0xFFFF)  )
+   {
+      return( 0 );
+   }
+   return( 1 );
+}
+
+
+GenerateTable();
+</script>
+
+
+
+</body>
+</html>

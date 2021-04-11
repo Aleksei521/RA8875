@@ -1,0 +1,794 @@
+Zilog eZ80 Macro Assembler Version 4.2 (17030704)                                                                                                                                                               13-Apr-17     11:32:23     page:   1
+
+
+PC     Object              I  Line    Source 
+                           A     1    ; Zilog eZ80 ANSI C Compiler Release 3.4
+                           A     2    ; -nomodsect -optsize -noreduceopt -nopadbranch -debug
+                           A     3    ; -peephole -globalopt -localcse -const=ROM 
+                           A     4    	FILE	"..\Src\lexan.c"
+                           A     5    	.assume ADL=1
+                           A     6    .DEBUG "C"
+                           A     7    	SEGMENT CODE
+                           A     8    .BEGREC "fmt_type",19
+                           A     9    .DEFINE "status"
+                           A    10    .VALUE 0
+                           A    11    .CLASS 8
+                           A    12    .TYPE 12
+                           A    13    .ENDEF
+                           A    14    .DEFINE "flags"
+                           A    15    .VALUE 1
+                           A    16    .CLASS 8
+                           A    17    .TYPE 12
+                           A    18    .ENDEF
+                           A    19    .DEFINE "size"
+                           A    20    .VALUE 2
+                           A    21    .CLASS 8
+                           A    22    .TYPE 2
+                           A    23    .ENDEF
+                           A    24    .DEFINE "chr"
+                           A    25    .VALUE 3
+                           A    26    .CLASS 8
+                           A    27    .TYPE 2
+                           A    28    .ENDEF
+                           A    29    .DEFINE "type"
+                           A    30    .VALUE 4
+                           A    31    .CLASS 8
+                           A    32    .TYPE 2
+                           A    33    .ENDEF
+                           A    34    .DEFINE "field_width"
+                           A    35    .VALUE 5
+                           A    36    .CLASS 8
+                           A    37    .TYPE 2
+                           A    38    .ENDEF
+                           A    39    .DEFINE "precision"
+                           A    40    .VALUE 6
+                           A    41    .CLASS 8
+                           A    42    .TYPE 2
+                           A    43    .ENDEF
+                           A    44    .DEFINE "set_begin"
+                           A    45    .VALUE 7
+                           A    46    .CLASS 8
+                           A    47    .TYPE 34
+                           A    48    .ENDEF
+                           A    49    .DEFINE "set_end"
+                           A    50    .VALUE 10
+                           A    51    .CLASS 8
+                           A    52    .TYPE 34
+                           A    53    .ENDEF
+                           A    54    .DEFINE "pad_whole"
+                           A    55    .VALUE 13
+                           A    56    .CLASS 8
+                           A    57    .TYPE 12
+                           A    58    .ENDEF
+                           A    59    .DEFINE "pad_pre_fract"
+                           A    60    .VALUE 14
+                           A    61    .CLASS 8
+                           A    62    .TYPE 12
+                           A    63    .ENDEF
+                           A    64    .DEFINE "pad_post_fract"
+                           A    65    .VALUE 15
+                           A    66    .CLASS 8
+                           A    67    .TYPE 12
+                           A    68    .ENDEF
+                           A    69    .DEFINE "pad_at"
+                           A    70    .VALUE 16
+                           A    71    .CLASS 8
+                           A    72    .TYPE 34
+                           A    73    .ENDEF
+                           A    74    .ENDREC "fmt_type"
+                           A    75    .BEGREC "flt_info",12
+                           A    76    .DEFINE "flags"
+                           A    77    .VALUE 0
+                           A    78    .CLASS 8
+                           A    79    .TYPE 12
+                           A    80    .ENDEF
+                           A    81    .DEFINE "exp"
+                           A    82    .VALUE 1
+                           A    83    .CLASS 8
+                           A    84    .TYPE 2
+                           A    85    .ENDEF
+                           A    86    .DEFINE "digits"
+                           A    87    .VALUE 2
+                           A    88    .CLASS 8
+                           A    89    .DIM 10
+                           A    90    .TYPE 108
+                           A    91    .ENDEF
+                           A    92    .ENDREC "flt_info"
+                           A    93    .BEGREC "devCap",4
+                           A    94    .DEFINE "devType"
+                           A    95    .VALUE 0
+                           A    96    .CLASS 8
+                           A    97    .TYPE 12
+                           A    98    .ENDEF
+                           A    99    .DEFINE "devHdl"
+                           A   100    .VALUE 1
+                           A   101    .CLASS 8
+                           A   102    .TYPE 33
+                           A   103    .ENDEF
+                           A   104    .ENDREC "devCap"
+                           A   105    .BEGREC "RZK_DEVICE_CB_t",54
+                           A   106    .DEFINE "InUse"
+                           A   107    .VALUE 0
+                           A   108    .CLASS 8
+                           A   109    .TYPE 12
+                           A   110    .ENDEF
+                           A   111    .DEFINE "devName"
+                           A   112    .VALUE 1
+                           A   113    .CLASS 8
+                           A   114    .DIM 12
+                           A   115    .TYPE 98
+                           A   116    .ENDEF
+                           A   117    .DEFINE "fnInit"
+                           A   118    .VALUE 13
+                           A   119    .CLASS 8
+                           A   120    .TYPE 549
+                           A   121    .ENDEF
+                           A   122    .DEFINE "fnStop"
+                           A   123    .VALUE 16
+                           A   124    .CLASS 8
+                           A   125    .TYPE 549
+                           A   126    .ENDEF
+                           A   127    .DEFINE "fnOpen"
+                           A   128    .VALUE 19
+                           A   129    .CLASS 8
+                           A   130    .TYPE 549
+                           A   131    .ENDEF
+                           A   132    .DEFINE "fnClose"
+                           A   133    .VALUE 22
+                           A   134    .CLASS 8
+                           A   135    .TYPE 549
+                           A   136    .ENDEF
+                           A   137    .DEFINE "fnRead"
+                           A   138    .VALUE 25
+                           A   139    .CLASS 8
+                           A   140    .TYPE 549
+                           A   141    .ENDEF
+                           A   142    .DEFINE "fnWrite"
+                           A   143    .VALUE 28
+                           A   144    .CLASS 8
+                           A   145    .TYPE 549
+                           A   146    .ENDEF
+                           A   147    .DEFINE "fnSeek"
+                           A   148    .VALUE 31
+                           A   149    .CLASS 8
+                           A   150    .TYPE 549
+                           A   151    .ENDEF
+                           A   152    .DEFINE "fnGetc"
+                           A   153    .VALUE 34
+                           A   154    .CLASS 8
+                           A   155    .TYPE 549
+                           A   156    .ENDEF
+                           A   157    .DEFINE "fnPutc"
+                           A   158    .VALUE 37
+                           A   159    .CLASS 8
+                           A   160    .TYPE 549
+                           A   161    .ENDEF
+                           A   162    .DEFINE "fnIoctl"
+                           A   163    .VALUE 40
+                           A   164    .CLASS 8
+                           A   165    .TYPE 549
+                           A   166    .ENDEF
+                           A   167    .DEFINE "dvintvector"
+                           A   168    .VALUE 43
+                           A   169    .CLASS 8
+                           A   170    .TYPE 33
+                           A   171    .ENDEF
+                           A   172    .DEFINE "dvivec"
+                           A   173    .VALUE 46
+                           A   174    .CLASS 8
+                           A   175    .TYPE 13
+                           A   176    .ENDEF
+                           A   177    .DEFINE "dvinputoutput"
+                           A   178    .VALUE 48
+                           A   179    .CLASS 8
+                           A   180    .TYPE 44
+                           A   181    .ENDEF
+                           A   182    .DEFINE "devMode"
+                           A   183    .VALUE 51
+                           A   184    .CLASS 8
+                           A   185    .TYPE 2
+                           A   186    .ENDEF
+                           A   187    .DEFINE "dvminor"
+                           A   188    .VALUE 52
+                           A   189    .CLASS 8
+                           A   190    .TYPE 13
+                           A   191    .ENDEF
+                           A   192    .ENDREC "RZK_DEVICE_CB_t"
+                           A   193    .BEGREC "shvars",308
+                           A   194    .DEFINE "shlast"
+                           A   195    .VALUE 0
+                           A   196    .CLASS 8
+                           A   197    .TYPE 15
+                           A   198    .ENDEF
+                           A   199    .DEFINE "shlogon"
+                           A   200    .VALUE 4
+                           A   201    .CLASS 8
+                           A   202    .TYPE 15
+                           A   203    .ENDEF
+                           A   204    .DEFINE "shused"
+                           A   205    .VALUE 8
+                           A   206    .CLASS 8
+                           A   207    .TYPE 12
+                           A   208    .ENDEF
+                           A   209    .DEFINE "shuser"
+                           A   210    .VALUE 9
+                           A   211    .CLASS 8
+                           A   212    .DIM 9
+                           A   213    .TYPE 98
+                           A   214    .ENDEF
+                           A   215    .DEFINE "shmach"
+                           A   216    .VALUE 18
+                           A   217    .CLASS 8
+                           A   218    .DIM 64
+                           A   219    .TYPE 98
+                           A   220    .ENDEF
+                           A   221    .DEFINE "shbuf"
+                           A   222    .VALUE 82
+                           A   223    .CLASS 8
+                           A   224    .DIM 80
+                           A   225    .TYPE 98
+                           A   226    .ENDEF
+                           A   227    .DEFINE "shtok"
+                           A   228    .VALUE 162
+                           A   229    .CLASS 8
+                           A   230    .DIM 16
+                           A   231    .TYPE 354
+                           A   232    .ENDEF
+                           A   233    .DEFINE "shtktyp"
+                           A   234    .VALUE 210
+                           A   235    .CLASS 8
+                           A   236    .DIM 16
+                           A   237    .TYPE 98
+                           A   238    .ENDEF
+                           A   239    .DEFINE "shargst"
+                           A   240    .VALUE 226
+                           A   241    .CLASS 8
+                           A   242    .DIM 82
+                           A   243    .TYPE 98
+                           A   244    .ENDEF
+                           A   245    .ENDREC "shvars"
+                           A   246    .BEGREC "cmdent",13
+                           A   247    .DEFINE "cmdnam"
+                           A   248    .VALUE 0
+                           A   249    .CLASS 8
+                           A   250    .TYPE 34
+                           A   251    .ENDEF
+                           A   252    .DEFINE "cbuiltin"
+                           A   253    .VALUE 3
+                           A   254    .CLASS 8
+                           A   255    .TYPE 12
+                           A   256    .ENDEF
+                           A   257    .DEFINE "cproc"
+                           A   258    .VALUE 4
+                           A   259    .CLASS 8
+                           A   260    .TYPE 547
+                           A   261    .ENDEF
+                           A   262    .DEFINE "cnext"
+                           A   263    .VALUE 7
+                           A   264    .CLASS 8
+                           A   265    .TAG "cmdent"
+                           A   266    .TYPE 40
+                           A   267    .ENDEF
+                           A   268    .DEFINE "helpDesc"
+                           A   269    .VALUE 10
+                           A   270    .CLASS 8
+                           A   271    .TYPE 34
+                           A   272    .ENDEF
+                           A   273    .ENDREC "cmdent"
+                           A   274    ;    1	/************************************************************************************
+                           A   275    ;    2	 * Copyright 2016, ZiLOG Inc.
+                           A   276    ;    3	 * All Rights Reserved
+                           A   277    ;    4	 *
+                           A   278    ;    5	 * This is UNPUBLISHED PROPRIETARY SOURCE CODE of ZiLOG Inc., and might
+                           A   279    ;    6	 * contain proprietary, confidential and trade secret information of
+                           A   280    ;    7	 * ZiLOG, our partners and parties from which this code has been licensed.
+                           A   281    ;    8	 * 
+                           A   282    ;    9	 * The contents of this file may not be disclosed to third parties, copied or
+                           A   283    ;   10	 * duplicated in any form, in whole or in part, without the prior written
+                           A   284    ;   11	 * permission of ZiLOG Inc.
+                           A   285    ;   12	 ************************************************************************************/
+                           A   286    ;   13	 /************************************************************************************
+                           A   287    ;   14	 * Copyright 2001, Metro Link, Inc.
+                           A   288    ;   15	 * All Rights Reserved
+                           A   289    ;   16	 *
+                           A   290    ;   17	 * This is UNPUBLISHED PROPRIETARY SOURCE CODE of Metro Link, Inc. and may
+                           A   291    ;   18	 * contain proprietary, confidential and trade secret information of
+                           A   292    ;   19	 * Metro Link, Inc. and/or its partners.
+                           A   293    ;   20	 *  
+                           A   294    ;   21	 * The contents of this file may not be disclosed to third parties, copied or
+                           A   295    ;   22	 * duplicated in any form, in whole or in part, without the prior written
+                           A   296    ;   23	 * permission of Metro Link, Inc.
+                           A   297    ;   24	 *
+                           A   298    ;   25	 ************************************************************************************/
+                           A   299    ;   26	
+                           A   300    ;   27	/* lexan.c - lexan */
+                           A   301    ;   28	
+                           A   302    ;   29	#include <stdio.h>
+                           A   303    ;   30	#include <stdarg.h>
+                           A   304    ;   31	#include <string.h>
+                           A   305    ;   32	#include "ZSysgen.h"
+                           A   306    ;   33	#include "ZTypes.h"
+                           A   307    ;   34	#include "ZDevice.h"
+                           A   308    ;   35	#include "shell.h"
+                           A   309    ;   36	
+                           A   310    ;   37	/*------------------------------------------------------------------------
+                           A   311    ;   38	 *  lexan  -  ad hoc lexical analyzer to divide command line into tokens
+                           A   312    ;   39	 *------------------------------------------------------------------------
+                           A   313    ;   40	 */
+                           A   314    ;   41	INT16 lexan(struct shvars *Shl, INT8	*line)
+                           A   315    ;   42	{
+000000                     A   316    _lexan:
+                           A   317    .DEFINE "_lexan"
+                           A   318    
+                           A   319    .VALUE _lexan
+                           A   320    
+                           A   321    .CLASS 2
+                           A   322    
+                           A   323    .TYPE 67
+                           A   324    
+                           A   325    .ENDEF
+                           A   326    
+                           A   327    .BEGFUNC "lexan",42,"_lexan"
+                           A   328    
+                           A   329    .LINE 42
+                           A   330    
+                           A   331    .DEFINE "Shl"
+                           A   332    
+                           A   333    .CLASS 65
+                           A   334    
+                           A   335    .VALUE 6
+                           A   336    
+                           A   337    .TAG "shvars"
+                           A   338    
+                           A   339    .TYPE 40
+                           A   340    
+                           A   341    .ENDEF
+                           A   342    
+                           A   343    .DEFINE "line"
+                           A   344    
+                           A   345    .CLASS 65
+                           A   346    
+                           A   347    .VALUE 9
+                           A   348    
+                           A   349    .TYPE 34
+                           A   350    
+                           A   351    .ENDEF
+                           A   352    
+                           A   353    .DEFINE "p"
+                           A   354    
+                           A   355    .CLASS 65
+                           A   356    
+                           A   357    .VALUE -3
+                           A   358    
+                           A   359    .TYPE 34
+                           A   360    
+                           A   361    .ENDEF
+                           A   362    
+                           A   363    .DEFINE "ch"
+                           A   364    
+                           A   365    .CLASS 65
+                           A   366    
+                           A   367    .VALUE -4
+                           A   368    
+                           A   369    .TYPE 2
+                           A   370    
+                           A   371    .ENDEF
+                           A   372    
+                           A   373    .DEFINE "to"
+                           A   374    
+                           A   375    .CLASS 65
+                           A   376    
+                           A   377    .VALUE -7
+                           A   378    
+                           A   379    .TYPE 34
+                           A   380    
+                           A   381    .ENDEF
+                           A   382    
+                           A   383    .DEFINE "ntok"
+                           A   384    
+                           A   385    .CLASS 65
+                           A   386    
+                           A   387    .VALUE -9
+                           A   388    
+                           A   389    .TYPE 13
+                           A   390    
+                           A   391    .ENDEF
+                           A   392    
+                           A   393    .DEFINE "quote"
+                           A   394    
+                           A   395    .CLASS 65
+                           A   396    
+                           A   397    .VALUE -10
+                           A   398    
+                           A   399    .TYPE 2
+                           A   400    
+                           A   401    .ENDEF
+                           A   402    
+                           A   403    .DEFINE "tokptr"
+                           A   404    
+                           A   405    .CLASS 65
+                           A   406    
+                           A   407    .VALUE -13
+                           A   408    
+                           A   409    .TYPE 290
+                           A   410    
+                           A   411    .ENDEF
+                           A   412    
+000000 DDE5                A   413    	PUSH	IX
+000002 DD210000 00         A   414    	LD	IX,0
+000007 DD39                A   415    	ADD	IX,SP
+000009 ED22DB              A   416    	LEA	HL,IX+%FFFFFFDB
+00000C F9                  A   417    	LD	SP,HL
+                           A   418    ;   43		INT8	**tokptr;
+                           A   419    ;   44		UINT16	ntok;
+                           A   420    ;   45		INT8	*p;
+                           A   421    ;   46		INT8	ch;
+                           A   422    ;   47		INT8	*to;
+                           A   423    ;   48		INT8	quote;
+                           A   424    ;   49	
+                           A   425    ;   50		to = Shl->shargst;		/* area to place token strings */
+                           A   426    .LINE 50
+                           A   427    
+00000D DD0706              A   428    	LD	BC,(IX+%6)
+000010 21E20000            A   429    	LD	HL,226
+000014 09                  A   430    	ADD	HL,BC
+000015 DD2FF9              A   431    	LD	(IX+%FFFFFFF9),HL
+                           A   432    ;   51	
+                           A   433    ;   52	/* Ungh.. DOS based compilers treat '\n' as 0x0a instead of 0x0d */
+                           A   434    ;   53		for(p=line; *p!='\0';p++)
+                           A   435    .LINE 53
+                           A   436    
+000018 DD0709              A   437    	LD	BC,(IX+%9)
+00001B DD0FFD              A   438    	LD	(IX+%FFFFFFFD),BC
+00001E 18 14               A   439    	JR	L_4
+000020                     A   440    L_2:
+                           A   441    ;   54			if( *p == (INT8)0x0d )
+                           A   442    .LINE 54
+                           A   443    
+000020 DD27FD              A   444    	LD	HL,(IX+%FFFFFFFD)
+000023 7E                  A   445    	LD	A,(HL)
+000024 FE0D                A   446    	CP	A,%D
+000026 20 05               A   447    	JR	NZ,L_3
+                           A   448    ;   55				*p = (INT8)0x0a;
+                           A   449    .LINE 55
+                           A   450    
+000028 DD27FD              A   451    	LD	HL,(IX+%FFFFFFFD)
+00002B 360A                A   452    	LD	(HL),%A
+00002D                     A   453    L_3:
+00002D DD07FD              A   454    	LD	BC,(IX+%FFFFFFFD)
+000030 03                  A   455    	INC	BC
+000031 DD0FFD              A   456    	LD	(IX+%FFFFFFFD),BC
+000034                     A   457    L_4:
+000034 DD27FD              A   458    	LD	HL,(IX+%FFFFFFFD)
+000037 7E                  A   459    	LD	A,(HL)
+000038 B7                  A   460    	OR	A,A
+000039 20 E5               A   461    	JR	NZ,L_2
+                           A   462    ;   56	
+                           A   463    ;   57		tokptr = &Shl->shtok[ntok = 0];	/* array of ptrs to tokens */
+                           A   464    .LINE 57
+                           A   465    
+00003B DD36F700            A   466    	LD	(IX+%FFFFFFF7),%0
+00003F DD36F800            A   467    	LD	(IX+%FFFFFFF8),%0
+000043 DD0706              A   468    	LD	BC,(IX+%6)
+000046 21A20000            A   469    	LD	HL,162
+00004A 09                  A   470    	ADD	HL,BC
+00004B DD2FF3              A   471    	LD	(IX+%FFFFFFF3),HL
+                           A   472    ;   58		for  (p = line ; *p!='\0' && *p!='\n' && ntok < SHMAXTOK ;) {
+                           A   473    .LINE 58
+                           A   474    
+00004E DD0709              A   475    	LD	BC,(IX+%9)
+000051 DD0FFD              A   476    	LD	(IX+%FFFFFFFD),BC
+000054 C3 F0 01 00         A   477    	JR	L_56
+                           A   478    ;   59			while ( (ch = *p) == ' ')	/* skip leading blanks	*/
+000058                     A   479    L_10:
+                           A   480    .LINE 59
+                           A   481    
+                           A   482    ;   60				p++;
+                           A   483    .LINE 60
+                           A   484    
+000058 DD07FD              A   485    	LD	BC,(IX+%FFFFFFFD)
+00005B 03                  A   486    	INC	BC
+00005C DD0FFD              A   487    	LD	(IX+%FFFFFFFD),BC
+00005F                     A   488    L_9:
+00005F DD27FD              A   489    	LD	HL,(IX+%FFFFFFFD)
+000062 7E                  A   490    	LD	A,(HL)
+000063 DD77FC              A   491    	LD	(IX+%FFFFFFFC),A
+000066 FE20                A   492    	CP	A,%20
+000068 28 EE               A   493    	JR	Z,L_10
+                           A   494    ;   61			while ( (ch = *p) == (UINT8)'\377') {	/* skip telnet command	*/
+                           A   495    .LINE 61
+                           A   496    
+00006A 18 0F               A   497    	JR	L_14
+00006C                     A   498    L_15:
+                           A   499    ;   62				p++;p++;p++;
+                           A   500    .LINE 62
+                           A   501    
+00006C DD07FD              A   502    	LD	BC,(IX+%FFFFFFFD)
+00006F 03                  A   503    	INC	BC
+000070 DD0FFD              A   504    	LD	(IX+%FFFFFFFD),BC
+000073 03                  A   505    	INC	BC
+000074 DD0FFD              A   506    	LD	(IX+%FFFFFFFD),BC
+000077 03                  A   507    	INC	BC
+000078 DD0FFD              A   508    	LD	(IX+%FFFFFFFD),BC
+                           A   509    ;   63				}
+00007B                     A   510    L_14:
+                           A   511    .LINE 63
+                           A   512    
+00007B DD27FD              A   513    	LD	HL,(IX+%FFFFFFFD)
+00007E 7E                  A   514    	LD	A,(HL)
+00007F DD77FC              A   515    	LD	(IX+%FFFFFFFC),A
+000082 17ED62              A   516    	SEXT	HL
+000085 DD6EFC              A   517    	LD	L,(IX+%FFFFFFFC)
+000088 01FF0000            A   518    	LD	BC,255
+00008C B7                  A   519    	OR	A,A
+00008D ED42                A   520    	SBC	HL,BC
+00008F 28 DB               A   521    	JR	Z,L_15
+                           A   522    ;   64			if (ch == '\0' || ch == '\n')	/* end of line or string*/
+                           A   523    .LINE 64
+                           A   524    
+000091 DD7EFC              A   525    	LD	A,(IX+%FFFFFFFC)
+000094 B7                  A   526    	OR	A,A
+000095 28 07               A   527    	JR	Z,L_18
+000097 DD7EFC              A   528    	LD	A,(IX+%FFFFFFFC)
+00009A FE0A                A   529    	CP	A,%A
+00009C 20 07               A   530    	JR	NZ,L_21
+00009E                     A   531    L_18:
+                           A   532    ;   65				return(ntok);
+                           A   533    .LINE 65
+                           A   534    
+00009E DD27F7              A   535    	LD	HL,(IX+%FFFFFFF7)
+0000A1 C3 1B 02 00         A   536    	JR	L_58
+0000A5                     A   537    L_21:
+                           A   538    ;   66			*tokptr++ = to;			/* save start of token	*/
+                           A   539    .LINE 66
+                           A   540    
+0000A5 DD07F3              A   541    	LD	BC,(IX+%FFFFFFF3)
+0000A8 DD0FF0              A   542    	LD	(IX+%FFFFFFF0),BC
+0000AB C5E1                A   543    	LD	HL,BC
+0000AD DD07F9              A   544    	LD	BC,(IX+%FFFFFFF9)
+0000B0 ED0F                A   545    	LD	(HL),BC
+0000B2 DD31F3              A   546    	LD	IY,(IX+%FFFFFFF3)
+0000B5 ED3303              A   547    	LEA	IY,IY+%3
+0000B8 DD3EF3              A   548    	LD	(IX+%FFFFFFF3),IY
+                           A   549    ;   67			Shl->shtktyp[ntok++] = ch;
+                           A   550    .LINE 67
+                           A   551    
+0000BB DD07F7              A   552    	LD	BC,(IX+%FFFFFFF7)
+0000BE DD1706              A   553    	LD	DE,(IX+%6)
+0000C1 CD 00 00 00         A   554    	CALL	__stoiu
+0000C5 E5C1                A   555    	LD	BC,HL
+0000C7 21D20000            A   556    	LD	HL,210
+0000CB 19                  A   557    	ADD	HL,DE
+0000CC 09                  A   558    	ADD	HL,BC
+0000CD DD7EFC              A   559    	LD	A,(IX+%FFFFFFFC)
+0000D0 77                  A   560    	LD	(HL),A
+0000D1 DD27F7              A   561    	LD	HL,(IX+%FFFFFFF7)
+0000D4 23                  A   562    	INC	HL
+0000D5 DD75F7              A   563    	LD	(IX+%FFFFFFF7),L
+0000D8 DD74F8              A   564    	LD	(IX+%FFFFFFF8),H
+                           A   565    ;   68			if (ch == '"' || ch == '\'') {	/* check for quoted str.*/
+                           A   566    .LINE 68
+                           A   567    
+0000DB DD7EFC              A   568    	LD	A,(IX+%FFFFFFFC)
+0000DE FE22                A   569    	CP	A,%22
+0000E0 28 07               A   570    	JR	Z,L_50
+0000E2 DD7EFC              A   571    	LD	A,(IX+%FFFFFFFC)
+0000E5 FE27                A   572    	CP	A,%27
+0000E7 20 5C               A   573    	JR	NZ,L_51
+0000E9                     A   574    L_50:
+                           A   575    ;   69				quote = ch;
+                           A   576    .LINE 69
+                           A   577    
+0000E9 DD7EFC              A   578    	LD	A,(IX+%FFFFFFFC)
+0000EC DD77F6              A   579    	LD	(IX+%FFFFFFF6),A
+                           A   580    ;   70				for (p++ ; (ch = *p++) != quote && ch != '\n'
+                           A   581    .LINE 70
+                           A   582    
+0000EF DD07FD              A   583    	LD	BC,(IX+%FFFFFFFD)
+0000F2 03                  A   584    	INC	BC
+0000F3 DD0FFD              A   585    	LD	(IX+%FFFFFFFD),BC
+0000F6 18 13               A   586    	JR	L_31
+                           A   587    ;   71					&& ch != '\0' ; )
+0000F8                     A   588    L_29:
+                           A   589    .LINE 71
+                           A   590    
+                           A   591    ;   72					*to++ = ch;
+                           A   592    .LINE 72
+                           A   593    
+0000F8 DD07F9              A   594    	LD	BC,(IX+%FFFFFFF9)
+0000FB DD0FED              A   595    	LD	(IX+%FFFFFFED),BC
+0000FE C5E1                A   596    	LD	HL,BC
+000100 DD7EFC              A   597    	LD	A,(IX+%FFFFFFFC)
+000103 77                  A   598    	LD	(HL),A
+000104 DD07F9              A   599    	LD	BC,(IX+%FFFFFFF9)
+000107 03                  A   600    	INC	BC
+000108 DD0FF9              A   601    	LD	(IX+%FFFFFFF9),BC
+00010B                     A   602    L_31:
+00010B DD07FD              A   603    	LD	BC,(IX+%FFFFFFFD)
+00010E DD0FEA              A   604    	LD	(IX+%FFFFFFEA),BC
+000111 C5E1                A   605    	LD	HL,BC
+000113 7E                  A   606    	LD	A,(HL)
+000114 DD77FC              A   607    	LD	(IX+%FFFFFFFC),A
+000117 DD07FD              A   608    	LD	BC,(IX+%FFFFFFFD)
+00011A 03                  A   609    	INC	BC
+00011B DD0FFD              A   610    	LD	(IX+%FFFFFFFD),BC
+00011E DD7EFC              A   611    	LD	A,(IX+%FFFFFFFC)
+000121 DDBEF6              A   612    	CP	A,(IX+%FFFFFFF6)
+000124 28 0D               A   613    	JR	Z,L_33
+000126 DD7EFC              A   614    	LD	A,(IX+%FFFFFFFC)
+000129 FE0A                A   615    	CP	A,%A
+00012B 28 06               A   616    	JR	Z,L_33
+00012D DD7EFC              A   617    	LD	A,(IX+%FFFFFFFC)
+000130 B7                  A   618    	OR	A,A
+000131 20 C5               A   619    	JR	NZ,L_29
+000133                     A   620    L_33:
+                           A   621    ;   73				if (ch != quote)
+                           A   622    .LINE 73
+                           A   623    
+000133 DD7EFC              A   624    	LD	A,(IX+%FFFFFFFC)
+000136 DDBEF6              A   625    	CP	A,(IX+%FFFFFFF6)
+000139 CA DF 01 00         A   626    	JR	Z,L_53
+                           A   627    ;   74					return(-1);
+                           A   628    .LINE 74
+                           A   629    
+00013D 4921FFFF            A   630    	LD.LIS	HL,-1
+000141 C3 1B 02 00         A   631    	JR	L_58
+                           A   632    ;   75			} else {		/* other possible tokens	*/
+000145                     A   633    L_51:
+                           A   634    .LINE 75
+                           A   635    
+                           A   636    ;   76				*to++ = *p++;
+                           A   637    .LINE 76
+                           A   638    
+000145 DD07FD              A   639    	LD	BC,(IX+%FFFFFFFD)
+000148 DD0FE7              A   640    	LD	(IX+%FFFFFFE7),BC
+00014B DD07F9              A   641    	LD	BC,(IX+%FFFFFFF9)
+00014E DD0FE4              A   642    	LD	(IX+%FFFFFFE4),BC
+000151 DD27E7              A   643    	LD	HL,(IX+%FFFFFFE7)
+000154 DD31E4              A   644    	LD	IY,(IX+%FFFFFFE4)
+000157 7E                  A   645    	LD	A,(HL)
+000158 FD7700              A   646    	LD	(IY),A
+00015B DD07FD              A   647    	LD	BC,(IX+%FFFFFFFD)
+00015E 03                  A   648    	INC	BC
+00015F DD0FFD              A   649    	LD	(IX+%FFFFFFFD),BC
+000162 DD07F9              A   650    	LD	BC,(IX+%FFFFFFF9)
+000165 03                  A   651    	INC	BC
+000166 DD0FF9              A   652    	LD	(IX+%FFFFFFF9),BC
+                           A   653    ;   77				if (ch!='>' && ch!='<' && ch!='&')
+                           A   654    .LINE 77
+                           A   655    
+000169 DD7EFC              A   656    	LD	A,(IX+%FFFFFFFC)
+00016C FE3E                A   657    	CP	A,%3E
+00016E 28 6F               A   658    	JR	Z,L_53
+000170 DD7EFC              A   659    	LD	A,(IX+%FFFFFFFC)
+000173 FE3C                A   660    	CP	A,%3C
+000175 28 68               A   661    	JR	Z,L_53
+000177 DD7EFC              A   662    	LD	A,(IX+%FFFFFFFC)
+00017A FE26                A   663    	CP	A,%26
+00017C 20 26               A   664    	JR	NZ,L_47
+00017E 18 5F               A   665    	JR	L_53
+                           A   666    ;   78					while ((ch = *p)!='\n' && ch !='\0' &&
+000180                     A   667    L_48:
+                           A   668    .LINE 78
+                           A   669    
+                           A   670    ;   79						ch!='<' && ch!='>' && ch!=' ' &&
+                           A   671    ;   80						ch!='"' && ch!='\'' && ch !='&')
+                           A   672    ;   81						*to++= *p++; /* copy alphamerics*/
+                           A   673    .LINE 81
+                           A   674    
+000180 DD07FD              A   675    	LD	BC,(IX+%FFFFFFFD)
+000183 DD0FE1              A   676    	LD	(IX+%FFFFFFE1),BC
+000186 DD07F9              A   677    	LD	BC,(IX+%FFFFFFF9)
+000189 DD0FDE              A   678    	LD	(IX+%FFFFFFDE),BC
+00018C DD27E1              A   679    	LD	HL,(IX+%FFFFFFE1)
+00018F DD31DE              A   680    	LD	IY,(IX+%FFFFFFDE)
+000192 7E                  A   681    	LD	A,(HL)
+000193 FD7700              A   682    	LD	(IY),A
+000196 DD07FD              A   683    	LD	BC,(IX+%FFFFFFFD)
+000199 03                  A   684    	INC	BC
+00019A DD0FFD              A   685    	LD	(IX+%FFFFFFFD),BC
+00019D DD07F9              A   686    	LD	BC,(IX+%FFFFFFF9)
+0001A0 03                  A   687    	INC	BC
+0001A1 DD0FF9              A   688    	LD	(IX+%FFFFFFF9),BC
+0001A4                     A   689    L_47:
+0001A4 DD27FD              A   690    	LD	HL,(IX+%FFFFFFFD)
+0001A7 7E                  A   691    	LD	A,(HL)
+0001A8 DD77FC              A   692    	LD	(IX+%FFFFFFFC),A
+0001AB FE0A                A   693    	CP	A,%A
+0001AD 28 30               A   694    	JR	Z,L_53
+0001AF DD7EFC              A   695    	LD	A,(IX+%FFFFFFFC)
+0001B2 B7                  A   696    	OR	A,A
+0001B3 28 2A               A   697    	JR	Z,L_53
+0001B5 DD7EFC              A   698    	LD	A,(IX+%FFFFFFFC)
+0001B8 FE3C                A   699    	CP	A,%3C
+0001BA 28 23               A   700    	JR	Z,L_53
+0001BC DD7EFC              A   701    	LD	A,(IX+%FFFFFFFC)
+0001BF FE3E                A   702    	CP	A,%3E
+0001C1 28 1C               A   703    	JR	Z,L_53
+0001C3 DD7EFC              A   704    	LD	A,(IX+%FFFFFFFC)
+0001C6 FE20                A   705    	CP	A,%20
+0001C8 28 15               A   706    	JR	Z,L_53
+0001CA DD7EFC              A   707    	LD	A,(IX+%FFFFFFFC)
+0001CD FE22                A   708    	CP	A,%22
+0001CF 28 0E               A   709    	JR	Z,L_53
+0001D1 DD7EFC              A   710    	LD	A,(IX+%FFFFFFFC)
+0001D4 FE27                A   711    	CP	A,%27
+0001D6 28 07               A   712    	JR	Z,L_53
+0001D8 DD7EFC              A   713    	LD	A,(IX+%FFFFFFFC)
+0001DB FE26                A   714    	CP	A,%26
+0001DD 20 A1               A   715    	JR	NZ,L_48
+                           A   716    ;   82			}
+0001DF                     A   717    L_53:
+                           A   718    .LINE 82
+                           A   719    
+                           A   720    ;   83			*to++ = 0;		/* terminate token string	*/
+                           A   721    .LINE 83
+                           A   722    
+0001DF DD07F9              A   723    	LD	BC,(IX+%FFFFFFF9)
+0001E2 DD0FDB              A   724    	LD	(IX+%FFFFFFDB),BC
+0001E5 C5E1                A   725    	LD	HL,BC
+0001E7 3600                A   726    	LD	(HL),%0
+0001E9 DD07F9              A   727    	LD	BC,(IX+%FFFFFFF9)
+0001EC 03                  A   728    	INC	BC
+0001ED DD0FF9              A   729    	LD	(IX+%FFFFFFF9),BC
+                           A   730    ;   84		}
+0001F0                     A   731    L_56:
+                           A   732    .LINE 84
+                           A   733    
+0001F0 DD27FD              A   734    	LD	HL,(IX+%FFFFFFFD)
+0001F3 7E                  A   735    	LD	A,(HL)
+0001F4 B7                  A   736    	OR	A,A
+0001F5 28 21               A   737    	JR	Z,L_57
+0001F7 DD27FD              A   738    	LD	HL,(IX+%FFFFFFFD)
+0001FA 7E                  A   739    	LD	A,(HL)
+0001FB 47                  A   740    	LD	B,A
+0001FC 17ED62              A   741    	SEXT	HL
+0001FF 68                  A   742    	LD	L,B
+000200 010A0000            A   743    	LD	BC,10
+000204 B7                  A   744    	OR	A,A
+000205 ED42                A   745    	SBC	HL,BC
+000207 28 0F               A   746    	JR	Z,L_57
+000209 49011000            A   747    	LD.LIS	BC,16
+00020D DD27F7              A   748    	LD	HL,(IX+%FFFFFFF7)
+000210 B7                  A   749    	OR	A,A
+000211 40ED42              A   750    	SBC.SIS	HL,BC
+000214 DA 5F 00 00         A   751    	JR	C,L_9
+000218                     A   752    L_57:
+                           A   753    ;   85		return(ntok);
+                           A   754    .LINE 85
+                           A   755    
+000218 DD27F7              A   756    	LD	HL,(IX+%FFFFFFF7)
+                           A   757    ;   86	}
+00021B                     A   758    L_58:
+                           A   759    .LINE 86
+                           A   760    
+00021B DDF9                A   761    	LD	SP,IX
+00021D DDE1                A   762    	POP	IX
+00021F C9                  A   763    	RET	
+                           A   764    
+                           A   765    
+                           A   766    ;**************************** _lexan ***************************
+                           A   767    ;Name                         Addr/Register   Size   Type
+                           A   768    ;tokptr                               IX-13      3   variable
+                           A   769    ;quote                                IX-10      1   variable
+                           A   770    ;ntok                                  IX-9      2   variable
+                           A   771    ;to                                    IX-7      3   variable
+                           A   772    ;ch                                    IX-4      1   variable
+                           A   773    ;p                                     IX-3      3   variable
+                           A   774    ;line                                  IX+9      3   parameter
+                           A   775    ;Shl                                   IX+6      3   parameter
+                           A   776    
+                           A   777    
+                           A   778    ; Stack Frame Size: 49 (bytes)
+                           A   779    ;       Spill Code: 0 (instruction)
+                           A   780    
+                           A   781    
+                           A   782    .ENDFUNC "lexan",86,"_lexan"
+                           A   783    	XREF __stoiu:ROM
+                           A   784    	XDEF _lexan
+                           A   785    	END
+
+
+Errors: 0
+Warnings: 0
+Lines Assembled: 786

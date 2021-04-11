@@ -1,0 +1,1543 @@
+Zilog eZ80 Macro Assembler Version 4.2 (17030704)                                                                                                                                                               13-Apr-17     11:36:08     page:   1
+
+
+PC     Object              I  Line    Source 
+                           A     1    ; Zilog eZ80 ANSI C Compiler Release 3.4
+                           A     2    ; -nomodsect -optsize -noreduceopt -nopadbranch -debug
+                           A     3    ; -peephole -globalopt -localcse -const=ROM 
+                           A     4    	FILE	"..\s2tcp_website.c"
+                           A     5    	.assume ADL=1
+                           A     6    .DEBUG "C"
+                           A     7    	SEGMENT CODE
+                           A     8    .BEGREC "CPU_REG",32
+                           A     9    .DEFINE "regAFz"
+                           A    10    .VALUE 0
+                           A    11    .CLASS 8
+                           A    12    .TYPE 15
+                           A    13    .ENDEF
+                           A    14    .DEFINE "regBCz"
+                           A    15    .VALUE 4
+                           A    16    .CLASS 8
+                           A    17    .TYPE 15
+                           A    18    .ENDEF
+                           A    19    .DEFINE "regDEz"
+                           A    20    .VALUE 8
+                           A    21    .CLASS 8
+                           A    22    .TYPE 15
+                           A    23    .ENDEF
+                           A    24    .DEFINE "regHLz"
+                           A    25    .VALUE 12
+                           A    26    .CLASS 8
+                           A    27    .TYPE 15
+                           A    28    .ENDEF
+                           A    29    .DEFINE "regIXz"
+                           A    30    .VALUE 16
+                           A    31    .CLASS 8
+                           A    32    .TYPE 15
+                           A    33    .ENDEF
+                           A    34    .DEFINE "regIYz"
+                           A    35    .VALUE 20
+                           A    36    .CLASS 8
+                           A    37    .TYPE 15
+                           A    38    .ENDEF
+                           A    39    .DEFINE "regPCz"
+                           A    40    .VALUE 24
+                           A    41    .CLASS 8
+                           A    42    .TYPE 15
+                           A    43    .ENDEF
+                           A    44    .DEFINE "regSPz"
+                           A    45    .VALUE 28
+                           A    46    .CLASS 8
+                           A    47    .TYPE 15
+                           A    48    .ENDEF
+                           A    49    .ENDREC "CPU_REG"
+                           A    50    .BEGREC "THREADPARAMS_STRUCT_t",22
+                           A    51    .DEFINE "szName"
+                           A    52    .VALUE 0
+                           A    53    .CLASS 8
+                           A    54    .DIM 12
+                           A    55    .TYPE 108
+                           A    56    .ENDEF
+                           A    57    .DEFINE "uState"
+                           A    58    .VALUE 12
+                           A    59    .CLASS 8
+                           A    60    .TYPE 12
+                           A    61    .ENDEF
+                           A    62    .DEFINE "uBankSelector"
+                           A    63    .VALUE 13
+                           A    64    .CLASS 8
+                           A    65    .TYPE 12
+                           A    66    .ENDEF
+                           A    67    .DEFINE "uOperationMode"
+                           A    68    .VALUE 14
+                           A    69    .CLASS 8
+                           A    70    .TYPE 12
+                           A    71    .ENDEF
+                           A    72    .DEFINE "tQuantum"
+                           A    73    .VALUE 15
+                           A    74    .CLASS 8
+                           A    75    .TYPE 14
+                           A    76    .ENDEF
+                           A    77    .DEFINE "cPriority"
+                           A    78    .VALUE 18
+                           A    79    .CLASS 8
+                           A    80    .TYPE 12
+                           A    81    .ENDEF
+                           A    82    .DEFINE "sSignalReceive"
+                           A    83    .VALUE 19
+                           A    84    .CLASS 8
+                           A    85    .TYPE 14
+                           A    86    .ENDEF
+                           A    87    .ENDREC "THREADPARAMS_STRUCT_t"
+                           A    88    .BEGREC "RZK_THREAD_CB",102
+                           A    89    .DEFINE "CB"
+                           A    90    .VALUE 0
+                           A    91    .CLASS 8
+                           A    92    .DIM 102
+                           A    93    .TYPE 108
+                           A    94    .ENDEF
+                           A    95    .ENDREC "RZK_THREAD_CB"
+                           A    96    .BEGREC "devCap",4
+                           A    97    .DEFINE "devType"
+                           A    98    .VALUE 0
+                           A    99    .CLASS 8
+                           A   100    .TYPE 12
+                           A   101    .ENDEF
+                           A   102    .DEFINE "devHdl"
+                           A   103    .VALUE 1
+                           A   104    .CLASS 8
+                           A   105    .TYPE 33
+                           A   106    .ENDEF
+                           A   107    .ENDREC "devCap"
+                           A   108    .BEGREC "RZK_DEVICE_CB_t",54
+                           A   109    .DEFINE "InUse"
+                           A   110    .VALUE 0
+                           A   111    .CLASS 8
+                           A   112    .TYPE 12
+                           A   113    .ENDEF
+                           A   114    .DEFINE "devName"
+                           A   115    .VALUE 1
+                           A   116    .CLASS 8
+                           A   117    .DIM 12
+                           A   118    .TYPE 98
+                           A   119    .ENDEF
+                           A   120    .DEFINE "fnInit"
+                           A   121    .VALUE 13
+                           A   122    .CLASS 8
+                           A   123    .TYPE 549
+                           A   124    .ENDEF
+                           A   125    .DEFINE "fnStop"
+                           A   126    .VALUE 16
+                           A   127    .CLASS 8
+                           A   128    .TYPE 549
+                           A   129    .ENDEF
+                           A   130    .DEFINE "fnOpen"
+                           A   131    .VALUE 19
+                           A   132    .CLASS 8
+                           A   133    .TYPE 549
+                           A   134    .ENDEF
+                           A   135    .DEFINE "fnClose"
+                           A   136    .VALUE 22
+                           A   137    .CLASS 8
+                           A   138    .TYPE 549
+                           A   139    .ENDEF
+                           A   140    .DEFINE "fnRead"
+                           A   141    .VALUE 25
+                           A   142    .CLASS 8
+                           A   143    .TYPE 549
+                           A   144    .ENDEF
+                           A   145    .DEFINE "fnWrite"
+                           A   146    .VALUE 28
+                           A   147    .CLASS 8
+                           A   148    .TYPE 549
+                           A   149    .ENDEF
+                           A   150    .DEFINE "fnSeek"
+                           A   151    .VALUE 31
+                           A   152    .CLASS 8
+                           A   153    .TYPE 549
+                           A   154    .ENDEF
+                           A   155    .DEFINE "fnGetc"
+                           A   156    .VALUE 34
+                           A   157    .CLASS 8
+                           A   158    .TYPE 549
+                           A   159    .ENDEF
+                           A   160    .DEFINE "fnPutc"
+                           A   161    .VALUE 37
+                           A   162    .CLASS 8
+                           A   163    .TYPE 549
+                           A   164    .ENDEF
+                           A   165    .DEFINE "fnIoctl"
+                           A   166    .VALUE 40
+                           A   167    .CLASS 8
+                           A   168    .TYPE 549
+                           A   169    .ENDEF
+                           A   170    .DEFINE "dvintvector"
+                           A   171    .VALUE 43
+                           A   172    .CLASS 8
+                           A   173    .TYPE 33
+                           A   174    .ENDEF
+                           A   175    .DEFINE "dvivec"
+                           A   176    .VALUE 46
+                           A   177    .CLASS 8
+                           A   178    .TYPE 13
+                           A   179    .ENDEF
+                           A   180    .DEFINE "dvinputoutput"
+                           A   181    .VALUE 48
+                           A   182    .CLASS 8
+                           A   183    .TYPE 44
+                           A   184    .ENDEF
+                           A   185    .DEFINE "devMode"
+                           A   186    .VALUE 51
+                           A   187    .CLASS 8
+                           A   188    .TYPE 2
+                           A   189    .ENDEF
+                           A   190    .DEFINE "dvminor"
+                           A   191    .VALUE 52
+                           A   192    .CLASS 8
+                           A   193    .TYPE 13
+                           A   194    .ENDEF
+                           A   195    .ENDREC "RZK_DEVICE_CB_t"
+                           A   196    .BEGREC "sockaddr",16
+                           A   197    .DEFINE "sa_family"
+                           A   198    .VALUE 0
+                           A   199    .CLASS 8
+                           A   200    .TYPE 3
+                           A   201    .ENDEF
+                           A   202    .DEFINE "sa_data"
+                           A   203    .VALUE 2
+                           A   204    .CLASS 8
+                           A   205    .DIM 14
+                           A   206    .TYPE 98
+                           A   207    .ENDEF
+                           A   208    .ENDREC "sockaddr"
+                           A   209    .BEGREC "in_addr",4
+                           A   210    .DEFINE "s_addr"
+                           A   211    .VALUE 0
+                           A   212    .CLASS 8
+                           A   213    .TYPE 15
+                           A   214    .ENDEF
+                           A   215    .ENDREC "in_addr"
+                           A   216    .BEGREC "sockaddr_in",16
+                           A   217    .DEFINE "sin_family"
+                           A   218    .VALUE 0
+                           A   219    .CLASS 8
+                           A   220    .TYPE 3
+                           A   221    .ENDEF
+                           A   222    .DEFINE "sin_port"
+                           A   223    .VALUE 2
+                           A   224    .CLASS 8
+                           A   225    .TYPE 13
+                           A   226    .ENDEF
+                           A   227    .DEFINE "sin_addr"
+                           A   228    .VALUE 4
+                           A   229    .CLASS 8
+                           A   230    .TAG "in_addr"
+                           A   231    .TYPE 8
+                           A   232    .ENDEF
+                           A   233    .DEFINE "sin_zero"
+                           A   234    .VALUE 8
+                           A   235    .CLASS 8
+                           A   236    .DIM 8
+                           A   237    .TYPE 98
+                           A   238    .ENDEF
+                           A   239    .ENDREC "sockaddr_in"
+                           A   240    .BEGREC "NONAME0",6
+                           A   241    .DEFINE "quot"
+                           A   242    .VALUE 0
+                           A   243    .CLASS 8
+                           A   244    .TYPE 4
+                           A   245    .ENDEF
+                           A   246    .DEFINE "rem"
+                           A   247    .VALUE 3
+                           A   248    .CLASS 8
+                           A   249    .TYPE 4
+                           A   250    .ENDEF
+                           A   251    .ENDREC "NONAME0"
+                           A   252    .BEGREC "NONAME1",8
+                           A   253    .DEFINE "quot"
+                           A   254    .VALUE 0
+                           A   255    .CLASS 8
+                           A   256    .TYPE 5
+                           A   257    .ENDEF
+                           A   258    .DEFINE "rem"
+                           A   259    .VALUE 4
+                           A   260    .CLASS 8
+                           A   261    .TYPE 5
+                           A   262    .ENDEF
+                           A   263    .ENDREC "NONAME1"
+                           A   264    .BEGREC "header",6
+                           A   265    .DEFINE "s"
+                           A   266    .VALUE 0
+                           A   267    .CLASS 11
+                           A   268    .TAG "NONAME2"
+                           A   269    .TYPE 8
+                           A   270    .ENDEF
+                           A   271    .DEFINE "x"
+                           A   272    .VALUE 0
+                           A   273    .CLASS 11
+                           A   274    .TYPE 2
+                           A   275    .ENDEF
+                           A   276    .ENDREC "header"
+                           A   277    .BEGREC "NONAME2",6
+                           A   278    .DEFINE "ptr"
+                           A   279    .VALUE 0
+                           A   280    .CLASS 8
+                           A   281    .TAG "header"
+                           A   282    .TYPE 40
+                           A   283    .ENDEF
+                           A   284    .DEFINE "size"
+                           A   285    .VALUE 3
+                           A   286    .CLASS 8
+                           A   287    .TYPE 14
+                           A   288    .ENDEF
+                           A   289    .ENDREC "NONAME2"
+                           A   290    .BEGREC "fmt_type",19
+                           A   291    .DEFINE "status"
+                           A   292    .VALUE 0
+                           A   293    .CLASS 8
+                           A   294    .TYPE 12
+                           A   295    .ENDEF
+                           A   296    .DEFINE "flags"
+                           A   297    .VALUE 1
+                           A   298    .CLASS 8
+                           A   299    .TYPE 12
+                           A   300    .ENDEF
+                           A   301    .DEFINE "size"
+                           A   302    .VALUE 2
+                           A   303    .CLASS 8
+                           A   304    .TYPE 2
+                           A   305    .ENDEF
+                           A   306    .DEFINE "chr"
+                           A   307    .VALUE 3
+                           A   308    .CLASS 8
+                           A   309    .TYPE 2
+                           A   310    .ENDEF
+                           A   311    .DEFINE "type"
+                           A   312    .VALUE 4
+                           A   313    .CLASS 8
+                           A   314    .TYPE 2
+                           A   315    .ENDEF
+                           A   316    .DEFINE "field_width"
+                           A   317    .VALUE 5
+                           A   318    .CLASS 8
+                           A   319    .TYPE 2
+                           A   320    .ENDEF
+                           A   321    .DEFINE "precision"
+                           A   322    .VALUE 6
+                           A   323    .CLASS 8
+                           A   324    .TYPE 2
+                           A   325    .ENDEF
+                           A   326    .DEFINE "set_begin"
+                           A   327    .VALUE 7
+                           A   328    .CLASS 8
+                           A   329    .TYPE 34
+                           A   330    .ENDEF
+                           A   331    .DEFINE "set_end"
+                           A   332    .VALUE 10
+                           A   333    .CLASS 8
+                           A   334    .TYPE 34
+                           A   335    .ENDEF
+                           A   336    .DEFINE "pad_whole"
+                           A   337    .VALUE 13
+                           A   338    .CLASS 8
+                           A   339    .TYPE 12
+                           A   340    .ENDEF
+                           A   341    .DEFINE "pad_pre_fract"
+                           A   342    .VALUE 14
+                           A   343    .CLASS 8
+                           A   344    .TYPE 12
+                           A   345    .ENDEF
+                           A   346    .DEFINE "pad_post_fract"
+                           A   347    .VALUE 15
+                           A   348    .CLASS 8
+                           A   349    .TYPE 12
+                           A   350    .ENDEF
+                           A   351    .DEFINE "pad_at"
+                           A   352    .VALUE 16
+                           A   353    .CLASS 8
+                           A   354    .TYPE 34
+                           A   355    .ENDEF
+                           A   356    .ENDREC "fmt_type"
+                           A   357    .BEGREC "flt_info",12
+                           A   358    .DEFINE "flags"
+                           A   359    .VALUE 0
+                           A   360    .CLASS 8
+                           A   361    .TYPE 12
+                           A   362    .ENDEF
+                           A   363    .DEFINE "exp"
+                           A   364    .VALUE 1
+                           A   365    .CLASS 8
+                           A   366    .TYPE 2
+                           A   367    .ENDEF
+                           A   368    .DEFINE "digits"
+                           A   369    .VALUE 2
+                           A   370    .CLASS 8
+                           A   371    .DIM 10
+                           A   372    .TYPE 108
+                           A   373    .ENDEF
+                           A   374    .ENDREC "flt_info"
+                           A   375    .BEGREC "ZTP_TIMER_s",6
+                           A   376    .DEFINE "Ticks"
+                           A   377    .VALUE 0
+                           A   378    .CLASS 8
+                           A   379    .TYPE 14
+                           A   380    .ENDEF
+                           A   381    .DEFINE "Start"
+                           A   382    .VALUE 3
+                           A   383    .CLASS 8
+                           A   384    .TYPE 14
+                           A   385    .ENDEF
+                           A   386    .ENDREC "ZTP_TIMER_s"
+                           A   387    .BEGREC "NONAME3",14
+                           A   388    .DEFINE "destination"
+                           A   389    .VALUE 0
+                           A   390    .CLASS 8
+                           A   391    .DIM 6
+                           A   392    .TYPE 108
+                           A   393    .ENDEF
+                           A   394    .DEFINE "source"
+                           A   395    .VALUE 6
+                           A   396    .CLASS 8
+                           A   397    .DIM 6
+                           A   398    .TYPE 108
+                           A   399    .ENDEF
+                           A   400    .DEFINE "type"
+                           A   401    .VALUE 12
+                           A   402    .CLASS 8
+                           A   403    .TYPE 13
+                           A   404    .ENDEF
+                           A   405    .ENDREC "NONAME3"
+                           A   406    .BEGREC "NONAME4",20
+                           A   407    .DEFINE "verHdrlen"
+                           A   408    .VALUE 0
+                           A   409    .CLASS 8
+                           A   410    .TYPE 12
+                           A   411    .ENDEF
+                           A   412    .DEFINE "tos"
+                           A   413    .VALUE 1
+                           A   414    .CLASS 8
+                           A   415    .TYPE 12
+                           A   416    .ENDEF
+                           A   417    .DEFINE "length"
+                           A   418    .VALUE 2
+                           A   419    .CLASS 8
+                           A   420    .TYPE 13
+                           A   421    .ENDEF
+                           A   422    .DEFINE "identification"
+                           A   423    .VALUE 4
+                           A   424    .CLASS 8
+                           A   425    .TYPE 13
+                           A   426    .ENDEF
+                           A   427    .DEFINE "frags"
+                           A   428    .VALUE 6
+                           A   429    .CLASS 8
+                           A   430    .TYPE 13
+                           A   431    .ENDEF
+                           A   432    .DEFINE "ttl"
+                           A   433    .VALUE 8
+                           A   434    .CLASS 8
+                           A   435    .TYPE 12
+                           A   436    .ENDEF
+                           A   437    .DEFINE "proto"
+                           A   438    .VALUE 9
+                           A   439    .CLASS 8
+                           A   440    .TYPE 12
+                           A   441    .ENDEF
+                           A   442    .DEFINE "checksum"
+                           A   443    .VALUE 10
+                           A   444    .CLASS 8
+                           A   445    .TYPE 13
+                           A   446    .ENDEF
+                           A   447    .DEFINE "source"
+                           A   448    .VALUE 12
+                           A   449    .CLASS 8
+                           A   450    .TYPE 15
+                           A   451    .ENDEF
+                           A   452    .DEFINE "destination"
+                           A   453    .VALUE 16
+                           A   454    .CLASS 8
+                           A   455    .TYPE 15
+                           A   456    .ENDEF
+                           A   457    .ENDREC "NONAME4"
+                           A   458    .BEGREC "NONAME5",8
+                           A   459    .DEFINE "srcPort"
+                           A   460    .VALUE 0
+                           A   461    .CLASS 8
+                           A   462    .TYPE 13
+                           A   463    .ENDEF
+                           A   464    .DEFINE "dstPort"
+                           A   465    .VALUE 2
+                           A   466    .CLASS 8
+                           A   467    .TYPE 13
+                           A   468    .ENDEF
+                           A   469    .DEFINE "length"
+                           A   470    .VALUE 4
+                           A   471    .CLASS 8
+                           A   472    .TYPE 13
+                           A   473    .ENDEF
+                           A   474    .DEFINE "checksum"
+                           A   475    .VALUE 6
+                           A   476    .CLASS 8
+                           A   477    .TYPE 13
+                           A   478    .ENDEF
+                           A   479    .ENDREC "NONAME5"
+                           A   480    .BEGREC "NONAME6",20
+                           A   481    .DEFINE "srcPort"
+                           A   482    .VALUE 0
+                           A   483    .CLASS 8
+                           A   484    .TYPE 13
+                           A   485    .ENDEF
+                           A   486    .DEFINE "dstPort"
+                           A   487    .VALUE 2
+                           A   488    .CLASS 8
+                           A   489    .TYPE 13
+                           A   490    .ENDEF
+                           A   491    .DEFINE "seqnum"
+                           A   492    .VALUE 4
+                           A   493    .CLASS 8
+                           A   494    .TYPE 15
+                           A   495    .ENDEF
+                           A   496    .DEFINE "acknum"
+                           A   497    .VALUE 8
+                           A   498    .CLASS 8
+                           A   499    .TYPE 15
+                           A   500    .ENDEF
+                           A   501    .DEFINE "flags"
+                           A   502    .VALUE 12
+                           A   503    .CLASS 8
+                           A   504    .TYPE 13
+                           A   505    .ENDEF
+                           A   506    .DEFINE "window"
+                           A   507    .VALUE 14
+                           A   508    .CLASS 8
+                           A   509    .TYPE 13
+                           A   510    .ENDEF
+                           A   511    .DEFINE "checksum"
+                           A   512    .VALUE 16
+                           A   513    .CLASS 8
+                           A   514    .TYPE 13
+                           A   515    .ENDEF
+                           A   516    .DEFINE "urgentPointer"
+                           A   517    .VALUE 18
+                           A   518    .CLASS 8
+                           A   519    .TYPE 13
+                           A   520    .ENDEF
+                           A   521    .ENDREC "NONAME6"
+                           A   522    .BEGREC "NONAME7",14
+                           A   523    .DEFINE "src"
+                           A   524    .VALUE 0
+                           A   525    .CLASS 8
+                           A   526    .TYPE 15
+                           A   527    .ENDEF
+                           A   528    .DEFINE "dst"
+                           A   529    .VALUE 4
+                           A   530    .CLASS 8
+                           A   531    .TYPE 15
+                           A   532    .ENDEF
+                           A   533    .DEFINE "mbz"
+                           A   534    .VALUE 8
+                           A   535    .CLASS 8
+                           A   536    .TYPE 12
+                           A   537    .ENDEF
+                           A   538    .DEFINE "protocol"
+                           A   539    .VALUE 9
+                           A   540    .CLASS 8
+                           A   541    .TYPE 12
+                           A   542    .ENDEF
+                           A   543    .DEFINE "length"
+                           A   544    .VALUE 10
+                           A   545    .CLASS 8
+                           A   546    .TYPE 13
+                           A   547    .ENDEF
+                           A   548    .DEFINE "checksum"
+                           A   549    .VALUE 12
+                           A   550    .CLASS 8
+                           A   551    .TYPE 13
+                           A   552    .ENDEF
+                           A   553    .ENDREC "NONAME7"
+                           A   554    .BEGREC "_udp_socket",72
+                           A   555    .DEFINE "next"
+                           A   556    .VALUE 0
+                           A   557    .CLASS 8
+                           A   558    .TAG "_udp_socket"
+                           A   559    .TYPE 40
+                           A   560    .ENDEF
+                           A   561    .DEFINE "ip_type"
+                           A   562    .VALUE 3
+                           A   563    .CLASS 8
+                           A   564    .TYPE 13
+                           A   565    .ENDEF
+                           A   566    .DEFINE "err_msg"
+                           A   567    .VALUE 5
+                           A   568    .CLASS 8
+                           A   569    .TYPE 34
+                           A   570    .ENDEF
+                           A   571    .DEFINE "usr_name"
+                           A   572    .VALUE 8
+                           A   573    .CLASS 8
+                           A   574    .TYPE 34
+                           A   575    .ENDEF
+                           A   576    .DEFINE "usr_yield"
+                           A   577    .VALUE 11
+                           A   578    .CLASS 8
+                           A   579    .TYPE 545
+                           A   580    .ENDEF
+                           A   581    .DEFINE "rigid"
+                           A   582    .VALUE 14
+                           A   583    .CLASS 8
+                           A   584    .TYPE 12
+                           A   585    .ENDEF
+                           A   586    .DEFINE "stress"
+                           A   587    .VALUE 15
+                           A   588    .CLASS 8
+                           A   589    .TYPE 12
+                           A   590    .ENDEF
+                           A   591    .DEFINE "sock_mode"
+                           A   592    .VALUE 16
+                           A   593    .CLASS 8
+                           A   594    .TYPE 13
+                           A   595    .ENDEF
+                           A   596    .DEFINE "usertimer"
+                           A   597    .VALUE 18
+                           A   598    .CLASS 8
+                           A   599    .TYPE 15
+                           A   600    .ENDEF
+                           A   601    .DEFINE "dataHandler"
+                           A   602    .VALUE 22
+                           A   603    .CLASS 8
+                           A   604    .TYPE 548
+                           A   605    .ENDEF
+                           A   606    .DEFINE "hisethaddr"
+                           A   607    .VALUE 25
+                           A   608    .CLASS 8
+                           A   609    .DIM 6
+                           A   610    .TYPE 108
+                           A   611    .ENDEF
+                           A   612    .DEFINE "hisaddr"
+                           A   613    .VALUE 31
+                           A   614    .CLASS 8
+                           A   615    .TYPE 15
+                           A   616    .ENDEF
+                           A   617    .DEFINE "hisport"
+                           A   618    .VALUE 35
+                           A   619    .CLASS 8
+                           A   620    .TYPE 13
+                           A   621    .ENDEF
+                           A   622    .DEFINE "myaddr"
+                           A   623    .VALUE 37
+                           A   624    .CLASS 8
+                           A   625    .TYPE 15
+                           A   626    .ENDEF
+                           A   627    .DEFINE "myport"
+                           A   628    .VALUE 41
+                           A   629    .CLASS 8
+                           A   630    .TYPE 13
+                           A   631    .ENDEF
+                           A   632    .DEFINE "locflags"
+                           A   633    .VALUE 43
+                           A   634    .CLASS 8
+                           A   635    .TYPE 13
+                           A   636    .ENDEF
+                           A   637    .DEFINE "queuelen"
+                           A   638    .VALUE 45
+                           A   639    .CLASS 8
+                           A   640    .TYPE 4
+                           A   641    .ENDEF
+                           A   642    .DEFINE "queue"
+                           A   643    .VALUE 48
+                           A   644    .CLASS 8
+                           A   645    .TYPE 44
+                           A   646    .ENDEF
+                           A   647    .DEFINE "rdatalen"
+                           A   648    .VALUE 51
+                           A   649    .CLASS 8
+                           A   650    .TYPE 4
+                           A   651    .ENDEF
+                           A   652    .DEFINE "maxrdatalen"
+                           A   653    .VALUE 54
+                           A   654    .CLASS 8
+                           A   655    .TYPE 13
+                           A   656    .ENDEF
+                           A   657    .DEFINE "rdata"
+                           A   658    .VALUE 56
+                           A   659    .CLASS 8
+                           A   660    .TYPE 44
+                           A   661    .ENDEF
+                           A   662    .DEFINE "rddata"
+                           A   663    .VALUE 59
+                           A   664    .CLASS 8
+                           A   665    .TYPE 44
+                           A   666    .ENDEF
+                           A   667    .DEFINE "safetysig"
+                           A   668    .VALUE 62
+                           A   669    .CLASS 8
+                           A   670    .TYPE 15
+                           A   671    .ENDEF
+                           A   672    .DEFINE "err_code"
+                           A   673    .VALUE 66
+                           A   674    .CLASS 8
+                           A   675    .TYPE 12
+                           A   676    .ENDEF
+                           A   677    .DEFINE "block"
+                           A   678    .VALUE 67
+                           A   679    .CLASS 8
+                           A   680    .TYPE 12
+                           A   681    .ENDEF
+                           A   682    .DEFINE "iface"
+                           A   683    .VALUE 68
+                           A   684    .CLASS 8
+                           A   685    .TYPE 12
+                           A   686    .ENDEF
+                           A   687    .DEFINE "AppThreadRecv"
+                           A   688    .VALUE 69
+                           A   689    .CLASS 8
+                           A   690    .TYPE 33
+                           A   691    .ENDEF
+                           A   692    .ENDREC "_udp_socket"
+                           A   693    .BEGREC "_tcp_socket",157
+                           A   694    .DEFINE "next"
+                           A   695    .VALUE 0
+                           A   696    .CLASS 8
+                           A   697    .TAG "_tcp_socket"
+                           A   698    .TYPE 40
+                           A   699    .ENDEF
+                           A   700    .DEFINE "ip_type"
+                           A   701    .VALUE 3
+                           A   702    .CLASS 8
+                           A   703    .TYPE 13
+                           A   704    .ENDEF
+                           A   705    .DEFINE "err_msg"
+                           A   706    .VALUE 5
+                           A   707    .CLASS 8
+                           A   708    .TYPE 34
+                           A   709    .ENDEF
+                           A   710    .DEFINE "usr_name"
+                           A   711    .VALUE 8
+                           A   712    .CLASS 8
+                           A   713    .TYPE 34
+                           A   714    .ENDEF
+                           A   715    .DEFINE "usr_yield"
+                           A   716    .VALUE 11
+                           A   717    .CLASS 8
+                           A   718    .TYPE 545
+                           A   719    .ENDEF
+                           A   720    .DEFINE "rigid"
+                           A   721    .VALUE 14
+                           A   722    .CLASS 8
+                           A   723    .TYPE 12
+                           A   724    .ENDEF
+                           A   725    .DEFINE "stress"
+                           A   726    .VALUE 15
+                           A   727    .CLASS 8
+                           A   728    .TYPE 12
+                           A   729    .ENDEF
+                           A   730    .DEFINE "sock_mode"
+                           A   731    .VALUE 16
+                           A   732    .CLASS 8
+                           A   733    .TYPE 13
+                           A   734    .ENDEF
+                           A   735    .DEFINE "usertimer"
+                           A   736    .VALUE 18
+                           A   737    .CLASS 8
+                           A   738    .TYPE 15
+                           A   739    .ENDEF
+                           A   740    .DEFINE "dataHandler"
+                           A   741    .VALUE 22
+                           A   742    .CLASS 8
+                           A   743    .TYPE 548
+                           A   744    .ENDEF
+                           A   745    .DEFINE "hisethaddr"
+                           A   746    .VALUE 25
+                           A   747    .CLASS 8
+                           A   748    .DIM 6
+                           A   749    .TYPE 108
+                           A   750    .ENDEF
+                           A   751    .DEFINE "hisaddr"
+                           A   752    .VALUE 31
+                           A   753    .CLASS 8
+                           A   754    .TYPE 15
+                           A   755    .ENDEF
+                           A   756    .DEFINE "hisport"
+                           A   757    .VALUE 35
+                           A   758    .CLASS 8
+                           A   759    .TYPE 13
+                           A   760    .ENDEF
+                           A   761    .DEFINE "myaddr"
+                           A   762    .VALUE 37
+                           A   763    .CLASS 8
+                           A   764    .TYPE 15
+                           A   765    .ENDEF
+                           A   766    .DEFINE "myport"
+                           A   767    .VALUE 41
+                           A   768    .CLASS 8
+                           A   769    .TYPE 13
+                           A   770    .ENDEF
+                           A   771    .DEFINE "locflags"
+                           A   772    .VALUE 43
+                           A   773    .CLASS 8
+                           A   774    .TYPE 13
+                           A   775    .ENDEF
+                           A   776    .DEFINE "queuelen"
+                           A   777    .VALUE 45
+                           A   778    .CLASS 8
+                           A   779    .TYPE 14
+                           A   780    .ENDEF
+                           A   781    .DEFINE "queue"
+                           A   782    .VALUE 48
+                           A   783    .CLASS 8
+                           A   784    .TYPE 44
+                           A   785    .ENDEF
+                           A   786    .DEFINE "rdatalen"
+                           A   787    .VALUE 51
+                           A   788    .CLASS 8
+                           A   789    .TYPE 14
+                           A   790    .ENDEF
+                           A   791    .DEFINE "maxrdatalen"
+                           A   792    .VALUE 54
+                           A   793    .CLASS 8
+                           A   794    .TYPE 13
+                           A   795    .ENDEF
+                           A   796    .DEFINE "rdata"
+                           A   797    .VALUE 56
+                           A   798    .CLASS 8
+                           A   799    .TYPE 44
+                           A   800    .ENDEF
+                           A   801    .DEFINE "rddata"
+                           A   802    .VALUE 59
+                           A   803    .CLASS 8
+                           A   804    .TYPE 44
+                           A   805    .ENDEF
+                           A   806    .DEFINE "safetysig"
+                           A   807    .VALUE 62
+                           A   808    .CLASS 8
+                           A   809    .TYPE 15
+                           A   810    .ENDEF
+                           A   811    .DEFINE "err_code"
+                           A   812    .VALUE 66
+                           A   813    .CLASS 8
+                           A   814    .TYPE 12
+                           A   815    .ENDEF
+                           A   816    .DEFINE "block"
+                           A   817    .VALUE 67
+                           A   818    .CLASS 8
+                           A   819    .TYPE 12
+                           A   820    .ENDEF
+                           A   821    .DEFINE "iface"
+                           A   822    .VALUE 68
+                           A   823    .CLASS 8
+                           A   824    .TYPE 12
+                           A   825    .ENDEF
+                           A   826    .DEFINE "AppThreadRecv"
+                           A   827    .VALUE 69
+                           A   828    .CLASS 8
+                           A   829    .TYPE 33
+                           A   830    .ENDEF
+                           A   831    .DEFINE "AppThreadSend"
+                           A   832    .VALUE 72
+                           A   833    .CLASS 8
+                           A   834    .TYPE 33
+                           A   835    .ENDEF
+                           A   836    .DEFINE "state"
+                           A   837    .VALUE 75
+                           A   838    .CLASS 8
+                           A   839    .TYPE 12
+                           A   840    .ENDEF
+                           A   841    .DEFINE "acknum"
+                           A   842    .VALUE 76
+                           A   843    .CLASS 8
+                           A   844    .TYPE 15
+                           A   845    .ENDEF
+                           A   846    .DEFINE "RtoSeq"
+                           A   847    .VALUE 80
+                           A   848    .CLASS 8
+                           A   849    .TYPE 15
+                           A   850    .ENDEF
+                           A   851    .DEFINE "seqnum"
+                           A   852    .VALUE 84
+                           A   853    .CLASS 8
+                           A   854    .TYPE 15
+                           A   855    .ENDEF
+                           A   856    .DEFINE "unhappy"
+                           A   857    .VALUE 88
+                           A   858    .CLASS 8
+                           A   859    .TYPE 12
+                           A   860    .ENDEF
+                           A   861    .DEFINE "flags"
+                           A   862    .VALUE 89
+                           A   863    .CLASS 8
+                           A   864    .TYPE 14
+                           A   865    .ENDEF
+                           A   866    .DEFINE "window"
+                           A   867    .VALUE 92
+                           A   868    .CLASS 8
+                           A   869    .TYPE 13
+                           A   870    .ENDEF
+                           A   871    .DEFINE "datalen"
+                           A   872    .VALUE 94
+                           A   873    .CLASS 8
+                           A   874    .TYPE 14
+                           A   875    .ENDEF
+                           A   876    .DEFINE "PushLen"
+                           A   877    .VALUE 97
+                           A   878    .CLASS 8
+                           A   879    .TYPE 14
+                           A   880    .ENDEF
+                           A   881    .DEFINE "unacked"
+                           A   882    .VALUE 100
+                           A   883    .CLASS 8
+                           A   884    .TYPE 14
+                           A   885    .ENDEF
+                           A   886    .DEFINE "cwindow"
+                           A   887    .VALUE 103
+                           A   888    .CLASS 8
+                           A   889    .TYPE 12
+                           A   890    .ENDEF
+                           A   891    .DEFINE "wwindow"
+                           A   892    .VALUE 104
+                           A   893    .CLASS 8
+                           A   894    .TYPE 12
+                           A   895    .ENDEF
+                           A   896    .DEFINE "vj_sa"
+                           A   897    .VALUE 105
+                           A   898    .CLASS 8
+                           A   899    .TYPE 13
+                           A   900    .ENDEF
+                           A   901    .DEFINE "vj_sd"
+                           A   902    .VALUE 107
+                           A   903    .CLASS 8
+                           A   904    .TYPE 13
+                           A   905    .ENDEF
+                           A   906    .DEFINE "rto"
+                           A   907    .VALUE 109
+                           A   908    .CLASS 8
+                           A   909    .TYPE 13
+                           A   910    .ENDEF
+                           A   911    .DEFINE "rto_mode"
+                           A   912    .VALUE 111
+                           A   913    .CLASS 8
+                           A   914    .TYPE 12
+                           A   915    .ENDEF
+                           A   916    .DEFINE "rto_start"
+                           A   917    .VALUE 112
+                           A   918    .CLASS 8
+                           A   919    .TYPE 14
+                           A   920    .ENDEF
+                           A   921    .DEFINE "rto_ticks"
+                           A   922    .VALUE 115
+                           A   923    .CLASS 8
+                           A   924    .TYPE 14
+                           A   925    .ENDEF
+                           A   926    .DEFINE "rtt_active"
+                           A   927    .VALUE 118
+                           A   928    .CLASS 8
+                           A   929    .TYPE 12
+                           A   930    .ENDEF
+                           A   931    .DEFINE "rtt_start"
+                           A   932    .VALUE 119
+                           A   933    .CLASS 8
+                           A   934    .TYPE 14
+                           A   935    .ENDEF
+                           A   936    .DEFINE "mpt_tmr"
+                           A   937    .VALUE 122
+                           A   938    .CLASS 8
+                           A   939    .TAG "ZTP_TIMER_s"
+                           A   940    .TYPE 8
+                           A   941    .ENDEF
+                           A   942    .DEFINE "tos"
+                           A   943    .VALUE 128
+                           A   944    .CLASS 8
+                           A   945    .TYPE 12
+                           A   946    .ENDEF
+                           A   947    .DEFINE "mss"
+                           A   948    .VALUE 129
+                           A   949    .CLASS 8
+                           A   950    .TYPE 13
+                           A   951    .ENDEF
+                           A   952    .DEFINE "data"
+                           A   953    .VALUE 131
+                           A   954    .CLASS 8
+                           A   955    .TYPE 44
+                           A   956    .ENDEF
+                           A   957    .DEFINE "inactive_tmr"
+                           A   958    .VALUE 134
+                           A   959    .CLASS 8
+                           A   960    .TAG "ZTP_TIMER_s"
+                           A   961    .TYPE 8
+                           A   962    .ENDEF
+                           A   963    .DEFINE "KeepAlive_tmr"
+                           A   964    .VALUE 140
+                           A   965    .CLASS 8
+                           A   966    .TAG "ZTP_TIMER_s"
+                           A   967    .TYPE 8
+                           A   968    .ENDEF
+                           A   969    .DEFINE "frag"
+                           A   970    .VALUE 146
+                           A   971    .CLASS 8
+                           A   972    .DIM 2
+                           A   973    .TYPE 111
+                           A   974    .ENDEF
+                           A   975    .DEFINE "sock_fd"
+                           A   976    .VALUE 154
+                           A   977    .CLASS 8
+                           A   978    .TYPE 3
+                           A   979    .ENDEF
+                           A   980    .DEFINE "maxRtrs"
+                           A   981    .VALUE 156
+                           A   982    .CLASS 8
+                           A   983    .TYPE 12
+                           A   984    .ENDEF
+                           A   985    .ENDREC "_tcp_socket"
+                           A   986    .BEGREC "NONAME8",157
+                           A   987    .DEFINE "udp"
+                           A   988    .VALUE 0
+                           A   989    .CLASS 11
+                           A   990    .TAG "_udp_socket"
+                           A   991    .TYPE 8
+                           A   992    .ENDEF
+                           A   993    .DEFINE "tcp"
+                           A   994    .VALUE 0
+                           A   995    .CLASS 11
+                           A   996    .TAG "_tcp_socket"
+                           A   997    .TYPE 8
+                           A   998    .ENDEF
+                           A   999    .ENDREC "NONAME8"
+                           A  1000    .BEGREC "NONAME9",28
+                           A  1001    .DEFINE "hwType"
+                           A  1002    .VALUE 0
+                           A  1003    .CLASS 8
+                           A  1004    .TYPE 13
+                           A  1005    .ENDEF
+                           A  1006    .DEFINE "protType"
+                           A  1007    .VALUE 2
+                           A  1008    .CLASS 8
+                           A  1009    .TYPE 13
+                           A  1010    .ENDEF
+                           A  1011    .DEFINE "hwProtAddrLen"
+                           A  1012    .VALUE 4
+                           A  1013    .CLASS 8
+                           A  1014    .TYPE 13
+                           A  1015    .ENDEF
+                           A  1016    .DEFINE "opcode"
+                           A  1017    .VALUE 6
+                           A  1018    .CLASS 8
+                           A  1019    .TYPE 13
+                           A  1020    .ENDEF
+                           A  1021    .DEFINE "srcEthAddr"
+                           A  1022    .VALUE 8
+                           A  1023    .CLASS 8
+                           A  1024    .DIM 6
+                           A  1025    .TYPE 108
+                           A  1026    .ENDEF
+                           A  1027    .DEFINE "srcIPAddr"
+                           A  1028    .VALUE 14
+                           A  1029    .CLASS 8
+                           A  1030    .TYPE 15
+                           A  1031    .ENDEF
+                           A  1032    .DEFINE "dstEthAddr"
+                           A  1033    .VALUE 18
+                           A  1034    .CLASS 8
+                           A  1035    .DIM 6
+                           A  1036    .TYPE 108
+                           A  1037    .ENDEF
+                           A  1038    .DEFINE "dstIPAddr"
+                           A  1039    .VALUE 24
+                           A  1040    .CLASS 8
+                           A  1041    .TYPE 15
+                           A  1042    .ENDEF
+                           A  1043    .ENDREC "NONAME9"
+                           A  1044    .BEGREC "fragmem",2
+                           A  1045    .DEFINE "used"
+                           A  1046    .VALUE 0
+                           A  1047    .CLASS 8
+                           A  1048    .TYPE 12
+                           A  1049    .ENDEF
+                           A  1050    .DEFINE "asmBuf"
+                           A  1051    .VALUE 1
+                           A  1052    .CLASS 8
+                           A  1053    .DIM 1
+                           A  1054    .TYPE 108
+                           A  1055    .ENDEF
+                           A  1056    .ENDREC "fragmem"
+                           A  1057    .BEGREC "staticpage",7
+                           A  1058    .DEFINE "contents"
+                           A  1059    .VALUE 0
+                           A  1060    .CLASS 8
+                           A  1061    .TYPE 44
+                           A  1062    .ENDEF
+                           A  1063    .DEFINE "size"
+                           A  1064    .VALUE 3
+                           A  1065    .CLASS 8
+                           A  1066    .TYPE 5
+                           A  1067    .ENDEF
+                           A  1068    .ENDREC "staticpage"
+                           A  1069    .BEGREC "mimetype",6
+                           A  1070    .DEFINE "FileExtns"
+                           A  1071    .VALUE 0
+                           A  1072    .CLASS 8
+                           A  1073    .TYPE 34
+                           A  1074    .ENDEF
+                           A  1075    .DEFINE "type"
+                           A  1076    .VALUE 3
+                           A  1077    .CLASS 8
+                           A  1078    .TYPE 34
+                           A  1079    .ENDEF
+                           A  1080    .ENDREC "mimetype"
+                           A  1081    .BEGREC "header_rec",5
+                           A  1082    .DEFINE "name"
+                           A  1083    .VALUE 0
+                           A  1084    .CLASS 8
+                           A  1085    .TYPE 34
+                           A  1086    .ENDEF
+                           A  1087    .DEFINE "val"
+                           A  1088    .VALUE 3
+                           A  1089    .CLASS 8
+                           A  1090    .TYPE 13
+                           A  1091    .ENDEF
+                           A  1092    .ENDREC "header_rec"
+                           A  1093    .BEGREC "http_hdr",4
+                           A  1094    .DEFINE "key"
+                           A  1095    .VALUE 0
+                           A  1096    .CLASS 8
+                           A  1097    .TYPE 12
+                           A  1098    .ENDEF
+                           A  1099    .DEFINE "value"
+                           A  1100    .VALUE 1
+                           A  1101    .CLASS 8
+                           A  1102    .TYPE 34
+                           A  1103    .ENDEF
+                           A  1104    .ENDREC "http_hdr"
+                           A  1105    .BEGREC "http_params",6
+                           A  1106    .DEFINE "key"
+                           A  1107    .VALUE 0
+                           A  1108    .CLASS 8
+                           A  1109    .TYPE 44
+                           A  1110    .ENDEF
+                           A  1111    .DEFINE "value"
+                           A  1112    .VALUE 3
+                           A  1113    .CLASS 8
+                           A  1114    .TYPE 34
+                           A  1115    .ENDEF
+                           A  1116    .ENDREC "http_params"
+                           A  1117    .BEGREC "http_usrs",6
+                           A  1118    .DEFINE "user"
+                           A  1119    .VALUE 0
+                           A  1120    .CLASS 8
+                           A  1121    .TYPE 34
+                           A  1122    .ENDEF
+                           A  1123    .DEFINE "pwd"
+                           A  1124    .VALUE 3
+                           A  1125    .CLASS 8
+                           A  1126    .TYPE 34
+                           A  1127    .ENDEF
+                           A  1128    .ENDREC "http_usrs"
+                           A  1129    .BEGREC "http_auth",329
+                           A  1130    .DEFINE "AuthPtr"
+                           A  1131    .VALUE 0
+                           A  1132    .CLASS 8
+                           A  1133    .TYPE 34
+                           A  1134    .ENDEF
+                           A  1135    .DEFINE "AuthLength"
+                           A  1136    .VALUE 3
+                           A  1137    .CLASS 8
+                           A  1138    .TYPE 13
+                           A  1139    .ENDEF
+                           A  1140    .DEFINE "nonce"
+                           A  1141    .VALUE 5
+                           A  1142    .CLASS 8
+                           A  1143    .TYPE 34
+                           A  1144    .ENDEF
+                           A  1145    .DEFINE "cnonce"
+                           A  1146    .VALUE 8
+                           A  1147    .CLASS 8
+                           A  1148    .TYPE 34
+                           A  1149    .ENDEF
+                           A  1150    .DEFINE "realm"
+                           A  1151    .VALUE 11
+                           A  1152    .CLASS 8
+                           A  1153    .TYPE 34
+                           A  1154    .ENDEF
+                           A  1155    .DEFINE "username"
+                           A  1156    .VALUE 14
+                           A  1157    .CLASS 8
+                           A  1158    .TYPE 34
+                           A  1159    .ENDEF
+                           A  1160    .DEFINE "nccount"
+                           A  1161    .VALUE 17
+                           A  1162    .CLASS 8
+                           A  1163    .TYPE 34
+                           A  1164    .ENDEF
+                           A  1165    .DEFINE "Method"
+                           A  1166    .VALUE 20
+                           A  1167    .CLASS 8
+                           A  1168    .TYPE 34
+                           A  1169    .ENDEF
+                           A  1170    .DEFINE "uri"
+                           A  1171    .VALUE 23
+                           A  1172    .CLASS 8
+                           A  1173    .TYPE 34
+                           A  1174    .ENDEF
+                           A  1175    .DEFINE "response"
+                           A  1176    .VALUE 26
+                           A  1177    .CLASS 8
+                           A  1178    .TYPE 34
+                           A  1179    .ENDEF
+                           A  1180    .DEFINE "rspauth"
+                           A  1181    .VALUE 29
+                           A  1182    .CLASS 8
+                           A  1183    .DIM 300
+                           A  1184    .TYPE 98
+                           A  1185    .ENDEF
+                           A  1186    .ENDREC "http_auth"
+                           A  1187    .BEGREC "http_request",1281
+                           A  1188    .DEFINE "method"
+                           A  1189    .VALUE 0
+                           A  1190    .CLASS 8
+                           A  1191    .TYPE 12
+                           A  1192    .ENDEF
+                           A  1193    .DEFINE "reply"
+                           A  1194    .VALUE 1
+                           A  1195    .CLASS 8
+                           A  1196    .TYPE 13
+                           A  1197    .ENDEF
+                           A  1198    .DEFINE "numheaders"
+                           A  1199    .VALUE 3
+                           A  1200    .CLASS 8
+                           A  1201    .TYPE 12
+                           A  1202    .ENDEF
+                           A  1203    .DEFINE "numparams"
+                           A  1204    .VALUE 4
+                           A  1205    .CLASS 8
+                           A  1206    .TYPE 12
+                           A  1207    .ENDEF
+                           A  1208    .DEFINE "numrespheaders"
+                           A  1209    .VALUE 5
+                           A  1210    .CLASS 8
+                           A  1211    .TYPE 12
+                           A  1212    .ENDEF
+                           A  1213    .DEFINE "fd"
+                           A  1214    .VALUE 6
+                           A  1215    .CLASS 8
+                           A  1216    .TYPE 3
+                           A  1217    .ENDEF
+                           A  1218    .DEFINE "methods"
+                           A  1219    .VALUE 8
+                           A  1220    .CLASS 8
+                           A  1221    .TAG "http_method"
+                           A  1222    .TYPE 200
+                           A  1223    .ENDEF
+                           A  1224    .DEFINE "website"
+                           A  1225    .VALUE 11
+                           A  1226    .CLASS 8
+                           A  1227    .TAG "webpage"
+                           A  1228    .TYPE 200
+                           A  1229    .ENDEF
+                           A  1230    .DEFINE "headers"
+                           A  1231    .VALUE 14
+                           A  1232    .CLASS 8
+                           A  1233    .TAG "header_rec"
+                           A  1234    .TYPE 200
+                           A  1235    .ENDEF
+                           A  1236    .DEFINE "bufstart"
+                           A  1237    .VALUE 17
+                           A  1238    .CLASS 8
+                           A  1239    .TYPE 34
+                           A  1240    .ENDEF
+                           A  1241    .DEFINE "extraheader"
+                           A  1242    .VALUE 20
+                           A  1243    .CLASS 8
+                           A  1244    .TYPE 44
+                           A  1245    .ENDEF
+                           A  1246    .DEFINE "rqstheaders"
+                           A  1247    .VALUE 23
+                           A  1248    .CLASS 8
+                           A  1249    .DIM 16
+                           A  1250    .TAG "http_hdr"
+                           A  1251    .TYPE 104
+                           A  1252    .ENDEF
+                           A  1253    .DEFINE "respheaders"
+                           A  1254    .VALUE 87
+                           A  1255    .CLASS 8
+                           A  1256    .DIM 16
+                           A  1257    .TAG "http_hdr"
+                           A  1258    .TYPE 104
+                           A  1259    .ENDEF
+                           A  1260    .DEFINE "params"
+                           A  1261    .VALUE 151
+                           A  1262    .CLASS 8
+                           A  1263    .DIM 16
+                           A  1264    .TAG "http_params"
+                           A  1265    .TYPE 104
+                           A  1266    .ENDEF
+                           A  1267    .DEFINE "AvailContentLen"
+                           A  1268    .VALUE 247
+                           A  1269    .CLASS 8
+                           A  1270    .TYPE 4
+                           A  1271    .ENDEF
+                           A  1272    .DEFINE "UnreadContentLen"
+                           A  1273    .VALUE 250
+                           A  1274    .CLASS 8
+                           A  1275    .TYPE 4
+                           A  1276    .ENDEF
+                           A  1277    .DEFINE "AuthParams"
+                           A  1278    .VALUE 253
+                           A  1279    .CLASS 8
+                           A  1280    .TAG "http_auth"
+                           A  1281    .TYPE 40
+                           A  1282    .ENDEF
+                           A  1283    .DEFINE "buffer"
+                           A  1284    .VALUE 256
+                           A  1285    .CLASS 8
+                           A  1286    .DIM 1024
+                           A  1287    .TYPE 98
+                           A  1288    .ENDEF
+                           A  1289    .DEFINE "keepalive"
+                           A  1290    .VALUE 1280
+                           A  1291    .CLASS 8
+                           A  1292    .TYPE 2
+                           A  1293    .ENDEF
+                           A  1294    .ENDREC "http_request"
+                           A  1295    .BEGREC "http_method",7
+                           A  1296    .DEFINE "key"
+                           A  1297    .VALUE 0
+                           A  1298    .CLASS 8
+                           A  1299    .TYPE 12
+                           A  1300    .ENDEF
+                           A  1301    .DEFINE "name"
+                           A  1302    .VALUE 1
+                           A  1303    .CLASS 8
+                           A  1304    .TYPE 34
+                           A  1305    .ENDEF
+                           A  1306    .DEFINE "method"
+                           A  1307    .VALUE 4
+                           A  1308    .CLASS 8
+                           A  1309    .TYPE 547
+                           A  1310    .ENDEF
+                           A  1311    .ENDREC "http_method"
+                           A  1312    .BEGREC "webpage",10
+                           A  1313    .DEFINE "type"
+                           A  1314    .VALUE 0
+                           A  1315    .CLASS 8
+                           A  1316    .TYPE 12
+                           A  1317    .ENDEF
+                           A  1318    .DEFINE "path"
+                           A  1319    .VALUE 1
+                           A  1320    .CLASS 8
+                           A  1321    .TYPE 34
+                           A  1322    .ENDEF
+                           A  1323    .DEFINE "mimetype"
+                           A  1324    .VALUE 4
+                           A  1325    .CLASS 8
+                           A  1326    .TYPE 34
+                           A  1327    .ENDEF
+                           A  1328    .DEFINE "content"
+                           A  1329    .VALUE 7
+                           A  1330    .CLASS 8
+                           A  1331    .TAG "NONAME10"
+                           A  1332    .TYPE 8
+                           A  1333    .ENDEF
+                           A  1334    .ENDREC "webpage"
+                           A  1335    .BEGREC "NONAME10",3
+                           A  1336    .DEFINE "spage"
+                           A  1337    .VALUE 0
+                           A  1338    .CLASS 11
+                           A  1339    .TAG "staticpage"
+                           A  1340    .TYPE 200
+                           A  1341    .ENDEF
+                           A  1342    .DEFINE "cgi"
+                           A  1343    .VALUE 0
+                           A  1344    .CLASS 11
+                           A  1345    .TYPE 547
+                           A  1346    .ENDEF
+                           A  1347    .ENDREC "NONAME10"
+                           A  1348    	SEGMENT STRSECT
+000000                     A  1349    L__0:
+000000 2E68746D            A  1350    	DB	".htm"
+000004 00                  A  1351    	DB	0
+000005                     A  1352    L__1:
+000005 74657874 2F68746D   A  1353    	DB	"text/html"
+00000D 6C 
+00000E 00                  A  1354    	DB	0
+00000F                     A  1355    L__2:
+00000F 2E68746D 6C         A  1356    	DB	".html"
+000014 00                  A  1357    	DB	0
+000015                     A  1358    L__3:
+000015 74657874 2F68746D   A  1359    	DB	"text/html"
+00001D 6C 
+00001E 00                  A  1360    	DB	0
+00001F                     A  1361    L__4:
+00001F 756E6B6E 6F776E     A  1362    	DB	"unknown"
+000026 00                  A  1363    	DB	0
+000027                     A  1364    L__5:
+000027 756E6B6E 6F776E     A  1365    	DB	"unknown"
+00002E 00                  A  1366    	DB	0
+                           A  1367    	SEGMENT DATA
+000000                     A  1368    _mimetypes:
+000000 000000              A  1369    	DW24	L__0
+000003 050000              A  1370    	DW24	L__1
+000006 0F0000              A  1371    	DW24	L__2
+000009 150000              A  1372    	DW24	L__3
+00000C 1F0000              A  1373    	DW24	L__4
+00000F 270000              A  1374    	DW24	L__5
+                           A  1375    .DEFINE "mimetypes"
+                           A  1376    .ALIAS "_mimetypes"
+                           A  1377    .CLASS 69
+                           A  1378    .VALUE _mimetypes
+                           A  1379    .DIM 3
+                           A  1380    .TAG "mimetype"
+                           A  1381    .TYPE 104
+                           A  1382    .ENDEF
+000012                     A  1383    _NoOfMimeTypes:
+000012 0300                A  1384    	DW	3
+                           A  1385    .DEFINE "NoOfMimeTypes"
+                           A  1386    .ALIAS "_NoOfMimeTypes"
+                           A  1387    .CLASS 69
+                           A  1388    .VALUE _NoOfMimeTypes
+                           A  1389    .TYPE 13
+                           A  1390    .ENDEF
+                           A  1391    	SEGMENT STRSECT
+00002F                     A  1392    L__6:
+00002F 2F                  A  1393    	DB	"/"
+000030 00                  A  1394    	DB	0
+000031                     A  1395    L__7:
+000031 74657874 2F68746D   A  1396    	DB	"text/html"
+000039 6C 
+00003A 00                  A  1397    	DB	0
+00003B                     A  1398    L__8:
+00003B 2F533254 43502E68   A  1399    	DB	"/S2TCP.htm"
+000043 746D 
+000045 00                  A  1400    	DB	0
+000046                     A  1401    L__9:
+000046 74657874 2F68746D   A  1402    	DB	"text/html"
+00004E 6C 
+00004F 00                  A  1403    	DB	0
+000050                     A  1404    L__10:
+000050 2F736572 69616C5F   A  1405    	DB	"/serial_to_tcp.htm"
+000058 746F5F74 63702E68 
+000060 746D 
+000062 00                  A  1406    	DB	0
+000063                     A  1407    L__11:
+000063 74657874 2F68746D   A  1408    	DB	"text/html"
+00006B 6C 
+00006C 00                  A  1409    	DB	0
+00006D                     A  1410    L__12:
+00006D 2F636769 2D62696E   A  1411    	DB	"/cgi-bin/serial_to_tcp"
+000075 2F736572 69616C5F 
+00007D 746F5F74 6370 
+000083 00                  A  1412    	DB	0
+000084                     A  1413    L__13:
+000084 74657874 2F68746D   A  1414    	DB	"text/html"
+00008C 6C 
+00008D 00                  A  1415    	DB	0
+00008E                     A  1416    L__14:
+00008E 2F63616C 6C5F6367   A  1417    	DB	"/call_cgi.htm"
+000096 692E6874 6D 
+00009B 00                  A  1418    	DB	0
+00009C                     A  1419    L__15:
+00009C 74657874 2F68746D   A  1420    	DB	"text/html"
+0000A4 6C 
+0000A5 00                  A  1421    	DB	0
+0000A6                     A  1422    L__16:
+0000A6 2F636769 2D62696E   A  1423    	DB	"/cgi-bin/call_cgi"
+0000AE 2F63616C 6C5F6367 
+0000B6 69 
+0000B7 00                  A  1424    	DB	0
+0000B8                     A  1425    L__17:
+0000B8 74657874 2F68746D   A  1426    	DB	"text/html"
+0000C0 6C 
+0000C1 00                  A  1427    	DB	0
+                           A  1428    	SEGMENT TEXT
+000000                     A  1429    _website:
+000000 01                  A  1430    	DB	1
+000001 2F0000              A  1431    	DW24	L__6
+000004 310000              A  1432    	DW24	L__7
+000007 000000              A  1433    	DW24	_S2TCP_htm
+00000A 01                  A  1434    	DB	1
+00000B 3B0000              A  1435    	DW24	L__8
+00000E 460000              A  1436    	DW24	L__9
+000011 000000              A  1437    	DW24	_S2TCP_htm
+000014 01                  A  1438    	DB	1
+000015 500000              A  1439    	DW24	L__10
+000018 630000              A  1440    	DW24	L__11
+00001B 000000              A  1441    	DW24	_serial_to_tcp_htm
+00001E 02                  A  1442    	DB	2
+00001F 6D0000              A  1443    	DW24	L__12
+000022 840000              A  1444    	DW24	L__13
+000025 000000              A  1445    	DW24	_S2TCP_cgi
+000028 01                  A  1446    	DB	1
+000029 8E0000              A  1447    	DW24	L__14
+00002C 9C0000              A  1448    	DW24	L__15
+00002F 000000              A  1449    	DW24	_call_cgi_htm
+000032 02                  A  1450    	DB	2
+000033 A60000              A  1451    	DW24	L__16
+000036 B80000              A  1452    	DW24	L__17
+000039 000000              A  1453    	DW24	_SerialRead_cgi
+00003C 00                  A  1454    	DB	0
+00003D 000000              A  1455    	DW24	0
+000040 000000              A  1456    	DW24	0
+000043 000000              A  1457    	DW24	0
+                           A  1458    .DEFINE "website"
+                           A  1459    .ALIAS "_website"
+                           A  1460    .CLASS 84
+                           A  1461    .VALUE _website
+                           A  1462    .DIM 7
+                           A  1463    .TAG "webpage"
+                           A  1464    .TYPE 104
+                           A  1465    .ENDEF
+                           A  1466    	XREF _SerialRead_cgi:ROM
+                           A  1467    	XREF _S2TCP_cgi:ROM
+                           A  1468    	XREF _S2TCP_htm:ROM
+                           A  1469    	XREF _serial_to_tcp_htm:ROM
+                           A  1470    	XREF _call_cgi_htm:ROM
+                           A  1471    	XDEF _website
+                           A  1472    	XDEF _NoOfMimeTypes
+                           A  1473    	XDEF _mimetypes
+                           A  1474    ;    1	
+                           A  1475    ;    2	#include "ZSysgen.h"
+                           A  1476    ;    3	#include "ZTypes.h"
+                           A  1477    ;    4	#include "ZThread.h"
+                           A  1478    ;    5	#include "ZDevice.h"
+                           A  1479    ;    6	#include "http.h"
+                           A  1480    ;    7	#include "httpd.h"
+                           A  1481    ;    8	#include "socket.h"
+                           A  1482    ;    9	
+                           A  1483    ;   10	#include "version.h"
+                           A  1484    ;   11	/*
+                           A  1485    ;   12	 * Web Site Description
+                           A  1486    ;   13	 */
+                           A  1487    ;   14	
+                           A  1488    ;   15	/*
+                           A  1489    ;   16	 * If a page is a static page, then the type HTTP_PAGE_STATIC should be
+                           A  1490    ;   17	 * specified, and a struct staticpage used to describe the page data. If
+                           A  1491    ;   18	 * a page is dynamic, then the type HTTP_PAGE_DYNAMIC should be used, and
+                           A  1492    ;   19	 * the address of the CGI routine should be provided.
+                           A  1493    ;   20	 */
+                           A  1494    ;   21	
+                           A  1495    ;   22	// HTML pages
+                           A  1496    ;   23	extern const struct staticpage call_cgi_htm;
+                           A  1497    ;   24	extern const struct staticpage serial_to_tcp_htm;
+                           A  1498    ;   25	extern const struct staticpage S2TCP_htm;
+                           A  1499    ;   26	// CGIs
+                           A  1500    ;   27	extern INT16 S2TCP_cgi(struct http_request *request);
+                           A  1501    ;   28	extern INT16 SerialRead_cgi(struct http_request *request);
+                           A  1502    ;   29	
+                           A  1503    ;   30	// Java Applets
+                           A  1504    ;   31	
+                           A  1505    ;   32	
+                           A  1506    ;   33	//Dummy. This is required if web files are stored in Flash Filesystem
+                           A  1507    ;   34	struct mimetype mimetypes[] = {
+                           A  1508    ;   35		{".htm","text/html"},
+                           A  1509    ;   36		{".html","text/html"},
+                           A  1510    ;   37	// If the file extensions does not match any then unknown will be used.
+                           A  1511    ;   38	// This should always be at the end.
+                           A  1512    ;   39		{"unknown","unknown"}	
+                           A  1513    ;   40		};
+                           A  1514    ;   41	UINT16 NoOfMimeTypes = sizeof(mimetypes)/sizeof(struct mimetype);
+                           A  1515    ;   42	
+                           A  1516    ;   43	
+                           A  1517    ;   44	Webpage website[] = {
+                           A  1518    	END
+
+
+Errors: 0
+Warnings: 0
+Lines Assembled: 1519

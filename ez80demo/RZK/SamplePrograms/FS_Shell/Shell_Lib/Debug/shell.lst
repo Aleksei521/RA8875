@@ -1,0 +1,3385 @@
+Zilog eZ80 Macro Assembler Version 4.2 (17030704)                                                                                                                                                               13-Apr-17     11:32:24     page:   1
+
+
+PC     Object              I  Line    Source 
+                           A     1    ; Zilog eZ80 ANSI C Compiler Release 3.4
+                           A     2    ; -nomodsect -optsize -noreduceopt -nopadbranch -debug
+                           A     3    ; -peephole -globalopt -localcse -const=ROM 
+                           A     4    	FILE	"..\Src\shell.c"
+                           A     5    	.assume ADL=1
+                           A     6    .DEBUG "C"
+                           A     7    	SEGMENT CODE
+                           A     8    .BEGREC "fmt_type",19
+                           A     9    .DEFINE "status"
+                           A    10    .VALUE 0
+                           A    11    .CLASS 8
+                           A    12    .TYPE 12
+                           A    13    .ENDEF
+                           A    14    .DEFINE "flags"
+                           A    15    .VALUE 1
+                           A    16    .CLASS 8
+                           A    17    .TYPE 12
+                           A    18    .ENDEF
+                           A    19    .DEFINE "size"
+                           A    20    .VALUE 2
+                           A    21    .CLASS 8
+                           A    22    .TYPE 2
+                           A    23    .ENDEF
+                           A    24    .DEFINE "chr"
+                           A    25    .VALUE 3
+                           A    26    .CLASS 8
+                           A    27    .TYPE 2
+                           A    28    .ENDEF
+                           A    29    .DEFINE "type"
+                           A    30    .VALUE 4
+                           A    31    .CLASS 8
+                           A    32    .TYPE 2
+                           A    33    .ENDEF
+                           A    34    .DEFINE "field_width"
+                           A    35    .VALUE 5
+                           A    36    .CLASS 8
+                           A    37    .TYPE 2
+                           A    38    .ENDEF
+                           A    39    .DEFINE "precision"
+                           A    40    .VALUE 6
+                           A    41    .CLASS 8
+                           A    42    .TYPE 2
+                           A    43    .ENDEF
+                           A    44    .DEFINE "set_begin"
+                           A    45    .VALUE 7
+                           A    46    .CLASS 8
+                           A    47    .TYPE 34
+                           A    48    .ENDEF
+                           A    49    .DEFINE "set_end"
+                           A    50    .VALUE 10
+                           A    51    .CLASS 8
+                           A    52    .TYPE 34
+                           A    53    .ENDEF
+                           A    54    .DEFINE "pad_whole"
+                           A    55    .VALUE 13
+                           A    56    .CLASS 8
+                           A    57    .TYPE 12
+                           A    58    .ENDEF
+                           A    59    .DEFINE "pad_pre_fract"
+                           A    60    .VALUE 14
+                           A    61    .CLASS 8
+                           A    62    .TYPE 12
+                           A    63    .ENDEF
+                           A    64    .DEFINE "pad_post_fract"
+                           A    65    .VALUE 15
+                           A    66    .CLASS 8
+                           A    67    .TYPE 12
+                           A    68    .ENDEF
+                           A    69    .DEFINE "pad_at"
+                           A    70    .VALUE 16
+                           A    71    .CLASS 8
+                           A    72    .TYPE 34
+                           A    73    .ENDEF
+                           A    74    .ENDREC "fmt_type"
+                           A    75    .BEGREC "flt_info",12
+                           A    76    .DEFINE "flags"
+                           A    77    .VALUE 0
+                           A    78    .CLASS 8
+                           A    79    .TYPE 12
+                           A    80    .ENDEF
+                           A    81    .DEFINE "exp"
+                           A    82    .VALUE 1
+                           A    83    .CLASS 8
+                           A    84    .TYPE 2
+                           A    85    .ENDEF
+                           A    86    .DEFINE "digits"
+                           A    87    .VALUE 2
+                           A    88    .CLASS 8
+                           A    89    .DIM 10
+                           A    90    .TYPE 108
+                           A    91    .ENDEF
+                           A    92    .ENDREC "flt_info"
+                           A    93    .BEGREC "NONAME0",6
+                           A    94    .DEFINE "quot"
+                           A    95    .VALUE 0
+                           A    96    .CLASS 8
+                           A    97    .TYPE 4
+                           A    98    .ENDEF
+                           A    99    .DEFINE "rem"
+                           A   100    .VALUE 3
+                           A   101    .CLASS 8
+                           A   102    .TYPE 4
+                           A   103    .ENDEF
+                           A   104    .ENDREC "NONAME0"
+                           A   105    .BEGREC "NONAME1",8
+                           A   106    .DEFINE "quot"
+                           A   107    .VALUE 0
+                           A   108    .CLASS 8
+                           A   109    .TYPE 5
+                           A   110    .ENDEF
+                           A   111    .DEFINE "rem"
+                           A   112    .VALUE 4
+                           A   113    .CLASS 8
+                           A   114    .TYPE 5
+                           A   115    .ENDEF
+                           A   116    .ENDREC "NONAME1"
+                           A   117    .BEGREC "header",6
+                           A   118    .DEFINE "s"
+                           A   119    .VALUE 0
+                           A   120    .CLASS 11
+                           A   121    .TAG "NONAME2"
+                           A   122    .TYPE 8
+                           A   123    .ENDEF
+                           A   124    .DEFINE "x"
+                           A   125    .VALUE 0
+                           A   126    .CLASS 11
+                           A   127    .TYPE 2
+                           A   128    .ENDEF
+                           A   129    .ENDREC "header"
+                           A   130    .BEGREC "NONAME2",6
+                           A   131    .DEFINE "ptr"
+                           A   132    .VALUE 0
+                           A   133    .CLASS 8
+                           A   134    .TAG "header"
+                           A   135    .TYPE 40
+                           A   136    .ENDEF
+                           A   137    .DEFINE "size"
+                           A   138    .VALUE 3
+                           A   139    .CLASS 8
+                           A   140    .TYPE 14
+                           A   141    .ENDEF
+                           A   142    .ENDREC "NONAME2"
+                           A   143    .BEGREC "devCap",4
+                           A   144    .DEFINE "devType"
+                           A   145    .VALUE 0
+                           A   146    .CLASS 8
+                           A   147    .TYPE 12
+                           A   148    .ENDEF
+                           A   149    .DEFINE "devHdl"
+                           A   150    .VALUE 1
+                           A   151    .CLASS 8
+                           A   152    .TYPE 33
+                           A   153    .ENDEF
+                           A   154    .ENDREC "devCap"
+                           A   155    .BEGREC "RZK_DEVICE_CB_t",54
+                           A   156    .DEFINE "InUse"
+                           A   157    .VALUE 0
+                           A   158    .CLASS 8
+                           A   159    .TYPE 12
+                           A   160    .ENDEF
+                           A   161    .DEFINE "devName"
+                           A   162    .VALUE 1
+                           A   163    .CLASS 8
+                           A   164    .DIM 12
+                           A   165    .TYPE 98
+                           A   166    .ENDEF
+                           A   167    .DEFINE "fnInit"
+                           A   168    .VALUE 13
+                           A   169    .CLASS 8
+                           A   170    .TYPE 549
+                           A   171    .ENDEF
+                           A   172    .DEFINE "fnStop"
+                           A   173    .VALUE 16
+                           A   174    .CLASS 8
+                           A   175    .TYPE 549
+                           A   176    .ENDEF
+                           A   177    .DEFINE "fnOpen"
+                           A   178    .VALUE 19
+                           A   179    .CLASS 8
+                           A   180    .TYPE 549
+                           A   181    .ENDEF
+                           A   182    .DEFINE "fnClose"
+                           A   183    .VALUE 22
+                           A   184    .CLASS 8
+                           A   185    .TYPE 549
+                           A   186    .ENDEF
+                           A   187    .DEFINE "fnRead"
+                           A   188    .VALUE 25
+                           A   189    .CLASS 8
+                           A   190    .TYPE 549
+                           A   191    .ENDEF
+                           A   192    .DEFINE "fnWrite"
+                           A   193    .VALUE 28
+                           A   194    .CLASS 8
+                           A   195    .TYPE 549
+                           A   196    .ENDEF
+                           A   197    .DEFINE "fnSeek"
+                           A   198    .VALUE 31
+                           A   199    .CLASS 8
+                           A   200    .TYPE 549
+                           A   201    .ENDEF
+                           A   202    .DEFINE "fnGetc"
+                           A   203    .VALUE 34
+                           A   204    .CLASS 8
+                           A   205    .TYPE 549
+                           A   206    .ENDEF
+                           A   207    .DEFINE "fnPutc"
+                           A   208    .VALUE 37
+                           A   209    .CLASS 8
+                           A   210    .TYPE 549
+                           A   211    .ENDEF
+                           A   212    .DEFINE "fnIoctl"
+                           A   213    .VALUE 40
+                           A   214    .CLASS 8
+                           A   215    .TYPE 549
+                           A   216    .ENDEF
+                           A   217    .DEFINE "dvintvector"
+                           A   218    .VALUE 43
+                           A   219    .CLASS 8
+                           A   220    .TYPE 33
+                           A   221    .ENDEF
+                           A   222    .DEFINE "dvivec"
+                           A   223    .VALUE 46
+                           A   224    .CLASS 8
+                           A   225    .TYPE 13
+                           A   226    .ENDEF
+                           A   227    .DEFINE "dvinputoutput"
+                           A   228    .VALUE 48
+                           A   229    .CLASS 8
+                           A   230    .TYPE 44
+                           A   231    .ENDEF
+                           A   232    .DEFINE "devMode"
+                           A   233    .VALUE 51
+                           A   234    .CLASS 8
+                           A   235    .TYPE 2
+                           A   236    .ENDEF
+                           A   237    .DEFINE "dvminor"
+                           A   238    .VALUE 52
+                           A   239    .CLASS 8
+                           A   240    .TYPE 13
+                           A   241    .ENDEF
+                           A   242    .ENDREC "RZK_DEVICE_CB_t"
+                           A   243    .BEGREC "CPU_REG",32
+                           A   244    .DEFINE "regAFz"
+                           A   245    .VALUE 0
+                           A   246    .CLASS 8
+                           A   247    .TYPE 15
+                           A   248    .ENDEF
+                           A   249    .DEFINE "regBCz"
+                           A   250    .VALUE 4
+                           A   251    .CLASS 8
+                           A   252    .TYPE 15
+                           A   253    .ENDEF
+                           A   254    .DEFINE "regDEz"
+                           A   255    .VALUE 8
+                           A   256    .CLASS 8
+                           A   257    .TYPE 15
+                           A   258    .ENDEF
+                           A   259    .DEFINE "regHLz"
+                           A   260    .VALUE 12
+                           A   261    .CLASS 8
+                           A   262    .TYPE 15
+                           A   263    .ENDEF
+                           A   264    .DEFINE "regIXz"
+                           A   265    .VALUE 16
+                           A   266    .CLASS 8
+                           A   267    .TYPE 15
+                           A   268    .ENDEF
+                           A   269    .DEFINE "regIYz"
+                           A   270    .VALUE 20
+                           A   271    .CLASS 8
+                           A   272    .TYPE 15
+                           A   273    .ENDEF
+                           A   274    .DEFINE "regPCz"
+                           A   275    .VALUE 24
+                           A   276    .CLASS 8
+                           A   277    .TYPE 15
+                           A   278    .ENDEF
+                           A   279    .DEFINE "regSPz"
+                           A   280    .VALUE 28
+                           A   281    .CLASS 8
+                           A   282    .TYPE 15
+                           A   283    .ENDEF
+                           A   284    .ENDREC "CPU_REG"
+                           A   285    .BEGREC "THREADPARAMS_STRUCT_t",22
+                           A   286    .DEFINE "szName"
+                           A   287    .VALUE 0
+                           A   288    .CLASS 8
+                           A   289    .DIM 12
+                           A   290    .TYPE 108
+                           A   291    .ENDEF
+                           A   292    .DEFINE "uState"
+                           A   293    .VALUE 12
+                           A   294    .CLASS 8
+                           A   295    .TYPE 12
+                           A   296    .ENDEF
+                           A   297    .DEFINE "uBankSelector"
+                           A   298    .VALUE 13
+                           A   299    .CLASS 8
+                           A   300    .TYPE 12
+                           A   301    .ENDEF
+                           A   302    .DEFINE "uOperationMode"
+                           A   303    .VALUE 14
+                           A   304    .CLASS 8
+                           A   305    .TYPE 12
+                           A   306    .ENDEF
+                           A   307    .DEFINE "tQuantum"
+                           A   308    .VALUE 15
+                           A   309    .CLASS 8
+                           A   310    .TYPE 14
+                           A   311    .ENDEF
+                           A   312    .DEFINE "cPriority"
+                           A   313    .VALUE 18
+                           A   314    .CLASS 8
+                           A   315    .TYPE 12
+                           A   316    .ENDEF
+                           A   317    .DEFINE "sSignalReceive"
+                           A   318    .VALUE 19
+                           A   319    .CLASS 8
+                           A   320    .TYPE 14
+                           A   321    .ENDEF
+                           A   322    .ENDREC "THREADPARAMS_STRUCT_t"
+                           A   323    .BEGREC "RZK_THREAD_CB",127
+                           A   324    .DEFINE "CB"
+                           A   325    .VALUE 0
+                           A   326    .CLASS 8
+                           A   327    .DIM 127
+                           A   328    .TYPE 108
+                           A   329    .ENDEF
+                           A   330    .ENDREC "RZK_THREAD_CB"
+                           A   331    .BEGREC "shvars",308
+                           A   332    .DEFINE "shlast"
+                           A   333    .VALUE 0
+                           A   334    .CLASS 8
+                           A   335    .TYPE 15
+                           A   336    .ENDEF
+                           A   337    .DEFINE "shlogon"
+                           A   338    .VALUE 4
+                           A   339    .CLASS 8
+                           A   340    .TYPE 15
+                           A   341    .ENDEF
+                           A   342    .DEFINE "shused"
+                           A   343    .VALUE 8
+                           A   344    .CLASS 8
+                           A   345    .TYPE 12
+                           A   346    .ENDEF
+                           A   347    .DEFINE "shuser"
+                           A   348    .VALUE 9
+                           A   349    .CLASS 8
+                           A   350    .DIM 9
+                           A   351    .TYPE 98
+                           A   352    .ENDEF
+                           A   353    .DEFINE "shmach"
+                           A   354    .VALUE 18
+                           A   355    .CLASS 8
+                           A   356    .DIM 64
+                           A   357    .TYPE 98
+                           A   358    .ENDEF
+                           A   359    .DEFINE "shbuf"
+                           A   360    .VALUE 82
+                           A   361    .CLASS 8
+                           A   362    .DIM 80
+                           A   363    .TYPE 98
+                           A   364    .ENDEF
+                           A   365    .DEFINE "shtok"
+                           A   366    .VALUE 162
+                           A   367    .CLASS 8
+                           A   368    .DIM 16
+                           A   369    .TYPE 354
+                           A   370    .ENDEF
+                           A   371    .DEFINE "shtktyp"
+                           A   372    .VALUE 210
+                           A   373    .CLASS 8
+                           A   374    .DIM 16
+                           A   375    .TYPE 98
+                           A   376    .ENDEF
+                           A   377    .DEFINE "shargst"
+                           A   378    .VALUE 226
+                           A   379    .CLASS 8
+                           A   380    .DIM 82
+                           A   381    .TYPE 98
+                           A   382    .ENDEF
+                           A   383    .ENDREC "shvars"
+                           A   384    .BEGREC "cmdent",13
+                           A   385    .DEFINE "cmdnam"
+                           A   386    .VALUE 0
+                           A   387    .CLASS 8
+                           A   388    .TYPE 34
+                           A   389    .ENDEF
+                           A   390    .DEFINE "cbuiltin"
+                           A   391    .VALUE 3
+                           A   392    .CLASS 8
+                           A   393    .TYPE 12
+                           A   394    .ENDEF
+                           A   395    .DEFINE "cproc"
+                           A   396    .VALUE 4
+                           A   397    .CLASS 8
+                           A   398    .TYPE 547
+                           A   399    .ENDEF
+                           A   400    .DEFINE "cnext"
+                           A   401    .VALUE 7
+                           A   402    .CLASS 8
+                           A   403    .TAG "cmdent"
+                           A   404    .TYPE 40
+                           A   405    .ENDEF
+                           A   406    .DEFINE "helpDesc"
+                           A   407    .VALUE 10
+                           A   408    .CLASS 8
+                           A   409    .TYPE 34
+                           A   410    .ENDEF
+                           A   411    .ENDREC "cmdent"
+                           A   412    .BEGREC "NONAME3",29
+                           A   413    .DEFINE "fd_name"
+                           A   414    .VALUE 0
+                           A   415    .CLASS 8
+                           A   416    .DIM 17
+                           A   417    .TYPE 98
+                           A   418    .ENDEF
+                           A   419    .DEFINE "fd_type"
+                           A   420    .VALUE 17
+                           A   421    .CLASS 8
+                           A   422    .TYPE 12
+                           A   423    .ENDEF
+                           A   424    .DEFINE "fd_size"
+                           A   425    .VALUE 18
+                           A   426    .CLASS 8
+                           A   427    .TYPE 15
+                           A   428    .ENDEF
+                           A   429    .DEFINE "fd_sec"
+                           A   430    .VALUE 22
+                           A   431    .CLASS 8
+                           A   432    .TYPE 12
+                           A   433    .ENDEF
+                           A   434    .DEFINE "fd_min"
+                           A   435    .VALUE 23
+                           A   436    .CLASS 8
+                           A   437    .TYPE 12
+                           A   438    .ENDEF
+                           A   439    .DEFINE "fd_hrs"
+                           A   440    .VALUE 24
+                           A   441    .CLASS 8
+                           A   442    .TYPE 12
+                           A   443    .ENDEF
+                           A   444    .DEFINE "fd_day"
+                           A   445    .VALUE 25
+                           A   446    .CLASS 8
+                           A   447    .TYPE 12
+                           A   448    .ENDEF
+                           A   449    .DEFINE "fd_mon"
+                           A   450    .VALUE 26
+                           A   451    .CLASS 8
+                           A   452    .TYPE 12
+                           A   453    .ENDEF
+                           A   454    .DEFINE "fd_year"
+                           A   455    .VALUE 27
+                           A   456    .CLASS 8
+                           A   457    .TYPE 12
+                           A   458    .ENDEF
+                           A   459    .DEFINE "fd_century"
+                           A   460    .VALUE 28
+                           A   461    .CLASS 8
+                           A   462    .TYPE 12
+                           A   463    .ENDEF
+                           A   464    .ENDREC "NONAME3"
+                           A   465    .BEGREC "NONAME4",34
+                           A   466    .DEFINE "vol_name"
+                           A   467    .VALUE 0
+                           A   468    .CLASS 8
+                           A   469    .DIM 17
+                           A   470    .TYPE 108
+                           A   471    .ENDEF
+                           A   472    .DEFINE "is_valid"
+                           A   473    .VALUE 17
+                           A   474    .CLASS 8
+                           A   475    .TYPE 12
+                           A   476    .ENDEF
+                           A   477    .DEFINE "vol_size"
+                           A   478    .VALUE 18
+                           A   479    .CLASS 8
+                           A   480    .TYPE 15
+                           A   481    .ENDEF
+                           A   482    .DEFINE "free_space"
+                           A   483    .VALUE 22
+                           A   484    .CLASS 8
+                           A   485    .TYPE 15
+                           A   486    .ENDEF
+                           A   487    .DEFINE "used_space"
+                           A   488    .VALUE 26
+                           A   489    .CLASS 8
+                           A   490    .TYPE 15
+                           A   491    .ENDEF
+                           A   492    .DEFINE "dirty_space"
+                           A   493    .VALUE 30
+                           A   494    .CLASS 8
+                           A   495    .TYPE 15
+                           A   496    .ENDEF
+                           A   497    .ENDREC "NONAME4"
+                           A   498    .BEGREC "TIME",8
+                           A   499    .DEFINE "sec"
+                           A   500    .VALUE 0
+                           A   501    .CLASS 8
+                           A   502    .TYPE 12
+                           A   503    .ENDEF
+                           A   504    .DEFINE "minutes"
+                           A   505    .VALUE 1
+                           A   506    .CLASS 8
+                           A   507    .TYPE 12
+                           A   508    .ENDEF
+                           A   509    .DEFINE "hrs"
+                           A   510    .VALUE 2
+                           A   511    .CLASS 8
+                           A   512    .TYPE 12
+                           A   513    .ENDEF
+                           A   514    .DEFINE "dayOfMonth"
+                           A   515    .VALUE 3
+                           A   516    .CLASS 8
+                           A   517    .TYPE 12
+                           A   518    .ENDEF
+                           A   519    .DEFINE "dayOfWeek"
+                           A   520    .VALUE 4
+                           A   521    .CLASS 8
+                           A   522    .TYPE 12
+                           A   523    .ENDEF
+                           A   524    .DEFINE "mon"
+                           A   525    .VALUE 5
+                           A   526    .CLASS 8
+                           A   527    .TYPE 12
+                           A   528    .ENDEF
+                           A   529    .DEFINE "year"
+                           A   530    .VALUE 6
+                           A   531    .CLASS 8
+                           A   532    .TYPE 12
+                           A   533    .ENDEF
+                           A   534    .DEFINE "cent"
+                           A   535    .VALUE 7
+                           A   536    .CLASS 8
+                           A   537    .TYPE 12
+                           A   538    .ENDEF
+                           A   539    .ENDREC "TIME"
+                           A   540    	SEGMENT DATA
+000000                     A   541    _errhd:
+000000 53                  A   542    	DB	83
+000001 79                  A   543    	DB	121
+000002 6E                  A   544    	DB	110
+000003 74                  A   545    	DB	116
+000004 61                  A   546    	DB	97
+000005 78                  A   547    	DB	120
+000006 20                  A   548    	DB	32
+000007 65                  A   549    	DB	101
+000008 72                  A   550    	DB	114
+000009 72                  A   551    	DB	114
+00000A 6F                  A   552    	DB	111
+00000B 72                  A   553    	DB	114
+00000C 0A                  A   554    	DB	10
+00000D 00                  A   555    	DB	0
+                           A   556    .DEFINE "errhd"
+                           A   557    .ALIAS "_errhd"
+                           A   558    .CLASS 69
+                           A   559    .VALUE _errhd
+                           A   560    .DIM 14
+                           A   561    .TYPE 98
+                           A   562    .ENDEF
+00000E                     A   563    _ShellCommands:
+00000E 000000              A   564    	DW24	0
+                           A   565    .DEFINE "ShellCommands"
+                           A   566    .ALIAS "_ShellCommands"
+                           A   567    .CLASS 69
+                           A   568    .VALUE _ShellCommands
+                           A   569    .TAG "cmdent"
+                           A   570    .TYPE 40
+                           A   571    .ENDEF
+000011                     A   572    _DefaultCommandsAdded:
+000011 00                  A   573    	DB	0
+                           A   574    .DEFINE "DefaultCommandsAdded"
+                           A   575    .ALIAS "_DefaultCommandsAdded"
+                           A   576    .CLASS 69
+                           A   577    .VALUE _DefaultCommandsAdded
+                           A   578    .TYPE 12
+                           A   579    .ENDEF
+000012                     A   580    _g_commandType:
+000012 01                  A   581    	DB	1
+                           A   582    .DEFINE "g_commandType"
+                           A   583    .ALIAS "_g_commandType"
+                           A   584    .CLASS 69
+                           A   585    .VALUE _g_commandType
+                           A   586    .TYPE 12
+                           A   587    .ENDEF
+                           A   588    ;    1	/************************************************************************************
+                           A   589    ;    2	 * Copyright 2016, ZiLOG Inc.
+                           A   590    ;    3	 * All Rights Reserved
+                           A   591    ;    4	 *
+                           A   592    ;    5	 * This is UNPUBLISHED PROPRIETARY SOURCE CODE of ZiLOG Inc., and might
+                           A   593    ;    6	 * contain proprietary, confidential and trade secret information of
+                           A   594    ;    7	 * ZiLOG, our partners and parties from which this code has been licensed.
+                           A   595    ;    8	 * 
+                           A   596    ;    9	 * The contents of this file may not be disclosed to third parties, copied or
+                           A   597    ;   10	 * duplicated in any form, in whole or in part, without the prior written
+                           A   598    ;   11	 * permission of ZiLOG Inc.
+                           A   599    ;   12	 ************************************************************************************/
+                           A   600    ;   13	/************************************************************************************
+                           A   601    ;   14	 * Copyright 2001, Metro Link, Inc.
+                           A   602    ;   15	 * All Rights Reserved
+                           A   603    ;   16	 *
+                           A   604    ;   17	 * This is UNPUBLISHED PROPRIETARY SOURCE CODE of Metro Link, Inc. and may
+                           A   605    ;   18	 * contain proprietary, confidential and trade secret information of
+                           A   606    ;   19	 * Metro Link, Inc. and/or its partners.
+                           A   607    ;   20	 *  
+                           A   608    ;   21	 * The contents of this file may not be disclosed to third parties, copied or
+                           A   609    ;   22	 * duplicated in any form, in whole or in part, without the prior written
+                           A   610    ;   23	 * permission of Metro Link, Inc.
+                           A   611    ;   24	 *
+                           A   612    ;   25	 ************************************************************************************/
+                           A   613    ;   26	/* shell.c - shell */
+                           A   614    ;   27	#include <stdio.h>
+                           A   615    ;   28	#include <stdarg.h>
+                           A   616    ;   29	#include <string.h>
+                           A   617    ;   30	#include <stdlib.h>
+                           A   618    ;   31	#include "ZSysgen.h"
+                           A   619    ;   32	#include "ZTypes.h"
+                           A   620    ;   33	#include "ZDevice.h"
+                           A   621    ;   34	#include "ZThread.h"
+                           A   622    ;   35	#include "shell.h"
+                           A   623    ;   36	
+                           A   624    ;   37	#include "zfsapi.h"
+                           A   625    ;   38	#include "rtc.h"
+                           A   626    ;   39	
+                           A   627    ;   40	extern RZK_DEVICE_CB_t*                                  CONSOLE ;
+                           A   628    ;   41	extern UINT RZK_MAX_DCB ;
+                           A   629    ;   42	static	INT8	errhd[] = "Syntax error\n";/* global error messages	*/
+                           A   630    ;   43	//LOCAL	char	fmt2[]  = "[%d]\n";
+                           A   631    ;   44	
+                           A   632    ;   45	/** For ZTP Commands */
+                           A   633    ;   46	struct cmdent	*ShellCommands = ( struct cmdent *) NULL;
+                           A   634    ;   47	static UINT8	DefaultCommandsAdded = ( UINT8 ) FALSE;
+                           A   635    ;   48	UINT8 	g_commandType = SHELL_ZTP ;
+                           A   636    	SEGMENT CODE
+                           A   637    ;   49	
+                           A   638    ;   50	void GetString( RZK_DEVICE_CB_t * dev, INT8 *pbuf, UINT max_len, INT* len )
+                           A   639    ;   51	{
+000000                     A   640    _GetString:
+                           A   641    .DEFINE "_GetString"
+                           A   642    
+                           A   643    .VALUE _GetString
+                           A   644    
+                           A   645    .CLASS 2
+                           A   646    
+                           A   647    .TYPE 65
+                           A   648    
+                           A   649    .ENDEF
+                           A   650    
+                           A   651    .BEGFUNC "GetString",51,"_GetString"
+                           A   652    
+                           A   653    .LINE 51
+                           A   654    
+                           A   655    .DEFINE "dev"
+                           A   656    
+                           A   657    .CLASS 65
+                           A   658    
+                           A   659    .VALUE 6
+                           A   660    
+                           A   661    .TAG "RZK_DEVICE_CB_t"
+                           A   662    
+                           A   663    .TYPE 40
+                           A   664    
+                           A   665    .ENDEF
+                           A   666    
+                           A   667    .DEFINE "pbuf"
+                           A   668    
+                           A   669    .CLASS 65
+                           A   670    
+                           A   671    .VALUE 9
+                           A   672    
+                           A   673    .TYPE 34
+                           A   674    
+                           A   675    .ENDEF
+                           A   676    
+                           A   677    .DEFINE "max_len"
+                           A   678    
+                           A   679    .CLASS 65
+                           A   680    
+                           A   681    .VALUE 12
+                           A   682    
+                           A   683    .TYPE 14
+                           A   684    
+                           A   685    .ENDEF
+                           A   686    
+                           A   687    .DEFINE "len"
+                           A   688    
+                           A   689    .CLASS 65
+                           A   690    
+                           A   691    .VALUE 15
+                           A   692    
+                           A   693    .TYPE 36
+                           A   694    
+                           A   695    .ENDEF
+                           A   696    
+                           A   697    .DEFINE "ch"
+                           A   698    
+                           A   699    .CLASS 65
+                           A   700    
+                           A   701    .VALUE -1
+                           A   702    
+                           A   703    .TYPE 2
+                           A   704    
+                           A   705    .ENDEF
+                           A   706    
+                           A   707    .DEFINE "ctr"
+                           A   708    
+                           A   709    .CLASS 65
+                           A   710    
+                           A   711    .VALUE -4
+                           A   712    
+                           A   713    .TYPE 4
+                           A   714    
+                           A   715    .ENDEF
+                           A   716    
+                           A   717    .DEFINE "pshbuf"
+                           A   718    
+                           A   719    .CLASS 65
+                           A   720    
+                           A   721    .VALUE -7
+                           A   722    
+                           A   723    .TYPE 34
+                           A   724    
+                           A   725    .ENDEF
+                           A   726    
+                           A   727    .DEFINE "new_ch"
+                           A   728    
+                           A   729    .CLASS 65
+                           A   730    
+                           A   731    .VALUE -8
+                           A   732    
+                           A   733    .TYPE 2
+                           A   734    
+                           A   735    .ENDEF
+                           A   736    
+000000 DDE5                A   737    	PUSH	IX
+000002 DD210000 00         A   738    	LD	IX,0
+000007 DD39                A   739    	ADD	IX,SP
+000009 ED22F5              A   740    	LEA	HL,IX+%FFFFFFF5
+00000C F9                  A   741    	LD	SP,HL
+                           A   742    ;   52		INT ctr = 0 ;
+                           A   743    .LINE 52
+                           A   744    
+00000D 01000000            A   745    	LD	BC,0
+000011 DD0FFC              A   746    	LD	(IX+%FFFFFFFC),BC
+                           A   747    ;   53		INT8 *pshbuf = pbuf ;
+                           A   748    .LINE 53
+                           A   749    
+000014 DD0709              A   750    	LD	BC,(IX+%9)
+000017 DD0FF9              A   751    	LD	(IX+%FFFFFFF9),BC
+                           A   752    ;   54		INT8 ch ;
+                           A   753    ;   55		*len = 0 ;
+                           A   754    .LINE 55
+                           A   755    
+00001A DD270F              A   756    	LD	HL,(IX+%F)
+00001D 01000000            A   757    	LD	BC,0
+000021 ED0F                A   758    	LD	(HL),BC
+                           A   759    ;   56	
+                           A   760    ;   57		while( TRUE )
+000023                     A   761    L_12:
+                           A   762    .LINE 57
+                           A   763    
+                           A   764    ;   58		{
+                           A   765    ;   59			RZKDevRead( dev, &ch, 1 ) ;
+                           A   766    .LINE 59
+                           A   767    
+000023 01000000            A   768    	LD	BC,0
+000027 C5                  A   769    	PUSH	BC
+000028 01010000            A   770    	LD	BC,1
+00002C C5                  A   771    	PUSH	BC
+00002D ED65FF              A   772    	PEA	IX+%FFFFFFFF
+000030 DD0706              A   773    	LD	BC,(IX+%6)
+000033 C5                  A   774    	PUSH	BC
+000034 CD 00 00 00         A   775    	CALL	_RZKDevRead
+000038 C1                  A   776    	POP	BC
+000039 C1                  A   777    	POP	BC
+00003A C1                  A   778    	POP	BC
+00003B C1                  A   779    	POP	BC
+                           A   780    ;   60			// Now check for the control characters
+                           A   781    ;   61			if( ch == '\n' || ch == '\r' )
+                           A   782    .LINE 61
+                           A   783    
+00003C DD7EFF              A   784    	LD	A,(IX+%FFFFFFFF)
+00003F FE0A                A   785    	CP	A,%A
+000041 28 07               A   786    	JR	Z,L_9
+000043 DD7EFF              A   787    	LD	A,(IX+%FFFFFFFF)
+000046 FE0D                A   788    	CP	A,%D
+000048 20 4B               A   789    	JR	NZ,L_10
+00004A                     A   790    L_9:
+                           A   791    ;   62			{
+                           A   792    ;   63				//come out of the loop:
+                           A   793    ;   64				*pshbuf = 0 ;
+                           A   794    .LINE 64
+                           A   795    
+00004A DD27F9              A   796    	LD	HL,(IX+%FFFFFFF9)
+00004D 3600                A   797    	LD	(HL),%0
+                           A   798    ;   65				*len = ctr ;
+                           A   799    .LINE 65
+                           A   800    
+00004F DD270F              A   801    	LD	HL,(IX+%F)
+000052 DD07FC              A   802    	LD	BC,(IX+%FFFFFFFC)
+000055 ED0F                A   803    	LD	(HL),BC
+                           A   804    ;   66				ch = '\n' ;
+                           A   805    .LINE 66
+                           A   806    
+000057 DD36FF0A            A   807    	LD	(IX+%FFFFFFFF),%A
+                           A   808    ;   67				RZKDevWrite( dev, &ch, 1 ) ;
+                           A   809    .LINE 67
+                           A   810    
+00005B 01000000            A   811    	LD	BC,0
+00005F C5                  A   812    	PUSH	BC
+000060 01010000            A   813    	LD	BC,1
+000064 C5                  A   814    	PUSH	BC
+000065 ED65FF              A   815    	PEA	IX+%FFFFFFFF
+000068 DD0706              A   816    	LD	BC,(IX+%6)
+00006B C5                  A   817    	PUSH	BC
+00006C CD 00 00 00         A   818    	CALL	_RZKDevWrite
+000070 C1                  A   819    	POP	BC
+000071 C1                  A   820    	POP	BC
+000072 C1                  A   821    	POP	BC
+000073 C1                  A   822    	POP	BC
+                           A   823    ;   68				ch = '\r' ;
+                           A   824    .LINE 68
+                           A   825    
+000074 DD36FF0D            A   826    	LD	(IX+%FFFFFFFF),%D
+                           A   827    ;   69				RZKDevWrite( dev, &ch, 1 ) ;
+                           A   828    .LINE 69
+                           A   829    
+000078 01000000            A   830    	LD	BC,0
+00007C C5                  A   831    	PUSH	BC
+00007D 01010000            A   832    	LD	BC,1
+000081 C5                  A   833    	PUSH	BC
+000082 ED65FF              A   834    	PEA	IX+%FFFFFFFF
+000085 DD0706              A   835    	LD	BC,(IX+%6)
+000088 C5                  A   836    	PUSH	BC
+000089 CD 00 00 00         A   837    	CALL	_RZKDevWrite
+00008D C1                  A   838    	POP	BC
+00008E C1                  A   839    	POP	BC
+00008F C1                  A   840    	POP	BC
+000090 C1                  A   841    	POP	BC
+                           A   842    ;   70				break ;
+                           A   843    .LINE 70
+                           A   844    
+000091 C3 62 01 00         A   845    	JR	L_13
+                           A   846    ;   71			}
+                           A   847    ;   72			else if( ch == '\b' )
+000095                     A   848    L_10:
+                           A   849    .LINE 72
+                           A   850    
+000095 DD7EFF              A   851    	LD	A,(IX+%FFFFFFFF)
+000098 FE08                A   852    	CP	A,%8
+00009A C2 20 01 00         A   853    	JR	NZ,L_8
+                           A   854    ;   73			{
+                           A   855    ;   74				if( ctr > 0 )
+                           A   856    .LINE 74
+                           A   857    
+00009E DD07FC              A   858    	LD	BC,(IX+%FFFFFFFC)
+0000A1 B7                  A   859    	OR	A,A
+0000A2 ED62                A   860    	SBC	HL,HL
+0000A4 B7                  A   861    	OR	A,A
+0000A5 ED42                A   862    	SBC	HL,BC
+0000A7 CD 00 00 00         A   863    	CALL	__setflag
+0000AB F2 23 00 00         A   864    	JP	P,L_12
+                           A   865    ;   75				{
+                           A   866    ;   76					INT8 new_ch ;
+                           A   867    ;   77					*(pshbuf-1) = 0 ;
+                           A   868    .LINE 77
+                           A   869    
+0000AF DD07F9              A   870    	LD	BC,(IX+%FFFFFFF9)
+0000B2 0B                  A   871    	DEC	BC
+0000B3 DD0FF5              A   872    	LD	(IX+%FFFFFFF5),BC
+0000B6 C5E1                A   873    	LD	HL,BC
+0000B8 3600                A   874    	LD	(HL),%0
+                           A   875    ;   78					pshbuf-- ;
+                           A   876    .LINE 78
+                           A   877    
+0000BA DD07F5              A   878    	LD	BC,(IX+%FFFFFFF5)
+0000BD DD0FF9              A   879    	LD	(IX+%FFFFFFF9),BC
+                           A   880    ;   79					ctr-- ;
+                           A   881    .LINE 79
+                           A   882    
+0000C0 DD07FC              A   883    	LD	BC,(IX+%FFFFFFFC)
+0000C3 0B                  A   884    	DEC	BC
+0000C4 DD0FFC              A   885    	LD	(IX+%FFFFFFFC),BC
+                           A   886    ;   80					new_ch = ch ;
+                           A   887    .LINE 80
+                           A   888    
+0000C7 DD7EFF              A   889    	LD	A,(IX+%FFFFFFFF)
+0000CA DD77F8              A   890    	LD	(IX+%FFFFFFF8),A
+                           A   891    ;   81					RZKDevWrite( dev, &ch, 1 ) ;
+                           A   892    .LINE 81
+                           A   893    
+0000CD 01000000            A   894    	LD	BC,0
+0000D1 C5                  A   895    	PUSH	BC
+0000D2 01010000            A   896    	LD	BC,1
+0000D6 C5                  A   897    	PUSH	BC
+0000D7 ED65FF              A   898    	PEA	IX+%FFFFFFFF
+0000DA DD0706              A   899    	LD	BC,(IX+%6)
+0000DD C5                  A   900    	PUSH	BC
+0000DE CD 00 00 00         A   901    	CALL	_RZKDevWrite
+0000E2 C1                  A   902    	POP	BC
+0000E3 C1                  A   903    	POP	BC
+0000E4 C1                  A   904    	POP	BC
+0000E5 C1                  A   905    	POP	BC
+                           A   906    ;   82					ch = ' ' ;
+                           A   907    .LINE 82
+                           A   908    
+0000E6 DD36FF20            A   909    	LD	(IX+%FFFFFFFF),%20
+                           A   910    ;   83					RZKDevWrite( dev, &ch, 1 ) ;
+                           A   911    .LINE 83
+                           A   912    
+0000EA 01000000            A   913    	LD	BC,0
+0000EE C5                  A   914    	PUSH	BC
+0000EF 01010000            A   915    	LD	BC,1
+0000F3 C5                  A   916    	PUSH	BC
+0000F4 ED65FF              A   917    	PEA	IX+%FFFFFFFF
+0000F7 DD0706              A   918    	LD	BC,(IX+%6)
+0000FA C5                  A   919    	PUSH	BC
+0000FB CD 00 00 00         A   920    	CALL	_RZKDevWrite
+0000FF C1                  A   921    	POP	BC
+000100 C1                  A   922    	POP	BC
+000101 C1                  A   923    	POP	BC
+000102 C1                  A   924    	POP	BC
+                           A   925    ;   84					RZKDevWrite( dev, &new_ch, 1 ) ;
+                           A   926    .LINE 84
+                           A   927    
+000103 01000000            A   928    	LD	BC,0
+000107 C5                  A   929    	PUSH	BC
+000108 01010000            A   930    	LD	BC,1
+00010C C5                  A   931    	PUSH	BC
+00010D ED65F8              A   932    	PEA	IX+%FFFFFFF8
+000110 DD0706              A   933    	LD	BC,(IX+%6)
+000113 C5                  A   934    	PUSH	BC
+000114 CD 00 00 00         A   935    	CALL	_RZKDevWrite
+000118 C1                  A   936    	POP	BC
+000119 C1                  A   937    	POP	BC
+00011A C1                  A   938    	POP	BC
+00011B C1                  A   939    	POP	BC
+                           A   940    ;   85				}
+                           A   941    ;   86			}
+                           A   942    ;   87			else
+                           A   943    .LINE 87
+                           A   944    
+00011C C3 23 00 00         A   945    	JR	L_12
+000120                     A   946    L_8:
+                           A   947    ;   88			{
+                           A   948    ;   89				if( ctr < (max_len - 1 ) )
+                           A   949    .LINE 89
+                           A   950    
+000120 DD310C              A   951    	LD	IY,(IX+%C)
+000123 ED03FF              A   952    	LEA	BC,IY+%FFFFFFFF
+000126 DD27FC              A   953    	LD	HL,(IX+%FFFFFFFC)
+000129 B7                  A   954    	OR	A,A
+00012A ED42                A   955    	SBC	HL,BC
+00012C D2 23 00 00         A   956    	JR	NC,L_12
+                           A   957    ;   90				{
+                           A   958    ;   91					*pshbuf = ch ;
+                           A   959    .LINE 91
+                           A   960    
+000130 DD27F9              A   961    	LD	HL,(IX+%FFFFFFF9)
+000133 DD7EFF              A   962    	LD	A,(IX+%FFFFFFFF)
+000136 77                  A   963    	LD	(HL),A
+                           A   964    ;   92					pshbuf++ ;
+                           A   965    .LINE 92
+                           A   966    
+000137 DD07F9              A   967    	LD	BC,(IX+%FFFFFFF9)
+00013A 03                  A   968    	INC	BC
+00013B DD0FF9              A   969    	LD	(IX+%FFFFFFF9),BC
+                           A   970    ;   93					ctr++ ;
+                           A   971    .LINE 93
+                           A   972    
+00013E DD07FC              A   973    	LD	BC,(IX+%FFFFFFFC)
+000141 03                  A   974    	INC	BC
+000142 DD0FFC              A   975    	LD	(IX+%FFFFFFFC),BC
+                           A   976    ;   94					RZKDevWrite( dev, &ch, 1 ) ;
+                           A   977    .LINE 94
+                           A   978    
+000145 01000000            A   979    	LD	BC,0
+000149 C5                  A   980    	PUSH	BC
+00014A 01010000            A   981    	LD	BC,1
+00014E C5                  A   982    	PUSH	BC
+00014F ED65FF              A   983    	PEA	IX+%FFFFFFFF
+000152 DD0706              A   984    	LD	BC,(IX+%6)
+000155 C5                  A   985    	PUSH	BC
+000156 CD 00 00 00         A   986    	CALL	_RZKDevWrite
+00015A C1                  A   987    	POP	BC
+00015B C1                  A   988    	POP	BC
+00015C C1                  A   989    	POP	BC
+00015D C1                  A   990    	POP	BC
+                           A   991    ;   95				}
+                           A   992    ;   96			}
+                           A   993    ;   97		}
+                           A   994    .LINE 97
+                           A   995    
+00015E C3 23 00 00         A   996    	JR	L_12
+000162                     A   997    L_13:
+                           A   998    ;   98	
+                           A   999    ;   99		return ;
+                           A  1000    ;  100	}
+                           A  1001    .LINE 100
+                           A  1002    
+000162 DDF9                A  1003    	LD	SP,IX
+000164 DDE1                A  1004    	POP	IX
+000166 C9                  A  1005    	RET	
+                           A  1006    
+                           A  1007    
+                           A  1008    ;**************************** _GetString ***************************
+                           A  1009    ;Name                         Addr/Register   Size   Type
+                           A  1010    ;_RZKDevWrite                        IMPORT  -----   function
+                           A  1011    ;_RZKDevRead                         IMPORT  -----   function
+                           A  1012    ;new_ch                                IX-8      1   variable
+                           A  1013    ;pshbuf                                IX-7      3   variable
+                           A  1014    ;ctr                                   IX-4      3   variable
+                           A  1015    ;ch                                    IX-1      1   variable
+                           A  1016    ;len                                  IX+15      3   parameter
+                           A  1017    ;max_len                              IX+12      3   parameter
+                           A  1018    ;pbuf                                  IX+9      3   parameter
+                           A  1019    ;dev                                   IX+6      3   parameter
+                           A  1020    
+                           A  1021    
+                           A  1022    ; Stack Frame Size: 29 (bytes)
+                           A  1023    ;       Spill Code: 0 (instruction)
+                           A  1024    
+                           A  1025    
+                           A  1026    .ENDFUNC "GetString",100,"_GetString"
+                           A  1027    ;  101	
+                           A  1028    ;  102	
+                           A  1029    ;  103	
+                           A  1030    ;  104	
+                           A  1031    ;  105	/** @memo Make commands available to shell sessions.
+                           A  1032    ;  106	 * @doc This routine adds the commands contained in the cmdent array to the
+                           A  1033    ;  107	 * global list of commands which are available to shell sessions.
+                           A  1034    ;  108	 *
+                           A  1035    ;  109	 * @args (struct cmdent *cmds, int ncmds)
+                           A  1036    ;  110	 * @param cmds An array of cmdent structures.  The cnext member of each entry will be ignored, as it will be modified when the commands are added to the global list.  The cmds[] array should be allocated
+                           A  1037    ;  111	 * @param ncmds The number of entries in the cmds array.
+                           A  1038    ;  112	 */
+                           A  1039    ;  113	void
+                           A  1040    ;  114	shell_add_commands
+                           A  1041    ;  115	(
+                           A  1042    ;  116	   struct cmdent *cmds,
+                           A  1043    ;  117	   UINT16	         ncmds,
+                           A  1044    ;  118	   UINT8			 bShType
+                           A  1045    ;  119	)   
+                           A  1046    ;  120	{
+000167                     A  1047    _shell_add_commands:
+                           A  1048    .DEFINE "_shell_add_commands"
+                           A  1049    
+                           A  1050    .VALUE _shell_add_commands
+                           A  1051    
+                           A  1052    .CLASS 2
+                           A  1053    
+                           A  1054    .TYPE 65
+                           A  1055    
+                           A  1056    .ENDEF
+                           A  1057    
+                           A  1058    .BEGFUNC "shell_add_commands",120,"_shell_add_commands"
+                           A  1059    
+                           A  1060    .LINE 120
+                           A  1061    
+                           A  1062    .DEFINE "cmds"
+                           A  1063    
+                           A  1064    .CLASS 65
+                           A  1065    
+                           A  1066    .VALUE 6
+                           A  1067    
+                           A  1068    .TAG "cmdent"
+                           A  1069    
+                           A  1070    .TYPE 40
+                           A  1071    
+                           A  1072    .ENDEF
+                           A  1073    
+                           A  1074    .DEFINE "ncmds"
+                           A  1075    
+                           A  1076    .CLASS 65
+                           A  1077    
+                           A  1078    .VALUE 9
+                           A  1079    
+                           A  1080    .TYPE 13
+                           A  1081    
+                           A  1082    .ENDEF
+                           A  1083    
+                           A  1084    .DEFINE "bShType"
+                           A  1085    
+                           A  1086    .CLASS 65
+                           A  1087    
+                           A  1088    .VALUE 12
+                           A  1089    
+                           A  1090    .TYPE 12
+                           A  1091    
+                           A  1092    .ENDEF
+                           A  1093    
+                           A  1094    .DEFINE "cur"
+                           A  1095    
+                           A  1096    .CLASS 65
+                           A  1097    
+                           A  1098    .VALUE -3
+                           A  1099    
+                           A  1100    .TAG "cmdent"
+                           A  1101    
+                           A  1102    .TYPE 40
+                           A  1103    
+                           A  1104    .ENDEF
+                           A  1105    
+                           A  1106    .DEFINE "i"
+                           A  1107    
+                           A  1108    .CLASS 65
+                           A  1109    
+                           A  1110    .VALUE -5
+                           A  1111    
+                           A  1112    .TYPE 13
+                           A  1113    
+                           A  1114    .ENDEF
+                           A  1115    
+                           A  1116    .DEFINE "toadd"
+                           A  1117    
+                           A  1118    .CLASS 65
+                           A  1119    
+                           A  1120    .VALUE -8
+                           A  1121    
+                           A  1122    .TAG "cmdent"
+                           A  1123    
+                           A  1124    .TYPE 40
+                           A  1125    
+                           A  1126    .ENDEF
+                           A  1127    
+                           A  1128    .DEFINE "cmdSet"
+                           A  1129    
+                           A  1130    .CLASS 65
+                           A  1131    
+                           A  1132    .VALUE -11
+                           A  1133    
+                           A  1134    .TAG "cmdent"
+                           A  1135    
+                           A  1136    .TYPE 40
+                           A  1137    
+                           A  1138    .ENDEF
+                           A  1139    
+                           A  1140    .DEFINE "prev"
+                           A  1141    
+                           A  1142    .CLASS 65
+                           A  1143    
+                           A  1144    .VALUE -14
+                           A  1145    
+                           A  1146    .TAG "cmdent"
+                           A  1147    
+                           A  1148    .TYPE 40
+                           A  1149    
+                           A  1150    .ENDEF
+                           A  1151    
+000167 DDE5                A  1152    	PUSH	IX
+000169 DD210000 00         A  1153    	LD	IX,0
+00016E DD39                A  1154    	ADD	IX,SP
+000170 ED22F2              A  1155    	LEA	HL,IX+%FFFFFFF2
+000173 F9                  A  1156    	LD	SP,HL
+                           A  1157    ;  121		struct	cmdent	*toadd, *cur, *prev, *cmdSet ;
+                           A  1158    ;  122		UINT16   	i;
+                           A  1159    ;  123	
+                           A  1160    ;  124		cmdSet = ShellCommands ;
+                           A  1161    .LINE 124
+                           A  1162    
+000174 ED4B 0E 00 00       A  1163    	LD	BC,(_ShellCommands)
+000179 DD0FF5              A  1164    	LD	(IX+%FFFFFFF5),BC
+                           A  1165    ;  125	
+                           A  1166    ;  126		for( i = 0 ; i < ncmds ; i++ )
+                           A  1167    .LINE 126
+                           A  1168    
+00017C DD36FB00            A  1169    	LD	(IX+%FFFFFFFB),%0
+000180 DD36FC00            A  1170    	LD	(IX+%FFFFFFFC),%0
+000184 C3 3C 02 00         A  1171    	JR	L_30
+000188                     A  1172    L_28:
+                           A  1173    ;  127		{
+                           A  1174    ;  128			toadd = &cmds[i];
+                           A  1175    .LINE 128
+                           A  1176    
+000188 DD07FB              A  1177    	LD	BC,(IX+%FFFFFFFB)
+00018B CD 00 00 00         A  1178    	CALL	__stoiu
+00018F 3E0D                A  1179    	LD	A,%D
+000191 CD 00 00 00         A  1180    	CALL	__imul_b
+000195 DD0706              A  1181    	LD	BC,(IX+%6)
+000198 09                  A  1182    	ADD	HL,BC
+000199 DD2FF8              A  1183    	LD	(IX+%FFFFFFF8),HL
+                           A  1184    ;  129			prev = ( struct	cmdent	*) NULL;
+                           A  1185    .LINE 129
+                           A  1186    
+00019C 01000000            A  1187    	LD	BC,0
+0001A0 DD0FF2              A  1188    	LD	(IX+%FFFFFFF2),BC
+                           A  1189    ;  130		
+                           A  1190    ;  131			for( cur = cmdSet; cur ; cur = cur->cnext)
+                           A  1191    .LINE 131
+                           A  1192    
+0001A3 DD07F5              A  1193    	LD	BC,(IX+%FFFFFFF5)
+0001A6 DD0FFD              A  1194    	LD	(IX+%FFFFFFFD),BC
+0001A9 18 2F               A  1195    	JR	L_20
+0001AB                     A  1196    L_18:
+                           A  1197    ;  132			{
+                           A  1198    ;  133				if( strcmp( cur->cmdnam , toadd->cmdnam ) >= 0 )
+                           A  1199    .LINE 133
+                           A  1200    
+0001AB DD31F8              A  1201    	LD	IY,(IX+%FFFFFFF8)
+0001AE FD0700              A  1202    	LD	BC,(IY+%0)
+0001B1 C5                  A  1203    	PUSH	BC
+0001B2 DD31FD              A  1204    	LD	IY,(IX+%FFFFFFFD)
+0001B5 FD0700              A  1205    	LD	BC,(IY+%0)
+0001B8 C5                  A  1206    	PUSH	BC
+0001B9 CD 00 00 00         A  1207    	CALL	_strcmp
+0001BD C1                  A  1208    	POP	BC
+0001BE C1                  A  1209    	POP	BC
+0001BF CD 00 00 00         A  1210    	CALL	__icmpzero
+0001C3 CD 00 00 00         A  1211    	CALL	__setflag
+0001C7 F2 E3 01 00         A  1212    	JP	P,L_23
+                           A  1213    ;  134					break;
+                           A  1214    ;  135				prev = cur;
+                           A  1215    .LINE 135
+                           A  1216    
+0001CB DD07FD              A  1217    	LD	BC,(IX+%FFFFFFFD)
+0001CE DD0FF2              A  1218    	LD	(IX+%FFFFFFF2),BC
+0001D1 DD31FD              A  1219    	LD	IY,(IX+%FFFFFFFD)
+0001D4 FD0707              A  1220    	LD	BC,(IY+%7)
+0001D7 DD0FFD              A  1221    	LD	(IX+%FFFFFFFD),BC
+                           A  1222    ;  136			}
+0001DA                     A  1223    L_20:
+                           A  1224    .LINE 136
+                           A  1225    
+0001DA DD27FD              A  1226    	LD	HL,(IX+%FFFFFFFD)
+0001DD CD 00 00 00         A  1227    	CALL	__icmpzero
+0001E1 20 C8               A  1228    	JR	NZ,L_18
+0001E3                     A  1229    L_23:
+                           A  1230    ;  137	
+                           A  1231    ;  138			/* Skip this one if it's already in the list */
+                           A  1232    ;  139			if( cur && !strcmp( cur->cmdnam, toadd->cmdnam ) )
+                           A  1233    .LINE 139
+                           A  1234    
+0001E3 DD27FD              A  1235    	LD	HL,(IX+%FFFFFFFD)
+0001E6 CD 00 00 00         A  1236    	CALL	__icmpzero
+0001EA 28 1A               A  1237    	JR	Z,L_24
+0001EC DD31F8              A  1238    	LD	IY,(IX+%FFFFFFF8)
+0001EF FD0700              A  1239    	LD	BC,(IY+%0)
+0001F2 C5                  A  1240    	PUSH	BC
+0001F3 DD31FD              A  1241    	LD	IY,(IX+%FFFFFFFD)
+0001F6 FD0700              A  1242    	LD	BC,(IY+%0)
+0001F9 C5                  A  1243    	PUSH	BC
+0001FA CD 00 00 00         A  1244    	CALL	_strcmp
+0001FE C1                  A  1245    	POP	BC
+0001FF C1                  A  1246    	POP	BC
+000200 CD 00 00 00         A  1247    	CALL	__icmpzero
+000204 28 2C               A  1248    	JR	Z,L_29
+                           A  1249    ;  140					continue;
+000206                     A  1250    L_24:
+                           A  1251    .LINE 140
+                           A  1252    
+                           A  1253    ;  141	
+                           A  1254    ;  142			toadd->cnext = cur;
+                           A  1255    .LINE 142
+                           A  1256    
+000206 DD31F8              A  1257    	LD	IY,(IX+%FFFFFFF8)
+000209 DD07FD              A  1258    	LD	BC,(IX+%FFFFFFFD)
+00020C FD0F07              A  1259    	LD	(IY+%7),BC
+                           A  1260    ;  143			if( prev )
+                           A  1261    .LINE 143
+                           A  1262    
+00020F DD27F2              A  1263    	LD	HL,(IX+%FFFFFFF2)
+000212 CD 00 00 00         A  1264    	CALL	__icmpzero
+000216 28 09               A  1265    	JR	Z,L_27
+                           A  1266    ;  144				prev->cnext = toadd;
+                           A  1267    .LINE 144
+                           A  1268    
+000218 DD31F2              A  1269    	LD	IY,(IX+%FFFFFFF2)
+00021B DD07F8              A  1270    	LD	BC,(IX+%FFFFFFF8)
+00021E FD0F07              A  1271    	LD	(IY+%7),BC
+000221                     A  1272    L_27:
+                           A  1273    ;  145	
+                           A  1274    ;  146	
+                           A  1275    ;  147			/* 
+                           A  1276    ;  148			 * Reset ShellCommands to this entry if this is now the 
+                           A  1277    ;  149			 * 1st one.
+                           A  1278    ;  150			 */
+                           A  1279    ;  151			if( cmdSet == cur)
+                           A  1280    .LINE 151
+                           A  1281    
+000221 DD07FD              A  1282    	LD	BC,(IX+%FFFFFFFD)
+000224 DD27F5              A  1283    	LD	HL,(IX+%FFFFFFF5)
+000227 B7                  A  1284    	OR	A,A
+000228 ED42                A  1285    	SBC	HL,BC
+00022A 20 06               A  1286    	JR	NZ,L_29
+                           A  1287    ;  152				cmdSet = toadd;
+                           A  1288    .LINE 152
+                           A  1289    
+00022C DD07F8              A  1290    	LD	BC,(IX+%FFFFFFF8)
+00022F DD0FF5              A  1291    	LD	(IX+%FFFFFFF5),BC
+                           A  1292    ;  153		}
+000232                     A  1293    L_29:
+                           A  1294    .LINE 153
+                           A  1295    
+000232 DD27FB              A  1296    	LD	HL,(IX+%FFFFFFFB)
+000235 23                  A  1297    	INC	HL
+000236 DD75FB              A  1298    	LD	(IX+%FFFFFFFB),L
+000239 DD74FC              A  1299    	LD	(IX+%FFFFFFFC),H
+00023C                     A  1300    L_30:
+00023C DD0709              A  1301    	LD	BC,(IX+%9)
+00023F DD27FB              A  1302    	LD	HL,(IX+%FFFFFFFB)
+000242 B7                  A  1303    	OR	A,A
+000243 40ED42              A  1304    	SBC.SIS	HL,BC
+000246 DA 88 01 00         A  1305    	JR	C,L_28
+                           A  1306    ;  154	
+                           A  1307    ;  155		ShellCommands = cmdSet;
+                           A  1308    .LINE 155
+                           A  1309    
+00024A DD07F5              A  1310    	LD	BC,(IX+%FFFFFFF5)
+00024D ED43 0E 00 00       A  1311    	LD	(_ShellCommands),BC
+                           A  1312    ;  156	}
+                           A  1313    .LINE 156
+                           A  1314    
+000252 DDF9                A  1315    	LD	SP,IX
+000254 DDE1                A  1316    	POP	IX
+000256 C9                  A  1317    	RET	
+                           A  1318    
+                           A  1319    
+                           A  1320    ;**************************** _shell_add_commands ***************************
+                           A  1321    ;Name                         Addr/Register   Size   Type
+                           A  1322    ;_strcmp                             IMPORT  -----   function
+                           A  1323    ;_ShellCommands                      STATIC      3   variable
+                           A  1324    ;prev                                 IX-14      3   variable
+                           A  1325    ;cmdSet                               IX-11      3   variable
+                           A  1326    ;toadd                                 IX-8      3   variable
+                           A  1327    ;i                                     IX-5      2   variable
+                           A  1328    ;cur                                   IX-3      3   variable
+                           A  1329    ;bShType                              IX+12      1   parameter
+                           A  1330    ;ncmds                                 IX+9      2   parameter
+                           A  1331    ;cmds                                  IX+6      3   parameter
+                           A  1332    
+                           A  1333    
+                           A  1334    ; Stack Frame Size: 29 (bytes)
+                           A  1335    ;       Spill Code: 0 (instruction)
+                           A  1336    
+                           A  1337    
+                           A  1338    .ENDFUNC "shell_add_commands",156,"_shell_add_commands"
+                           A  1339    ;  157			
+                           A  1340    ;  158	/*------------------------------------------------------------------------
+                           A  1341    ;  159	 *  shell  -  Xinu shell with file redirection and background processing
+                           A  1342    ;  160	 *------------------------------------------------------------------------
+                           A  1343    ;  161	 */
+                           A  1344    ;  162	INT16 shell(RZK_DEVICE_CB_t *	dev)
+                           A  1345    ;  163	{
+000257                     A  1346    _shell:
+                           A  1347    .DEFINE "_shell"
+                           A  1348    
+                           A  1349    .VALUE _shell
+                           A  1350    
+                           A  1351    .CLASS 2
+                           A  1352    
+                           A  1353    .TYPE 67
+                           A  1354    
+                           A  1355    .ENDEF
+                           A  1356    
+                           A  1357    .BEGFUNC "shell",163,"_shell"
+                           A  1358    
+                           A  1359    .LINE 163
+                           A  1360    
+                           A  1361    .DEFINE "dev"
+                           A  1362    
+                           A  1363    .CLASS 65
+                           A  1364    
+                           A  1365    .VALUE 6
+                           A  1366    
+                           A  1367    .TAG "RZK_DEVICE_CB_t"
+                           A  1368    
+                           A  1369    .TYPE 40
+                           A  1370    
+                           A  1371    .ENDEF
+                           A  1372    
+                           A  1373    .DEFINE "ntokens"
+                           A  1374    
+                           A  1375    .CLASS 65
+                           A  1376    
+                           A  1377    .VALUE -2
+                           A  1378    
+                           A  1379    .TYPE 3
+                           A  1380    
+                           A  1381    .ENDEF
+                           A  1382    
+                           A  1383    .DEFINE "j"
+                           A  1384    
+                           A  1385    .CLASS 65
+                           A  1386    
+                           A  1387    .VALUE -4
+                           A  1388    
+                           A  1389    .TYPE 13
+                           A  1390    
+                           A  1391    .ENDEF
+                           A  1392    
+                           A  1393    .DEFINE "i"
+                           A  1394    
+                           A  1395    .CLASS 65
+                           A  1396    
+                           A  1397    .VALUE -6
+                           A  1398    
+                           A  1399    .TYPE 13
+                           A  1400    
+                           A  1401    .ENDEF
+                           A  1402    
+                           A  1403    .DEFINE "com"
+                           A  1404    
+                           A  1405    .CLASS 65
+                           A  1406    
+                           A  1407    .VALUE -12
+                           A  1408    
+                           A  1409    .TAG "cmdent"
+                           A  1410    
+                           A  1411    .TYPE 40
+                           A  1412    
+                           A  1413    .ENDEF
+                           A  1414    
+                           A  1415    .DEFINE "len"
+                           A  1416    
+                           A  1417    .CLASS 65
+                           A  1418    
+                           A  1419    .VALUE -15
+                           A  1420    
+                           A  1421    .TYPE 4
+                           A  1422    
+                           A  1423    .ENDEF
+                           A  1424    
+                           A  1425    .DEFINE "ch"
+                           A  1426    
+                           A  1427    .CLASS 65
+                           A  1428    
+                           A  1429    .VALUE -16
+                           A  1430    
+                           A  1431    .TYPE 2
+                           A  1432    
+                           A  1433    .ENDEF
+                           A  1434    
+                           A  1435    .DEFINE "backgnd"
+                           A  1436    
+                           A  1437    .CLASS 65
+                           A  1438    
+                           A  1439    .VALUE -20
+                           A  1440    
+                           A  1441    .TYPE 12
+                           A  1442    
+                           A  1443    .ENDEF
+                           A  1444    
+                           A  1445    .DEFINE "innam"
+                           A  1446    
+                           A  1447    .CLASS 65
+                           A  1448    
+                           A  1449    .VALUE -29
+                           A  1450    
+                           A  1451    .TYPE 34
+                           A  1452    
+                           A  1453    .ENDEF
+                           A  1454    
+                           A  1455    .DEFINE "outnam"
+                           A  1456    
+                           A  1457    .CLASS 65
+                           A  1458    
+                           A  1459    .VALUE -35
+                           A  1460    
+                           A  1461    .TYPE 34
+                           A  1462    
+                           A  1463    .ENDEF
+                           A  1464    
+                           A  1465    .DEFINE "cwd_path"
+                           A  1466    
+                           A  1467    .CLASS 65
+                           A  1468    
+                           A  1469    .VALUE -291
+                           A  1470    
+                           A  1471    .DIM 256
+                           A  1472    
+                           A  1473    .TYPE 98
+                           A  1474    
+                           A  1475    .ENDEF
+                           A  1476    
+                           A  1477    .DEFINE "mach"
+                           A  1478    
+                           A  1479    .CLASS 65
+                           A  1480    
+                           A  1481    .VALUE -556
+                           A  1482    
+                           A  1483    .DIM 265
+                           A  1484    
+                           A  1485    .TYPE 98
+                           A  1486    
+                           A  1487    .ENDEF
+                           A  1488    
+                           A  1489    .DEFINE "Shl"
+                           A  1490    
+                           A  1491    .CLASS 65
+                           A  1492    
+                           A  1493    .VALUE -864
+                           A  1494    
+                           A  1495    .TAG "shvars"
+                           A  1496    
+                           A  1497    .TYPE 8
+                           A  1498    
+                           A  1499    .ENDEF
+                           A  1500    
+000257 DDE5                A  1501    	PUSH	IX
+000259 DD210000 00         A  1502    	LD	IX,0
+00025E DD39                A  1503    	ADD	IX,SP
+000260 219AFCFF            A  1504    	LD	HL,-870
+000264 39                  A  1505    	ADD	HL,SP
+000265 F9                  A  1506    	LD	SP,HL
+                           A  1507    ;  164		struct	shvars	Shl;
+                           A  1508    ;  165		INT16	ntokens;
+                           A  1509    ;  166		UINT16	i, j;
+                           A  1510    ;  167		INT    len;
+                           A  1511    ;  168		struct cmdent	*com;
+                           A  1512    ;  169		INT8	*outnam, *innam;
+                           A  1513    ;  170		RZK_DEVICE_CB_t *	stdin, *stdout, *stderr;
+                           A  1514    ;  171		UINT8	backgnd;
+                           A  1515    ;  172		INT8	ch;
+                           A  1516    ;  173	
+                           A  1517    ;  174		// ZFS shell variables
+                           A  1518    ;  175		INT8 *pshbuf ;
+                           A  1519    ;  176	//	UINT ctr = 0 ;
+                           A  1520    ;  177	
+                           A  1521    ;  178		//
+                           A  1522    ;  179	
+                           A  1523    ;  180		/** MEENAKSHI added the following */
+                           A  1524    ;  181		INT8	mach[265] ;
+                           A  1525    ;  182		INT8 cwd_path[256];
+                           A  1526    ;  183	
+                           A  1527    ;  184	//	PID	child;
+                           A  1528    ;  185		if(!DefaultCommandsAdded) {
+                           A  1529    .LINE 185
+                           A  1530    
+000266 3A 11 00 00         A  1531    	LD	A,(_DefaultCommandsAdded)
+00026A B7                  A  1532    	OR	A,A
+00026B 20 1D               A  1533    	JR	NZ,L_35
+                           A  1534    ;  186			DefaultCommandsAdded = TRUE;
+                           A  1535    .LINE 186
+                           A  1536    
+00026D 3E01                A  1537    	LD	A,%1
+00026F 32 11 00 00         A  1538    	LD	(_DefaultCommandsAdded),A
+                           A  1539    ;  187			shell_add_commands(defaultcmds, ndefaultcmds,SHELL_ZTP); // The default command set should also include hte FS commands
+                           A  1540    .LINE 187
+                           A  1541    
+000273 01010000            A  1542    	LD	BC,1
+000277 C5                  A  1543    	PUSH	BC
+000278 ED4B 00 00 00       A  1544    	LD	BC,(_ndefaultcmds)
+00027D C5                  A  1545    	PUSH	BC
+00027E 01 00 00 00         A  1546    	LD	BC,_defaultcmds
+000282 C5                  A  1547    	PUSH	BC
+000283 CD 67 01 00         A  1548    	CALL	_shell_add_commands
+000287 C1                  A  1549    	POP	BC
+000288 C1                  A  1550    	POP	BC
+000289 C1                  A  1551    	POP	BC
+                           A  1552    ;  188		}
+00028A                     A  1553    L_35:
+                           A  1554    .LINE 188
+                           A  1555    
+                           A  1556    ;  189		
+                           A  1557    ;  190		/** Make the current working directory as root */
+                           A  1558    ;  191		/** MEENAKSHI ADDED NEWLY */
+                           A  1559    ;  192		if( ZFSChdir((INT8*)"/") != ZFSERR_SUCCESS )
+                           A  1560    .LINE 192
+                           A  1561    
+00028A 01 00 00 00         A  1562    	LD	BC,L__15
+00028E C5                  A  1563    	PUSH	BC
+00028F CD 00 00 00         A  1564    	CALL	_ZFSChdir
+000293 C1                  A  1565    	POP	BC
+000294 CD 00 00 00         A  1566    	CALL	__icmpzero
+                           A  1567    ;  193		{
+                           A  1568    ;  194		}
+                           A  1569    .LINE 194
+                           A  1570    
+                           A  1571    ;  195		printf( "\n");
+                           A  1572    .LINE 195
+                           A  1573    
+000298 01 02 00 00         A  1574    	LD	BC,L__17
+00029C C5                  A  1575    	PUSH	BC
+00029D CD 00 00 00         A  1576    	CALL	_printf
+0002A1 C1                  A  1577    	POP	BC
+                           A  1578    ;  196		while (TRUE) {
+0002A2                     A  1579    L_98:
+                           A  1580    .LINE 196
+                           A  1581    
+                           A  1582    ;  197	
+                           A  1583    ;  198			strcpy(mach, "eZ80 %");
+                           A  1584    .LINE 198
+                           A  1585    
+0002A2 01 04 00 00         A  1586    	LD	BC,L__18
+0002A6 C5                  A  1587    	PUSH	BC
+0002A7 DDE5E1              A  1588    	LD	HL,IX
+0002AA 01D4FDFF            A  1589    	LD	BC,-556
+0002AE 09                  A  1590    	ADD	HL,BC
+0002AF E5C1                A  1591    	LD	BC,HL
+0002B1 C5                  A  1592    	PUSH	BC
+0002B2 CD 00 00 00         A  1593    	CALL	_strcpy
+0002B6 C1                  A  1594    	POP	BC
+0002B7 C1                  A  1595    	POP	BC
+                           A  1596    ;  199			memset(cwd_path, 0x00, sizeof(cwd_path));
+                           A  1597    .LINE 199
+                           A  1598    
+0002B8 01000100            A  1599    	LD	BC,256
+0002BC C5                  A  1600    	PUSH	BC
+0002BD 01000000            A  1601    	LD	BC,0
+0002C1 C5                  A  1602    	PUSH	BC
+0002C2 DDE5E1              A  1603    	LD	HL,IX
+0002C5 01DDFEFF            A  1604    	LD	BC,-291
+0002C9 09                  A  1605    	ADD	HL,BC
+0002CA E5C1                A  1606    	LD	BC,HL
+0002CC C5                  A  1607    	PUSH	BC
+0002CD CD 00 00 00         A  1608    	CALL	_memset
+0002D1 C1                  A  1609    	POP	BC
+0002D2 C1                  A  1610    	POP	BC
+0002D3 C1                  A  1611    	POP	BC
+                           A  1612    ;  200			
+                           A  1613    ;  201			if( ZFSGetCwd((INT8*)cwd_path) == ZFSERR_SUCCESS )
+                           A  1614    .LINE 201
+                           A  1615    
+0002D4 DDE5E1              A  1616    	LD	HL,IX
+0002D7 01DDFEFF            A  1617    	LD	BC,-291
+0002DB 09                  A  1618    	ADD	HL,BC
+0002DC E5C1                A  1619    	LD	BC,HL
+0002DE C5                  A  1620    	PUSH	BC
+0002DF CD 00 00 00         A  1621    	CALL	_ZFSGetCwd
+0002E3 C1                  A  1622    	POP	BC
+0002E4 CD 00 00 00         A  1623    	CALL	__icmpzero
+0002E8 20 25               A  1624    	JR	NZ,L_38
+                           A  1625    ;  202			{
+                           A  1626    ;  203				sprintf(mach+4, "%s %%", cwd_path );
+                           A  1627    .LINE 203
+                           A  1628    
+0002EA DDE5E1              A  1629    	LD	HL,IX
+0002ED 01DDFEFF            A  1630    	LD	BC,-291
+0002F1 09                  A  1631    	ADD	HL,BC
+0002F2 E5C1                A  1632    	LD	BC,HL
+0002F4 C5                  A  1633    	PUSH	BC
+0002F5 01 0B 00 00         A  1634    	LD	BC,L__20
+0002F9 C5                  A  1635    	PUSH	BC
+0002FA DDE5FDE1            A  1636    	LD	IY,IX
+0002FE 01D4FDFF            A  1637    	LD	BC,-556
+000302 FD09                A  1638    	ADD	IY,BC
+000304 ED0304              A  1639    	LEA	BC,IY+%4
+000307 C5                  A  1640    	PUSH	BC
+000308 CD 00 00 00         A  1641    	CALL	_sprintf
+00030C C1                  A  1642    	POP	BC
+00030D C1                  A  1643    	POP	BC
+00030E C1                  A  1644    	POP	BC
+                           A  1645    ;  204			}
+00030F                     A  1646    L_38:
+                           A  1647    .LINE 204
+                           A  1648    
+                           A  1649    ;  205	
+                           A  1650    ;  206			printf("%s", mach);			
+                           A  1651    .LINE 206
+                           A  1652    
+00030F DDE5E1              A  1653    	LD	HL,IX
+000312 01D4FDFF            A  1654    	LD	BC,-556
+000316 09                  A  1655    	ADD	HL,BC
+000317 E5C1                A  1656    	LD	BC,HL
+000319 C5                  A  1657    	PUSH	BC
+00031A 01 11 00 00         A  1658    	LD	BC,L__21
+00031E C5                  A  1659    	PUSH	BC
+00031F CD 00 00 00         A  1660    	CALL	_printf
+000323 C1                  A  1661    	POP	BC
+000324 C1                  A  1662    	POP	BC
+                           A  1663    ;  207			stdin = stdout = stderr = dev;
+                           A  1664    ;  208	
+                           A  1665    ;  209			// read a character by character and then pass it to check for various characters.
+                           A  1666    ;  210	
+                           A  1667    ;  211			pshbuf = &Shl.shbuf[0] ;
+                           A  1668    .LINE 211
+                           A  1669    
+000325 DDE5E1              A  1670    	LD	HL,IX
+000328 01F2FCFF            A  1671    	LD	BC,-782
+00032C 09                  A  1672    	ADD	HL,BC
+00032D DD2FE0              A  1673    	LD	(IX+%FFFFFFE0),HL
+                           A  1674    ;  212			len = 0 ;
+                           A  1675    .LINE 212
+                           A  1676    
+000330 01000000            A  1677    	LD	BC,0
+000334 DD0FF1              A  1678    	LD	(IX+%FFFFFFF1),BC
+                           A  1679    ;  213			//ctr = 0 ;
+                           A  1680    ;  214	
+                           A  1681    ;  215			GetString( dev, pshbuf, SHBUFLEN, &len ) ;
+                           A  1682    .LINE 215
+                           A  1683    
+000337 ED65F1              A  1684    	PEA	IX+%FFFFFFF1
+00033A 01500000            A  1685    	LD	BC,80
+00033E C5                  A  1686    	PUSH	BC
+00033F DD07E0              A  1687    	LD	BC,(IX+%FFFFFFE0)
+000342 C5                  A  1688    	PUSH	BC
+000343 DD0706              A  1689    	LD	BC,(IX+%6)
+000346 C5                  A  1690    	PUSH	BC
+000347 CD 00 00 00         A  1691    	CALL	_GetString
+00034B C1                  A  1692    	POP	BC
+00034C C1                  A  1693    	POP	BC
+00034D C1                  A  1694    	POP	BC
+00034E C1                  A  1695    	POP	BC
+                           A  1696    ;  216	
+                           A  1697    ;  217	
+                           A  1698    ;  218			if( len == 0 )
+                           A  1699    .LINE 218
+                           A  1700    
+00034F DD27F1              A  1701    	LD	HL,(IX+%FFFFFFF1)
+000352 CD 00 00 00         A  1702    	CALL	__icmpzero
+000356 CA A2 02 00         A  1703    	JR	Z,L_98
+                           A  1704    ;  219				continue ;
+                           A  1705    ;  220	
+                           A  1706    ;  221			if (len == ZTP_EOF)
+                           A  1707    .LINE 221
+                           A  1708    
+00035A 01FEFFFF            A  1709    	LD	BC,16777214
+00035E DD27F1              A  1710    	LD	HL,(IX+%FFFFFFF1)
+000361 B7                  A  1711    	OR	A,A
+000362 ED42                A  1712    	SBC	HL,BC
+000364 CA 6E 07 00         A  1713    	JR	Z,L_99
+                           A  1714    ;  222				break;
+                           A  1715    ;  223				
+                           A  1716    ;  224			if (len <= (-1))
+                           A  1717    .LINE 224
+                           A  1718    
+000368 DD07F1              A  1719    	LD	BC,(IX+%FFFFFFF1)
+00036B 21FFFFFF            A  1720    	LD	HL,16777215
+00036F B7                  A  1721    	OR	A,A
+000370 ED42                A  1722    	SBC	HL,BC
+000372 F2 6E 07 00         A  1723    	JP	P,L_99
+                           A  1724    ;  225	        		break;
+                           A  1725    ;  226				
+                           A  1726    ;  227	                ntokens=lexan(&Shl, Shl.shbuf);
+                           A  1727    .LINE 227
+                           A  1728    
+000376 DD07E0              A  1729    	LD	BC,(IX+%FFFFFFE0)
+000379 C5                  A  1730    	PUSH	BC
+00037A DDE5E1              A  1731    	LD	HL,IX
+00037D 01A0FCFF            A  1732    	LD	BC,-864
+000381 09                  A  1733    	ADD	HL,BC
+000382 E5C1                A  1734    	LD	BC,HL
+000384 C5                  A  1735    	PUSH	BC
+000385 CD 00 00 00         A  1736    	CALL	_lexan
+000389 C1                  A  1737    	POP	BC
+00038A C1                  A  1738    	POP	BC
+00038B DD75FE              A  1739    	LD	(IX+%FFFFFFFE),L
+00038E DD74FF              A  1740    	LD	(IX+%FFFFFFFF),H
+                           A  1741    ;  228			if (ntokens == (-1)) 
+                           A  1742    .LINE 228
+                           A  1743    
+000391 4901FFFF            A  1744    	LD.LIS	BC,-1
+000395 DD27FE              A  1745    	LD	HL,(IX+%FFFFFFFE)
+000398 B7                  A  1746    	OR	A,A
+000399 40ED42              A  1747    	SBC.SIS	HL,BC
+00039C 20 0E               A  1748    	JR	NZ,L_47
+                           A  1749    ;  229			{
+                           A  1750    ;  230				printf( errhd);
+                           A  1751    .LINE 230
+                           A  1752    
+00039E 01 00 00 00         A  1753    	LD	BC,_errhd
+0003A2 C5                  A  1754    	PUSH	BC
+0003A3 CD 00 00 00         A  1755    	CALL	_printf
+0003A7 C1                  A  1756    	POP	BC
+                           A  1757    ;  231				continue;
+                           A  1758    .LINE 231
+                           A  1759    
+0003A8 C3 A2 02 00         A  1760    	JR	L_98
+                           A  1761    ;  232			} 
+                           A  1762    ;  233			else if (ntokens == 0)
+0003AC                     A  1763    L_47:
+                           A  1764    .LINE 233
+                           A  1765    
+0003AC DD27FE              A  1766    	LD	HL,(IX+%FFFFFFFE)
+0003AF CD 00 00 00         A  1767    	CALL	__scmpzero
+0003B3 CA A2 02 00         A  1768    	JR	Z,L_98
+                           A  1769    ;  234				continue;
+                           A  1770    ;  235			outnam = innam = ( INT8 * ) NULL;
+                           A  1771    .LINE 235
+                           A  1772    
+0003B7 01000000            A  1773    	LD	BC,0
+0003BB DD0FE3              A  1774    	LD	(IX+%FFFFFFE3),BC
+0003BE DD0FDD              A  1775    	LD	(IX+%FFFFFFDD),BC
+                           A  1776    ;  236			backgnd = FALSE;
+                           A  1777    .LINE 236
+                           A  1778    
+0003C1 DD36EC00            A  1779    	LD	(IX+%FFFFFFEC),%0
+                           A  1780    ;  237	
+                           A  1781    ;  238			/* handle '&' */
+                           A  1782    ;  239			if (Shl.shtktyp[ntokens-1] == '&') 
+                           A  1783    .LINE 239
+                           A  1784    
+0003C5 DDE5E1              A  1785    	LD	HL,IX
+0003C8 0172FDFF            A  1786    	LD	BC,-654
+0003CC 09                  A  1787    	ADD	HL,BC
+0003CD DD2FED              A  1788    	LD	(IX+%FFFFFFED),HL
+0003D0 DD07FE              A  1789    	LD	BC,(IX+%FFFFFFFE)
+0003D3 CD 00 00 00         A  1790    	CALL	__stoi
+0003D7 DD07ED              A  1791    	LD	BC,(IX+%FFFFFFED)
+0003DA 09                  A  1792    	ADD	HL,BC
+0003DB 2B                  A  1793    	DEC	HL
+0003DC 7E                  A  1794    	LD	A,(HL)
+0003DD 47                  A  1795    	LD	B,A
+0003DE 17ED62              A  1796    	SEXT	HL
+0003E1 68                  A  1797    	LD	L,B
+0003E2 01260000            A  1798    	LD	BC,38
+0003E6 B7                  A  1799    	OR	A,A
+0003E7 ED42                A  1800    	SBC	HL,BC
+0003E9 20 0E               A  1801    	JR	NZ,L_79
+                           A  1802    ;  240			{
+                           A  1803    ;  241				ntokens-- ;
+                           A  1804    .LINE 241
+                           A  1805    
+0003EB DD27FE              A  1806    	LD	HL,(IX+%FFFFFFFE)
+0003EE 2B                  A  1807    	DEC	HL
+0003EF DD75FE              A  1808    	LD	(IX+%FFFFFFFE),L
+0003F2 DD74FF              A  1809    	LD	(IX+%FFFFFFFF),H
+                           A  1810    ;  242				backgnd = TRUE;
+                           A  1811    .LINE 242
+                           A  1812    
+0003F5 DD36EC01            A  1813    	LD	(IX+%FFFFFFEC),%1
+                           A  1814    ;  243			}
+0003F9                     A  1815    L_79:
+                           A  1816    .LINE 243
+                           A  1817    
+                           A  1818    ;  244	
+                           A  1819    ;  245			/* scan tokens, accumulating length;  handling redirect	*/
+                           A  1820    ;  246			for (len=0,i=0 ; i<ntokens ; ) 
+                           A  1821    .LINE 246
+                           A  1822    
+0003F9 01000000            A  1823    	LD	BC,0
+0003FD DD0FF1              A  1824    	LD	(IX+%FFFFFFF1),BC
+000400 DD36FA00            A  1825    	LD	(IX+%FFFFFFFA),%0
+000404 DD36FB00            A  1826    	LD	(IX+%FFFFFFFB),%0
+000408 C3 5E 06 00         A  1827    	JR	L_78
+00040C                     A  1828    L_76:
+                           A  1829    ;  247			{
+                           A  1830    ;  248				if ((ch = Shl.shtktyp[i]) == '&') 
+                           A  1831    .LINE 248
+                           A  1832    
+00040C DD07ED              A  1833    	LD	BC,(IX+%FFFFFFED)
+00040F DD0FF7              A  1834    	LD	(IX+%FFFFFFF7),BC
+000412 DD07FA              A  1835    	LD	BC,(IX+%FFFFFFFA)
+000415 CD 00 00 00         A  1836    	CALL	__stoiu
+000419 DD07F7              A  1837    	LD	BC,(IX+%FFFFFFF7)
+00041C 09                  A  1838    	ADD	HL,BC
+00041D 7E                  A  1839    	LD	A,(HL)
+00041E DD77F0              A  1840    	LD	(IX+%FFFFFFF0),A
+000421 FE26                A  1841    	CP	A,%26
+000423 20 0C               A  1842    	JR	NZ,L_75
+                           A  1843    ;  249				{
+                           A  1844    ;  250					ntokens = -1;
+                           A  1845    .LINE 250
+                           A  1846    
+000425 DD36FEFF            A  1847    	LD	(IX+%FFFFFFFE),%FF
+000429 DD36FFFF            A  1848    	LD	(IX+%FFFFFFFF),%FF
+                           A  1849    ;  251					break;
+                           A  1850    .LINE 251
+                           A  1851    
+00042D C3 7D 06 00         A  1852    	JR	L_81
+                           A  1853    ;  252				} 
+                           A  1854    ;  253				else if (ch == '>') 
+000431                     A  1855    L_75:
+                           A  1856    .LINE 253
+                           A  1857    
+000431 DD7EF0              A  1858    	LD	A,(IX+%FFFFFFF0)
+000434 FE3E                A  1859    	CP	A,%3E
+000436 C2 31 05 00         A  1860    	JR	NZ,L_73
+                           A  1861    ;  254				{
+                           A  1862    ;  255					if (outnam != NULL || i >= --ntokens) 
+                           A  1863    .LINE 255
+                           A  1864    
+00043A DD27DD              A  1865    	LD	HL,(IX+%FFFFFFDD)
+00043D CD 00 00 00         A  1866    	CALL	__icmpzero
+000441 20 29               A  1867    	JR	NZ,L_52
+000443 DD27FE              A  1868    	LD	HL,(IX+%FFFFFFFE)
+000446 2B                  A  1869    	DEC	HL
+000447 DD75FE              A  1870    	LD	(IX+%FFFFFFFE),L
+00044A DD74FF              A  1871    	LD	(IX+%FFFFFFFF),H
+00044D DD07FA              A  1872    	LD	BC,(IX+%FFFFFFFA)
+000450 CD 00 00 00         A  1873    	CALL	__stoiu
+000454 E5D1                A  1874    	LD	DE,HL
+000456 DD07FE              A  1875    	LD	BC,(IX+%FFFFFFFE)
+000459 CD 00 00 00         A  1876    	CALL	__stoi
+00045D E5C1                A  1877    	LD	BC,HL
+00045F D5E1                A  1878    	LD	HL,DE
+000461 B7                  A  1879    	OR	A,A
+000462 ED42                A  1880    	SBC	HL,BC
+000464 CD 00 00 00         A  1881    	CALL	__setflag
+000468 FA 78 04 00         A  1882    	JP	M,L_53
+00046C                     A  1883    L_52:
+                           A  1884    ;  256					{
+                           A  1885    ;  257						ntokens = -1;
+                           A  1886    .LINE 257
+                           A  1887    
+00046C DD36FEFF            A  1888    	LD	(IX+%FFFFFFFE),%FF
+000470 DD36FFFF            A  1889    	LD	(IX+%FFFFFFFF),%FF
+                           A  1890    ;  258						break;
+                           A  1891    .LINE 258
+                           A  1892    
+000474 C3 7D 06 00         A  1893    	JR	L_81
+                           A  1894    ;  259					}
+000478                     A  1895    L_53:
+                           A  1896    .LINE 259
+                           A  1897    
+                           A  1898    ;  260					outnam = Shl.shtok[i+1];
+                           A  1899    .LINE 260
+                           A  1900    
+000478 DDE5E1              A  1901    	LD	HL,IX
+00047B 0142FDFF            A  1902    	LD	BC,-702
+00047F 09                  A  1903    	ADD	HL,BC
+000480 DD2FE9              A  1904    	LD	(IX+%FFFFFFE9),HL
+000483 DD07FA              A  1905    	LD	BC,(IX+%FFFFFFFA)
+000486 CD 00 00 00         A  1906    	CALL	__stoiu
+00048A 23                  A  1907    	INC	HL
+00048B E5C1                A  1908    	LD	BC,HL
+00048D 29                  A  1909    	ADD	HL,HL
+00048E 09                  A  1910    	ADD	HL,BC
+00048F DD07E9              A  1911    	LD	BC,(IX+%FFFFFFE9)
+000492 09                  A  1912    	ADD	HL,BC
+000493 ED07                A  1913    	LD	BC,(HL)
+000495 DD0FDD              A  1914    	LD	(IX+%FFFFFFDD),BC
+                           A  1915    ;  261					for (ntokens--,j=i ; j<ntokens ; j++) 
+                           A  1916    .LINE 261
+                           A  1917    
+000498 DD27FE              A  1918    	LD	HL,(IX+%FFFFFFFE)
+00049B 2B                  A  1919    	DEC	HL
+00049C DD75FE              A  1920    	LD	(IX+%FFFFFFFE),L
+00049F DD74FF              A  1921    	LD	(IX+%FFFFFFFF),H
+0004A2 DD07FA              A  1922    	LD	BC,(IX+%FFFFFFFA)
+0004A5 DD71FC              A  1923    	LD	(IX+%FFFFFFFC),C
+0004A8 DD70FD              A  1924    	LD	(IX+%FFFFFFFD),B
+0004AB 18 61               A  1925    	JR	L_58
+0004AD                     A  1926    L_56:
+                           A  1927    ;  262					{
+                           A  1928    ;  263						Shl.shtktyp[j] = Shl.shtktyp[j+2];
+                           A  1929    .LINE 263
+                           A  1930    
+0004AD DD07F7              A  1931    	LD	BC,(IX+%FFFFFFF7)
+0004B0 DD0FED              A  1932    	LD	(IX+%FFFFFFED),BC
+0004B3 DD07FC              A  1933    	LD	BC,(IX+%FFFFFFFC)
+0004B6 CD 00 00 00         A  1934    	CALL	__stoiu
+0004BA DD07F7              A  1935    	LD	BC,(IX+%FFFFFFF7)
+0004BD 09                  A  1936    	ADD	HL,BC
+0004BE 019DFCFF            A  1937    	LD	BC,-867
+0004C2 CD 00 00 00         A  1938    	CALL	__istix
+0004C6 219DFCFF            A  1939    	LD	HL,-867
+0004CA DDE5C1              A  1940    	LD	BC,IX
+0004CD 09                  A  1941    	ADD	HL,BC
+0004CE ED31                A  1942    	LD	IY,(HL)
+0004D0 019DFCFF            A  1943    	LD	BC,-867
+0004D4 CD 00 00 00         A  1944    	CALL	__ildix
+0004D8 FD7E02              A  1945    	LD	A,(IY+%2)
+0004DB 77                  A  1946    	LD	(HL),A
+                           A  1947    ;  264						Shl.shtok  [j] = Shl.shtok  [j+2];
+                           A  1948    .LINE 264
+                           A  1949    
+0004DC DD07FC              A  1950    	LD	BC,(IX+%FFFFFFFC)
+0004DF CD 00 00 00         A  1951    	CALL	__stoiu
+0004E3 23                  A  1952    	INC	HL
+0004E4 23                  A  1953    	INC	HL
+0004E5 E5C1                A  1954    	LD	BC,HL
+0004E7 29                  A  1955    	ADD	HL,HL
+0004E8 09                  A  1956    	ADD	HL,BC
+0004E9 DD07E9              A  1957    	LD	BC,(IX+%FFFFFFE9)
+0004EC 09                  A  1958    	ADD	HL,BC
+0004ED E5FDE1              A  1959    	LD	IY,HL
+0004F0 DD07FC              A  1960    	LD	BC,(IX+%FFFFFFFC)
+0004F3 CD 00 00 00         A  1961    	CALL	__stoiu
+0004F7 E5C1                A  1962    	LD	BC,HL
+0004F9 29                  A  1963    	ADD	HL,HL
+0004FA 09                  A  1964    	ADD	HL,BC
+0004FB DD07E9              A  1965    	LD	BC,(IX+%FFFFFFE9)
+0004FE 09                  A  1966    	ADD	HL,BC
+0004FF FD0700              A  1967    	LD	BC,(IY)
+000502 ED0F                A  1968    	LD	(HL),BC
+000504 DD27FC              A  1969    	LD	HL,(IX+%FFFFFFFC)
+000507 23                  A  1970    	INC	HL
+000508 DD75FC              A  1971    	LD	(IX+%FFFFFFFC),L
+00050B DD74FD              A  1972    	LD	(IX+%FFFFFFFD),H
+                           A  1973    ;  265					}
+00050E                     A  1974    L_58:
+                           A  1975    .LINE 265
+                           A  1976    
+00050E DD07FC              A  1977    	LD	BC,(IX+%FFFFFFFC)
+000511 CD 00 00 00         A  1978    	CALL	__stoiu
+000515 E5D1                A  1979    	LD	DE,HL
+000517 DD07FE              A  1980    	LD	BC,(IX+%FFFFFFFE)
+00051A CD 00 00 00         A  1981    	CALL	__stoi
+00051E E5C1                A  1982    	LD	BC,HL
+000520 D5E1                A  1983    	LD	HL,DE
+000522 B7                  A  1984    	OR	A,A
+000523 ED42                A  1985    	SBC	HL,BC
+000525 CD 00 00 00         A  1986    	CALL	__setflag
+000529 FA AD 04 00         A  1987    	JP	M,L_56
+                           A  1988    ;  266					continue;
+                           A  1989    .LINE 266
+                           A  1990    
+00052D C3 5E 06 00         A  1991    	JR	L_77
+                           A  1992    ;  267				}
+                           A  1993    ;  268				else if (ch == '<') 
+000531                     A  1994    L_73:
+                           A  1995    .LINE 268
+                           A  1996    
+000531 DD7EF0              A  1997    	LD	A,(IX+%FFFFFFF0)
+000534 FE3C                A  1998    	CP	A,%3C
+000536 C2 2F 06 00         A  1999    	JR	NZ,L_71
+                           A  2000    ;  269				{
+                           A  2001    ;  270					if (innam != NULL || i >= --ntokens) 
+                           A  2002    .LINE 270
+                           A  2003    
+00053A DD27E3              A  2004    	LD	HL,(IX+%FFFFFFE3)
+00053D CD 00 00 00         A  2005    	CALL	__icmpzero
+000541 20 29               A  2006    	JR	NZ,L_61
+000543 DD27FE              A  2007    	LD	HL,(IX+%FFFFFFFE)
+000546 2B                  A  2008    	DEC	HL
+000547 DD75FE              A  2009    	LD	(IX+%FFFFFFFE),L
+00054A DD74FF              A  2010    	LD	(IX+%FFFFFFFF),H
+00054D DD07FA              A  2011    	LD	BC,(IX+%FFFFFFFA)
+000550 CD 00 00 00         A  2012    	CALL	__stoiu
+000554 E5D1                A  2013    	LD	DE,HL
+000556 DD07FE              A  2014    	LD	BC,(IX+%FFFFFFFE)
+000559 CD 00 00 00         A  2015    	CALL	__stoi
+00055D E5C1                A  2016    	LD	BC,HL
+00055F D5E1                A  2017    	LD	HL,DE
+000561 B7                  A  2018    	OR	A,A
+000562 ED42                A  2019    	SBC	HL,BC
+000564 CD 00 00 00         A  2020    	CALL	__setflag
+000568 FA 78 05 00         A  2021    	JP	M,L_62
+00056C                     A  2022    L_61:
+                           A  2023    ;  271					{
+                           A  2024    ;  272						ntokens = -1;
+                           A  2025    .LINE 272
+                           A  2026    
+00056C DD36FEFF            A  2027    	LD	(IX+%FFFFFFFE),%FF
+000570 DD36FFFF            A  2028    	LD	(IX+%FFFFFFFF),%FF
+                           A  2029    ;  273						break;
+                           A  2030    .LINE 273
+                           A  2031    
+000574 C3 7D 06 00         A  2032    	JR	L_81
+                           A  2033    ;  274					}
+000578                     A  2034    L_62:
+                           A  2035    .LINE 274
+                           A  2036    
+                           A  2037    ;  275					innam = Shl.shtok[i+1];
+                           A  2038    .LINE 275
+                           A  2039    
+000578 DDE5E1              A  2040    	LD	HL,IX
+00057B 0142FDFF            A  2041    	LD	BC,-702
+00057F 09                  A  2042    	ADD	HL,BC
+000580 DD2FE6              A  2043    	LD	(IX+%FFFFFFE6),HL
+000583 DD07FA              A  2044    	LD	BC,(IX+%FFFFFFFA)
+000586 CD 00 00 00         A  2045    	CALL	__stoiu
+00058A 23                  A  2046    	INC	HL
+00058B E5C1                A  2047    	LD	BC,HL
+00058D 29                  A  2048    	ADD	HL,HL
+00058E 09                  A  2049    	ADD	HL,BC
+00058F DD07E6              A  2050    	LD	BC,(IX+%FFFFFFE6)
+000592 09                  A  2051    	ADD	HL,BC
+000593 ED07                A  2052    	LD	BC,(HL)
+000595 DD0FE3              A  2053    	LD	(IX+%FFFFFFE3),BC
+                           A  2054    ;  276					for (ntokens--,j=i ; j < ntokens ; j++) 
+                           A  2055    .LINE 276
+                           A  2056    
+000598 DD27FE              A  2057    	LD	HL,(IX+%FFFFFFFE)
+00059B 2B                  A  2058    	DEC	HL
+00059C DD75FE              A  2059    	LD	(IX+%FFFFFFFE),L
+00059F DD74FF              A  2060    	LD	(IX+%FFFFFFFF),H
+0005A2 DD07FA              A  2061    	LD	BC,(IX+%FFFFFFFA)
+0005A5 DD71FC              A  2062    	LD	(IX+%FFFFFFFC),C
+0005A8 DD70FD              A  2063    	LD	(IX+%FFFFFFFD),B
+0005AB 18 61               A  2064    	JR	L_67
+0005AD                     A  2065    L_65:
+                           A  2066    ;  277					{
+                           A  2067    ;  278						Shl.shtktyp[j] = Shl.shtktyp[j+2];
+                           A  2068    .LINE 278
+                           A  2069    
+0005AD DD07F7              A  2070    	LD	BC,(IX+%FFFFFFF7)
+0005B0 DD0FED              A  2071    	LD	(IX+%FFFFFFED),BC
+0005B3 DD07FC              A  2072    	LD	BC,(IX+%FFFFFFFC)
+0005B6 CD 00 00 00         A  2073    	CALL	__stoiu
+0005BA DD07F7              A  2074    	LD	BC,(IX+%FFFFFFF7)
+0005BD 09                  A  2075    	ADD	HL,BC
+0005BE 019AFCFF            A  2076    	LD	BC,-870
+0005C2 CD 00 00 00         A  2077    	CALL	__istix
+0005C6 219AFCFF            A  2078    	LD	HL,-870
+0005CA DDE5C1              A  2079    	LD	BC,IX
+0005CD 09                  A  2080    	ADD	HL,BC
+0005CE ED31                A  2081    	LD	IY,(HL)
+0005D0 019AFCFF            A  2082    	LD	BC,-870
+0005D4 CD 00 00 00         A  2083    	CALL	__ildix
+0005D8 FD7E02              A  2084    	LD	A,(IY+%2)
+0005DB 77                  A  2085    	LD	(HL),A
+                           A  2086    ;  279						Shl.shtok  [j] = Shl.shtok  [j+2];
+                           A  2087    .LINE 279
+                           A  2088    
+0005DC DD07FC              A  2089    	LD	BC,(IX+%FFFFFFFC)
+0005DF CD 00 00 00         A  2090    	CALL	__stoiu
+0005E3 23                  A  2091    	INC	HL
+0005E4 23                  A  2092    	INC	HL
+0005E5 E5C1                A  2093    	LD	BC,HL
+0005E7 29                  A  2094    	ADD	HL,HL
+0005E8 09                  A  2095    	ADD	HL,BC
+0005E9 DD07E6              A  2096    	LD	BC,(IX+%FFFFFFE6)
+0005EC 09                  A  2097    	ADD	HL,BC
+0005ED E5FDE1              A  2098    	LD	IY,HL
+0005F0 DD07FC              A  2099    	LD	BC,(IX+%FFFFFFFC)
+0005F3 CD 00 00 00         A  2100    	CALL	__stoiu
+0005F7 E5C1                A  2101    	LD	BC,HL
+0005F9 29                  A  2102    	ADD	HL,HL
+0005FA 09                  A  2103    	ADD	HL,BC
+0005FB DD07E6              A  2104    	LD	BC,(IX+%FFFFFFE6)
+0005FE 09                  A  2105    	ADD	HL,BC
+0005FF FD0700              A  2106    	LD	BC,(IY)
+000602 ED0F                A  2107    	LD	(HL),BC
+000604 DD27FC              A  2108    	LD	HL,(IX+%FFFFFFFC)
+000607 23                  A  2109    	INC	HL
+000608 DD75FC              A  2110    	LD	(IX+%FFFFFFFC),L
+00060B DD74FD              A  2111    	LD	(IX+%FFFFFFFD),H
+                           A  2112    ;  280					}
+00060E                     A  2113    L_67:
+                           A  2114    .LINE 280
+                           A  2115    
+00060E DD07FC              A  2116    	LD	BC,(IX+%FFFFFFFC)
+000611 CD 00 00 00         A  2117    	CALL	__stoiu
+000615 E5D1                A  2118    	LD	DE,HL
+000617 DD07FE              A  2119    	LD	BC,(IX+%FFFFFFFE)
+00061A CD 00 00 00         A  2120    	CALL	__stoi
+00061E E5C1                A  2121    	LD	BC,HL
+000620 D5E1                A  2122    	LD	HL,DE
+000622 B7                  A  2123    	OR	A,A
+000623 ED42                A  2124    	SBC	HL,BC
+000625 CD 00 00 00         A  2125    	CALL	__setflag
+000629 FA AD 05 00         A  2126    	JP	M,L_65
+                           A  2127    ;  281					continue;
+                           A  2128    .LINE 281
+                           A  2129    
+00062D 18 2F               A  2130    	JR	L_77
+                           A  2131    ;  282				}
+                           A  2132    ;  283				else 
+00062F                     A  2133    L_71:
+                           A  2134    .LINE 283
+                           A  2135    
+                           A  2136    ;  284				{
+                           A  2137    ;  285					 len += strlen(Shl.shtok[i++]);
+                           A  2138    .LINE 285
+                           A  2139    
+00062F DD07FA              A  2140    	LD	BC,(IX+%FFFFFFFA)
+000632 DD27FA              A  2141    	LD	HL,(IX+%FFFFFFFA)
+000635 23                  A  2142    	INC	HL
+000636 DD75FA              A  2143    	LD	(IX+%FFFFFFFA),L
+000639 DD74FB              A  2144    	LD	(IX+%FFFFFFFB),H
+00063C CD 00 00 00         A  2145    	CALL	__stoiu
+000640 E5C1                A  2146    	LD	BC,HL
+000642 29                  A  2147    	ADD	HL,HL
+000643 09                  A  2148    	ADD	HL,BC
+000644 E5D1                A  2149    	LD	DE,HL
+000646 DDE5E1              A  2150    	LD	HL,IX
+000649 0142FDFF            A  2151    	LD	BC,-702
+00064D 09                  A  2152    	ADD	HL,BC
+00064E 19                  A  2153    	ADD	HL,DE
+00064F ED07                A  2154    	LD	BC,(HL)
+000651 C5                  A  2155    	PUSH	BC
+000652 CD 00 00 00         A  2156    	CALL	_strlen
+000656 C1                  A  2157    	POP	BC
+000657 DD07F1              A  2158    	LD	BC,(IX+%FFFFFFF1)
+00065A 09                  A  2159    	ADD	HL,BC
+00065B DD2FF1              A  2160    	LD	(IX+%FFFFFFF1),HL
+                           A  2161    ;  286				}
+                           A  2162    ;  287			}
+00065E                     A  2163    L_77:
+                           A  2164    .LINE 287
+                           A  2165    
+00065E                     A  2166    L_78:
+00065E DD07FA              A  2167    	LD	BC,(IX+%FFFFFFFA)
+000661 CD 00 00 00         A  2168    	CALL	__stoiu
+000665 E5D1                A  2169    	LD	DE,HL
+000667 DD07FE              A  2170    	LD	BC,(IX+%FFFFFFFE)
+00066A CD 00 00 00         A  2171    	CALL	__stoi
+00066E E5C1                A  2172    	LD	BC,HL
+000670 D5E1                A  2173    	LD	HL,DE
+000672 B7                  A  2174    	OR	A,A
+000673 ED42                A  2175    	SBC	HL,BC
+000675 CD 00 00 00         A  2176    	CALL	__setflag
+000679 FA 0C 04 00         A  2177    	JP	M,L_76
+00067D                     A  2178    L_81:
+                           A  2179    ;  288			if (ntokens <= 0) 
+                           A  2180    .LINE 288
+                           A  2181    
+00067D DD07FE              A  2182    	LD	BC,(IX+%FFFFFFFE)
+000680 B7                  A  2183    	OR	A,A
+000681 ED62                A  2184    	SBC	HL,HL
+000683 B7                  A  2185    	OR	A,A
+000684 40ED42              A  2186    	SBC.SIS	HL,BC
+000687 CD 00 00 00         A  2187    	CALL	__setflag
+00068B FA 9D 06 00         A  2188    	JP	M,L_86
+                           A  2189    ;  289			{
+                           A  2190    ;  290				printf( errhd);
+                           A  2191    .LINE 290
+                           A  2192    
+00068F 01 00 00 00         A  2193    	LD	BC,_errhd
+000693 C5                  A  2194    	PUSH	BC
+000694 CD 00 00 00         A  2195    	CALL	_printf
+000698 C1                  A  2196    	POP	BC
+                           A  2197    ;  291				continue;
+                           A  2198    .LINE 291
+                           A  2199    
+000699 C3 A2 02 00         A  2200    	JR	L_98
+                           A  2201    ;  292			}
+00069D                     A  2202    L_86:
+                           A  2203    .LINE 292
+                           A  2204    
+                           A  2205    ;  293	
+                           A  2206    ;  294			/* Look up command in table */
+                           A  2207    ;  295			for (com=ShellCommands; com; com=com->cnext) 
+                           A  2208    .LINE 295
+                           A  2209    
+00069D ED4B 0E 00 00       A  2210    	LD	BC,(_ShellCommands)
+0006A2 DD0FF4              A  2211    	LD	(IX+%FFFFFFF4),BC
+0006A5 18 25               A  2212    	JR	L_85
+0006A7                     A  2213    L_83:
+                           A  2214    ;  296			{  
+                           A  2215    ;  297				if ( strcmp( com->cmdnam, Shl.shtok[0] ) == 0)
+                           A  2216    .LINE 297
+                           A  2217    
+0006A7 0142FDFF            A  2218    	LD	BC,-702
+0006AB CD 00 00 00         A  2219    	CALL	__ildix
+0006AF E5                  A  2220    	PUSH	HL
+0006B0 DD31F4              A  2221    	LD	IY,(IX+%FFFFFFF4)
+0006B3 FD0700              A  2222    	LD	BC,(IY+%0)
+0006B6 C5                  A  2223    	PUSH	BC
+0006B7 CD 00 00 00         A  2224    	CALL	_strcmp
+0006BB C1                  A  2225    	POP	BC
+0006BC C1                  A  2226    	POP	BC
+0006BD CD 00 00 00         A  2227    	CALL	__icmpzero
+0006C1 28 12               A  2228    	JR	Z,L_88
+0006C3 DD31F4              A  2229    	LD	IY,(IX+%FFFFFFF4)
+0006C6 FD0707              A  2230    	LD	BC,(IY+%7)
+0006C9 DD0FF4              A  2231    	LD	(IX+%FFFFFFF4),BC
+                           A  2232    ;  298					break;
+                           A  2233    ;  299			}
+0006CC                     A  2234    L_85:
+                           A  2235    .LINE 299
+                           A  2236    
+0006CC DD27F4              A  2237    	LD	HL,(IX+%FFFFFFF4)
+0006CF CD 00 00 00         A  2238    	CALL	__icmpzero
+0006D3 20 D2               A  2239    	JR	NZ,L_83
+0006D5                     A  2240    L_88:
+                           A  2241    ;  300	
+                           A  2242    ;  301			if (!com)
+                           A  2243    .LINE 301
+                           A  2244    
+0006D5 DD27F4              A  2245    	LD	HL,(IX+%FFFFFFF4)
+0006D8 CD 00 00 00         A  2246    	CALL	__icmpzero
+0006DC 20 18               A  2247    	JR	NZ,L_96
+                           A  2248    ;  302			{
+                           A  2249    ;  303				printf( "%s: not found\n", Shl.shtok[0]);
+                           A  2250    .LINE 303
+                           A  2251    
+0006DE 0142FDFF            A  2252    	LD	BC,-702
+0006E2 CD 00 00 00         A  2253    	CALL	__ildix
+0006E6 E5                  A  2254    	PUSH	HL
+0006E7 01 14 00 00         A  2255    	LD	BC,L__42
+0006EB C5                  A  2256    	PUSH	BC
+0006EC CD 00 00 00         A  2257    	CALL	_printf
+0006F0 C1                  A  2258    	POP	BC
+0006F1 C1                  A  2259    	POP	BC
+                           A  2260    ;  304				continue;
+                           A  2261    .LINE 304
+                           A  2262    
+0006F2 C3 A2 02 00         A  2263    	JR	L_98
+                           A  2264    ;  305			}
+0006F6                     A  2265    L_96:
+                           A  2266    .LINE 305
+                           A  2267    
+                           A  2268    ;  306			
+                           A  2269    ;  307			/* handle built-in commands with procedure call */
+                           A  2270    ;  308			if (com->cbuiltin) 
+                           A  2271    .LINE 308
+                           A  2272    
+0006F6 DD31F4              A  2273    	LD	IY,(IX+%FFFFFFF4)
+0006F9 FD7E03              A  2274    	LD	A,(IY+%3)
+0006FC B7                  A  2275    	OR	A,A
+0006FD CA A2 02 00         A  2276    	JR	Z,L_98
+                           A  2277    ;  309			{
+                           A  2278    ;  310				if (innam != NULL || outnam != NULL || backgnd)
+                           A  2279    .LINE 310
+                           A  2280    
+000701 DD27E3              A  2281    	LD	HL,(IX+%FFFFFFE3)
+000704 CD 00 00 00         A  2282    	CALL	__icmpzero
+000708 20 0F               A  2283    	JR	NZ,L_92
+00070A DD27DD              A  2284    	LD	HL,(IX+%FFFFFFDD)
+00070D CD 00 00 00         A  2285    	CALL	__icmpzero
+000711 20 06               A  2286    	JR	NZ,L_92
+000713 DD7EEC              A  2287    	LD	A,(IX+%FFFFFFEC)
+000716 B7                  A  2288    	OR	A,A
+000717 28 0E               A  2289    	JR	Z,L_93
+000719                     A  2290    L_92:
+                           A  2291    ;  311					printf( errhd);
+                           A  2292    .LINE 311
+                           A  2293    
+000719 01 00 00 00         A  2294    	LD	BC,_errhd
+00071D C5                  A  2295    	PUSH	BC
+00071E CD 00 00 00         A  2296    	CALL	_printf
+000722 C1                  A  2297    	POP	BC
+                           A  2298    ;  312				else if ( (*(com->cproc))(&Shl, stdin, stdout,
+                           A  2299    .LINE 312
+                           A  2300    
+000723 C3 A2 02 00         A  2301    	JR	L_98
+000727                     A  2302    L_93:
+                           A  2303    ;  313					stderr, ntokens, (INT8**)Shl.shtok) == SHEXIT)
+                           A  2304    .LINE 313
+                           A  2305    
+000727 DD31F4              A  2306    	LD	IY,(IX+%FFFFFFF4)
+00072A FD3704              A  2307    	LD	IY,(IY+%4)
+00072D DDE5E1              A  2308    	LD	HL,IX
+000730 0142FDFF            A  2309    	LD	BC,-702
+000734 09                  A  2310    	ADD	HL,BC
+000735 E5C1                A  2311    	LD	BC,HL
+000737 C5                  A  2312    	PUSH	BC
+000738 DD07FE              A  2313    	LD	BC,(IX+%FFFFFFFE)
+00073B C5                  A  2314    	PUSH	BC
+00073C DD0706              A  2315    	LD	BC,(IX+%6)
+00073F C5                  A  2316    	PUSH	BC
+000740 DD0706              A  2317    	LD	BC,(IX+%6)
+000743 C5                  A  2318    	PUSH	BC
+000744 DD0706              A  2319    	LD	BC,(IX+%6)
+000747 C5                  A  2320    	PUSH	BC
+000748 DDE5E1              A  2321    	LD	HL,IX
+00074B 01A0FCFF            A  2322    	LD	BC,-864
+00074F 09                  A  2323    	ADD	HL,BC
+000750 E5C1                A  2324    	LD	BC,HL
+000752 C5                  A  2325    	PUSH	BC
+000753 CD 00 00 00         A  2326    	CALL	__indcall
+000757 C1                  A  2327    	POP	BC
+000758 C1                  A  2328    	POP	BC
+000759 C1                  A  2329    	POP	BC
+00075A C1                  A  2330    	POP	BC
+00075B C1                  A  2331    	POP	BC
+00075C C1                  A  2332    	POP	BC
+00075D E5C1                A  2333    	LD	BC,HL
+00075F CD 00 00 00         A  2334    	CALL	__stoi
+000763 01FBFFFF            A  2335    	LD	BC,16777211
+000767 B7                  A  2336    	OR	A,A
+000768 ED42                A  2337    	SBC	HL,BC
+00076A C2 A2 02 00         A  2338    	JR	NZ,L_98
+                           A  2339    ;  314					break;
+                           A  2340    ;  315				continue;
+                           A  2341    ;  316			}	
+                           A  2342    ;  317		}
+                           A  2343    .LINE 317
+                           A  2344    
+00076E                     A  2345    L_99:
+                           A  2346    ;  318	
+                           A  2347    ;  319		return(OK);
+                           A  2348    .LINE 319
+                           A  2349    
+00076E 49210100            A  2350    	LD.LIS	HL,1
+                           A  2351    ;  320	}
+                           A  2352    .LINE 320
+                           A  2353    
+000772 DDF9                A  2354    	LD	SP,IX
+000774 DDE1                A  2355    	POP	IX
+000776 C9                  A  2356    	RET	
+                           A  2357    
+                           A  2358    
+                           A  2359    ;**************************** _shell ***************************
+                           A  2360    ;Name                         Addr/Register   Size   Type
+                           A  2361    ;_strcmp                             IMPORT  -----   function
+                           A  2362    ;_ShellCommands                      STATIC      3   variable
+                           A  2363    ;_strlen                             IMPORT  -----   function
+                           A  2364    ;_errhd                              STATIC     14   variable
+                           A  2365    ;_lexan                              IMPORT  -----   function
+                           A  2366    ;_sprintf                            IMPORT  -----   function
+                           A  2367    ;_ZFSGetCwd                          IMPORT  -----   function
+                           A  2368    ;_memset                             IMPORT  -----   function
+                           A  2369    ;_strcpy                             IMPORT  -----   function
+                           A  2370    ;_printf                             IMPORT  -----   function
+                           A  2371    ;_ZFSChdir                           IMPORT  -----   function
+                           A  2372    ;_defaultcmds                        IMPORT  unknown variable
+                           A  2373    ;_ndefaultcmds                       IMPORT      2   variable
+                           A  2374    ;_shell_add_commands                 IMPORT  -----   function
+                           A  2375    ;_DefaultCommandsAdded               STATIC      1   variable
+                           A  2376    ;Shl                                 IX-864    308   variable
+                           A  2377    ;mach                                IX-556    265   variable
+                           A  2378    ;cwd_path                            IX-291    256   variable
+                           A  2379    ;outnam                               IX-35      3   variable
+                           A  2380    ;G_0                                  IX-32      3   variable
+                           A  2381    ;innam                                IX-29      3   variable
+                           A  2382    ;G_5                                  IX-26      3   variable
+                           A  2383    ;G_3                                  IX-23      3   variable
+                           A  2384    ;backgnd                              IX-20      1   variable
+                           A  2385    ;G_1                                  IX-19      3   variable
+                           A  2386    ;ch                                   IX-16      1   variable
+                           A  2387    ;len                                  IX-15      3   variable
+                           A  2388    ;com                                  IX-12      3   variable
+                           A  2389    ;G_2                                   IX-9      3   variable
+                           A  2390    ;i                                     IX-6      2   variable
+                           A  2391    ;j                                     IX-4      2   variable
+                           A  2392    ;ntokens                               IX-2      2   variable
+                           A  2393    ;dev                                   IX+6      3   parameter
+                           A  2394    
+                           A  2395    
+                           A  2396    ; Stack Frame Size: 879 (bytes)
+                           A  2397    ;       Spill Code: 0 (instruction)
+                           A  2398    
+                           A  2399    
+                           A  2400    .ENDFUNC "shell",320,"_shell"
+                           A  2401    	SEGMENT STRSECT
+000000                     A  2402    L__15:
+000000 2F                  A  2403    	DB	"/"
+000001 00                  A  2404    	DB	0
+000002                     A  2405    L__17:
+000002 0A00                A  2406    	DB	10,0
+000004                     A  2407    L__18:
+000004 655A3830 2025       A  2408    	DB	"eZ80 %"
+00000A 00                  A  2409    	DB	0
+00000B                     A  2410    L__20:
+00000B 25732025 25         A  2411    	DB	"%s %%"
+000010 00                  A  2412    	DB	0
+000011                     A  2413    L__21:
+000011 2573                A  2414    	DB	"%s"
+000013 00                  A  2415    	DB	0
+000014                     A  2416    L__42:
+000014 25733A20 6E6F7420   A  2417    	DB	"%s: not found"
+00001C 666F756E 64 
+000021 0A00                A  2418    	DB	10,0
+                           A  2419    	SEGMENT CODE
+                           A  2420    ;  321	
+                           A  2421    ;  322	
+                           A  2422    ;  323	
+                           A  2423    ;  324	void DisplayTime( void ) 
+                           A  2424    ;  325	{
+000777                     A  2425    _DisplayTime:
+                           A  2426    .DEFINE "_DisplayTime"
+                           A  2427    
+                           A  2428    .VALUE _DisplayTime
+                           A  2429    
+                           A  2430    .CLASS 2
+                           A  2431    
+                           A  2432    .TYPE 65
+                           A  2433    
+                           A  2434    .ENDEF
+                           A  2435    
+                           A  2436    .BEGFUNC "DisplayTime",325,"_DisplayTime"
+                           A  2437    
+                           A  2438    .LINE 325
+                           A  2439    
+                           A  2440    .DEFINE "Time"
+                           A  2441    
+                           A  2442    .CLASS 65
+                           A  2443    
+                           A  2444    .VALUE -8
+                           A  2445    
+                           A  2446    .TAG "TIME"
+                           A  2447    
+                           A  2448    .TYPE 8
+                           A  2449    
+                           A  2450    .ENDEF
+                           A  2451    
+                           A  2452    .DEFINE "pdev"
+                           A  2453    
+                           A  2454    .CLASS 65
+                           A  2455    
+                           A  2456    .VALUE -11
+                           A  2457    
+                           A  2458    .TAG "RZK_DEVICE_CB_t"
+                           A  2459    
+                           A  2460    .TYPE 40
+                           A  2461    
+                           A  2462    .ENDEF
+                           A  2463    
+000777 DDE5                A  2464    	PUSH	IX
+000779 DD210000 00         A  2465    	LD	IX,0
+00077E DD39                A  2466    	ADD	IX,SP
+000780 ED22BC              A  2467    	LEA	HL,IX+%FFFFFFBC
+000783 F9                  A  2468    	LD	SP,HL
+                           A  2469    ;  326		TIME Time;
+                           A  2470    ;  327		TIME *pTime = &Time;
+                           A  2471    ;  328	
+                           A  2472    ;  329		RZK_DEVICE_CB_t *pdev ;
+                           A  2473    ;  330	
+                           A  2474    ;  331		pdev = RZKDevOpen( "RTC", 0 ) ;
+                           A  2475    .LINE 331
+                           A  2476    
+000784 01000000            A  2477    	LD	BC,0
+000788 C5                  A  2478    	PUSH	BC
+000789 01 23 00 00         A  2479    	LD	BC,L__49
+00078D C5                  A  2480    	PUSH	BC
+00078E CD 00 00 00         A  2481    	CALL	_RZKDevOpen
+000792 C1                  A  2482    	POP	BC
+000793 C1                  A  2483    	POP	BC
+000794 DD2FF5              A  2484    	LD	(IX+%FFFFFFF5),HL
+                           A  2485    ;  332		if( pdev == NULL )
+                           A  2486    .LINE 332
+                           A  2487    
+000797 CD 00 00 00         A  2488    	CALL	__icmpzero
+00079B 20 0E               A  2489    	JR	NZ,L_102
+                           A  2490    ;  333		{
+                           A  2491    ;  334			printf("\nRTC is not present");
+                           A  2492    .LINE 334
+                           A  2493    
+00079D 01 27 00 00         A  2494    	LD	BC,L__51
+0007A1 C5                  A  2495    	PUSH	BC
+0007A2 CD 00 00 00         A  2496    	CALL	_printf
+0007A6 C1                  A  2497    	POP	BC
+                           A  2498    ;  335			return ;
+                           A  2499    .LINE 335
+                           A  2500    
+0007A7 C3 12 0A 00         A  2501    	JR	L_190
+                           A  2502    ;  336		}
+0007AB                     A  2503    L_102:
+                           A  2504    .LINE 336
+                           A  2505    
+                           A  2506    ;  337		
+                           A  2507    ;  338		RZKDevRead(pdev,(INT8 *)pTime,8);
+                           A  2508    .LINE 338
+                           A  2509    
+0007AB 01000000            A  2510    	LD	BC,0
+0007AF C5                  A  2511    	PUSH	BC
+0007B0 01080000            A  2512    	LD	BC,8
+0007B4 C5                  A  2513    	PUSH	BC
+0007B5 ED65F8              A  2514    	PEA	IX+%FFFFFFF8
+0007B8 DD07F5              A  2515    	LD	BC,(IX+%FFFFFFF5)
+0007BB C5                  A  2516    	PUSH	BC
+0007BC CD 00 00 00         A  2517    	CALL	_RZKDevRead
+0007C0 C1                  A  2518    	POP	BC
+0007C1 C1                  A  2519    	POP	BC
+0007C2 C1                  A  2520    	POP	BC
+0007C3 C1                  A  2521    	POP	BC
+                           A  2522    ;  339	
+                           A  2523    ;  340		if((pTime->mon > 12) || (pTime->mon <= 0) ||
+                           A  2524    .LINE 340
+                           A  2525    
+0007C4 3E0C                A  2526    	LD	A,%C
+0007C6 DDBEFD              A  2527    	CP	A,(IX+%FFFFFFFD)
+0007C9 38 35               A  2528    	JR	C,L_187
+0007CB AF                  A  2529    	XOR	A,A
+0007CC DDBEFD              A  2530    	CP	A,(IX+%FFFFFFFD)
+0007CF 30 2F               A  2531    	JR	NC,L_187
+                           A  2532    ;  341		(pTime->dayOfMonth > 31) || (pTime->dayOfMonth <= 0) ||
+                           A  2533    .LINE 341
+                           A  2534    
+0007D1 3E1F                A  2535    	LD	A,%1F
+0007D3 DDBEFB              A  2536    	CP	A,(IX+%FFFFFFFB)
+0007D6 38 28               A  2537    	JR	C,L_187
+0007D8 AF                  A  2538    	XOR	A,A
+0007D9 DDBEFB              A  2539    	CP	A,(IX+%FFFFFFFB)
+0007DC 30 22               A  2540    	JR	NC,L_187
+                           A  2541    ;  342		(pTime->dayOfWeek > 7) || (pTime->dayOfWeek <= 0) ||
+                           A  2542    .LINE 342
+                           A  2543    
+0007DE 3E07                A  2544    	LD	A,%7
+0007E0 DDBEFC              A  2545    	CP	A,(IX+%FFFFFFFC)
+0007E3 38 1B               A  2546    	JR	C,L_187
+0007E5 AF                  A  2547    	XOR	A,A
+0007E6 DDBEFC              A  2548    	CP	A,(IX+%FFFFFFFC)
+0007E9 30 15               A  2549    	JR	NC,L_187
+                           A  2550    ;  343		(pTime->hrs >= 24)  ||	(pTime->minutes >= 60) || 
+                           A  2551    .LINE 343
+                           A  2552    
+0007EB DD7EFA              A  2553    	LD	A,(IX+%FFFFFFFA)
+0007EE FE18                A  2554    	CP	A,%18
+0007F0 30 0E               A  2555    	JR	NC,L_187
+0007F2 DD7EF9              A  2556    	LD	A,(IX+%FFFFFFF9)
+0007F5 FE3C                A  2557    	CP	A,%3C
+0007F7 30 07               A  2558    	JR	NC,L_187
+                           A  2559    ;  344		(pTime->sec >= 60) )
+                           A  2560    .LINE 344
+                           A  2561    
+0007F9 DD7EF8              A  2562    	LD	A,(IX+%FFFFFFF8)
+0007FC FE3C                A  2563    	CP	A,%3C
+0007FE 38 0E               A  2564    	JR	C,L_188
+000800                     A  2565    L_187:
+                           A  2566    ;  345		{
+                           A  2567    ;  346			printf("\nPlease set date and time in RTC\n");
+                           A  2568    .LINE 346
+                           A  2569    
+000800 01 3B 00 00         A  2570    	LD	BC,L__61
+000804 C5                  A  2571    	PUSH	BC
+000805 CD 00 00 00         A  2572    	CALL	_printf
+000809 C1                  A  2573    	POP	BC
+                           A  2574    ;  347		}
+                           A  2575    ;  348		else
+                           A  2576    .LINE 348
+                           A  2577    
+00080A C3 12 0A 00         A  2578    	JR	L_189
+00080E                     A  2579    L_188:
+                           A  2580    ;  349		{
+                           A  2581    ;  350			printf("\n%-4s, %2d %-4s %4d %3d:%2d:%2d\n",
+                           A  2582    ;  351				((INT)pTime->dayOfWeek == 1)?"Mon":
+                           A  2583    .LINE 351
+                           A  2584    
+00080E DD7EFC              A  2585    	LD	A,(IX+%FFFFFFFC)
+000811 FE01                A  2586    	CP	A,%1
+000813 20 0B               A  2587    	JR	NZ,L_137
+                           A  2588    ;  352				((INT)pTime->dayOfWeek == 2)?"Tue":
+                           A  2589    ;  353				((INT)pTime->dayOfWeek == 3)?"Wed":
+                           A  2590    ;  354				((INT)pTime->dayOfWeek == 4)?"Thu":
+                           A  2591    ;  355				((INT)pTime->dayOfWeek == 5)?"Fri":
+                           A  2592    ;  356				((INT)pTime->dayOfWeek == 6)?"Sat":
+                           A  2593    ;  357				((INT)pTime->dayOfWeek == 7)?"Sun":
+                           A  2594    ;  358				"---",
+                           A  2595    .LINE 358
+                           A  2596    
+000815 01 5D 00 00         A  2597    	LD	BC,L__63
+000819 DD0FF2              A  2598    	LD	(IX+%FFFFFFF2),BC
+00081C C3 AB 08 00         A  2599    	JR	L_138
+000820                     A  2600    L_137:
+000820 DD7EFC              A  2601    	LD	A,(IX+%FFFFFFFC)
+000823 FE02                A  2602    	CP	A,%2
+000825 20 09               A  2603    	JR	NZ,L_133
+000827 01 61 00 00         A  2604    	LD	BC,L__65
+00082B DD0FEF              A  2605    	LD	(IX+%FFFFFFEF),BC
+00082E 18 75               A  2606    	JR	L_134
+000830                     A  2607    L_133:
+000830 DD7EFC              A  2608    	LD	A,(IX+%FFFFFFFC)
+000833 FE03                A  2609    	CP	A,%3
+000835 20 09               A  2610    	JR	NZ,L_129
+000837 01 65 00 00         A  2611    	LD	BC,L__67
+00083B DD0FEC              A  2612    	LD	(IX+%FFFFFFEC),BC
+00083E 18 5F               A  2613    	JR	L_130
+000840                     A  2614    L_129:
+000840 DD7EFC              A  2615    	LD	A,(IX+%FFFFFFFC)
+000843 FE04                A  2616    	CP	A,%4
+000845 20 09               A  2617    	JR	NZ,L_125
+000847 01 69 00 00         A  2618    	LD	BC,L__69
+00084B DD0FE9              A  2619    	LD	(IX+%FFFFFFE9),BC
+00084E 18 49               A  2620    	JR	L_126
+000850                     A  2621    L_125:
+000850 DD7EFC              A  2622    	LD	A,(IX+%FFFFFFFC)
+000853 FE05                A  2623    	CP	A,%5
+000855 20 09               A  2624    	JR	NZ,L_121
+000857 01 6D 00 00         A  2625    	LD	BC,L__71
+00085B DD0FE6              A  2626    	LD	(IX+%FFFFFFE6),BC
+00085E 18 33               A  2627    	JR	L_122
+000860                     A  2628    L_121:
+000860 DD7EFC              A  2629    	LD	A,(IX+%FFFFFFFC)
+000863 FE06                A  2630    	CP	A,%6
+000865 20 09               A  2631    	JR	NZ,L_117
+000867 01 71 00 00         A  2632    	LD	BC,L__73
+00086B DD0FE3              A  2633    	LD	(IX+%FFFFFFE3),BC
+00086E 18 1D               A  2634    	JR	L_118
+000870                     A  2635    L_117:
+000870 DD7EFC              A  2636    	LD	A,(IX+%FFFFFFFC)
+000873 FE07                A  2637    	CP	A,%7
+000875 20 09               A  2638    	JR	NZ,L_113
+000877 01 75 00 00         A  2639    	LD	BC,L__75
+00087B DD0FE0              A  2640    	LD	(IX+%FFFFFFE0),BC
+00087E 18 07               A  2641    	JR	L_114
+000880                     A  2642    L_113:
+000880 01 79 00 00         A  2643    	LD	BC,L__76
+000884 DD0FE0              A  2644    	LD	(IX+%FFFFFFE0),BC
+000887                     A  2645    L_114:
+000887 DD07E0              A  2646    	LD	BC,(IX+%FFFFFFE0)
+00088A DD0FE3              A  2647    	LD	(IX+%FFFFFFE3),BC
+00088D                     A  2648    L_118:
+00088D DD07E3              A  2649    	LD	BC,(IX+%FFFFFFE3)
+000890 DD0FE6              A  2650    	LD	(IX+%FFFFFFE6),BC
+000893                     A  2651    L_122:
+000893 DD07E6              A  2652    	LD	BC,(IX+%FFFFFFE6)
+000896 DD0FE9              A  2653    	LD	(IX+%FFFFFFE9),BC
+000899                     A  2654    L_126:
+000899 DD07E9              A  2655    	LD	BC,(IX+%FFFFFFE9)
+00089C DD0FEC              A  2656    	LD	(IX+%FFFFFFEC),BC
+00089F                     A  2657    L_130:
+00089F DD07EC              A  2658    	LD	BC,(IX+%FFFFFFEC)
+0008A2 DD0FEF              A  2659    	LD	(IX+%FFFFFFEF),BC
+0008A5                     A  2660    L_134:
+0008A5 DD07EF              A  2661    	LD	BC,(IX+%FFFFFFEF)
+0008A8 DD0FF2              A  2662    	LD	(IX+%FFFFFFF2),BC
+0008AB                     A  2663    L_138:
+                           A  2664    ;  359				(INT)pTime->dayOfMonth,
+                           A  2665    ;  360				((INT)pTime->mon == 1)?"Jan":
+                           A  2666    .LINE 360
+                           A  2667    
+0008AB DD7EFD              A  2668    	LD	A,(IX+%FFFFFFFD)
+0008AE FE01                A  2669    	CP	A,%1
+0008B0 20 0B               A  2670    	JR	NZ,L_185
+                           A  2671    ;  361				((INT)pTime->mon == 2)?"Feb":
+                           A  2672    ;  362				((INT)pTime->mon == 3)?"Mar":
+                           A  2673    ;  363				((INT)pTime->mon == 4)?"Apr":
+                           A  2674    ;  364				((INT)pTime->mon == 5)?"May":
+                           A  2675    ;  365				((INT)pTime->mon == 6)?"Jun":
+                           A  2676    ;  366				((INT)pTime->mon == 7)?"Jul":
+                           A  2677    ;  367				((INT)pTime->mon == 8)?"Aug":
+                           A  2678    ;  368				((INT)pTime->mon == 9)?"Sep":
+                           A  2679    ;  369				((INT)pTime->mon == 10)?"Oct":
+                           A  2680    ;  370				((INT)pTime->mon == 11)?"Nov":
+                           A  2681    ;  371				((INT)pTime->mon == 12)?"Dec":
+                           A  2682    ;  372				"---",			
+                           A  2683    .LINE 372
+                           A  2684    
+0008B2 01 7D 00 00         A  2685    	LD	BC,L__78
+0008B6 DD0FDD              A  2686    	LD	(IX+%FFFFFFDD),BC
+0008B9 C3 C0 09 00         A  2687    	JR	L_186
+0008BD                     A  2688    L_185:
+0008BD DD7EFD              A  2689    	LD	A,(IX+%FFFFFFFD)
+0008C0 FE02                A  2690    	CP	A,%2
+0008C2 20 0B               A  2691    	JR	NZ,L_181
+0008C4 01 81 00 00         A  2692    	LD	BC,L__80
+0008C8 DD0FDA              A  2693    	LD	(IX+%FFFFFFDA),BC
+0008CB C3 BA 09 00         A  2694    	JR	L_182
+0008CF                     A  2695    L_181:
+0008CF DD7EFD              A  2696    	LD	A,(IX+%FFFFFFFD)
+0008D2 FE03                A  2697    	CP	A,%3
+0008D4 20 0B               A  2698    	JR	NZ,L_177
+0008D6 01 85 00 00         A  2699    	LD	BC,L__82
+0008DA DD0FD7              A  2700    	LD	(IX+%FFFFFFD7),BC
+0008DD C3 B4 09 00         A  2701    	JR	L_178
+0008E1                     A  2702    L_177:
+0008E1 DD7EFD              A  2703    	LD	A,(IX+%FFFFFFFD)
+0008E4 FE04                A  2704    	CP	A,%4
+0008E6 20 0B               A  2705    	JR	NZ,L_173
+0008E8 01 89 00 00         A  2706    	LD	BC,L__84
+0008EC DD0FD4              A  2707    	LD	(IX+%FFFFFFD4),BC
+0008EF C3 AE 09 00         A  2708    	JR	L_174
+0008F3                     A  2709    L_173:
+0008F3 DD7EFD              A  2710    	LD	A,(IX+%FFFFFFFD)
+0008F6 FE05                A  2711    	CP	A,%5
+0008F8 20 0B               A  2712    	JR	NZ,L_169
+0008FA 01 8D 00 00         A  2713    	LD	BC,L__86
+0008FE DD0FD1              A  2714    	LD	(IX+%FFFFFFD1),BC
+000901 C3 A8 09 00         A  2715    	JR	L_170
+000905                     A  2716    L_169:
+000905 DD7EFD              A  2717    	LD	A,(IX+%FFFFFFFD)
+000908 FE06                A  2718    	CP	A,%6
+00090A 20 0B               A  2719    	JR	NZ,L_165
+00090C 01 91 00 00         A  2720    	LD	BC,L__88
+000910 DD0FCE              A  2721    	LD	(IX+%FFFFFFCE),BC
+000913 C3 A2 09 00         A  2722    	JR	L_166
+000917                     A  2723    L_165:
+000917 DD7EFD              A  2724    	LD	A,(IX+%FFFFFFFD)
+00091A FE07                A  2725    	CP	A,%7
+00091C 20 09               A  2726    	JR	NZ,L_161
+00091E 01 95 00 00         A  2727    	LD	BC,L__90
+000922 DD0FCB              A  2728    	LD	(IX+%FFFFFFCB),BC
+000925 18 75               A  2729    	JR	L_162
+000927                     A  2730    L_161:
+000927 DD7EFD              A  2731    	LD	A,(IX+%FFFFFFFD)
+00092A FE08                A  2732    	CP	A,%8
+00092C 20 09               A  2733    	JR	NZ,L_157
+00092E 01 99 00 00         A  2734    	LD	BC,L__92
+000932 DD0FC8              A  2735    	LD	(IX+%FFFFFFC8),BC
+000935 18 5F               A  2736    	JR	L_158
+000937                     A  2737    L_157:
+000937 DD7EFD              A  2738    	LD	A,(IX+%FFFFFFFD)
+00093A FE09                A  2739    	CP	A,%9
+00093C 20 09               A  2740    	JR	NZ,L_153
+00093E 01 9D 00 00         A  2741    	LD	BC,L__94
+000942 DD0FC5              A  2742    	LD	(IX+%FFFFFFC5),BC
+000945 18 49               A  2743    	JR	L_154
+000947                     A  2744    L_153:
+000947 DD7EFD              A  2745    	LD	A,(IX+%FFFFFFFD)
+00094A FE0A                A  2746    	CP	A,%A
+00094C 20 09               A  2747    	JR	NZ,L_149
+00094E 01 A1 00 00         A  2748    	LD	BC,L__96
+000952 DD0FC2              A  2749    	LD	(IX+%FFFFFFC2),BC
+000955 18 33               A  2750    	JR	L_150
+000957                     A  2751    L_149:
+000957 DD7EFD              A  2752    	LD	A,(IX+%FFFFFFFD)
+00095A FE0B                A  2753    	CP	A,%B
+00095C 20 09               A  2754    	JR	NZ,L_145
+00095E 01 A5 00 00         A  2755    	LD	BC,L__98
+000962 DD0FBF              A  2756    	LD	(IX+%FFFFFFBF),BC
+000965 18 1D               A  2757    	JR	L_146
+000967                     A  2758    L_145:
+000967 DD7EFD              A  2759    	LD	A,(IX+%FFFFFFFD)
+00096A FE0C                A  2760    	CP	A,%C
+00096C 20 09               A  2761    	JR	NZ,L_141
+00096E 01 A9 00 00         A  2762    	LD	BC,L__100
+000972 DD0FBC              A  2763    	LD	(IX+%FFFFFFBC),BC
+000975 18 07               A  2764    	JR	L_142
+000977                     A  2765    L_141:
+000977 01 AD 00 00         A  2766    	LD	BC,L__101
+00097B DD0FBC              A  2767    	LD	(IX+%FFFFFFBC),BC
+00097E                     A  2768    L_142:
+00097E DD07BC              A  2769    	LD	BC,(IX+%FFFFFFBC)
+000981 DD0FBF              A  2770    	LD	(IX+%FFFFFFBF),BC
+000984                     A  2771    L_146:
+000984 DD07BF              A  2772    	LD	BC,(IX+%FFFFFFBF)
+000987 DD0FC2              A  2773    	LD	(IX+%FFFFFFC2),BC
+00098A                     A  2774    L_150:
+00098A DD07C2              A  2775    	LD	BC,(IX+%FFFFFFC2)
+00098D DD0FC5              A  2776    	LD	(IX+%FFFFFFC5),BC
+000990                     A  2777    L_154:
+000990 DD07C5              A  2778    	LD	BC,(IX+%FFFFFFC5)
+000993 DD0FC8              A  2779    	LD	(IX+%FFFFFFC8),BC
+000996                     A  2780    L_158:
+000996 DD07C8              A  2781    	LD	BC,(IX+%FFFFFFC8)
+000999 DD0FCB              A  2782    	LD	(IX+%FFFFFFCB),BC
+00099C                     A  2783    L_162:
+00099C DD07CB              A  2784    	LD	BC,(IX+%FFFFFFCB)
+00099F DD0FCE              A  2785    	LD	(IX+%FFFFFFCE),BC
+0009A2                     A  2786    L_166:
+0009A2 DD07CE              A  2787    	LD	BC,(IX+%FFFFFFCE)
+0009A5 DD0FD1              A  2788    	LD	(IX+%FFFFFFD1),BC
+0009A8                     A  2789    L_170:
+0009A8 DD07D1              A  2790    	LD	BC,(IX+%FFFFFFD1)
+0009AB DD0FD4              A  2791    	LD	(IX+%FFFFFFD4),BC
+0009AE                     A  2792    L_174:
+0009AE DD07D4              A  2793    	LD	BC,(IX+%FFFFFFD4)
+0009B1 DD0FD7              A  2794    	LD	(IX+%FFFFFFD7),BC
+0009B4                     A  2795    L_178:
+0009B4 DD07D7              A  2796    	LD	BC,(IX+%FFFFFFD7)
+0009B7 DD0FDA              A  2797    	LD	(IX+%FFFFFFDA),BC
+0009BA                     A  2798    L_182:
+0009BA DD07DA              A  2799    	LD	BC,(IX+%FFFFFFDA)
+0009BD DD0FDD              A  2800    	LD	(IX+%FFFFFFDD),BC
+0009C0                     A  2801    L_186:
+                           A  2802    ;  373				((INT)pTime->cent * 100 + (INT)pTime->year),(INT)pTime->hrs, (INT)pTime->minutes,(INT)pTime->sec);
+                           A  2803    .LINE 373
+                           A  2804    
+0009C0 DD7EF8              A  2805    	LD	A,(IX+%FFFFFFF8)
+0009C3 B7ED62              A  2806    	UEXT	HL
+0009C6 6F                  A  2807    	LD	L,A
+0009C7 E5                  A  2808    	PUSH	HL
+0009C8 DD7EF9              A  2809    	LD	A,(IX+%FFFFFFF9)
+0009CB B7ED62              A  2810    	UEXT	HL
+0009CE 6F                  A  2811    	LD	L,A
+0009CF E5                  A  2812    	PUSH	HL
+0009D0 DD7EFA              A  2813    	LD	A,(IX+%FFFFFFFA)
+0009D3 B7ED62              A  2814    	UEXT	HL
+0009D6 6F                  A  2815    	LD	L,A
+0009D7 E5                  A  2816    	PUSH	HL
+0009D8 DD7EFF              A  2817    	LD	A,(IX+%FFFFFFFF)
+0009DB B7ED62              A  2818    	UEXT	HL
+0009DE 6F                  A  2819    	LD	L,A
+0009DF 3E64                A  2820    	LD	A,%64
+0009E1 CD 00 00 00         A  2821    	CALL	__imul_b
+0009E5 E5C1                A  2822    	LD	BC,HL
+0009E7 DD7EFE              A  2823    	LD	A,(IX+%FFFFFFFE)
+0009EA B7ED62              A  2824    	UEXT	HL
+0009ED 6F                  A  2825    	LD	L,A
+0009EE 09                  A  2826    	ADD	HL,BC
+0009EF E5                  A  2827    	PUSH	HL
+0009F0 DD07DD              A  2828    	LD	BC,(IX+%FFFFFFDD)
+0009F3 C5                  A  2829    	PUSH	BC
+0009F4 DD7EFB              A  2830    	LD	A,(IX+%FFFFFFFB)
+0009F7 B7ED62              A  2831    	UEXT	HL
+0009FA 6F                  A  2832    	LD	L,A
+0009FB E5                  A  2833    	PUSH	HL
+0009FC DD07F2              A  2834    	LD	BC,(IX+%FFFFFFF2)
+0009FF C5                  A  2835    	PUSH	BC
+000A00 01 B1 00 00         A  2836    	LD	BC,L__102
+000A04 C5                  A  2837    	PUSH	BC
+000A05 CD 00 00 00         A  2838    	CALL	_printf
+000A09 FD211800 00         A  2839    	LD	IY,24
+000A0E FD39                A  2840    	ADD	IY,SP
+000A10 FDF9                A  2841    	LD	SP,IY
+                           A  2842    ;  374		}
+000A12                     A  2843    L_189:
+                           A  2844    .LINE 374
+                           A  2845    
+                           A  2846    ;  375	
+                           A  2847    ;  376		return ;
+                           A  2848    ;  377	}
+000A12                     A  2849    L_190:
+                           A  2850    .LINE 377
+                           A  2851    
+000A12 DDF9                A  2852    	LD	SP,IX
+000A14 DDE1                A  2853    	POP	IX
+000A16 C9                  A  2854    	RET	
+                           A  2855    
+                           A  2856    
+                           A  2857    ;**************************** _DisplayTime ***************************
+                           A  2858    ;Name                         Addr/Register   Size   Type
+                           A  2859    ;_RZKDevRead                         IMPORT  -----   function
+                           A  2860    ;_printf                             IMPORT  -----   function
+                           A  2861    ;_RZKDevOpen                         IMPORT  -----   function
+                           A  2862    ;temp139                              IX-68      3   variable
+                           A  2863    ;temp143                              IX-65      3   variable
+                           A  2864    ;temp147                              IX-62      3   variable
+                           A  2865    ;temp151                              IX-59      3   variable
+                           A  2866    ;temp155                              IX-56      3   variable
+                           A  2867    ;temp159                              IX-53      3   variable
+                           A  2868    ;temp163                              IX-50      3   variable
+                           A  2869    ;temp167                              IX-47      3   variable
+                           A  2870    ;temp171                              IX-44      3   variable
+                           A  2871    ;temp175                              IX-41      3   variable
+                           A  2872    ;temp179                              IX-38      3   variable
+                           A  2873    ;temp183                              IX-35      3   variable
+                           A  2874    ;temp111                              IX-32      3   variable
+                           A  2875    ;temp115                              IX-29      3   variable
+                           A  2876    ;temp119                              IX-26      3   variable
+                           A  2877    ;temp123                              IX-23      3   variable
+                           A  2878    ;temp127                              IX-20      3   variable
+                           A  2879    ;temp131                              IX-17      3   variable
+                           A  2880    ;temp135                              IX-14      3   variable
+                           A  2881    ;pdev                                 IX-11      3   variable
+                           A  2882    ;Time                                  IX-8      8   variable
+                           A  2883    
+                           A  2884    
+                           A  2885    ; Stack Frame Size: 74 (bytes)
+                           A  2886    ;       Spill Code: 0 (instruction)
+                           A  2887    
+                           A  2888    
+                           A  2889    .ENDFUNC "DisplayTime",377,"_DisplayTime"
+                           A  2890    	SEGMENT STRSECT
+000023                     A  2891    L__49:
+000023 525443              A  2892    	DB	"RTC"
+000026 00                  A  2893    	DB	0
+000027                     A  2894    L__51:
+000027 0A                  A  2895    	DB	10
+000028 52544320 6973206E   A  2896    	DB	"RTC is not present"
+000030 6F742070 72657365 
+000038 6E74 
+00003A 00                  A  2897    	DB	0
+00003B                     A  2898    L__61:
+00003B 0A                  A  2899    	DB	10
+00003C 506C6561 73652073   A  2900    	DB	"Please set date and time in RTC"
+000044 65742064 61746520 
+00004C 616E6420 74696D65 
+000054 20696E20 525443 
+00005B 0A00                A  2901    	DB	10,0
+00005D                     A  2902    L__63:
+00005D 4D6F6E              A  2903    	DB	"Mon"
+000060 00                  A  2904    	DB	0
+000061                     A  2905    L__65:
+000061 547565              A  2906    	DB	"Tue"
+000064 00                  A  2907    	DB	0
+000065                     A  2908    L__67:
+000065 576564              A  2909    	DB	"Wed"
+000068 00                  A  2910    	DB	0
+000069                     A  2911    L__69:
+000069 546875              A  2912    	DB	"Thu"
+00006C 00                  A  2913    	DB	0
+00006D                     A  2914    L__71:
+00006D 467269              A  2915    	DB	"Fri"
+000070 00                  A  2916    	DB	0
+000071                     A  2917    L__73:
+000071 536174              A  2918    	DB	"Sat"
+000074 00                  A  2919    	DB	0
+000075                     A  2920    L__75:
+000075 53756E              A  2921    	DB	"Sun"
+000078 00                  A  2922    	DB	0
+000079                     A  2923    L__76:
+000079 2D2D2D              A  2924    	DB	"---"
+00007C 00                  A  2925    	DB	0
+00007D                     A  2926    L__78:
+00007D 4A616E              A  2927    	DB	"Jan"
+000080 00                  A  2928    	DB	0
+000081                     A  2929    L__80:
+000081 466562              A  2930    	DB	"Feb"
+000084 00                  A  2931    	DB	0
+000085                     A  2932    L__82:
+000085 4D6172              A  2933    	DB	"Mar"
+000088 00                  A  2934    	DB	0
+000089                     A  2935    L__84:
+000089 417072              A  2936    	DB	"Apr"
+00008C 00                  A  2937    	DB	0
+00008D                     A  2938    L__86:
+00008D 4D6179              A  2939    	DB	"May"
+000090 00                  A  2940    	DB	0
+000091                     A  2941    L__88:
+000091 4A756E              A  2942    	DB	"Jun"
+000094 00                  A  2943    	DB	0
+000095                     A  2944    L__90:
+000095 4A756C              A  2945    	DB	"Jul"
+000098 00                  A  2946    	DB	0
+000099                     A  2947    L__92:
+000099 417567              A  2948    	DB	"Aug"
+00009C 00                  A  2949    	DB	0
+00009D                     A  2950    L__94:
+00009D 536570              A  2951    	DB	"Sep"
+0000A0 00                  A  2952    	DB	0
+0000A1                     A  2953    L__96:
+0000A1 4F6374              A  2954    	DB	"Oct"
+0000A4 00                  A  2955    	DB	0
+0000A5                     A  2956    L__98:
+0000A5 4E6F76              A  2957    	DB	"Nov"
+0000A8 00                  A  2958    	DB	0
+0000A9                     A  2959    L__100:
+0000A9 446563              A  2960    	DB	"Dec"
+0000AC 00                  A  2961    	DB	0
+0000AD                     A  2962    L__101:
+0000AD 2D2D2D              A  2963    	DB	"---"
+0000B0 00                  A  2964    	DB	0
+0000B1                     A  2965    L__102:
+0000B1 0A                  A  2966    	DB	10
+0000B2 252D3473 2C202532   A  2967    	DB	"%-4s, %2d %-4s %4d %3d:%2d:%2d"
+0000BA 6420252D 34732025 
+0000C2 34642025 33643A25 
+0000CA 32643A25 3264 
+0000D0 0A00                A  2968    	DB	10,0
+                           A  2969    	SEGMENT CODE
+                           A  2970    ;  378	
+                           A  2971    ;  379	
+                           A  2972    ;  380	
+                           A  2973    ;  381	
+                           A  2974    ;  382	
+                           A  2975    ;  383	
+                           A  2976    ;  384	/** @memo Initialize a shell on a device.
+                           A  2977    ;  385	 * @doc This routine adds the commands contained in the cmdent array to the
+                           A  2978    ;  386	 * global list of commands which are available to shell sessions.
+                           A  2979    ;  387	 *
+                           A  2980    ;  388	 * @args (struct cmdent *cmds, int ncmds)
+                           A  2981    ;  389	 * @param cmds An array of cmdent structures.  The cnext member of each entry will be ignored, as it will be modified when the commands are added to the global list.  The cmds[] array should be allocated
+                           A  2982    ;  390	 * @param ncmds The number of entries in the cmds array.
+                           A  2983    ;  391	 */
+                           A  2984    ;  392	void Shell_Entry( void )
+                           A  2985    ;  393	{
+000A17                     A  2986    _Shell_Entry:
+                           A  2987    .DEFINE "_Shell_Entry"
+                           A  2988    
+                           A  2989    .VALUE _Shell_Entry
+                           A  2990    
+                           A  2991    .CLASS 2
+                           A  2992    
+                           A  2993    .TYPE 65
+                           A  2994    
+                           A  2995    .ENDEF
+                           A  2996    
+                           A  2997    .BEGFUNC "Shell_Entry",393,"_Shell_Entry"
+                           A  2998    
+                           A  2999    .LINE 393
+                           A  3000    
+                           A  3001    .DEFINE "status"
+                           A  3002    
+                           A  3003    .CLASS 65
+                           A  3004    
+                           A  3005    .VALUE -3
+                           A  3006    
+                           A  3007    .TYPE 4
+                           A  3008    
+                           A  3009    .ENDEF
+                           A  3010    
+                           A  3011    .DEFINE "ptmp_vol"
+                           A  3012    
+                           A  3013    .CLASS 65
+                           A  3014    
+                           A  3015    .VALUE -6
+                           A  3016    
+                           A  3017    .TAG "NONAME4"
+                           A  3018    
+                           A  3019    .TYPE 40
+                           A  3020    
+                           A  3021    .ENDEF
+                           A  3022    
+                           A  3023    .DEFINE "ctr"
+                           A  3024    
+                           A  3025    .CLASS 65
+                           A  3026    
+                           A  3027    .VALUE -9
+                           A  3028    
+                           A  3029    .TYPE 14
+                           A  3030    
+                           A  3031    .ENDEF
+                           A  3032    
+                           A  3033    .DEFINE "pvol_params"
+                           A  3034    
+                           A  3035    .CLASS 65
+                           A  3036    
+                           A  3037    .VALUE -12
+                           A  3038    
+                           A  3039    .TAG "NONAME4"
+                           A  3040    
+                           A  3041    .TYPE 40
+                           A  3042    
+                           A  3043    .ENDEF
+                           A  3044    
+                           A  3045    .DEFINE "pDev"
+                           A  3046    
+                           A  3047    .CLASS 65
+                           A  3048    
+                           A  3049    .VALUE -15
+                           A  3050    
+                           A  3051    .TAG "RZK_DEVICE_CB_t"
+                           A  3052    
+                           A  3053    .TYPE 40
+                           A  3054    
+                           A  3055    .ENDEF
+                           A  3056    
+000A17 DDE5                A  3057    	PUSH	IX
+000A19 DD210000 00         A  3058    	LD	IX,0
+000A1E DD39                A  3059    	ADD	IX,SP
+000A20 ED22F1              A  3060    	LEA	HL,IX+%FFFFFFF1
+000A23 F9                  A  3061    	LD	SP,HL
+                           A  3062    ;  394		UINT ctr = 0 ;
+                           A  3063    .LINE 394
+                           A  3064    
+000A24 01000000            A  3065    	LD	BC,0
+000A28 DD0FF7              A  3066    	LD	(IX+%FFFFFFF7),BC
+                           A  3067    ;  395		PZFS_VOL_PARAMS_t pvol_params, ptmp_vol ;
+                           A  3068    ;  396		ZFS_STATUS_t status ;
+                           A  3069    ;  397		RZK_DEVICE_CB_t * pDev = CONSOLE ;
+                           A  3070    .LINE 397
+                           A  3071    
+000A2B ED4B 00 00 00       A  3072    	LD	BC,(_CONSOLE)
+000A30 DD0FF1              A  3073    	LD	(IX+%FFFFFFF1),BC
+                           A  3074    ;  398	
+                           A  3075    ;  399		ctr = ZFSGetVolumeCount();
+                           A  3076    .LINE 399
+                           A  3077    
+000A33 CD 00 00 00         A  3078    	CALL	_ZFSGetVolumeCount
+000A37 DD2FF7              A  3079    	LD	(IX+%FFFFFFF7),HL
+                           A  3080    ;  400		if( ctr <= 0 )
+                           A  3081    .LINE 400
+                           A  3082    
+000A3A E5C1                A  3083    	LD	BC,HL
+000A3C B7                  A  3084    	OR	A,A
+000A3D ED62                A  3085    	SBC	HL,HL
+000A3F B7                  A  3086    	OR	A,A
+000A40 ED42                A  3087    	SBC	HL,BC
+000A42 38 0E               A  3088    	JR	C,L_192
+                           A  3089    ;  401		{
+                           A  3090    ;  402			printf( "\nError in getting the number of volumes in FileSystem");
+                           A  3091    .LINE 402
+                           A  3092    
+000A44 01 D2 00 00         A  3093    	LD	BC,L__105
+000A48 C5                  A  3094    	PUSH	BC
+000A49 CD 00 00 00         A  3095    	CALL	_printf
+000A4D C1                  A  3096    	POP	BC
+                           A  3097    ;  403			return ;
+                           A  3098    .LINE 403
+                           A  3099    
+000A4E C3 01 0B 00         A  3100    	JR	L_204
+                           A  3101    ;  404		}
+000A52                     A  3102    L_192:
+                           A  3103    .LINE 404
+                           A  3104    
+                           A  3105    ;  405	
+                           A  3106    ;  406		pvol_params = ( PZFS_VOL_PARAMS_t ) malloc( sizeof( ZFS_VOL_PARAMS_t ) * ctr ) ;
+                           A  3107    .LINE 406
+                           A  3108    
+000A52 DD27F7              A  3109    	LD	HL,(IX+%FFFFFFF7)
+000A55 3E22                A  3110    	LD	A,%22
+000A57 CD 00 00 00         A  3111    	CALL	__imul_b
+000A5B E5                  A  3112    	PUSH	HL
+000A5C CD 00 00 00         A  3113    	CALL	_malloc
+000A60 C1                  A  3114    	POP	BC
+000A61 DD2FF4              A  3115    	LD	(IX+%FFFFFFF4),HL
+                           A  3116    ;  407		if( pvol_params == NULL )
+                           A  3117    .LINE 407
+                           A  3118    
+000A64 CD 00 00 00         A  3119    	CALL	__icmpzero
+000A68 20 0E               A  3120    	JR	NZ,L_194
+                           A  3121    ;  408		{
+                           A  3122    ;  409			printf( "\nError in allocating memory");
+                           A  3123    .LINE 409
+                           A  3124    
+000A6A 01 08 01 00         A  3125    	LD	BC,L__107
+000A6E C5                  A  3126    	PUSH	BC
+000A6F CD 00 00 00         A  3127    	CALL	_printf
+000A73 C1                  A  3128    	POP	BC
+                           A  3129    ;  410			return ;
+                           A  3130    .LINE 410
+                           A  3131    
+000A74 C3 01 0B 00         A  3132    	JR	L_204
+                           A  3133    ;  411		}
+000A78                     A  3134    L_194:
+                           A  3135    .LINE 411
+                           A  3136    
+                           A  3137    ;  412	
+                           A  3138    ;  413	
+                           A  3139    ;  414		// Now initialize the FileSystem.
+                           A  3140    ;  415		printf( "\nInitializing the File System, Please wait..." ) ;
+                           A  3141    .LINE 415
+                           A  3142    
+000A78 01 24 01 00         A  3143    	LD	BC,L__108
+000A7C C5                  A  3144    	PUSH	BC
+000A7D CD 00 00 00         A  3145    	CALL	_printf
+000A81 C1                  A  3146    	POP	BC
+                           A  3147    ;  416		status = ZFSInit( pvol_params ) ;
+                           A  3148    .LINE 416
+                           A  3149    
+000A82 DD07F4              A  3150    	LD	BC,(IX+%FFFFFFF4)
+000A85 C5                  A  3151    	PUSH	BC
+000A86 CD 00 00 00         A  3152    	CALL	_ZFSInit
+000A8A C1                  A  3153    	POP	BC
+000A8B DD2FFD              A  3154    	LD	(IX+%FFFFFFFD),HL
+                           A  3155    ;  417		if( status == ZFSERR_SUCCESS )
+                           A  3156    .LINE 417
+                           A  3157    
+000A8E CD 00 00 00         A  3158    	CALL	__icmpzero
+000A92 20 0C               A  3159    	JR	NZ,L_202
+                           A  3160    ;  418			printf( "Success") ;
+                           A  3161    .LINE 418
+                           A  3162    
+000A94 01 52 01 00         A  3163    	LD	BC,L__110
+000A98 C5                  A  3164    	PUSH	BC
+000A99 CD 00 00 00         A  3165    	CALL	_printf
+000A9D C1                  A  3166    	POP	BC
+                           A  3167    ;  419		else
+                           A  3168    .LINE 419
+                           A  3169    
+000A9E 18 54               A  3170    	JR	L_203
+000AA0                     A  3171    L_202:
+                           A  3172    ;  420		{
+                           A  3173    ;  421			printf( "Failed") ;
+                           A  3174    .LINE 421
+                           A  3175    
+000AA0 01 5A 01 00         A  3176    	LD	BC,L__111
+000AA4 C5                  A  3177    	PUSH	BC
+000AA5 CD 00 00 00         A  3178    	CALL	_printf
+000AA9 C1                  A  3179    	POP	BC
+                           A  3180    ;  422			printf("\n Invalid volumes are :") ;
+                           A  3181    .LINE 422
+                           A  3182    
+000AAA 01 61 01 00         A  3183    	LD	BC,L__112
+000AAE C5                  A  3184    	PUSH	BC
+000AAF CD 00 00 00         A  3185    	CALL	_printf
+000AB3 C1                  A  3186    	POP	BC
+                           A  3187    ;  423			ptmp_vol = pvol_params ;
+                           A  3188    .LINE 423
+                           A  3189    
+000AB4 DD07F4              A  3190    	LD	BC,(IX+%FFFFFFF4)
+000AB7 DD0FFA              A  3191    	LD	(IX+%FFFFFFFA),BC
+                           A  3192    ;  424			for( ; status > 0; status-- )
+                           A  3193    .LINE 424
+                           A  3194    
+000ABA 18 21               A  3195    	JR	L_199
+000ABC                     A  3196    L_197:
+                           A  3197    ;  425			{
+                           A  3198    ;  426				printf("\nVolume Name : %-15s", ptmp_vol->vol_name ) ;
+                           A  3199    .LINE 426
+                           A  3200    
+000ABC DD31FA              A  3201    	LD	IY,(IX+%FFFFFFFA)
+000ABF ED6600              A  3202    	PEA	IY+%0
+000AC2 01 79 01 00         A  3203    	LD	BC,L__113
+000AC6 C5                  A  3204    	PUSH	BC
+000AC7 CD 00 00 00         A  3205    	CALL	_printf
+000ACB C1                  A  3206    	POP	BC
+000ACC C1                  A  3207    	POP	BC
+                           A  3208    ;  427				ptmp_vol++;
+                           A  3209    .LINE 427
+                           A  3210    
+000ACD DD31FA              A  3211    	LD	IY,(IX+%FFFFFFFA)
+000AD0 ED3322              A  3212    	LEA	IY,IY+%22
+000AD3 DD3EFA              A  3213    	LD	(IX+%FFFFFFFA),IY
+000AD6 DD07FD              A  3214    	LD	BC,(IX+%FFFFFFFD)
+000AD9 0B                  A  3215    	DEC	BC
+000ADA DD0FFD              A  3216    	LD	(IX+%FFFFFFFD),BC
+                           A  3217    ;  428			}
+000ADD                     A  3218    L_199:
+                           A  3219    .LINE 428
+                           A  3220    
+000ADD DD07FD              A  3221    	LD	BC,(IX+%FFFFFFFD)
+000AE0 B7                  A  3222    	OR	A,A
+000AE1 ED62                A  3223    	SBC	HL,HL
+000AE3 B7                  A  3224    	OR	A,A
+000AE4 ED42                A  3225    	SBC	HL,BC
+000AE6 FA BC 0A 00         A  3226    	JP	M,L_197
+                           A  3227    ;  429			printf("\nFormat the volume(s) to make it valid");
+                           A  3228    .LINE 429
+                           A  3229    
+000AEA 01 8E 01 00         A  3230    	LD	BC,L__115
+000AEE C5                  A  3231    	PUSH	BC
+000AEF CD 00 00 00         A  3232    	CALL	_printf
+000AF3 C1                  A  3233    	POP	BC
+                           A  3234    ;  430		}
+000AF4                     A  3235    L_203:
+                           A  3236    .LINE 430
+                           A  3237    
+                           A  3238    ;  431	
+                           A  3239    ;  432	    DisplayTime() ;
+                           A  3240    .LINE 432
+                           A  3241    
+000AF4 CD 77 07 00         A  3242    	CALL	_DisplayTime
+                           A  3243    ;  433		shell( pDev ) ;
+                           A  3244    .LINE 433
+                           A  3245    
+000AF8 DD07F1              A  3246    	LD	BC,(IX+%FFFFFFF1)
+000AFB C5                  A  3247    	PUSH	BC
+000AFC CD 57 02 00         A  3248    	CALL	_shell
+000B00 C1                  A  3249    	POP	BC
+                           A  3250    ;  434		return ;
+                           A  3251    ;  435	}
+000B01                     A  3252    L_204:
+                           A  3253    .LINE 435
+                           A  3254    
+000B01 DDF9                A  3255    	LD	SP,IX
+000B03 DDE1                A  3256    	POP	IX
+000B05 C9                  A  3257    	RET	
+                           A  3258    
+                           A  3259    
+                           A  3260    ;**************************** _Shell_Entry ***************************
+                           A  3261    ;Name                         Addr/Register   Size   Type
+                           A  3262    ;_shell                              IMPORT  -----   function
+                           A  3263    ;_ZFSInit                            IMPORT  -----   function
+                           A  3264    ;_malloc                             IMPORT  -----   function
+                           A  3265    ;_printf                             IMPORT  -----   function
+                           A  3266    ;_ZFSGetVolumeCount                  IMPORT  -----   function
+                           A  3267    ;_CONSOLE                            IMPORT      3   variable
+                           A  3268    ;pDev                                 IX-15      3   variable
+                           A  3269    ;pvol_params                          IX-12      3   variable
+                           A  3270    ;ctr                                   IX-9      3   variable
+                           A  3271    ;ptmp_vol                              IX-6      3   variable
+                           A  3272    ;status                                IX-3      3   variable
+                           A  3273    
+                           A  3274    
+                           A  3275    ; Stack Frame Size: 21 (bytes)
+                           A  3276    ;       Spill Code: 0 (instruction)
+                           A  3277    
+                           A  3278    
+                           A  3279    .ENDFUNC "Shell_Entry",435,"_Shell_Entry"
+                           A  3280    	SEGMENT STRSECT
+0000D2                     A  3281    L__105:
+0000D2 0A                  A  3282    	DB	10
+0000D3 4572726F 7220696E   A  3283    	DB	"Error in getting the number of volumes in FileSystem"
+0000DB 20676574 74696E67 
+0000E3 20746865 206E756D 
+0000EB 62657220 6F662076 
+0000F3 6F6C756D 65732069 
+0000FB 6E204669 6C655379 
+000103 7374656D 
+000107 00                  A  3284    	DB	0
+000108                     A  3285    L__107:
+000108 0A                  A  3286    	DB	10
+000109 4572726F 7220696E   A  3287    	DB	"Error in allocating memory"
+000111 20616C6C 6F636174 
+000119 696E6720 6D656D6F 
+000121 7279 
+000123 00                  A  3288    	DB	0
+000124                     A  3289    L__108:
+000124 0A                  A  3290    	DB	10
+000125 496E6974 69616C69   A  3291    	DB	"Initializing the File System, Please wait..."
+00012D 7A696E67 20746865 
+000135 2046696C 65205379 
+00013D 7374656D 2C20506C 
+000145 65617365 20776169 
+00014D 742E2E2E 
+000151 00                  A  3292    	DB	0
+000152                     A  3293    L__110:
+000152 53756363 657373     A  3294    	DB	"Success"
+000159 00                  A  3295    	DB	0
+00015A                     A  3296    L__111:
+00015A 4661696C 6564       A  3297    	DB	"Failed"
+000160 00                  A  3298    	DB	0
+000161                     A  3299    L__112:
+000161 0A                  A  3300    	DB	10
+000162 20496E76 616C6964   A  3301    	DB	" Invalid volumes are :"
+00016A 20766F6C 756D6573 
+000172 20617265 203A 
+000178 00                  A  3302    	DB	0
+000179                     A  3303    L__113:
+000179 0A                  A  3304    	DB	10
+00017A 566F6C75 6D65204E   A  3305    	DB	"Volume Name : %-15s"
+000182 616D6520 3A20252D 
+00018A 313573 
+00018D 00                  A  3306    	DB	0
+00018E                     A  3307    L__115:
+00018E 0A                  A  3308    	DB	10
+00018F 466F726D 61742074   A  3309    	DB	"Format the volume(s) to make it valid"
+000197 68652076 6F6C756D 
+00019F 65287329 20746F20 
+0001A7 6D616B65 20697420 
+0001AF 76616C69 64 
+0001B4 00                  A  3310    	DB	0
+                           A  3311    	XREF _CONSOLE:ROM
+                           A  3312    	XREF _ZFSInit:ROM
+                           A  3313    	XREF _ZFSGetVolumeCount:ROM
+                           A  3314    	XREF _ZFSGetCwd:ROM
+                           A  3315    	XREF _ZFSChdir:ROM
+                           A  3316    	XREF _ndefaultcmds:ROM
+                           A  3317    	XREF _defaultcmds:ROM
+                           A  3318    	XREF _lexan:ROM
+                           A  3319    	XREF _RZKDevWrite:ROM
+                           A  3320    	XREF _RZKDevRead:ROM
+                           A  3321    	XREF _RZKDevOpen:ROM
+                           A  3322    	XREF _malloc:ROM
+                           A  3323    	XREF _strlen:ROM
+                           A  3324    	XREF _strcmp:ROM
+                           A  3325    	XREF _memset:ROM
+                           A  3326    	XREF _strcpy:ROM
+                           A  3327    	XREF _sprintf:ROM
+                           A  3328    	XREF _printf:ROM
+                           A  3329    	XREF __indcall:ROM
+                           A  3330    	XREF __stoi:ROM
+                           A  3331    	XREF __stoiu:ROM
+                           A  3332    	XREF __ildix:ROM
+                           A  3333    	XREF __istix:ROM
+                           A  3334    	XREF __setflag:ROM
+                           A  3335    	XREF __scmpzero:ROM
+                           A  3336    	XREF __icmpzero:ROM
+                           A  3337    	XREF __imul_b:ROM
+                           A  3338    	XDEF _Shell_Entry
+                           A  3339    	XDEF _DisplayTime
+                           A  3340    	XDEF _shell
+                           A  3341    	XDEF _shell_add_commands
+                           A  3342    	XDEF _GetString
+                           A  3343    	XDEF _g_commandType
+                           A  3344    	XDEF _ShellCommands
+                           A  3345    	END
+
+
+Errors: 0
+Warnings: 0
+Lines Assembled: 3346

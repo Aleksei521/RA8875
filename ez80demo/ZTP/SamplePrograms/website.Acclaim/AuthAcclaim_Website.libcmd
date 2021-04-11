@@ -1,0 +1,31 @@
+/* Lib Command File - Authwebsite Debug */
+
+-warn
+"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\AuthAcclaim_Website.lib"=\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\Authwebsite.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\Lake_class.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\bar_gif.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\appletf_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\cgi_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\cgif_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\ez80f91_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\ez80f91f_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\ez80f92_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\ez80f92f_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\footer_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\header_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\indexf_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\javaapplets_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\javascriptf_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\javascripts_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\left_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\main_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\siteinfo_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\siteinfof_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\tcpip_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\tcpipf_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\Acclmheading_jpg.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\devkit_jpg.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\ez80acclaimchip_jpg.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\overviewf_htm.obj"\
+ +"c:\wrkbld\temp\17041303\rzkztp\2.5.0\ZTP\SamplePrograms\website.Acclaim\Debug\overview_htm.obj"
