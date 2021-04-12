@@ -11,11 +11,11 @@
 <file filter-key="">.\spi_my.c</file>
 <file filter-key="">.\spi_pin_isr.asm</file>
 <file filter-key="">.\spi_isr.asm</file>
-<file filter-key="flash">Release\homera8875.hex</file>
 <file filter-key="">RZK\Conf\get_heap.asm</file>
 <file filter-key="">RZK\Conf\RZK_Conf.c</file>
 <file filter-key="">RZK\Conf\eZ80eval.c</file>
 <file filter-key="">RZK\Conf\uart_conf.c</file>
+<file filter-key="flash">Release\homera8875.hex</file>
 </files>
 
 <!-- configuration information -->

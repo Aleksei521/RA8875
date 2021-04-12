@@ -1,0 +1,1175 @@
+Zilog eZ80 Macro Assembler Version 4.3 (19073001)12-Apr-21     15:39:22     page:   1
+
+
+PC     Object              I  Line    Source 
+                           A     1    ; Zilog eZ80 ANSI C Compiler Release 3.4
+                           A     2    ; -noglobalopt -nolocalcse -optsize -nomodsect 
+                           A     3    ; -nopadbranch -debug -peephole -const=ROM 
+                           A     4    	FILE	"..\RZK\Conf\rzk_conf.c"
+                           A     5    	.assume ADL=1
+                           A     6    .DEBUG "C"
+                           A     7    	SEGMENT CODE
+                           A     8    .BEGREC "CPU_REG",32
+                           A     9    .DEFINE "regAFz"
+                           A    10    .VALUE 0
+                           A    11    .CLASS 8
+                           A    12    .TYPE 15
+                           A    13    .ENDEF
+                           A    14    .DEFINE "regBCz"
+                           A    15    .VALUE 4
+                           A    16    .CLASS 8
+                           A    17    .TYPE 15
+                           A    18    .ENDEF
+                           A    19    .DEFINE "regDEz"
+                           A    20    .VALUE 8
+                           A    21    .CLASS 8
+                           A    22    .TYPE 15
+                           A    23    .ENDEF
+                           A    24    .DEFINE "regHLz"
+                           A    25    .VALUE 12
+                           A    26    .CLASS 8
+                           A    27    .TYPE 15
+                           A    28    .ENDEF
+                           A    29    .DEFINE "regIXz"
+                           A    30    .VALUE 16
+                           A    31    .CLASS 8
+                           A    32    .TYPE 15
+                           A    33    .ENDEF
+                           A    34    .DEFINE "regIYz"
+                           A    35    .VALUE 20
+                           A    36    .CLASS 8
+                           A    37    .TYPE 15
+                           A    38    .ENDEF
+                           A    39    .DEFINE "regPCz"
+                           A    40    .VALUE 24
+                           A    41    .CLASS 8
+                           A    42    .TYPE 15
+                           A    43    .ENDEF
+                           A    44    .DEFINE "regSPz"
+                           A    45    .VALUE 28
+                           A    46    .CLASS 8
+                           A    47    .TYPE 15
+                           A    48    .ENDEF
+                           A    49    .ENDREC "CPU_REG"
+                           A    50    .BEGREC "THREADPARAMS_STRUCT_t",22
+                           A    51    .DEFINE "szName"
+                           A    52    .VALUE 0
+                           A    53    .CLASS 8
+                           A    54    .DIM 12
+                           A    55    .TYPE 108
+                           A    56    .ENDEF
+                           A    57    .DEFINE "uState"
+                           A    58    .VALUE 12
+                           A    59    .CLASS 8
+                           A    60    .TYPE 12
+                           A    61    .ENDEF
+                           A    62    .DEFINE "uBankSelector"
+                           A    63    .VALUE 13
+                           A    64    .CLASS 8
+                           A    65    .TYPE 12
+                           A    66    .ENDEF
+                           A    67    .DEFINE "uOperationMode"
+                           A    68    .VALUE 14
+                           A    69    .CLASS 8
+                           A    70    .TYPE 12
+                           A    71    .ENDEF
+                           A    72    .DEFINE "tQuantum"
+                           A    73    .VALUE 15
+                           A    74    .CLASS 8
+                           A    75    .TYPE 14
+                           A    76    .ENDEF
+                           A    77    .DEFINE "cPriority"
+                           A    78    .VALUE 18
+                           A    79    .CLASS 8
+                           A    80    .TYPE 12
+                           A    81    .ENDEF
+                           A    82    .DEFINE "sSignalReceive"
+                           A    83    .VALUE 19
+                           A    84    .CLASS 8
+                           A    85    .TYPE 14
+                           A    86    .ENDEF
+                           A    87    .ENDREC "THREADPARAMS_STRUCT_t"
+                           A    88    .BEGREC "RZK_THREAD_CB",127
+                           A    89    .DEFINE "CB"
+                           A    90    .VALUE 0
+                           A    91    .CLASS 8
+                           A    92    .DIM 127
+                           A    93    .TYPE 108
+                           A    94    .ENDEF
+                           A    95    .ENDREC "RZK_THREAD_CB"
+                           A    96    .BEGREC "RZK_INTERRUPT_CB",53
+                           A    97    .DEFINE "CB"
+                           A    98    .VALUE 0
+                           A    99    .CLASS 8
+                           A   100    .DIM 53
+                           A   101    .TYPE 108
+                           A   102    .ENDEF
+                           A   103    .ENDREC "RZK_INTERRUPT_CB"
+                           A   104    .BEGREC "SEMAPHOREPARAMS_STRUCT_t",10
+                           A   105    .DEFINE "uState"
+                           A   106    .VALUE 0
+                           A   107    .CLASS 8
+                           A   108    .TYPE 12
+                           A   109    .ENDEF
+                           A   110    .DEFINE "uInitialCount"
+                           A   111    .VALUE 1
+                           A   112    .CLASS 8
+                           A   113    .TYPE 14
+                           A   114    .ENDEF
+                           A   115    .DEFINE "uDynamicCount"
+                           A   116    .VALUE 4
+                           A   117    .CLASS 8
+                           A   118    .TYPE 14
+                           A   119    .ENDEF
+                           A   120    .DEFINE "nNumThreads"
+                           A   121    .VALUE 7
+                           A   122    .CLASS 8
+                           A   123    .TYPE 14
+                           A   124    .ENDEF
+                           A   125    .ENDREC "SEMAPHOREPARAMS_STRUCT_t"
+                           A   126    .BEGREC "RZK_SEMAPHORE_CB",38
+                           A   127    .DEFINE "CB"
+                           A   128    .VALUE 0
+                           A   129    .CLASS 8
+                           A   130    .DIM 38
+                           A   131    .TYPE 108
+                           A   132    .ENDEF
+                           A   133    .ENDREC "RZK_SEMAPHORE_CB"
+                           A   134    .BEGREC "MESSAGEQPARAMS_STRUCT_t",16
+                           A   135    .DEFINE "uState"
+                           A   136    .VALUE 0
+                           A   137    .CLASS 8
+                           A   138    .TYPE 12
+                           A   139    .ENDEF
+                           A   140    .DEFINE "uQueueLength"
+                           A   141    .VALUE 1
+                           A   142    .CLASS 8
+                           A   143    .TYPE 14
+                           A   144    .ENDEF
+                           A   145    .DEFINE "uMaxMessageSize"
+                           A   146    .VALUE 4
+                           A   147    .CLASS 8
+                           A   148    .TYPE 14
+                           A   149    .ENDEF
+                           A   150    .DEFINE "nNumThreads"
+                           A   151    .VALUE 7
+                           A   152    .CLASS 8
+                           A   153    .TYPE 14
+                           A   154    .ENDEF
+                           A   155    .DEFINE "uMessageSpaceLeft"
+                           A   156    .VALUE 10
+                           A   157    .CLASS 8
+                           A   158    .TYPE 14
+                           A   159    .ENDEF
+                           A   160    .DEFINE "pStart"
+                           A   161    .VALUE 13
+                           A   162    .CLASS 8
+                           A   163    .TYPE 33
+                           A   164    .ENDEF
+                           A   165    .ENDREC "MESSAGEQPARAMS_STRUCT_t"
+                           A   166    .BEGREC "RZK_MQ_CB",53
+                           A   167    .DEFINE "CB"
+                           A   168    .VALUE 0
+                           A   169    .CLASS 8
+                           A   170    .DIM 53
+                           A   171    .TYPE 108
+                           A   172    .ENDEF
+                           A   173    .ENDREC "RZK_MQ_CB"
+                           A   174    .BEGREC "PARTITIONPARAMS_STRUCT_t",13
+                           A   175    .DEFINE "uState"
+                           A   176    .VALUE 0
+                           A   177    .CLASS 8
+                           A   178    .TYPE 12
+                           A   179    .ENDEF
+                           A   180    .DEFINE "uNumOfBlocks"
+                           A   181    .VALUE 1
+                           A   182    .CLASS 8
+                           A   183    .TYPE 14
+                           A   184    .ENDEF
+                           A   185    .DEFINE "uBlockSize"
+                           A   186    .VALUE 4
+                           A   187    .CLASS 8
+                           A   188    .TYPE 14
+                           A   189    .ENDEF
+                           A   190    .DEFINE "uBlocksUsed"
+                           A   191    .VALUE 7
+                           A   192    .CLASS 8
+                           A   193    .TYPE 14
+                           A   194    .ENDEF
+                           A   195    .DEFINE "pMemory"
+                           A   196    .VALUE 10
+                           A   197    .CLASS 8
+                           A   198    .TYPE 33
+                           A   199    .ENDEF
+                           A   200    .ENDREC "PARTITIONPARAMS_STRUCT_t"
+                           A   201    .BEGREC "RZK_PARTITION_CB",41
+                           A   202    .DEFINE "CB"
+                           A   203    .VALUE 0
+                           A   204    .CLASS 8
+                           A   205    .DIM 41
+                           A   206    .TYPE 108
+                           A   207    .ENDEF
+                           A   208    .ENDREC "RZK_PARTITION_CB"
+                           A   209    .BEGREC "TIMERPARAMS_STRUCT_t",6
+                           A   210    .DEFINE "tInitialDelay"
+                           A   211    .VALUE 0
+                           A   212    .CLASS 8
+                           A   213    .TYPE 14
+                           A   214    .ENDEF
+                           A   215    .DEFINE "tPeriod"
+                           A   216    .VALUE 3
+                           A   217    .CLASS 8
+                           A   218    .TYPE 14
+                           A   219    .ENDEF
+                           A   220    .ENDREC "TIMERPARAMS_STRUCT_t"
+                           A   221    .BEGREC "RZK_TIMER_CB",54
+                           A   222    .DEFINE "CB"
+                           A   223    .VALUE 0
+                           A   224    .CLASS 8
+                           A   225    .DIM 54
+                           A   226    .TYPE 108
+                           A   227    .ENDEF
+                           A   228    .ENDREC "RZK_TIMER_CB"
+                           A   229    .BEGREC "EVENTGROUPPARAMS_t",3
+                           A   230    .DEFINE "eEventsReceived"
+                           A   231    .VALUE 0
+                           A   232    .CLASS 8
+                           A   233    .TYPE 14
+                           A   234    .ENDEF
+                           A   235    .ENDREC "EVENTGROUPPARAMS_t"
+                           A   236    .BEGREC "RZK_EG_CB",29
+                           A   237    .DEFINE "CB"
+                           A   238    .VALUE 0
+                           A   239    .CLASS 8
+                           A   240    .DIM 29
+                           A   241    .TYPE 108
+                           A   242    .ENDEF
+                           A   243    .ENDREC "RZK_EG_CB"
+                           A   244    .BEGREC "REGIONPARAMS_STRUCT_t",5
+                           A   245    .DEFINE "uState"
+                           A   246    .VALUE 0
+                           A   247    .CLASS 8
+                           A   248    .TYPE 12
+                           A   249    .ENDEF
+                           A   250    .DEFINE "uUnit_Size"
+                           A   251    .VALUE 1
+                           A   252    .CLASS 8
+                           A   253    .TYPE 14
+                           A   254    .ENDEF
+                           A   255    .DEFINE "uRnDelete"
+                           A   256    .VALUE 4
+                           A   257    .CLASS 8
+                           A   258    .TYPE 12
+                           A   259    .ENDEF
+                           A   260    .ENDREC "REGIONPARAMS_STRUCT_t"
+                           A   261    .BEGREC "RZK_REGION_CB",47
+                           A   262    .DEFINE "CB"
+                           A   263    .VALUE 0
+                           A   264    .CLASS 8
+                           A   265    .DIM 47
+                           A   266    .TYPE 108
+                           A   267    .ENDEF
+                           A   268    .ENDREC "RZK_REGION_CB"
+                           A   269    .BEGREC "RZK_SEGMENT_CB",18
+                           A   270    .DEFINE "CB"
+                           A   271    .VALUE 0
+                           A   272    .CLASS 8
+                           A   273    .DIM 18
+                           A   274    .TYPE 108
+                           A   275    .ENDEF
+                           A   276    .ENDREC "RZK_SEGMENT_CB"
+                           A   277    .BEGREC "devCap",4
+                           A   278    .DEFINE "devType"
+                           A   279    .VALUE 0
+                           A   280    .CLASS 8
+                           A   281    .TYPE 12
+                           A   282    .ENDEF
+                           A   283    .DEFINE "devHdl"
+                           A   284    .VALUE 1
+                           A   285    .CLASS 8
+                           A   286    .TYPE 33
+                           A   287    .ENDEF
+                           A   288    .ENDREC "devCap"
+                           A   289    .BEGREC "RZK_DEVICE_CB_t",54
+                           A   290    .DEFINE "InUse"
+                           A   291    .VALUE 0
+                           A   292    .CLASS 8
+                           A   293    .TYPE 12
+                           A   294    .ENDEF
+                           A   295    .DEFINE "devName"
+                           A   296    .VALUE 1
+                           A   297    .CLASS 8
+                           A   298    .DIM 12
+                           A   299    .TYPE 98
+                           A   300    .ENDEF
+                           A   301    .DEFINE "fnInit"
+                           A   302    .VALUE 13
+                           A   303    .CLASS 8
+                           A   304    .TYPE 549
+                           A   305    .ENDEF
+                           A   306    .DEFINE "fnStop"
+                           A   307    .VALUE 16
+                           A   308    .CLASS 8
+                           A   309    .TYPE 549
+                           A   310    .ENDEF
+                           A   311    .DEFINE "fnOpen"
+                           A   312    .VALUE 19
+                           A   313    .CLASS 8
+                           A   314    .TYPE 549
+                           A   315    .ENDEF
+                           A   316    .DEFINE "fnClose"
+                           A   317    .VALUE 22
+                           A   318    .CLASS 8
+                           A   319    .TYPE 549
+                           A   320    .ENDEF
+                           A   321    .DEFINE "fnRead"
+                           A   322    .VALUE 25
+                           A   323    .CLASS 8
+                           A   324    .TYPE 549
+                           A   325    .ENDEF
+                           A   326    .DEFINE "fnWrite"
+                           A   327    .VALUE 28
+                           A   328    .CLASS 8
+                           A   329    .TYPE 549
+                           A   330    .ENDEF
+                           A   331    .DEFINE "fnSeek"
+                           A   332    .VALUE 31
+                           A   333    .CLASS 8
+                           A   334    .TYPE 549
+                           A   335    .ENDEF
+                           A   336    .DEFINE "fnGetc"
+                           A   337    .VALUE 34
+                           A   338    .CLASS 8
+                           A   339    .TYPE 549
+                           A   340    .ENDEF
+                           A   341    .DEFINE "fnPutc"
+                           A   342    .VALUE 37
+                           A   343    .CLASS 8
+                           A   344    .TYPE 549
+                           A   345    .ENDEF
+                           A   346    .DEFINE "fnIoctl"
+                           A   347    .VALUE 40
+                           A   348    .CLASS 8
+                           A   349    .TYPE 549
+                           A   350    .ENDEF
+                           A   351    .DEFINE "dvintvector"
+                           A   352    .VALUE 43
+                           A   353    .CLASS 8
+                           A   354    .TYPE 33
+                           A   355    .ENDEF
+                           A   356    .DEFINE "dvivec"
+                           A   357    .VALUE 46
+                           A   358    .CLASS 8
+                           A   359    .TYPE 13
+                           A   360    .ENDEF
+                           A   361    .DEFINE "dvinputoutput"
+                           A   362    .VALUE 48
+                           A   363    .CLASS 8
+                           A   364    .TYPE 44
+                           A   365    .ENDEF
+                           A   366    .DEFINE "devMode"
+                           A   367    .VALUE 51
+                           A   368    .CLASS 8
+                           A   369    .TYPE 2
+                           A   370    .ENDEF
+                           A   371    .DEFINE "dvminor"
+                           A   372    .VALUE 52
+                           A   373    .CLASS 8
+                           A   374    .TYPE 13
+                           A   375    .ENDEF
+                           A   376    .ENDREC "RZK_DEVICE_CB_t"
+                           A   377    	SEGMENT DATA
+000000                     A   378    _RZK_TIME_SLICE:
+000000 1400                A   379    	DW	20
+000002 00                  A   380    	DB	0
+                           A   381    .DEFINE "RZK_TIME_SLICE"
+                           A   382    .ALIAS "_RZK_TIME_SLICE"
+                           A   383    .CLASS 69
+                           A   384    .VALUE _RZK_TIME_SLICE
+                           A   385    .TYPE 14
+                           A   386    .ENDEF
+000003                     A   387    _MAX_THREADS:
+000003 1E00                A   388    	DW	30
+000005 00                  A   389    	DB	0
+                           A   390    .DEFINE "MAX_THREADS"
+                           A   391    .ALIAS "_MAX_THREADS"
+                           A   392    .CLASS 69
+                           A   393    .VALUE _MAX_THREADS
+                           A   394    .TYPE 14
+                           A   395    .ENDEF
+000006                     A   396    _MAX_SEMAPHORES:
+000006 2800                A   397    	DW	40
+000008 00                  A   398    	DB	0
+                           A   399    .DEFINE "MAX_SEMAPHORES"
+                           A   400    .ALIAS "_MAX_SEMAPHORES"
+                           A   401    .CLASS 69
+                           A   402    .VALUE _MAX_SEMAPHORES
+                           A   403    .TYPE 14
+                           A   404    .ENDEF
+000009                     A   405    _MAX_MESSAGEQS:
+000009 1C00                A   406    	DW	28
+00000B 00                  A   407    	DB	0
+                           A   408    .DEFINE "MAX_MESSAGEQS"
+                           A   409    .ALIAS "_MAX_MESSAGEQS"
+                           A   410    .CLASS 69
+                           A   411    .VALUE _MAX_MESSAGEQS
+                           A   412    .TYPE 14
+                           A   413    .ENDEF
+00000C                     A   414    _MAX_EVENTGROUPS:
+00000C 1400                A   415    	DW	20
+00000E 00                  A   416    	DB	0
+                           A   417    .DEFINE "MAX_EVENTGROUPS"
+                           A   418    .ALIAS "_MAX_EVENTGROUPS"
+                           A   419    .CLASS 69
+                           A   420    .VALUE _MAX_EVENTGROUPS
+                           A   421    .TYPE 14
+                           A   422    .ENDEF
+00000F                     A   423    _MAX_TIMERS:
+00000F 1400                A   424    	DW	20
+000011 00                  A   425    	DB	0
+                           A   426    .DEFINE "MAX_TIMERS"
+                           A   427    .ALIAS "_MAX_TIMERS"
+                           A   428    .CLASS 69
+                           A   429    .VALUE _MAX_TIMERS
+                           A   430    .TYPE 14
+                           A   431    .ENDEF
+000012                     A   432    _MAX_PARTITIONS:
+000012 1400                A   433    	DW	20
+000014 00                  A   434    	DB	0
+                           A   435    .DEFINE "MAX_PARTITIONS"
+                           A   436    .ALIAS "_MAX_PARTITIONS"
+                           A   437    .CLASS 69
+                           A   438    .VALUE _MAX_PARTITIONS
+                           A   439    .TYPE 14
+                           A   440    .ENDEF
+000015                     A   441    _MAX_REGIONS:
+000015 1400                A   442    	DW	20
+000017 00                  A   443    	DB	0
+                           A   444    .DEFINE "MAX_REGIONS"
+                           A   445    .ALIAS "_MAX_REGIONS"
+                           A   446    .CLASS 69
+                           A   447    .VALUE _MAX_REGIONS
+                           A   448    .TYPE 14
+                           A   449    .ENDEF
+000018                     A   450    _MAX_REGIONS_TAB:
+000018 D007                A   451    	DW	2000
+00001A 00                  A   452    	DB	0
+                           A   453    .DEFINE "MAX_REGIONS_TAB"
+                           A   454    .ALIAS "_MAX_REGIONS_TAB"
+                           A   455    .CLASS 69
+                           A   456    .VALUE _MAX_REGIONS_TAB
+                           A   457    .TYPE 14
+                           A   458    .ENDEF
+00001B                     A   459    _RZK_SYSTICKS_INSEC:
+00001B 6400                A   460    	DW	100
+00001D 00                  A   461    	DB	0
+                           A   462    .DEFINE "RZK_SYSTICKS_INSEC"
+                           A   463    .ALIAS "_RZK_SYSTICKS_INSEC"
+                           A   464    .CLASS 69
+                           A   465    .VALUE _RZK_SYSTICKS_INSEC
+                           A   466    .TYPE 14
+                           A   467    .ENDEF
+00001E                     A   468    _RZK_DEVTICKS_PERSYSTICK:
+00001E 0100                A   469    	DW	1
+000020 00                  A   470    	DB	0
+                           A   471    .DEFINE "RZK_DEVTICKS_PERSYSTICK"
+                           A   472    .ALIAS "_RZK_DEVTICKS_PERSYSTICK"
+                           A   473    .CLASS 69
+                           A   474    .VALUE _RZK_DEVTICKS_PERSYSTICK
+                           A   475    .TYPE 14
+                           A   476    .ENDEF
+000021                     A   477    _SYSTEM_CLOCK:
+000021 00000000            A   478    	DL _SYS_CLK_FREQ
+                           A   479    .DEFINE "SYSTEM_CLOCK"
+                           A   480    .ALIAS "_SYSTEM_CLOCK"
+                           A   481    .CLASS 69
+                           A   482    .VALUE _SYSTEM_CLOCK
+                           A   483    .TYPE 15
+                           A   484    .ENDEF
+000025                     A   485    _RZK_STACK_SIZE:
+000025 0008                A   486    	DW	2048
+000027 00                  A   487    	DB	0
+                           A   488    .DEFINE "RZK_STACK_SIZE"
+                           A   489    .ALIAS "_RZK_STACK_SIZE"
+                           A   490    .CLASS 69
+                           A   491    .VALUE _RZK_STACK_SIZE
+                           A   492    .TYPE 14
+                           A   493    .ENDEF
+000028                     A   494    _RZK_SYSTIMERSTACK_SIZE:
+000028 0008                A   495    	DW	2048
+00002A 00                  A   496    	DB	0
+                           A   497    .DEFINE "RZK_SYSTIMERSTACK_SIZE"
+                           A   498    .ALIAS "_RZK_SYSTIMERSTACK_SIZE"
+                           A   499    .CLASS 69
+                           A   500    .VALUE _RZK_SYSTIMERSTACK_SIZE
+                           A   501    .TYPE 14
+                           A   502    .ENDEF
+00002B                     A   503    _RZK_MAX_DCB:
+00002B 1900                A   504    	DW	25
+00002D 00                  A   505    	DB	0
+                           A   506    .DEFINE "RZK_MAX_DCB"
+                           A   507    .ALIAS "_RZK_MAX_DCB"
+                           A   508    .CLASS 69
+                           A   509    .VALUE _RZK_MAX_DCB
+                           A   510    .TYPE 14
+                           A   511    .ENDEF
+00002E                     A   512    _RZK_DEVICE_DRIVER:
+00002E 0100                A   513    	DW	1
+000030 00                  A   514    	DB	0
+                           A   515    .DEFINE "RZK_DEVICE_DRIVER"
+                           A   516    .ALIAS "_RZK_DEVICE_DRIVER"
+                           A   517    .CLASS 69
+                           A   518    .VALUE _RZK_DEVICE_DRIVER
+                           A   519    .TYPE 14
+                           A   520    .ENDEF
+                           A   521    	SEGMENT BSS
+000000                     A   522    _nDCB:
+000000                     A   523    	DS	1350
+                           A   524    .DEFINE "nDCB"
+                           A   525    .ALIAS "_nDCB"
+                           A   526    .CLASS 83
+                           A   527    .VALUE _nDCB
+                           A   528    .DIM 25
+                           A   529    .TAG "RZK_DEVICE_CB_t"
+                           A   530    .TYPE 104
+                           A   531    .ENDEF
+000546                     A   532    _nInterruptThread:
+000546                     A   533    	DS	127
+                           A   534    .DEFINE "nInterruptThread"
+                           A   535    .ALIAS "_nInterruptThread"
+                           A   536    .CLASS 83
+                           A   537    .VALUE _nInterruptThread
+                           A   538    .DIM 1
+                           A   539    .TAG "RZK_THREAD_CB"
+                           A   540    .TYPE 104
+                           A   541    .ENDEF
+0005C5                     A   542    _nTcb:
+0005C5                     A   543    	DS	3810
+                           A   544    .DEFINE "nTcb"
+                           A   545    .ALIAS "_nTcb"
+                           A   546    .CLASS 83
+                           A   547    .VALUE _nTcb
+                           A   548    .DIM 30
+                           A   549    .TAG "RZK_THREAD_CB"
+                           A   550    .TYPE 104
+                           A   551    .ENDEF
+0014A7                     A   552    _nEventGroup:
+0014A7                     A   553    	DS	580
+                           A   554    .DEFINE "nEventGroup"
+                           A   555    .ALIAS "_nEventGroup"
+                           A   556    .CLASS 83
+                           A   557    .VALUE _nEventGroup
+                           A   558    .DIM 20
+                           A   559    .TAG "RZK_EG_CB"
+                           A   560    .TYPE 104
+                           A   561    .ENDEF
+0016EB                     A   562    _nPartition:
+0016EB                     A   563    	DS	820
+                           A   564    .DEFINE "nPartition"
+                           A   565    .ALIAS "_nPartition"
+                           A   566    .CLASS 83
+                           A   567    .VALUE _nPartition
+                           A   568    .DIM 20
+                           A   569    .TAG "RZK_PARTITION_CB"
+                           A   570    .TYPE 104
+                           A   571    .ENDEF
+001A1F                     A   572    _nMessageQueue:
+001A1F                     A   573    	DS	1484
+                           A   574    .DEFINE "nMessageQueue"
+                           A   575    .ALIAS "_nMessageQueue"
+                           A   576    .CLASS 83
+                           A   577    .VALUE _nMessageQueue
+                           A   578    .DIM 28
+                           A   579    .TAG "RZK_MQ_CB"
+                           A   580    .TYPE 104
+                           A   581    .ENDEF
+001FEB                     A   582    _nSemaphore:
+001FEB                     A   583    	DS	1520
+                           A   584    .DEFINE "nSemaphore"
+                           A   585    .ALIAS "_nSemaphore"
+                           A   586    .CLASS 83
+                           A   587    .VALUE _nSemaphore
+                           A   588    .DIM 40
+                           A   589    .TAG "RZK_SEMAPHORE_CB"
+                           A   590    .TYPE 104
+                           A   591    .ENDEF
+0025DB                     A   592    _nTimer:
+0025DB                     A   593    	DS	1080
+                           A   594    .DEFINE "nTimer"
+                           A   595    .ALIAS "_nTimer"
+                           A   596    .CLASS 83
+                           A   597    .VALUE _nTimer
+                           A   598    .DIM 20
+                           A   599    .TAG "RZK_TIMER_CB"
+                           A   600    .TYPE 104
+                           A   601    .ENDEF
+002A13                     A   602    _nRegion:
+002A13                     A   603    	DS	940
+                           A   604    .DEFINE "nRegion"
+                           A   605    .ALIAS "_nRegion"
+                           A   606    .CLASS 83
+                           A   607    .VALUE _nRegion
+                           A   608    .DIM 20
+                           A   609    .TAG "RZK_REGION_CB"
+                           A   610    .TYPE 104
+                           A   611    .ENDEF
+002DBF                     A   612    _nRegion_Tab:
+002DBF                     A   613    	DS	36000
+                           A   614    .DEFINE "nRegion_Tab"
+                           A   615    .ALIAS "_nRegion_Tab"
+                           A   616    .CLASS 83
+                           A   617    .VALUE _nRegion_Tab
+                           A   618    .DIM 2000
+                           A   619    .TAG "RZK_SEGMENT_CB"
+                           A   620    .TYPE 104
+                           A   621    .ENDEF
+00BA5F                     A   622    _usrDevBlk:
+00BA5F                     A   623    	DS	1350
+                           A   624    .DEFINE "usrDevBlk"
+                           A   625    .ALIAS "_usrDevBlk"
+                           A   626    .CLASS 83
+                           A   627    .VALUE _usrDevBlk
+                           A   628    .DIM 25
+                           A   629    .TAG "RZK_DEVICE_CB_t"
+                           A   630    .TYPE 104
+                           A   631    .ENDEF
+                           A   632    	SEGMENT DATA
+000031                     A   633    _priorityinheritance:
+000031 0100                A   634    	DW	1
+000033 00                  A   635    	DB	0
+                           A   636    .DEFINE "priorityinheritance"
+                           A   637    .ALIAS "_priorityinheritance"
+                           A   638    .CLASS 69
+                           A   639    .VALUE _priorityinheritance
+                           A   640    .TYPE 14
+                           A   641    .ENDEF
+000034                     A   642    _cDebug:
+000034 01                  A   643    	DB	1
+                           A   644    .DEFINE "cDebug"
+                           A   645    .ALIAS "_cDebug"
+                           A   646    .CLASS 69
+                           A   647    .VALUE _cDebug
+                           A   648    .TYPE 12
+                           A   649    .ENDEF
+000035                     A   650    _cTim:
+000035 00                  A   651    	DB	0
+                           A   652    .DEFINE "cTim"
+                           A   653    .ALIAS "_cTim"
+                           A   654    .CLASS 69
+                           A   655    .VALUE _cTim
+                           A   656    .TYPE 12
+                           A   657    .ENDEF
+000036                     A   658    _cIer:
+000036 61                  A   659    	DB	97
+                           A   660    .DEFINE "cIer"
+                           A   661    .ALIAS "_cIer"
+                           A   662    .CLASS 69
+                           A   663    .VALUE _cIer
+                           A   664    .TYPE 12
+                           A   665    .ENDEF
+000037                     A   666    _cIir:
+000037 62                  A   667    	DB	98
+                           A   668    .DEFINE "cIir"
+                           A   669    .ALIAS "_cIir"
+                           A   670    .CLASS 69
+                           A   671    .VALUE _cIir
+                           A   672    .TYPE 12
+                           A   673    .ENDEF
+000038                     A   674    _cCtl:
+000038 80                  A   675    	DB	128
+                           A   676    .DEFINE "cCtl"
+                           A   677    .ALIAS "_cCtl"
+                           A   678    .CLASS 69
+                           A   679    .VALUE _cCtl
+                           A   680    .TYPE 12
+                           A   681    .ENDEF
+000039                     A   682    _fsEnable:
+000039 00                  A   683    	DB	0
+                           A   684    .DEFINE "fsEnable"
+                           A   685    .ALIAS "_fsEnable"
+                           A   686    .CLASS 69
+                           A   687    .VALUE _fsEnable
+                           A   688    .TYPE 12
+                           A   689    .ENDEF
+00003A                     A   690    _nRzkMaxCwdPathLen:
+00003A 8000                A   691    	DW	128
+00003C 00                  A   692    	DB	0
+                           A   693    .DEFINE "nRzkMaxCwdPathLen"
+                           A   694    .ALIAS "_nRzkMaxCwdPathLen"
+                           A   695    .CLASS 69
+                           A   696    .VALUE _nRzkMaxCwdPathLen
+                           A   697    .TYPE 14
+                           A   698    .ENDEF
+                           A   699    	SEGMENT BSS
+00BFA5                     A   700    _fsCwdPath:
+00BFA5                     A   701    	DS	1
+                           A   702    .DEFINE "fsCwdPath"
+                           A   703    .ALIAS "_fsCwdPath"
+                           A   704    .CLASS 83
+                           A   705    .VALUE _fsCwdPath
+                           A   706    .DIM 1
+                           A   707    .TYPE 98
+                           A   708    .ENDEF
+00BFA6                     A   709    _fsCwdArray:
+00BFA6                     A   710    	DS	1
+                           A   711    .DEFINE "fsCwdArray"
+                           A   712    .ALIAS "_fsCwdArray"
+                           A   713    .CLASS 83
+                           A   714    .VALUE _fsCwdArray
+                           A   715    .DIM 1
+                           A   716    .DIM 1
+                           A   717    .TYPE 866
+                           A   718    .ENDEF
+                           A   719    	SEGMENT DATA
+00003D                     A   720    _CONSOLE:
+00003D 000000              A   721    	DW24	0
+                           A   722    .DEFINE "CONSOLE"
+                           A   723    .ALIAS "_CONSOLE"
+                           A   724    .CLASS 69
+                           A   725    .VALUE _CONSOLE
+                           A   726    .TAG "RZK_DEVICE_CB_t"
+                           A   727    .TYPE 40
+                           A   728    .ENDEF
+                           A   729    ;    1	/**************************************
+                           A   730    ;    2	 * File       : RZK_Conf.c
+                           A   731    ;    3	 *
+                           A   732    ;    4	 * Description: Defines the configurabl
+                           A   733    ;    5	 *              sub components
+                           A   734    ;    6	 *
+                           A   735    ;    7	 * Copyright 2016 ZiLOG Inc.  ALL RIGHT
+                           A   736    ;    8	 *
+                           A   737    ;    9	 * This file contains unpublished confi
+                           A   738    ;   10	 * of ZiLOG, Inc.
+                           A   739    ;   11	 * NO PART OF THIS WORK MAY BE DUPLICAT
+                           A   740    ;   12	 * IN ANY FORM WITHOUT THE PRIOR WRITTE
+                           A   741    ;   13	 * This is not a license and no use of 
+                           A   742    ;   14	 * in the absence of a written license 
+                           A   743    ;   15	 * sole discretion 
+                           A   744    ;   16	 **************************************
+                           A   745    ;   17	// RZK CORE CONFIGURATION
+                           A   746    ;   18	
+                           A   747    ;   19	
+                           A   748    ;   20	
+                           A   749    ;   21	
+                           A   750    ;   22	#ifdef _EZ80F91
+                           A   751    ;   23	#include <eZ80F91.h>
+                           A   752    ;   24	#endif
+                           A   753    ;   25	#ifdef _EZ80F92
+                           A   754    ;   26	#include <eZ80F92.h>
+                           A   755    ;   27	#endif
+                           A   756    ;   28	#ifdef _EZ80F93
+                           A   757    ;   29	#include <eZ80F93.h>
+                           A   758    ;   30	#endif
+                           A   759    ;   31	#ifdef _EZ80L92
+                           A   760    ;   32	#include <eZ80L92.h>
+                           A   761    ;   33	#endif
+                           A   762    ;   34	#ifdef _EZ80190
+                           A   763    ;   35	#include <eZ80190.h>
+                           A   764    ;   36	#endif
+                           A   765    ;   37	
+                           A   766    ;   38	#include "ZSysgen.h"
+                           A   767    ;   39	#include "ZTypes.h"
+                           A   768    ;   40	#include "ZThread.h"
+                           A   769    ;   41	#include "ZInterrupt.h"
+                           A   770    ;   42	#include "ZSemaphore.h"
+                           A   771    ;   43	#include "ZMessageQ.h"
+                           A   772    ;   44	#include "ZMemory.h"
+                           A   773    ;   45	#include "ZTimer.h"
+                           A   774    ;   46	#include "ZEventGroup.h"
+                           A   775    ;   47	#include "ZRegion.h"
+                           A   776    ;   48	#include "ZDevice.h"
+                           A   777    ;   49	
+                           A   778    ;   50	//#define RZK_MINI /* Use this in case 
+                           A   779    ;   51	
+                           A   780    ;   52	#ifdef RZK_MINI
+                           A   781    ;   53	#ifdef ZDOT_WLAN
+                           A   782    ;   54		#define MAX_THREADSH               
+                           A   783    ;   55		#define MAX_MESSAGEQSH             
+                           A   784    ;   56		#define MAX_SEMAPHORESH            
+                           A   785    ;   57		#define MAX_EVENTGROUPSH           
+                           A   786    ;   58		#define MAX_TIMERSH                
+                           A   787    ;   59		#define MAX_PARTITIONSH            
+                           A   788    ;   60		#define MAX_REGIONSH               
+                           A   789    ;   61		#define MAX_REGIONS_TABH           
+                           A   790    ;   62		#define RZK_MAX_DCBH               
+                           A   791    ;   63	#else
+                           A   792    ;   64		#define MAX_THREADSH               
+                           A   793    ;   65		#define MAX_MESSAGEQSH             
+                           A   794    ;   66		#define MAX_SEMAPHORESH            
+                           A   795    ;   67		#define MAX_EVENTGROUPSH           
+                           A   796    ;   68		#define MAX_TIMERSH                
+                           A   797    ;   69		#define MAX_PARTITIONSH            
+                           A   798    ;   70		#define MAX_REGIONSH               
+                           A   799    ;   71		#define MAX_REGIONS_TABH           
+                           A   800    ;   72		#define RZK_MAX_DCBH               
+                           A   801    ;   73	#endif	
+                           A   802    ;   74	#else
+                           A   803    ;   75		#define MAX_THREADSH               
+                           A   804    ;   76		#define MAX_MESSAGEQSH             
+                           A   805    ;   77		#define MAX_SEMAPHORESH            
+                           A   806    ;   78		#define MAX_EVENTGROUPSH           
+                           A   807    ;   79		#define MAX_TIMERSH                
+                           A   808    ;   80		#define MAX_PARTITIONSH            
+                           A   809    ;   81		#define MAX_REGIONSH               
+                           A   810    ;   82		#define MAX_REGIONS_TABH           
+                           A   811    ;   83		#define RZK_MAX_DCBH               
+                           A   812    ;   84	#endif
+                           A   813    ;   85	
+                           A   814    ;   86	// **************************
+                           A   815    ;   87	// CHANGE THE BELOW VALUES IF YOU KNOW 
+                           A   816    ;   88	// REFER TO REFERENCE MANUAL FOR DESCRI
+                           A   817    ;   89	// **************************
+                           A   818    ;   90	
+                           A   819    ;   91	/* notes */
+                           A   820    ;   92	// notes for RZK Core macros. This desc
+                           A   821    ;   93	// minimum value required to work with.
+                           A   822    ;   94	// PLEASE REFER TO RZK REFERENCE MANUAL
+                           A   823    ;   95	
+                           A   824    ;   96	// Thread parameters
+                           A   825    ;   97	// MAX_THREADSH - Contains the maximum 
+                           A   826    ;   98	// (minimum value is 4 (for RZK stand a
+                           A   827    ;   99	// RZK_TIME_SLICEH - Default round robi
+                           A   828    ;  100	// created in round robin
+                           A   829    ;  101	// mode.
+                           A   830    ;  102	//#define MAX_THREADSH                 
+                           A   831    ;  103	#define RZK_TIME_SLICEH                
+                           A   832    ;  104	
+                           A   833    ;  105	// IPC parameters
+                           A   834    ;  106	// MAX_MESSAGEQSH - Maximum number of m
+                           A   835    ;  107	// (Minimum value is 0 if messagequeue 
+                           A   836    ;  108	// MAX_EVENTGROUPSH - Maximum number of
+                           A   837    ;  109	// (Minimum value is 0 if eventgroup ob
+                           A   838    ;  110	//#define MAX_MESSAGEQSH               
+                           A   839    ;  111	//#define MAX_EVENTGROUPSH             
+                           A   840    ;  112	
+                           A   841    ;  113	// Semaphore parameters
+                           A   842    ;  114	// MAX_SEMAPHORESH - Maximum number of 
+                           A   843    ;  115	// (Minimum value is 0 if semaphores ar
+                           A   844    ;  116	//#define MAX_SEMAPHORESH              
+                           A   845    ;  117	
+                           A   846    ;  118	// MAX_TIMERSH - Maximum number of soft
+                           A   847    ;  119	// (Minimum value is 0 if software time
+                           A   848    ;  120	//#define MAX_TIMERSH                  
+                           A   849    ;  121	
+                           A   850    ;  122	// memory object parameters
+                           A   851    ;  123	// MAX_PARTITIONSH - Maximum number of 
+                           A   852    ;  124	// (Minimum value is 0 if partition obj
+                           A   853    ;  125	// MAX_REGIONSH - Maximum number of reg
+                           A   854    ;  126	// (Minimum value is 0 if region object
+                           A   855    ;  127	// MAX_REGIONS_TABH - Maximum number of
+                           A   856    ;  128	// (Minimum value is 0 if region segmen
+                           A   857    ;  129	// If regions are used, this macro shou
+                           A   858    ;  130	
+                           A   859    ;  131	//#define MAX_PARTITIONSH              
+                           A   860    ;  132	//#define MAX_REGIONSH                 
+                           A   861    ;  133	//#define MAX_REGIONS_TABH             
+                           A   862    ;  134	
+                           A   863    ;  135	// RZK support threads stack size
+                           A   864    ;  136	// RZK_STACK_SIZEH - RZK Kernel thread 
+                           A   865    ;  137	// depends upon the layer depth of func
+                           A   866    ;  138	// in the thread. Normally 512 or 1024 
+                           A   867    ;  139	// RZK_SYSTIMERSTACK_SIZEH - RZK Kernel
+                           A   868    ;  140	// value is 200, depends upon the layer
+                           A   869    ;  141	// by a function in the thread. Normall
+                           A   870    ;  142	#define RZK_STACK_SIZEH                
+                           A   871    ;  143	#define RZK_SYSTIMERSTACK_SIZEH        
+                           A   872    ;  144	
+                           A   873    ;  145	// different system parameters
+                           A   874    ;  146	// RZK_SYSTICKS_INSECH - RZK system tic
+                           A   875    ;  147	// the system response to the schedulin
+                           A   876    ;  148	// RZK_DEVTICKS_PERSYSTICKH - RZK syste
+                           A   877    ;  149	// If this value is 2, then 2 system ti
+                           A   878    ;  150	// SYSTEM_CLOCKH - System clock frequen
+                           A   879    ;  151	#define RZK_SYSTICKS_INSECH            
+                           A   880    ;  152	#define RZK_DEVTICKS_PERSYSTICKH       
+                           A   881    ;  153	
+                           A   882    ;  154	#ifdef RZK_MINI
+                           A   883    ;  155	
+                           A   884    ;  156		#ifdef _EZ80F91
+                           A   885    ;  157		#define SYSTEM_CLOCKH              
+                           A   886    ;  158		#endif
+                           A   887    ;  159		#ifdef _EZ80F92
+                           A   888    ;  160		#define SYSTEM_CLOCKH              
+                           A   889    ;  161		#endif
+                           A   890    ;  162		#ifdef _EZ80F93
+                           A   891    ;  163		#define SYSTEM_CLOCKH              
+                           A   892    ;  164		#endif
+                           A   893    ;  165		#ifdef _EZ80L92
+                           A   894    ;  166		#define SYSTEM_CLOCKH              
+                           A   895    ;  167		#endif
+                           A   896    ;  168		#ifdef _EZ80190
+                           A   897    ;  169		#define SYSTEM_CLOCKH              
+                           A   898    ;  170		#endif
+                           A   899    ;  171	/*CR#7816 fix */
+                           A   900    ;  172	#else
+                           A   901    ;  173		extern UINT32 SYS_CLK_FREQ;
+                           A   902    ;  174	#endif
+                           A   903    ;  175	
+                           A   904    ;  176	// HWTIMER_TO_USE - Hardware timer to b
+                           A   905    ;  177	// contain value from 0-3
+                           A   906    ;  178	#define HWTIMER_TO_USE                 
+                           A   907    ;  179	
+                           A   908    ;  180	// Device driver components
+                           A   909    ;  181	// RZK_DEVICE_DRIVERH - Enabling the RZ
+                           A   910    ;  182	// device driver added to the system. S
+                           A   911    ;  183	// (0) for disabling.
+                           A   912    ;  184	
+                           A   913    ;  185	// RZK_MAX_DCBH - Maximum number of dev
+                           A   914    ;  186	// device driver is enabled. (Minimum v
+                           A   915    ;  187	//#define RZK_MAX_DCBH                 
+                           A   916    ;  188	#define RZK_DEVICE_DRIVERH             
+                           A   917    ;  189	
+                           A   918    ;  190	// File system related kernel parameter
+                           A   919    ;  191	// RZK_MAX_CWD_PATH_LEN - Maximum lengt
+                           A   920    ;  192	// stored in the TCB including the dire
+                           A   921    ;  193	// RZK_CWD_PATH - Current working direc
+                           A   922    ;  194	// craeted in main or RZKApplicationEnt
+                           A   923    ;  195	// (application entry for standalone RZ
+                           A   924    ;  196	#define RZK_MAX_CWD_PATH_LEN           
+                           A   925    ;  197	#define RZK_CWD_PATH                   
+                           A   926    ;  198	
+                           A   927    ;  199	
+                           A   928    ;  200	
+                           A   929    ;  201	
+                           A   930    ;  202	
+                           A   931    ;  203	
+                           A   932    ;  204	
+                           A   933    ;  205	// **************************
+                           A   934    ;  206	// DO NOT CHANGE ANYTHING BELOW IN THIS
+                           A   935    ;  207	// **************************
+                           A   936    ;  208	
+                           A   937    ;  209	// RZK CORE
+                           A   938    ;  210	UINT      RZK_TIME_SLICE               
+                           A   939    ;  211	UINT      MAX_THREADS                  
+                           A   940    ;  212	UINT      MAX_SEMAPHORES               
+                           A   941    ;  213	UINT      MAX_MESSAGEQS                
+                           A   942    ;  214	UINT      MAX_EVENTGROUPS              
+                           A   943    ;  215	UINT      MAX_TIMERS                   
+                           A   944    ;  216	UINT      MAX_PARTITIONS               
+                           A   945    ;  217	UINT      MAX_REGIONS                  
+                           A   946    ;  218	UINT      MAX_REGIONS_TAB              
+                           A   947    ;  219	UINT      RZK_SYSTICKS_INSEC           
+                           A   948    ;  220	UINT      RZK_DEVTICKS_PERSYSTICK      
+                           A   949    ;  221	
+                           A   950    ;  222	#ifdef RZK_MINI
+                           A   951    ;  223	UINT32    SYSTEM_CLOCK                 
+                           A   952    ;  224	#else
+                           A   953    ;  225	UINT32    SYSTEM_CLOCK                 
+                           A   954    ;  226	#endif
+                           A   955    ;  227	
+                           A   956    ;  228	UINT      RZK_STACK_SIZE               
+                           A   957    ;  229	UINT      RZK_SYSTIMERSTACK_SIZE       
+                           A   958    ;  230	
+                           A   959    ;  231	UINT      RZK_MAX_DCB                  
+                           A   960    ;  232	UINT      RZK_DEVICE_DRIVER            
+                           A   961    ;  233	
+                           A   962    ;  234	
+                           A   963    ;  235	RZK_DEVICE_CB_t                        
+                           A   964    ;  236	RZK_THREAD_CB_t                        
+                           A   965    ;  237	
+                           A   966    ;  238	
+                           A   967    ;  239	#if MAX_THREADSH
+                           A   968    ;  240	RZK_THREAD_CB_t                        
+                           A   969    ;  241	#endif // MAX_THREADSH
+                           A   970    ;  242	
+                           A   971    ;  243	#if MAX_EVENTGROUPSH
+                           A   972    ;  244	RZK_EG_CB_t                            
+                           A   973    ;  245	#endif // MAX_EVENTGROUPSH
+                           A   974    ;  246	
+                           A   975    ;  247	#if MAX_PARTITIONSH
+                           A   976    ;  248	RZK_PARTITION_CB_t                     
+                           A   977    ;  249	#endif // MAX_PARTITIONSH
+                           A   978    ;  250	
+                           A   979    ;  251	#if MAX_MESSAGEQSH
+                           A   980    ;  252	RZK_MQ_CB_t                            
+                           A   981    ;  253	#endif // MAX_MESSAGEQSH
+                           A   982    ;  254	
+                           A   983    ;  255	#if MAX_SEMAPHORESH
+                           A   984    ;  256	RZK_SEMAPHORE_CB_t                     
+                           A   985    ;  257	#endif // MAX_SEMAPHORESH
+                           A   986    ;  258	
+                           A   987    ;  259	#if MAX_TIMERSH
+                           A   988    ;  260	RZK_TIMER_CB_t                         
+                           A   989    ;  261	#endif // MAX_TIMERSH
+                           A   990    ;  262	
+                           A   991    ;  263	#if MAX_REGIONSH
+                           A   992    ;  264	RZK_REGION_CB_t                        
+                           A   993    ;  265	#endif // MAX_REGIONSH
+                           A   994    ;  266	
+                           A   995    ;  267	#if MAX_REGIONS_TABH
+                           A   996    ;  268	RZK_SEGMENT_CB_t                       
+                           A   997    ;  269	#endif // MAX_REGIONS_TABH
+                           A   998    ;  270	
+                           A   999    ;  271	#if RZK_DEVICE_DRIVERH
+                           A  1000    ;  272	RZK_DEVICE_CB_t	 						
+                           A  1001    ;  273	#endif
+                           A  1002    ;  274	
+                           A  1003    ;  275	#ifdef RZKPI
+                           A  1004    ;  276	UINT      priorityinheritance          
+                           A  1005    ;  277	#else
+                           A  1006    ;  278	UINT      priorityinheritance          
+                           A  1007    ;  279	#endif // RZK_PRIORITYINHERITANCE
+                           A  1008    ;  280	
+                           A  1009    ;  281	#ifdef RZKDBG
+                           A  1010    ;  282	UINT8     cDebug                       
+                           A  1011    ;  283	#else
+                           A  1012    ;  284	UINT8     cDebug                       
+                           A  1013    ;  285	#endif // RZKMACRODEBUG
+                           A  1014    ;  286	
+                           A  1015    ;  287	#if HWTIMER_TO_USE==0
+                           A  1016    ;  288	UINT8     cTim                         
+                           A  1017    ;  289	UINT8      cIer                        
+                           A  1018    ;  290	UINT8      cIir                        
+                           A  1019    ;  291	UINT8      cCtl                        
+                           A  1020    ;  292	#endif // TIMER0
+                           A  1021    ;  293	
+                           A  1022    ;  294	#if HWTIMER_TO_USE==1
+                           A  1023    ;  295	UINT8     cTim                         
+                           A  1024    ;  296	UINT8      cIer                        
+                           A  1025    ;  297	UINT8      cIir                        
+                           A  1026    ;  298	UINT8      cCtl                        
+                           A  1027    ;  299	#endif // TIMER1
+                           A  1028    ;  300	
+                           A  1029    ;  301	#if HWTIMER_TO_USE==2
+                           A  1030    ;  302	UINT8     cTim                         
+                           A  1031    ;  303	UINT8      cIer                        
+                           A  1032    ;  304	UINT8      cIir                        
+                           A  1033    ;  305	UINT8      cCtl                        
+                           A  1034    ;  306	#endif // TIMER2
+                           A  1035    ;  307	
+                           A  1036    ;  308	#if HWTIMER_TO_USE==3
+                           A  1037    ;  309	UINT8     cTim                         
+                           A  1038    ;  310	UINT8      cIer                        
+                           A  1039    ;  311	UINT8      cIir                        
+                           A  1040    ;  312	UINT8      cCtl                        
+                           A  1041    ;  313	#endif // TIMER3
+                           A  1042    ;  314	
+                           A  1043    ;  315	#if HWTIMER_TO_USE==4
+                           A  1044    ;  316	UINT8     cTim                         
+                           A  1045    ;  317	UINT8      cCtl                        
+                           A  1046    ;  318	#endif // TIMER3
+                           A  1047    ;  319	
+                           A  1048    ;  320	#if HWTIMER_TO_USE==5
+                           A  1049    ;  321	UINT8     cTim                         
+                           A  1050    ;  322	UINT8      cCtl                        
+                           A  1051    ;  323	#endif // TIMER3
+                           A  1052    ;  324	
+                           A  1053    ;  325	// CWD IMPLEMENTATION
+                           A  1054    ;  326	#ifdef RZKFS
+                           A  1055    ;  327	UINT8     fsEnable                     
+                           A  1056    ;  328	UINT      nRzkMaxCwdPathLen            
+                           A  1057    ;  329	INT8      fsCwdPath[RZK_MAX_CWD_PATH_LE
+                           A  1058    ;  330	INT8                                   
+                           A  1059    ;  331	#else
+                           A  1060    ;  332	UINT8     fsEnable                     
+                           A  1061    ;  333	UINT      nRzkMaxCwdPathLen            
+                           A  1062    ;  334	INT8                                   
+                           A  1063    ;  335	INT8                                   
+                           A  1064    ;  336	#endif // RZKFS
+                           A  1065    ;  337	
+                           A  1066    ;  338	
+                           A  1067    ;  339	RZK_DEVICE_CB_t*                       
+                           A  1068    	SEGMENT CODE
+                           A  1069    ;  340	
+                           A  1070    ;  341	/*
+                           A  1071    ;  342	* Function		:	IdleThread
+                           A  1072    ;  343	*
+                           A  1073    ;  344	* Description	:	It is the entry poi
+                           A  1074    ;  345	*					function for power 
+                           A  1075    ;  346	* 
+                           A  1076    ;  347	* Inputs		:	None	
+                           A  1077    ;  348	*
+                           A  1078    ;  349	* Outputs		:	None
+                           A  1079    ;  350	*
+                           A  1080    ;  351	* Dependencies	:	None
+                           A  1081    ;  352	*/
+                           A  1082    ;  353	void IdleThread()
+                           A  1083    ;  354	{
+000000                     A  1084    _IdleThread:
+                           A  1085    .DEFINE "_IdleThread"
+                           A  1086    
+                           A  1087    .VALUE _IdleThread
+                           A  1088    
+                           A  1089    .CLASS 2
+                           A  1090    
+                           A  1091    .TYPE 65
+                           A  1092    
+                           A  1093    .ENDEF
+                           A  1094    
+000000 DDE5                A  1095    	PUSH	IX
+000002 DD210000 00         A  1096    	LD	IX,0
+000007 DD39                A  1097    	ADD	IX,SP
+                           A  1098    .BEGFUNC "IdleThread",354,"_IdleThread"
+                           A  1099    
+                           A  1100    ;  355	 	while(1)
+000009                     A  1101    L_0:
+                           A  1102    .LINE 355
+                           A  1103    
+                           A  1104    ;  356		{
+                           A  1105    ;  357		}
+                           A  1106    .LINE 357
+                           A  1107    
+000009 18 FE               A  1108    	JR	L_0
+                           A  1109    ;  358	}
+                           A  1110    .LINE 358
+                           A  1111    
+00000B DDF9                A  1112    	LD	SP,IX
+00000D DDE1                A  1113    	POP	IX
+00000F C9                  A  1114    	RET	
+                           A  1115    
+                           A  1116    
+                           A  1117    ;**************************** _IdleThread *****
+                           A  1118    ;Name                         Addr/Register   S
+                           A  1119    
+                           A  1120    
+                           A  1121    ; Stack Frame Size: 6 (bytes)
+                           A  1122    ;       Spill Code: 0 (instruction)
+                           A  1123    
+                           A  1124    
+                           A  1125    .ENDFUNC "IdleThread",358,"_IdleThread"
+                           A  1126    	XREF _SYS_CLK_FREQ:ROM
+                           A  1127    	XDEF _IdleThread
+                           A  1128    	XDEF _CONSOLE
+                           A  1129    	XDEF _fsCwdArray
+                           A  1130    	XDEF _fsCwdPath
+                           A  1131    	XDEF _nRzkMaxCwdPathLen
+                           A  1132    	XDEF _fsEnable
+                           A  1133    	XDEF _cCtl
+                           A  1134    	XDEF _cIir
+                           A  1135    	XDEF _cIer
+                           A  1136    	XDEF _cTim
+                           A  1137    	XDEF _cDebug
+                           A  1138    	XDEF _priorityinheritance
+                           A  1139    	XDEF _usrDevBlk
+                           A  1140    	XDEF _nRegion_Tab
+                           A  1141    	XDEF _nRegion
+                           A  1142    	XDEF _nTimer
+                           A  1143    	XDEF _nSemaphore
+                           A  1144    	XDEF _nMessageQueue
+                           A  1145    	XDEF _nPartition
+                           A  1146    	XDEF _nEventGroup
+                           A  1147    	XDEF _nTcb
+                           A  1148    	XDEF _nInterruptThread
+                           A  1149    	XDEF _nDCB
+                           A  1150    	XDEF _RZK_DEVICE_DRIVER
+                           A  1151    	XDEF _RZK_MAX_DCB
+                           A  1152    	XDEF _RZK_SYSTIMERSTACK_SIZE
+                           A  1153    	XDEF _RZK_STACK_SIZE
+                           A  1154    	XDEF _SYSTEM_CLOCK
+                           A  1155    	XDEF _RZK_DEVTICKS_PERSYSTICK
+                           A  1156    	XDEF _RZK_SYSTICKS_INSEC
+                           A  1157    	XDEF _MAX_REGIONS_TAB
+                           A  1158    	XDEF _MAX_REGIONS
+                           A  1159    	XDEF _MAX_PARTITIONS
+                           A  1160    	XDEF _MAX_TIMERS
+                           A  1161    	XDEF _MAX_EVENTGROUPS
+                           A  1162    	XDEF _MAX_MESSAGEQS
+                           A  1163    	XDEF _MAX_SEMAPHORES
+                           A  1164    	XDEF _MAX_THREADS
+                           A  1165    	XDEF _RZK_TIME_SLICE
+                           A  1166    	END
+
+
+Errors: 0
+Warnings: 0
+Lines Assembled: 1167

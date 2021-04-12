@@ -1,0 +1,312 @@
+Zilog eZ80 Macro Assembler Version 4.3 (19073001)12-Apr-21     15:39:14     page:   1
+
+
+PC     Object              I  Line    Source 
+                           A     1    ; Zilog eZ80 ANSI C Compiler Release 3.4
+                           A     2    ; -noglobalopt -nolocalcse -optsize -nomodsect 
+                           A     3    ; -nopadbranch -debug -peephole -const=ROM 
+                           A     4    	FILE	"..\main.c"
+                           A     5    	.assume ADL=1
+                           A     6    .DEBUG "C"
+                           A     7    	SEGMENT CODE
+                           A     8    .BEGREC "fmt_type",19
+                           A     9    .DEFINE "status"
+                           A    10    .VALUE 0
+                           A    11    .CLASS 8
+                           A    12    .TYPE 12
+                           A    13    .ENDEF
+                           A    14    .DEFINE "flags"
+                           A    15    .VALUE 1
+                           A    16    .CLASS 8
+                           A    17    .TYPE 12
+                           A    18    .ENDEF
+                           A    19    .DEFINE "size"
+                           A    20    .VALUE 2
+                           A    21    .CLASS 8
+                           A    22    .TYPE 2
+                           A    23    .ENDEF
+                           A    24    .DEFINE "chr"
+                           A    25    .VALUE 3
+                           A    26    .CLASS 8
+                           A    27    .TYPE 2
+                           A    28    .ENDEF
+                           A    29    .DEFINE "type"
+                           A    30    .VALUE 4
+                           A    31    .CLASS 8
+                           A    32    .TYPE 2
+                           A    33    .ENDEF
+                           A    34    .DEFINE "field_width"
+                           A    35    .VALUE 5
+                           A    36    .CLASS 8
+                           A    37    .TYPE 2
+                           A    38    .ENDEF
+                           A    39    .DEFINE "precision"
+                           A    40    .VALUE 6
+                           A    41    .CLASS 8
+                           A    42    .TYPE 2
+                           A    43    .ENDEF
+                           A    44    .DEFINE "set_begin"
+                           A    45    .VALUE 7
+                           A    46    .CLASS 8
+                           A    47    .TYPE 34
+                           A    48    .ENDEF
+                           A    49    .DEFINE "set_end"
+                           A    50    .VALUE 10
+                           A    51    .CLASS 8
+                           A    52    .TYPE 34
+                           A    53    .ENDEF
+                           A    54    .DEFINE "pad_whole"
+                           A    55    .VALUE 13
+                           A    56    .CLASS 8
+                           A    57    .TYPE 12
+                           A    58    .ENDEF
+                           A    59    .DEFINE "pad_pre_fract"
+                           A    60    .VALUE 14
+                           A    61    .CLASS 8
+                           A    62    .TYPE 12
+                           A    63    .ENDEF
+                           A    64    .DEFINE "pad_post_fract"
+                           A    65    .VALUE 15
+                           A    66    .CLASS 8
+                           A    67    .TYPE 12
+                           A    68    .ENDEF
+                           A    69    .DEFINE "pad_at"
+                           A    70    .VALUE 16
+                           A    71    .CLASS 8
+                           A    72    .TYPE 34
+                           A    73    .ENDEF
+                           A    74    .ENDREC "fmt_type"
+                           A    75    .BEGREC "flt_info",12
+                           A    76    .DEFINE "flags"
+                           A    77    .VALUE 0
+                           A    78    .CLASS 8
+                           A    79    .TYPE 12
+                           A    80    .ENDEF
+                           A    81    .DEFINE "exp"
+                           A    82    .VALUE 1
+                           A    83    .CLASS 8
+                           A    84    .TYPE 2
+                           A    85    .ENDEF
+                           A    86    .DEFINE "digits"
+                           A    87    .VALUE 2
+                           A    88    .CLASS 8
+                           A    89    .DIM 10
+                           A    90    .TYPE 108
+                           A    91    .ENDEF
+                           A    92    .ENDREC "flt_info"
+                           A    93    .BEGREC "CPU_REG",32
+                           A    94    .DEFINE "regAFz"
+                           A    95    .VALUE 0
+                           A    96    .CLASS 8
+                           A    97    .TYPE 15
+                           A    98    .ENDEF
+                           A    99    .DEFINE "regBCz"
+                           A   100    .VALUE 4
+                           A   101    .CLASS 8
+                           A   102    .TYPE 15
+                           A   103    .ENDEF
+                           A   104    .DEFINE "regDEz"
+                           A   105    .VALUE 8
+                           A   106    .CLASS 8
+                           A   107    .TYPE 15
+                           A   108    .ENDEF
+                           A   109    .DEFINE "regHLz"
+                           A   110    .VALUE 12
+                           A   111    .CLASS 8
+                           A   112    .TYPE 15
+                           A   113    .ENDEF
+                           A   114    .DEFINE "regIXz"
+                           A   115    .VALUE 16
+                           A   116    .CLASS 8
+                           A   117    .TYPE 15
+                           A   118    .ENDEF
+                           A   119    .DEFINE "regIYz"
+                           A   120    .VALUE 20
+                           A   121    .CLASS 8
+                           A   122    .TYPE 15
+                           A   123    .ENDEF
+                           A   124    .DEFINE "regPCz"
+                           A   125    .VALUE 24
+                           A   126    .CLASS 8
+                           A   127    .TYPE 15
+                           A   128    .ENDEF
+                           A   129    .DEFINE "regSPz"
+                           A   130    .VALUE 28
+                           A   131    .CLASS 8
+                           A   132    .TYPE 15
+                           A   133    .ENDEF
+                           A   134    .ENDREC "CPU_REG"
+                           A   135    .BEGREC "THREADPARAMS_STRUCT_t",22
+                           A   136    .DEFINE "szName"
+                           A   137    .VALUE 0
+                           A   138    .CLASS 8
+                           A   139    .DIM 12
+                           A   140    .TYPE 108
+                           A   141    .ENDEF
+                           A   142    .DEFINE "uState"
+                           A   143    .VALUE 12
+                           A   144    .CLASS 8
+                           A   145    .TYPE 12
+                           A   146    .ENDEF
+                           A   147    .DEFINE "uBankSelector"
+                           A   148    .VALUE 13
+                           A   149    .CLASS 8
+                           A   150    .TYPE 12
+                           A   151    .ENDEF
+                           A   152    .DEFINE "uOperationMode"
+                           A   153    .VALUE 14
+                           A   154    .CLASS 8
+                           A   155    .TYPE 12
+                           A   156    .ENDEF
+                           A   157    .DEFINE "tQuantum"
+                           A   158    .VALUE 15
+                           A   159    .CLASS 8
+                           A   160    .TYPE 14
+                           A   161    .ENDEF
+                           A   162    .DEFINE "cPriority"
+                           A   163    .VALUE 18
+                           A   164    .CLASS 8
+                           A   165    .TYPE 12
+                           A   166    .ENDEF
+                           A   167    .DEFINE "sSignalReceive"
+                           A   168    .VALUE 19
+                           A   169    .CLASS 8
+                           A   170    .TYPE 14
+                           A   171    .ENDEF
+                           A   172    .ENDREC "THREADPARAMS_STRUCT_t"
+                           A   173    .BEGREC "RZK_THREAD_CB",127
+                           A   174    .DEFINE "CB"
+                           A   175    .VALUE 0
+                           A   176    .CLASS 8
+                           A   177    .DIM 127
+                           A   178    .TYPE 108
+                           A   179    .ENDEF
+                           A   180    .ENDREC "RZK_THREAD_CB"
+                           A   181    .BEGREC "RZK_INTERRUPT_CB",53
+                           A   182    .DEFINE "CB"
+                           A   183    .VALUE 0
+                           A   184    .CLASS 8
+                           A   185    .DIM 53
+                           A   186    .TYPE 108
+                           A   187    .ENDEF
+                           A   188    .ENDREC "RZK_INTERRUPT_CB"
+                           A   189    ;    1	#include <stdio.h>
+                           A   190    ;    2	#include <string.h>
+                           A   191    ;    3	#include "ZSysgen.h"
+                           A   192    ;    4	#include "ZTypes.h"
+                           A   193    ;    5	#include "ZThread.h"
+                           A   194    ;    6	//#include "ZDevice.h"
+                           A   195    ;    7	#include "ZInterrupt.h"
+                           A   196    ;    8	#include <ez80.h>
+                           A   197    ;    9	
+                           A   198    ;   10	
+                           A   199    ;   11	
+                           A   200    ;   12	void InitializeResources(void);
+                           A   201    ;   13	extern void RA8875Ini(void);
+                           A   202    ;   14	
+                           A   203    ;   15	void InitializeResources(void)
+                           A   204    ;   16	{
+000000                     A   205    _InitializeResources:
+                           A   206    .DEFINE "_InitializeResources"
+                           A   207    
+                           A   208    .VALUE _InitializeResources
+                           A   209    
+                           A   210    .CLASS 2
+                           A   211    
+                           A   212    .TYPE 65
+                           A   213    
+                           A   214    .ENDEF
+                           A   215    
+                           A   216    .BEGFUNC "InitializeResources",16,"_InitializeR
+                           A   217    
+000000 DDE5                A   218    	PUSH	IX
+000002 DD210000 00         A   219    	LD	IX,0
+000007 DD39                A   220    	ADD	IX,SP
+                           A   221    ;   17		 RA8875Ini();
+                           A   222    .LINE 17
+                           A   223    
+000009 CD 00 00 00         A   224    	CALL	_RA8875Ini
+                           A   225    ;   18	}
+                           A   226    .LINE 18
+                           A   227    
+00000D DDF9                A   228    	LD	SP,IX
+00000F DDE1                A   229    	POP	IX
+000011 C9                  A   230    	RET	
+                           A   231    
+                           A   232    
+                           A   233    ;**************************** _InitializeResour
+                           A   234    ;Name                         Addr/Register   S
+                           A   235    ;_RA8875Ini                          IMPORT  --
+                           A   236    
+                           A   237    
+                           A   238    ; Stack Frame Size: 6 (bytes)
+                           A   239    ;       Spill Code: 0 (instruction)
+                           A   240    
+                           A   241    
+                           A   242    .ENDFUNC "InitializeResources",18,"_InitializeR
+                           A   243    ;   19	
+                           A   244    ;   20	
+                           A   245    ;   21	void main(void)
+                           A   246    ;   22	  {
+000012                     A   247    _main:
+                           A   248    .DEFINE "_main"
+                           A   249    
+                           A   250    .VALUE _main
+                           A   251    
+                           A   252    .CLASS 2
+                           A   253    
+                           A   254    .TYPE 65
+                           A   255    
+                           A   256    .ENDEF
+                           A   257    
+                           A   258    .BEGFUNC "main",22,"_main"
+                           A   259    
+000012 DDE5                A   260    	PUSH	IX
+000014 DD210000 00         A   261    	LD	IX,0
+000019 DD39                A   262    	ADD	IX,SP
+                           A   263    ;   23	    
+                           A   264    ;   24	    RZK_KernelInit() ;
+                           A   265    .LINE 24
+                           A   266    
+00001B CD 00 00 00         A   267    	CALL	_RZK_KernelInit
+                           A   268    ;   25	    
+                           A   269    ;   26	    InitializeResources() ;
+                           A   270    .LINE 26
+                           A   271    
+00001F CD 00 00 00         A   272    	CALL	_InitializeResources
+                           A   273    ;   27	    
+                           A   274    ;   28	    RZK_KernelStart() ; 
+                           A   275    .LINE 28
+                           A   276    
+000023 CD 00 00 00         A   277    	CALL	_RZK_KernelStart
+                           A   278    ;   29	}
+                           A   279    .LINE 29
+                           A   280    
+000027 DDF9                A   281    	LD	SP,IX
+000029 DDE1                A   282    	POP	IX
+00002B C9                  A   283    	RET	
+                           A   284    
+                           A   285    
+                           A   286    ;**************************** _main ***********
+                           A   287    ;Name                         Addr/Register   S
+                           A   288    ;_RZK_KernelStart                    IMPORT  --
+                           A   289    ;_InitializeResources                IMPORT  --
+                           A   290    ;_RZK_KernelInit                     IMPORT  --
+                           A   291    
+                           A   292    
+                           A   293    ; Stack Frame Size: 6 (bytes)
+                           A   294    ;       Spill Code: 0 (instruction)
+                           A   295    
+                           A   296    
+                           A   297    .ENDFUNC "main",29,"_main"
+                           A   298    	XREF _RA8875Ini:ROM
+                           A   299    	XREF _RZK_KernelStart:ROM
+                           A   300    	XREF _RZK_KernelInit:ROM
+                           A   301    	XDEF _main
+                           A   302    	XDEF _InitializeResources
+                           A   303    	END
+
+
+Errors: 0
+Warnings: 0
+Lines Assembled: 304

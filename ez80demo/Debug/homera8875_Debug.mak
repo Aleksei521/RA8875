@@ -323,14 +323,55 @@ $(WORKDIR_ESCSPACE)\get_heap.obj :  \
 	 $(AS) $(ASFLAGS) "$(PRJDIR)\RZK\Conf\get_heap.asm"
 
 $(WORKDIR_ESCSPACE)\RZK_Conf.obj :  \
-            $(PRJDIR_ESCSPACE)\RZK\Conf\RZK_Conf.c
+            $(PRJDIR_ESCSPACE)\RZK\Conf\RZK_Conf.c  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\ZContext.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\ZDevice.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\ZEventgroup.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\ZInterrupt.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\ZMemory.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\ZMessageQ.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\ZRegion.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\ZSemaphore.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\ZSysgen.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\ZThread.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\ZTimer.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\ZTypes.h  \
+            $(INCLUDE_ESCSPACE)\std\CTYPE.H  \
+            $(INCLUDE_ESCSPACE)\zilog\defines.h  \
+            $(INCLUDE_ESCSPACE)\zilog\eZ80190.h  \
+            $(INCLUDE_ESCSPACE)\zilog\eZ80F91.h  \
+            $(INCLUDE_ESCSPACE)\zilog\eZ80F92.h  \
+            $(INCLUDE_ESCSPACE)\zilog\eZ80F93.h  \
+            $(INCLUDE_ESCSPACE)\zilog\eZ80L92.h
 	 $(CC) $(CFLAGS) "$(PRJDIR)\RZK\Conf\RZK_Conf.c"
 
 $(WORKDIR_ESCSPACE)\eZ80eval.obj :  \
-            $(PRJDIR_ESCSPACE)\RZK\Conf\eZ80eval.c
+            $(PRJDIR_ESCSPACE)\RZK\Conf\eZ80eval.c  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\ZDevice.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\ZInterrupt.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\ZSysgen.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\ZTypes.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\serial.h  \
+            $(INCLUDE_ESCSPACE)\std\CTYPE.H  \
+            $(INCLUDE_ESCSPACE)\zilog\defines.h
 	 $(CC) $(CFLAGS) "$(PRJDIR)\RZK\Conf\eZ80eval.c"
 
 $(WORKDIR_ESCSPACE)\uart_conf.obj :  \
-            $(PRJDIR_ESCSPACE)\RZK\Conf\uart_conf.c
+            $(PRJDIR_ESCSPACE)\RZK\Conf\uart_conf.c  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\ZDevice.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\ZSysgen.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\ZTypes.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\_eZ80190.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\_eZ80F91.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\_ez80.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\_ez80F92.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\_ez80F93.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\_ez80L92.h  \
+            $(PRJDIR_ESCSPACE)\RZK\Inc\serial.h  \
+            $(INCLUDE_ESCSPACE)\std\CTYPE.H  \
+            $(INCLUDE_ESCSPACE)\zilog\defines.h  \
+            $(INCLUDE_ESCSPACE)\zilog\eZ80F91.h  \
+            $(INCLUDE_ESCSPACE)\zilog\eZ80F92.h  \
+            $(INCLUDE_ESCSPACE)\zilog\eZ80F93.h
 	 $(CC) $(CFLAGS) "$(PRJDIR)\RZK\Conf\uart_conf.c"
 

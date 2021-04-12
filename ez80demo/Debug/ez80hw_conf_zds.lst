@@ -1,0 +1,317 @@
+Zilog eZ80 Macro Assembler Version 4.3 (19073001)12-Apr-21     15:39:14     page:   1
+
+
+PC     Object              I  Line    Source 
+                           A     1    ; Zilog eZ80 ANSI C Compiler Release 3.4
+                           A     2    ; -noglobalopt -nolocalcse -optsize -nomodsect 
+                           A     3    ; -nopadbranch -debug -peephole -const=ROM 
+                           A     4    	FILE	"..\ez80hw_conf_zds.c"
+                           A     5    	.assume ADL=1
+                           A     6    .DEBUG "C"
+                           A     7    	SEGMENT CODE
+                           A     8    .BEGREC "CS_CONFIG_S",3
+                           A     9    .DEFINE "b_lower_bound"
+                           A    10    .VALUE 0
+                           A    11    .CLASS 8
+                           A    12    .TYPE 12
+                           A    13    .ENDEF
+                           A    14    .DEFINE "b_upper_bound"
+                           A    15    .VALUE 1
+                           A    16    .CLASS 8
+                           A    17    .TYPE 12
+                           A    18    .ENDEF
+                           A    19    .DEFINE "b_control"
+                           A    20    .VALUE 2
+                           A    21    .CLASS 8
+                           A    22    .TYPE 12
+                           A    23    .ENDEF
+                           A    24    .ENDREC "CS_CONFIG_S"
+                           A    25    .BEGREC "GPIO_CONFIG_S",4
+                           A    26    .DEFINE "b_dr"
+                           A    27    .VALUE 0
+                           A    28    .CLASS 8
+                           A    29    .TYPE 12
+                           A    30    .ENDEF
+                           A    31    .DEFINE "b_ddr"
+                           A    32    .VALUE 1
+                           A    33    .CLASS 8
+                           A    34    .TYPE 12
+                           A    35    .ENDEF
+                           A    36    .DEFINE "b_alt1"
+                           A    37    .VALUE 2
+                           A    38    .CLASS 8
+                           A    39    .TYPE 12
+                           A    40    .ENDEF
+                           A    41    .DEFINE "b_alt2"
+                           A    42    .VALUE 3
+                           A    43    .CLASS 8
+                           A    44    .TYPE 12
+                           A    45    .ENDEF
+                           A    46    .ENDREC "GPIO_CONFIG_S"
+                           A    47    .BEGREC "INTERNAL_RAM_S",2
+                           A    48    .DEFINE "Control"
+                           A    49    .VALUE 0
+                           A    50    .CLASS 8
+                           A    51    .TYPE 12
+                           A    52    .ENDEF
+                           A    53    .DEFINE "Addr"
+                           A    54    .VALUE 1
+                           A    55    .CLASS 8
+                           A    56    .TYPE 12
+                           A    57    .ENDEF
+                           A    58    .ENDREC "INTERNAL_RAM_S"
+                           A    59    .BEGREC "INTERNAL_FLASH_S",2
+                           A    60    .DEFINE "Control"
+                           A    61    .VALUE 0
+                           A    62    .CLASS 8
+                           A    63    .TYPE 12
+                           A    64    .ENDEF
+                           A    65    .DEFINE "Addr"
+                           A    66    .VALUE 1
+                           A    67    .CLASS 8
+                           A    68    .TYPE 12
+                           A    69    .ENDEF
+                           A    70    .ENDREC "INTERNAL_FLASH_S"
+                           A    71    .BEGREC "F91_PLL_S",4
+                           A    72    .DEFINE "Divider"
+                           A    73    .VALUE 0
+                           A    74    .CLASS 8
+                           A    75    .TYPE 13
+                           A    76    .ENDEF
+                           A    77    .DEFINE "Control_0"
+                           A    78    .VALUE 2
+                           A    79    .CLASS 8
+                           A    80    .TYPE 12
+                           A    81    .ENDEF
+                           A    82    .DEFINE "Control_1"
+                           A    83    .VALUE 3
+                           A    84    .CLASS 8
+                           A    85    .TYPE 12
+                           A    86    .ENDEF
+                           A    87    .ENDREC "F91_PLL_S"
+                           A    88    ;    1	/**************************************
+                           A    89    ;    2	 * File       : eZ80HwConfig.c
+                           A    90    ;    3	 *
+                           A    91    ;    4	 * Description: Defines the configurabl
+                           A    92    ;    5	 *
+                           A    93    ;    6	 * Copyright 2017 ZiLOG Inc.  ALL RIGHT
+                           A    94    ;    7	 *
+                           A    95    ;    8	 * This file contains unpublished confi
+                           A    96    ;    9	 * of ZiLOG, Inc.
+                           A    97    ;   10	 * NO PART OF THIS WORK MAY BE DUPLICAT
+                           A    98    ;   11	 * IN ANY FORM WITHOUT THE PRIOR WRITTE
+                           A    99    ;   12	 * This is not a license and no use of 
+                           A   100    ;   13	 * in the absence of a written license 
+                           A   101    ;   14	 * sole discretion 
+                           A   102    ;   15	 **************************************
+                           A   103    ;   16	
+                           A   104    ;   17	#include <eZ80.h>
+                           A   105    ;   18	
+                           A   106    ;   19	#include "ZTypes.h"
+                           A   107    ;   20	#include "hw_defs.h"
+                           A   108    ;   21	#include "ZDS_Vars.h"
+                           A   109    ;   22	
+                           A   110    ;   23	#ifdef _EZ80F91
+                           A   111    ;   24	void RZK_HW_Init( void )
+                           A   112    ;   25	{
+000000                     A   113    _RZK_HW_Init:
+                           A   114    .DEFINE "_RZK_HW_Init"
+                           A   115    
+                           A   116    .VALUE _RZK_HW_Init
+                           A   117    
+                           A   118    .CLASS 2
+                           A   119    
+                           A   120    .TYPE 65
+                           A   121    
+                           A   122    .ENDEF
+                           A   123    
+                           A   124    .BEGFUNC "RZK_HW_Init",25,"_RZK_HW_Init"
+                           A   125    
+000000 DDE5                A   126    	PUSH	IX
+000002 DD210000 00         A   127    	LD	IX,0
+000007 DD39                A   128    	ADD	IX,SP
+                           A   129    ;   26		/*
+                           A   130    ;   27		 * Ensure the Bus Mode registers ar
+                           A   131    ;   28		 * This block of code can be remove
+                           A   132    ;   29		 * initializes the Bus Mode control
+                           A   133    ;   30		 */
+                           A   134    ;   31		CS0_BMC = CS0_BMC_INIT_PARAM;
+                           A   135    .LINE 31
+                           A   136    
+000009 01 00 00 00         A   137    	LD	BC,__CS0_BMC_INIT_PARAM
+00000D 79                  A   138    	LD	A,C
+00000E ED39F0              A   139    	OUT0	(240),A
+                           A   140    ;   32		CS1_BMC = CS1_BMC_INIT_PARAM;
+                           A   141    .LINE 32
+                           A   142    
+000011 01 00 00 00         A   143    	LD	BC,__CS1_BMC_INIT_PARAM
+000015 79                  A   144    	LD	A,C
+000016 ED39F1              A   145    	OUT0	(241),A
+                           A   146    ;   33		CS2_BMC = CS2_BMC_INIT_PARAM;
+                           A   147    .LINE 33
+                           A   148    
+000019 01 00 00 00         A   149    	LD	BC,__CS2_BMC_INIT_PARAM
+00001D 79                  A   150    	LD	A,C
+00001E ED39F2              A   151    	OUT0	(242),A
+                           A   152    ;   34		CS3_BMC = CS3_BMC_INIT_PARAM;
+                           A   153    .LINE 34
+                           A   154    
+000021 01 00 00 00         A   155    	LD	BC,__CS3_BMC_INIT_PARAM
+000025 79                  A   156    	LD	A,C
+000026 ED39F3              A   157    	OUT0	(243),A
+                           A   158    ;   35	
+                           A   159    ;   36		/*
+                           A   160    ;   37		* Reduce the Number of Wait states 
+                           A   161    ;   38		 */
+                           A   162    ;   39		FLASH_CTRL = (FLASH_CTRL & ~FLASH_C
+                           A   163    .LINE 39
+                           A   164    
+000029 ED38F8              A   165    	IN0	A,(248)
+00002C E61F                A   166    	AND	A,%1F
+00002E F660                A   167    	OR	A,%60
+000030 ED39F8              A   168    	OUT0	(248),A
+                           A   169    ;   40	
+                           A   170    ;   41		/*
+                           A   171    ;   42		 * GPIO Map for the eZ80F91_99C0879
+                           A   172    ;   43		 *
+                           A   173    ;   44		 *		Port A	
+                           A   174    ;   45		 *			PA0..PA7		All GPI
+                           A   175    ;   46		 *							(Defaul
+                           A   176    ;   47		 *		Port B
+                           A   177    ;   48		 *			PB0..PB7		All GPI
+                           A   178    ;   49		 *							(Defaul
+                           A   179    ;   50		 *							Note: P
+                           A   180    ;   51		 *		Port C
+                           A   181    ;   52		 *			PC0			Modem (Uart
+                           A   182    ;   53		 *			PC1			Modem (Uart
+                           A   183    ;   54		 *			PC2			Modem (Uart
+                           A   184    ;   55		 *			PC3			Modem (Uart
+                           A   185    ;   56		 *			PC4			Modem (Uart
+                           A   186    ;   57		 *			PC5			Modem (Uart
+                           A   187    ;   58		 *			PC6			Modem (Uart
+                           A   188    ;   59		 *			PC7			Modem (Uart
+                           A   189    ;   60		 *		Port D
+                           A   190    ;   61		 *			PD0			Console (Ua
+                           A   191    ;   62		 *			PD1			Console (Ua
+                           A   192    ;   63		 *			PD2			Console (Ua
+                           A   193    ;   64		 *			PD3			Console (Ua
+                           A   194    ;   65		 *			PD4			- available
+                           A   195    ;   66		 *			PD5			- available
+                           A   196    ;   67		 *			PD6			- available
+                           A   197    ;   68		 *			PD7			- available
+                           A   198    ;   69		 */
+                           A   199    ;   70		PA_DR   = 0xFF;
+                           A   200    .LINE 70
+                           A   201    
+000033 3EFF                A   202    	LD	A,%FF
+000035 ED3996              A   203    	OUT0	(150),A
+                           A   204    ;   71		PA_DDR  = 0xFF;
+                           A   205    .LINE 71
+                           A   206    
+000038 3EFF                A   207    	LD	A,%FF
+00003A ED3997              A   208    	OUT0	(151),A
+                           A   209    ;   72		PA_ALT1 = 0x00;
+                           A   210    .LINE 72
+                           A   211    
+00003D AF                  A   212    	XOR	A,A
+00003E ED3998              A   213    	OUT0	(152),A
+                           A   214    ;   73		PA_ALT2 = 0x00;
+                           A   215    .LINE 73
+                           A   216    
+000041 AF                  A   217    	XOR	A,A
+000042 ED3999              A   218    	OUT0	(153),A
+                           A   219    ;   74	
+                           A   220    ;   75		PB_DR   = 0xFF;
+                           A   221    .LINE 75
+                           A   222    
+000045 3EFF                A   223    	LD	A,%FF
+000047 ED399A              A   224    	OUT0	(154),A
+                           A   225    ;   76		PB_DDR  = 0xFF;
+                           A   226    .LINE 76
+                           A   227    
+00004A 3EFF                A   228    	LD	A,%FF
+00004C ED399B              A   229    	OUT0	(155),A
+                           A   230    ;   77		PB_ALT1 = 0x00;
+                           A   231    .LINE 77
+                           A   232    
+00004F AF                  A   233    	XOR	A,A
+000050 ED399C              A   234    	OUT0	(156),A
+                           A   235    ;   78		PB_ALT2 = 0x00;
+                           A   236    .LINE 78
+                           A   237    
+000053 AF                  A   238    	XOR	A,A
+000054 ED399D              A   239    	OUT0	(157),A
+                           A   240    ;   79	
+                           A   241    ;   80		PC_DR   = 0xFC;//0xFC
+                           A   242    .LINE 80
+                           A   243    
+000057 3EFC                A   244    	LD	A,%FC
+000059 ED399E              A   245    	OUT0	(158),A
+                           A   246    ;   81		PC_DDR  = 0xFF;
+                           A   247    .LINE 81
+                           A   248    
+00005C 3EFF                A   249    	LD	A,%FF
+00005E ED399F              A   250    	OUT0	(159),A
+                           A   251    ;   82		PC_ALT1 = 0x00;
+                           A   252    .LINE 82
+                           A   253    
+000061 AF                  A   254    	XOR	A,A
+000062 ED39A0              A   255    	OUT0	(160),A
+                           A   256    ;   83		PC_ALT2 = 0x03;//0x03
+                           A   257    .LINE 83
+                           A   258    
+000065 3E03                A   259    	LD	A,%3
+000067 ED39A1              A   260    	OUT0	(161),A
+                           A   261    ;   84	
+                           A   262    ;   85		PD_DR   = 0xF8;//0xF8 PD0,PD1,PD2-A
+                           A   263    .LINE 85
+                           A   264    
+00006A 3EF8                A   265    	LD	A,%F8
+00006C ED39A2              A   266    	OUT0	(162),A
+                           A   267    ;   86		PD_DDR  = 0xFF;
+                           A   268    .LINE 86
+                           A   269    
+00006F 3EFF                A   270    	LD	A,%FF
+000071 ED39A3              A   271    	OUT0	(163),A
+                           A   272    ;   87		PD_ALT1 = 0x00;
+                           A   273    .LINE 87
+                           A   274    
+000074 AF                  A   275    	XOR	A,A
+000075 ED39A4              A   276    	OUT0	(164),A
+                           A   277    ;   88		PD_ALT2 = 0x07;//0x07
+                           A   278    .LINE 88
+                           A   279    
+000078 3E07                A   280    	LD	A,%7
+00007A ED39A5              A   281    	OUT0	(165),A
+                           A   282    ;   89	}
+                           A   283    .LINE 89
+                           A   284    
+00007D DDF9                A   285    	LD	SP,IX
+00007F DDE1                A   286    	POP	IX
+000081 C9                  A   287    	RET	
+                           A   288    
+                           A   289    
+                           A   290    ;**************************** _RZK_HW_Init ****
+                           A   291    ;Name                         Addr/Register   S
+                           A   292    ;__CS3_BMC_INIT_PARAM                IMPORT    
+                           A   293    ;__CS2_BMC_INIT_PARAM                IMPORT    
+                           A   294    ;__CS1_BMC_INIT_PARAM                IMPORT    
+                           A   295    ;__CS0_BMC_INIT_PARAM                IMPORT    
+                           A   296    
+                           A   297    
+                           A   298    ; Stack Frame Size: 6 (bytes)
+                           A   299    ;       Spill Code: 0 (instruction)
+                           A   300    
+                           A   301    
+                           A   302    .ENDFUNC "RZK_HW_Init",89,"_RZK_HW_Init"
+                           A   303    	XREF __CS3_BMC_INIT_PARAM:ROM
+                           A   304    	XREF __CS2_BMC_INIT_PARAM:ROM
+                           A   305    	XREF __CS1_BMC_INIT_PARAM:ROM
+                           A   306    	XREF __CS0_BMC_INIT_PARAM:ROM
+                           A   307    	XDEF _RZK_HW_Init
+                           A   308    	END
+
+
+Errors: 0
+Warnings: 0
+Lines Assembled: 309

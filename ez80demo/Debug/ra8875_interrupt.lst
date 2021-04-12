@@ -1,0 +1,137 @@
+Zilog eZ80 Macro Assembler Version 4.3 (19073001)12-Apr-21     15:39:14     page:   1
+
+
+PC     Object              I  Line    Source 
+                           A     1    ;	.include "kernel.inc"
+                           A     2    
+                           A     3    
+                           A     4    	.assume ADL=1
+                           A     5    	.extern _RZKResumeInterruptThread
+                           A     6    	.extern _RZKISRProlog
+                           A     7    	.extern _RZKISREpilog
+                           A     8    	.extern _i_text_ptr
+                           A     9    	.extern _i_isFont
+                           A    10    	
+                           A    11    	;.extern _ghRA8875wait_isr
+                           A    12    	.extern _ghRA8875int_isr
+                           A    13    	.def	_ra8875int_isr
+                           A    14    	;.def	_ra8875wait_isr
+                           A    15    	
+                           A    16    	
+000000 00                  A    17       NOP
+000001                     A    18    _ra8875int_isr:
+000001 F5                  A    19    	PUSH	AF
+000002 E5                  A    20    	PUSH	HL
+                           A    21    	;font - 01
+                           A    22    	;touch panel 04
+                           A    23    	; Disable PD3 interrupt @Modified by Ermako
+                           A    24    	;IN0		A,	(0A5H)
+                           A    25    	;RES		3, A
+                           A    26        ;OUT0	(0A5H), A
+                           A    27    
+                           A    28    	; Clear  PD3 interrupt @Added by Ermakov
+000003 3E08                A    29    	LD      A,	08H
+000005 ED39CF              A    30    	OUT0     (0CFH), A 
+000008 3A 00 00 00         A    31    	LD		A,(_i_isFont)
+00000C B7                  A    32    	OR		A,A
+00000D CA 45 00 00         A    33    	JP		Z,_ret_int
+                           A    34    	;
+000011 210100D0            A    35    	LD		HL,0D00001H;CMD
+000015 36F1                A    36    	LD		(HL),0F1H
+000017 210000D0            A    37    	LD		HL,0D00000H;DATA
+00001B 7E                  A    38    	LD		A,(HL)
+00001C ED6401              A    39    	TST		A,01H
+00001F CA 58 00 00         A    40    	JP		Z,_NotText
+                           A    41    	;LD		HL,0D00001H;CMD
+                           A    42    	;LD		(HL),0F1H
+000023 210000D0            A    43    	LD		HL,0D00000H;DATA
+000027 3601                A    44    	LD		(HL),01H
+                           A    45    	;
+000029 2A 00 00 00         A    46    	LD		HL,(_i_text_ptr)
+00002D 7E                  A    47    	LD		A,(HL)
+00002E ED64FF              A    48    	TST		A,0FFH
+000031 CA 4A 00 00         A    49    	JP		Z,_clr_int
+000035 23                  A    50    	INC		HL
+000036 22 00 00 00         A    51    	LD		(_i_text_ptr),HL
+00003A 210100D0            A    52    	LD		HL,0D00001H;CMD
+00003E 3602                A    53    	LD		(HL),02H
+000040 210000D0            A    54    	LD		HL,0D00000H;DATA
+000044 77                  A    55    	LD		(HL),A
+                           A    56    	; Enable PD3 interrupt @Modified by Ermakov
+                           A    57    	;IN0		A,	(0A5H)
+                           A    58    	;SET		3, A
+                           A    59    	;OUT0	(0A5H), A
+000045                     A    60    _ret_int:
+000045 E1                  A    61    	POP		HL
+000046 F1                  A    62    	POP		AF
+000047 FB                  A    63    	EI
+000048 ED4D                A    64    	RETI
+00004A                     A    65    _clr_int:
+00004A 210100D0            A    66    	LD		HL,0D00001H;CMD
+00004E 36F0                A    67    	LD		(HL),0F0H
+000050 210000D0            A    68    	LD		HL,0D00000H;DATA
+000054 7E                  A    69    	LD		A,(HL)
+000055 E6FE                A    70    	AND		A,0FEH
+000057 77                  A    71    	LD		(HL),A
+000058                     A    72    _NotText:	
+000058 C5                  A    73        PUSH 	BC
+000059 D5                  A    74    	PUSH	DE
+00005A DDE5                A    75    	PUSH	IX
+00005C FDE5                A    76    	PUSH	IY
+00005E CD 00 00 00         A    77    	CALL	_RZKISRProlog
+000062 2A 00 00 00         A    78    	LD		HL, (_ghRA8875int_isr)
+000066 E5                  A    79    	PUSH	HL
+000067 CD 00 00 00         A    80    	CALL	_RZKResumeInterruptThread	;Interr
+00006B E1                  A    81    	POP		HL
+00006C CD 00 00 00         A    82    	CALL	_RZKISREpilog
+000070 FDE1                A    83        POP		IY
+000072 DDE1                A    84    	POP     IX
+000074 D1                  A    85    	POP		DE
+000075 C1                  A    86     	POP		BC
+000076 E1                  A    87    	POP		HL
+000077 F1                  A    88    	POP		AF
+000078 FB                  A    89    	EI
+000079 ED4D                A    90    	RETI
+                           A    91    
+                           A    92    
+                           A    93       ;NOP
+                           A    94    ;_ra8875wait_isr:
+                           A    95    	;PUSH	AF
+                           A    96    	
+                           A    97    	; Disable PD6 interrupt @Modified by Ermako
+                           A    98    	;IN0		A,	(0A5H)
+                           A    99    	;RES		6, A
+                           A   100        ;OUT0	(0A5H), A
+                           A   101    
+                           A   102    	; Clear  PD3 interrupt @Added by Ermakov
+                           A   103    	;LD      A,	040H
+                           A   104    	;OUT0     (0CFH), A 
+                           A   105    
+                           A   106        ;PUSH 	BC
+                           A   107    	;PUSH	DE
+                           A   108    	;PUSH	HL
+                           A   109    	;PUSH	IX
+                           A   110    	;PUSH	IY
+                           A   111    	;CALL	_RZKISRProlog
+                           A   112    	;LD		HL, (_ghRA8875wait_isr)
+                           A   113    	;PUSH	HL
+                           A   114    	;CALL	_RZKResumeInterruptThread	;Interr
+                           A   115    	;POP		HL
+                           A   116    	;CALL	_RZKISREpilog
+                           A   117        ;POP		IY
+                           A   118    	;POP     IX
+                           A   119    	;POP		HL
+                           A   120    	;POP		DE
+                           A   121     	;POP		BC
+                           A   122    	; Enable PD3 interrupt @Modified by Ermakov
+                           A   123    ;	IN0		A,	(0A5H)
+                           A   124    ;	SET		6, A
+                           A   125    ;	OUT0	(0A5H), A
+                           A   126    	;POP		AF
+                           A   127    	;EI
+                           A   128    	;RETI
+
+
+Errors: 0
+Warnings: 0
+Lines Assembled: 129

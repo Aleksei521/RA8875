@@ -317,6 +317,10 @@ void RA8875Task(void)
 {
 	char test_buf[256];
 	UINT16 i;
+	
+	for(i=0x20;i<0x80;i++) test_buf[i-0x20]=i;
+	test_buf[i-0x20]=0;
+
 	HwIni();
 	SwIni();
 	UG_Init(&mygui,800,600);
@@ -333,11 +337,11 @@ void RA8875Task(void)
 	RZKSuspendThread(ghRA88775,100);*/
 	fillScreen(RA8875_GREEN);
 #ifndef TestIntFont	
-	circleHelper(20, 20, 10, RA8875_RED,1);
-	circleHelper(780, 40, 10, RA8875_RED,1);
-	circleHelper(400, 240, 10, RA8875_RED,1);
-	circleHelper(40, 440, 10, RA8875_RED,1);
-	circleHelper(760, 460, 10, RA8875_RED,1);
+	//circleHelper(20, 20, 10, RA8875_RED,1);
+	//circleHelper(780, 40, 10, RA8875_RED,1);
+	//circleHelper(400, 240, 10, RA8875_RED,1);
+	//circleHelper(40, 440, 10, RA8875_RED,1);
+	//circleHelper(760, 460, 10, RA8875_RED,1);
 	while(1)
 	{
 	UG_Update();
@@ -371,53 +375,55 @@ void RA8875Task(void)
 
 		textSetCursor(0,0);
 		switchArial16();
-		for(i=0x20;i<0x80;i++) test_buf[i-0x20]=i;
-		test_buf[i-0x20]=0;
 		textWrite((const char*)test_buf);
 
 		switchTimes16();
-		for(i=0x20;i<0x80;i++) test_buf[i-0x20]=i;
-		test_buf[i-0x20]=0;
 		textWrite((const char*)test_buf);
 
 		textSetCursor(0,100);
 		switchArial24();
-		for(i=0x20;i<0x80;i++) test_buf[i-0x20]=i;
-		test_buf[i-0x20]=0;
 		textWrite((const char*)test_buf);
 
 		switchTimes24();
-		for(i=0x20;i<0x80;i++) test_buf[i-0x20]=i;
-		test_buf[i-0x20]=0;
 		textWrite((const char*)test_buf);
 
 		textSetCursor(0,250);
 		switchArial32();
-		for(i=0x20;i<0x80;i++) test_buf[i-0x20]=i;
-		test_buf[i-0x20]=0;
 		textWrite((const char*)test_buf);
 
 		switchTimes32();
-		for(i=0x20;i<0x80;i++) test_buf[i-0x20]=i;
-		test_buf[i-0x20]=0;
 		textWrite((const char*)test_buf);
 		
 		graphicsMode();
 		RZKSuspendThread(ghRA88775,100);
-		DrawLine(300,300,400,400,RA8875_WHITE);
-		rectHelper(600,100,100,100,RA8875_BLACK,0);
-		rectHelper(550,150,100,100,RA8875_YELLOW,1);
-		rectHelper(450,200,100,100,RA8875_GREEN,0);
-		fillRect();
-		rectCornerHelper(0,0,200,200,10,10,RA8875_MAGENTA,1);
-		circleHelper(400, 240, 100, RA8875_WHITE,1);
-		circleHelper(350, 190, 100, RA8875_BLUE,0);
-		triangleHelper(50, 50, 100, 100, 150, 20, RA8875_BLACK,0);
-		triangleHelper(100, 100, 150, 150, 200, 120, RA8875_MAGENTA,1);
-		ellipseHelper(300, 300, 50, 25, RA8875_BLACK,0);
-		ellipseHelper(200, 100, 50, 25, RA8875_CYAN,1);
-		curveHelper(500, 300, 50, 25, 1, RA8875_BLACK,0);
-		curveHelper(550, 350, 50, 25, 2, RA8875_YELLOW,1);
+		fillScreen(RA8875_WHITE);
+		UG_SetBackcolor(C_WHITE);
+		UG_SetForecolor(C_BLACK);
+
+		UG_FontSelect(&FONT_12X20);
+		UG_PutString( 0, 0, (char*)test_buf);
+		UG_PutString( 0, 60, (char*)test_buf);
+		UG_FontSelect(&FONT_16X26);
+		UG_PutString( 0, 120, (char*)test_buf);
+		UG_PutString( 0, 180, (char*)test_buf);
+		UG_FontSelect(&FONT_24X40);
+		UG_PutString( 0, 240, (char*)test_buf);
+		UG_PutString( 0, 360, (char*)test_buf);
+
+		//DrawLine(300,300,400,400,RA8875_WHITE);
+		//rectHelper(600,100,100,100,RA8875_BLACK,0);
+		//rectHelper(550,150,100,100,RA8875_YELLOW,1);
+		//rectHelper(450,200,100,100,RA8875_GREEN,0);
+		//fillRect();
+		//rectCornerHelper(0,0,200,200,10,10,RA8875_MAGENTA,1);
+		//circleHelper(400, 240, 100, RA8875_WHITE,1);
+		//circleHelper(350, 190, 100, RA8875_BLUE,0);
+		//triangleHelper(50, 50, 100, 100, 150, 20, RA8875_BLACK,0);
+		//triangleHelper(100, 100, 150, 150, 200, 120, RA8875_MAGENTA,1);
+		//ellipseHelper(300, 300, 50, 25, RA8875_BLACK,0);
+		//ellipseHelper(200, 100, 50, 25, RA8875_CYAN,1);
+		//curveHelper(500, 300, 50, 25, 1, RA8875_BLACK,0);
+		//curveHelper(550, 350, 50, 25, 2, RA8875_YELLOW,1);
 //		RZKSuspendThread(ghRA88775,100);
 //		for(i=0;i<480;i++)
 //		{

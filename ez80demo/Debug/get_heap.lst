@@ -1,0 +1,31 @@
+Zilog eZ80 Macro Assembler Version 4.3 (19073001)12-Apr-21     15:39:21     page:   1
+
+
+PC     Object              I  Line    Source 
+                           A     1    	segment	CODE
+                           A     2    	.assume adl=1
+                           A     3    
+                           A     4        XREF __g_heap_start
+                           A     5        XREF __g_heap_end
+                           A     6        XREF __heapbot
+                           A     7        XREF __heaptop
+                           A     8    
+                           A     9    	XDEF __get_heap_values
+                           A    10    
+000000                     A    11    __get_heap_values:
+000000 DDE5                A    12        push ix                    ; Standard prolo
+000002 DD210000 00         A    13        ld ix, 0
+000007 DD39                A    14        add ix, sp
+                           A    15    
+000009 21 00 00 00         A    16        ld hl, __heapbot
+00000D 22 00 00 00         A    17    	ld (__g_heap_start), hl
+000011 21 00 00 00         A    18    	ld hl, __heaptop
+000015 22 00 00 00         A    19    	ld (__g_heap_end), hl
+000019 DDF9                A    20        ld sp, ix
+00001B DDE1                A    21        pop ix
+00001D C9                  A    22        ret
+
+
+Errors: 0
+Warnings: 0
+Lines Assembled: 23

@@ -1,0 +1,1113 @@
+Zilog eZ80 Macro Assembler Version 4.3 (19073001)12-Apr-21     15:39:21     page:   1
+
+
+PC     Object              I  Line    Source 
+                           A     1    ; Zilog eZ80 ANSI C Compiler Release 3.4
+                           A     2    ; -noglobalopt -nolocalcse -optsize -nomodsect 
+                           A     3    ; -nopadbranch -debug -peephole -const=ROM 
+                           A     4    	FILE	"..\spi_my.c"
+                           A     5    	.assume ADL=1
+                           A     6    .DEBUG "C"
+                           A     7    	SEGMENT CODE
+                           A     8    .BEGREC "fmt_type",19
+                           A     9    .DEFINE "status"
+                           A    10    .VALUE 0
+                           A    11    .CLASS 8
+                           A    12    .TYPE 12
+                           A    13    .ENDEF
+                           A    14    .DEFINE "flags"
+                           A    15    .VALUE 1
+                           A    16    .CLASS 8
+                           A    17    .TYPE 12
+                           A    18    .ENDEF
+                           A    19    .DEFINE "size"
+                           A    20    .VALUE 2
+                           A    21    .CLASS 8
+                           A    22    .TYPE 2
+                           A    23    .ENDEF
+                           A    24    .DEFINE "chr"
+                           A    25    .VALUE 3
+                           A    26    .CLASS 8
+                           A    27    .TYPE 2
+                           A    28    .ENDEF
+                           A    29    .DEFINE "type"
+                           A    30    .VALUE 4
+                           A    31    .CLASS 8
+                           A    32    .TYPE 2
+                           A    33    .ENDEF
+                           A    34    .DEFINE "field_width"
+                           A    35    .VALUE 5
+                           A    36    .CLASS 8
+                           A    37    .TYPE 2
+                           A    38    .ENDEF
+                           A    39    .DEFINE "precision"
+                           A    40    .VALUE 6
+                           A    41    .CLASS 8
+                           A    42    .TYPE 2
+                           A    43    .ENDEF
+                           A    44    .DEFINE "set_begin"
+                           A    45    .VALUE 7
+                           A    46    .CLASS 8
+                           A    47    .TYPE 34
+                           A    48    .ENDEF
+                           A    49    .DEFINE "set_end"
+                           A    50    .VALUE 10
+                           A    51    .CLASS 8
+                           A    52    .TYPE 34
+                           A    53    .ENDEF
+                           A    54    .DEFINE "pad_whole"
+                           A    55    .VALUE 13
+                           A    56    .CLASS 8
+                           A    57    .TYPE 12
+                           A    58    .ENDEF
+                           A    59    .DEFINE "pad_pre_fract"
+                           A    60    .VALUE 14
+                           A    61    .CLASS 8
+                           A    62    .TYPE 12
+                           A    63    .ENDEF
+                           A    64    .DEFINE "pad_post_fract"
+                           A    65    .VALUE 15
+                           A    66    .CLASS 8
+                           A    67    .TYPE 12
+                           A    68    .ENDEF
+                           A    69    .DEFINE "pad_at"
+                           A    70    .VALUE 16
+                           A    71    .CLASS 8
+                           A    72    .TYPE 34
+                           A    73    .ENDEF
+                           A    74    .ENDREC "fmt_type"
+                           A    75    .BEGREC "flt_info",12
+                           A    76    .DEFINE "flags"
+                           A    77    .VALUE 0
+                           A    78    .CLASS 8
+                           A    79    .TYPE 12
+                           A    80    .ENDEF
+                           A    81    .DEFINE "exp"
+                           A    82    .VALUE 1
+                           A    83    .CLASS 8
+                           A    84    .TYPE 2
+                           A    85    .ENDEF
+                           A    86    .DEFINE "digits"
+                           A    87    .VALUE 2
+                           A    88    .CLASS 8
+                           A    89    .DIM 10
+                           A    90    .TYPE 108
+                           A    91    .ENDEF
+                           A    92    .ENDREC "flt_info"
+                           A    93    .BEGREC "devCap",4
+                           A    94    .DEFINE "devType"
+                           A    95    .VALUE 0
+                           A    96    .CLASS 8
+                           A    97    .TYPE 12
+                           A    98    .ENDEF
+                           A    99    .DEFINE "devHdl"
+                           A   100    .VALUE 1
+                           A   101    .CLASS 8
+                           A   102    .TYPE 33
+                           A   103    .ENDEF
+                           A   104    .ENDREC "devCap"
+                           A   105    .BEGREC "RZK_DEVICE_CB_t",54
+                           A   106    .DEFINE "InUse"
+                           A   107    .VALUE 0
+                           A   108    .CLASS 8
+                           A   109    .TYPE 12
+                           A   110    .ENDEF
+                           A   111    .DEFINE "devName"
+                           A   112    .VALUE 1
+                           A   113    .CLASS 8
+                           A   114    .DIM 12
+                           A   115    .TYPE 98
+                           A   116    .ENDEF
+                           A   117    .DEFINE "fnInit"
+                           A   118    .VALUE 13
+                           A   119    .CLASS 8
+                           A   120    .TYPE 549
+                           A   121    .ENDEF
+                           A   122    .DEFINE "fnStop"
+                           A   123    .VALUE 16
+                           A   124    .CLASS 8
+                           A   125    .TYPE 549
+                           A   126    .ENDEF
+                           A   127    .DEFINE "fnOpen"
+                           A   128    .VALUE 19
+                           A   129    .CLASS 8
+                           A   130    .TYPE 549
+                           A   131    .ENDEF
+                           A   132    .DEFINE "fnClose"
+                           A   133    .VALUE 22
+                           A   134    .CLASS 8
+                           A   135    .TYPE 549
+                           A   136    .ENDEF
+                           A   137    .DEFINE "fnRead"
+                           A   138    .VALUE 25
+                           A   139    .CLASS 8
+                           A   140    .TYPE 549
+                           A   141    .ENDEF
+                           A   142    .DEFINE "fnWrite"
+                           A   143    .VALUE 28
+                           A   144    .CLASS 8
+                           A   145    .TYPE 549
+                           A   146    .ENDEF
+                           A   147    .DEFINE "fnSeek"
+                           A   148    .VALUE 31
+                           A   149    .CLASS 8
+                           A   150    .TYPE 549
+                           A   151    .ENDEF
+                           A   152    .DEFINE "fnGetc"
+                           A   153    .VALUE 34
+                           A   154    .CLASS 8
+                           A   155    .TYPE 549
+                           A   156    .ENDEF
+                           A   157    .DEFINE "fnPutc"
+                           A   158    .VALUE 37
+                           A   159    .CLASS 8
+                           A   160    .TYPE 549
+                           A   161    .ENDEF
+                           A   162    .DEFINE "fnIoctl"
+                           A   163    .VALUE 40
+                           A   164    .CLASS 8
+                           A   165    .TYPE 549
+                           A   166    .ENDEF
+                           A   167    .DEFINE "dvintvector"
+                           A   168    .VALUE 43
+                           A   169    .CLASS 8
+                           A   170    .TYPE 33
+                           A   171    .ENDEF
+                           A   172    .DEFINE "dvivec"
+                           A   173    .VALUE 46
+                           A   174    .CLASS 8
+                           A   175    .TYPE 13
+                           A   176    .ENDEF
+                           A   177    .DEFINE "dvinputoutput"
+                           A   178    .VALUE 48
+                           A   179    .CLASS 8
+                           A   180    .TYPE 44
+                           A   181    .ENDEF
+                           A   182    .DEFINE "devMode"
+                           A   183    .VALUE 51
+                           A   184    .CLASS 8
+                           A   185    .TYPE 2
+                           A   186    .ENDEF
+                           A   187    .DEFINE "dvminor"
+                           A   188    .VALUE 52
+                           A   189    .CLASS 8
+                           A   190    .TYPE 13
+                           A   191    .ENDEF
+                           A   192    .ENDREC "RZK_DEVICE_CB_t"
+                           A   193    .BEGREC "RZK_INTERRUPT_CB",53
+                           A   194    .DEFINE "CB"
+                           A   195    .VALUE 0
+                           A   196    .CLASS 8
+                           A   197    .DIM 53
+                           A   198    .TYPE 108
+                           A   199    .ENDEF
+                           A   200    .ENDREC "RZK_INTERRUPT_CB"
+                           A   201    .BEGREC "CPU_REG",32
+                           A   202    .DEFINE "regAFz"
+                           A   203    .VALUE 0
+                           A   204    .CLASS 8
+                           A   205    .TYPE 15
+                           A   206    .ENDEF
+                           A   207    .DEFINE "regBCz"
+                           A   208    .VALUE 4
+                           A   209    .CLASS 8
+                           A   210    .TYPE 15
+                           A   211    .ENDEF
+                           A   212    .DEFINE "regDEz"
+                           A   213    .VALUE 8
+                           A   214    .CLASS 8
+                           A   215    .TYPE 15
+                           A   216    .ENDEF
+                           A   217    .DEFINE "regHLz"
+                           A   218    .VALUE 12
+                           A   219    .CLASS 8
+                           A   220    .TYPE 15
+                           A   221    .ENDEF
+                           A   222    .DEFINE "regIXz"
+                           A   223    .VALUE 16
+                           A   224    .CLASS 8
+                           A   225    .TYPE 15
+                           A   226    .ENDEF
+                           A   227    .DEFINE "regIYz"
+                           A   228    .VALUE 20
+                           A   229    .CLASS 8
+                           A   230    .TYPE 15
+                           A   231    .ENDEF
+                           A   232    .DEFINE "regPCz"
+                           A   233    .VALUE 24
+                           A   234    .CLASS 8
+                           A   235    .TYPE 15
+                           A   236    .ENDEF
+                           A   237    .DEFINE "regSPz"
+                           A   238    .VALUE 28
+                           A   239    .CLASS 8
+                           A   240    .TYPE 15
+                           A   241    .ENDEF
+                           A   242    .ENDREC "CPU_REG"
+                           A   243    .BEGREC "THREADPARAMS_STRUCT_t",22
+                           A   244    .DEFINE "szName"
+                           A   245    .VALUE 0
+                           A   246    .CLASS 8
+                           A   247    .DIM 12
+                           A   248    .TYPE 108
+                           A   249    .ENDEF
+                           A   250    .DEFINE "uState"
+                           A   251    .VALUE 12
+                           A   252    .CLASS 8
+                           A   253    .TYPE 12
+                           A   254    .ENDEF
+                           A   255    .DEFINE "uBankSelector"
+                           A   256    .VALUE 13
+                           A   257    .CLASS 8
+                           A   258    .TYPE 12
+                           A   259    .ENDEF
+                           A   260    .DEFINE "uOperationMode"
+                           A   261    .VALUE 14
+                           A   262    .CLASS 8
+                           A   263    .TYPE 12
+                           A   264    .ENDEF
+                           A   265    .DEFINE "tQuantum"
+                           A   266    .VALUE 15
+                           A   267    .CLASS 8
+                           A   268    .TYPE 14
+                           A   269    .ENDEF
+                           A   270    .DEFINE "cPriority"
+                           A   271    .VALUE 18
+                           A   272    .CLASS 8
+                           A   273    .TYPE 12
+                           A   274    .ENDEF
+                           A   275    .DEFINE "sSignalReceive"
+                           A   276    .VALUE 19
+                           A   277    .CLASS 8
+                           A   278    .TYPE 14
+                           A   279    .ENDEF
+                           A   280    .ENDREC "THREADPARAMS_STRUCT_t"
+                           A   281    .BEGREC "RZK_THREAD_CB",127
+                           A   282    .DEFINE "CB"
+                           A   283    .VALUE 0
+                           A   284    .CLASS 8
+                           A   285    .DIM 127
+                           A   286    .TYPE 108
+                           A   287    .ENDEF
+                           A   288    .ENDREC "RZK_THREAD_CB"
+                           A   289    .BEGREC "SEMAPHOREPARAMS_STRUCT_t",10
+                           A   290    .DEFINE "uState"
+                           A   291    .VALUE 0
+                           A   292    .CLASS 8
+                           A   293    .TYPE 12
+                           A   294    .ENDEF
+                           A   295    .DEFINE "uInitialCount"
+                           A   296    .VALUE 1
+                           A   297    .CLASS 8
+                           A   298    .TYPE 14
+                           A   299    .ENDEF
+                           A   300    .DEFINE "uDynamicCount"
+                           A   301    .VALUE 4
+                           A   302    .CLASS 8
+                           A   303    .TYPE 14
+                           A   304    .ENDEF
+                           A   305    .DEFINE "nNumThreads"
+                           A   306    .VALUE 7
+                           A   307    .CLASS 8
+                           A   308    .TYPE 14
+                           A   309    .ENDEF
+                           A   310    .ENDREC "SEMAPHOREPARAMS_STRUCT_t"
+                           A   311    .BEGREC "RZK_SEMAPHORE_CB",38
+                           A   312    .DEFINE "CB"
+                           A   313    .VALUE 0
+                           A   314    .CLASS 8
+                           A   315    .DIM 38
+                           A   316    .TYPE 108
+                           A   317    .ENDEF
+                           A   318    .ENDREC "RZK_SEMAPHORE_CB"
+                           A   319    	SEGMENT BSS
+000000                     A   320    _SpiSemaphore:
+000000                     A   321    	DS	3
+                           A   322    .DEFINE "SpiSemaphore"
+                           A   323    .ALIAS "_SpiSemaphore"
+                           A   324    .CLASS 83
+                           A   325    .VALUE _SpiSemaphore
+                           A   326    .TYPE 33
+                           A   327    .ENDEF
+000003                     A   328    _ghSPI_isr:
+000003                     A   329    	DS	3
+                           A   330    .DEFINE "ghSPI_isr"
+                           A   331    .ALIAS "_ghSPI_isr"
+                           A   332    .CLASS 83
+                           A   333    .VALUE _ghSPI_isr
+                           A   334    .TYPE 33
+                           A   335    .ENDEF
+000006                     A   336    _spi_tx_buf:
+000006                     A   337    	DS	16
+                           A   338    .DEFINE "spi_tx_buf"
+                           A   339    .ALIAS "_spi_tx_buf"
+                           A   340    .CLASS 83
+                           A   341    .VALUE _spi_tx_buf
+                           A   342    .DIM 16
+                           A   343    .TYPE 108
+                           A   344    .ENDEF
+000016                     A   345    _spi_rx_buf:
+000016                     A   346    	DS	16
+                           A   347    .DEFINE "spi_rx_buf"
+                           A   348    .ALIAS "_spi_rx_buf"
+                           A   349    .CLASS 83
+                           A   350    .VALUE _spi_rx_buf
+                           A   351    .DIM 16
+                           A   352    .TYPE 108
+                           A   353    .ENDEF
+000026                     A   354    _spi_tx_ptr:
+000026                     A   355    	DS	3
+                           A   356    .DEFINE "spi_tx_ptr"
+                           A   357    .ALIAS "_spi_tx_ptr"
+                           A   358    .CLASS 83
+                           A   359    .VALUE _spi_tx_ptr
+                           A   360    .TYPE 44
+                           A   361    .ENDEF
+000029                     A   362    _spi_rx_ptr:
+000029                     A   363    	DS	3
+                           A   364    .DEFINE "spi_rx_ptr"
+                           A   365    .ALIAS "_spi_rx_ptr"
+                           A   366    .CLASS 83
+                           A   367    .VALUE _spi_rx_ptr
+                           A   368    .TYPE 44
+                           A   369    .ENDEF
+00002C                     A   370    _spi_tx_cnt:
+00002C                     A   371    	DS	1
+                           A   372    .DEFINE "spi_tx_cnt"
+                           A   373    .ALIAS "_spi_tx_cnt"
+                           A   374    .CLASS 83
+                           A   375    .VALUE _spi_tx_cnt
+                           A   376    .TYPE 12
+                           A   377    .ENDEF
+00002D                     A   378    _spi_rx_cnt:
+00002D                     A   379    	DS	1
+                           A   380    .DEFINE "spi_rx_cnt"
+                           A   381    .ALIAS "_spi_rx_cnt"
+                           A   382    .CLASS 83
+                           A   383    .VALUE _spi_rx_cnt
+                           A   384    .TYPE 12
+                           A   385    .ENDEF
+00002E                     A   386    _p_touch_gui:
+00002E                     A   387    	DS	3
+                           A   388    .DEFINE "p_touch_gui"
+                           A   389    .ALIAS "_p_touch_gui"
+                           A   390    .CLASS 83
+                           A   391    .VALUE _p_touch_gui
+                           A   392    .TYPE 545
+                           A   393    .ENDEF
+                           A   394    	SEGMENT DATA
+000000                     A   395    _e_spi_state:
+000000 0000                A   396    	DW	0
+000002 00                  A   397    	DB	0
+                           A   398    .DEFINE "e_spi_state"
+                           A   399    .ALIAS "_e_spi_state"
+                           A   400    .CLASS 69
+                           A   401    .VALUE _e_spi_state
+                           A   402    .TYPE 4
+                           A   403    .ENDEF
+                           A   404    ;    1	#include "spi_my.h"
+                           A   405    ;    2	#include <stdio.h>
+                           A   406    ;    3	#include <ez80.h>
+                           A   407    ;    4	#include "ZTypes.h"
+                           A   408    ;    5	#include "ZSysgen.h"
+                           A   409    ;    6	#include "ZDevice.h"
+                           A   410    ;    7	#include "ZInterrupt.h"
+                           A   411    ;    8	#include "ZThread.h"
+                           A   412    ;    9	#include "ZSemaphore.h"
+                           A   413    ;   10	
+                           A   414    ;   11	RZK_SEMAPHOREHANDLE_t SpiSemaphore;
+                           A   415    ;   12	RZK_THREADHANDLE_t ghSPI_isr;
+                           A   416    ;   13	#define SPI_ISR_STACK_SIZE		1024	
+                           A   417    ;   14	#define SPI_ISR_PRIORITY	6	    /**
+                           A   418    ;   15	
+                           A   419    ;   16	#define ENABLE_PIN_IRQ do{PB_ALT2|=0x40
+                           A   420    ;   17	#define DISABLE_PIN_IRQ do{PB_ALT2&=0xD
+                           A   421    ;   18	#define SPI_SLAVE_PIN_SELECT do{PB_DR&=
+                           A   422    ;   19	#define SPI_SLAVE_PIN_DESELECT do{PB_DR
+                           A   423    ;   20	
+                           A   424    ;   21	#define IRQ_EN				 0x80
+                           A   425    ;   22	#define SPI_EN				 0x20
+                           A   426    ;   23	#define MASTER_EN			 0x10
+                           A   427    ;   24	#define CPOL				 0x08
+                           A   428    ;   25	#define CPHA				 0x04
+                           A   429    ;   26	
+                           A   430    ;   27	#define SPIF				 0x80
+                           A   431    ;   28	#define WCOL				 0x40
+                           A   432    ;   29	#define MODF				 0x10
+                           A   433    ;   30	
+                           A   434    ;   31	#define SPI_BUSY		     0x01
+                           A   435    ;   32	
+                           A   436    ;   33	#define SPICMD_STATUS 1
+                           A   437    ;   34	
+                           A   438    ;   35	#define SPICMD_STATUS_reset	8
+                           A   439    ;   36	#define SPICMD_STATUS_calibrate	4
+                           A   440    ;   37	#define SPICMD_STATUS_untouch	2
+                           A   441    ;   38	#define SPICMD_STATUS_touch	1
+                           A   442    ;   39	//STATUS output bytes
+                           A   443    ;   40	//STATUS bits
+                           A   444    ;   41	//0-touch detect
+                           A   445    ;   42	//1- untouch detect
+                           A   446    ;   43	//2- 1-calibrated 0-uncalibrated
+                           A   447    ;   44	//3- reset status 1-reset irq
+                           A   448    ;   45	//4-7 осталось количество точек в буфер
+                           A   449    ;   46	//IRQ enable registr
+                           A   450    ;   47	//0-touch irq bit
+                           A   451    ;   48	//1- untouch irq bit
+                           A   452    ;   49	//X point LSByte
+                           A   453    ;   50	//X point MSbyte
+                           A   454    ;   51	//Y point LSByte
+                           A   455    ;   52	//Y point MSByte
+                           A   456    ;   53	#define SPICMD_CALIBRATE 2
+                           A   457    ;   54	//SPICMD_CALIBRATE input bytes
+                           A   458    ;   55	//number point (1..5),0-reset calibrate
+                           A   459    ;   56	//display X point LSByte
+                           A   460    ;   57	//display X point MSByte
+                           A   461    ;   58	//display Y point LSByte
+                           A   462    ;   59	//display Y point MSByte
+                           A   463    ;   60	//touch X point LSByte
+                           A   464    ;   61	//touch X point MSByte
+                           A   465    ;   62	//touch Y point LSByte
+                           A   466    ;   63	//touch Y point MSByte
+                           A   467    ;   64	#define SPICMD_IRQENABLE 3
+                           A   468    ;   65	//IRQ ENABLE 1-ENABLE IRQ
+                           A   469    ;   66	#define SPICMD_IRQDISABLE 4
+                           A   470    ;   67	//input bytes
+                           A   471    ;   68	//IRQ ENABLE 1-DISABLE IRQ
+                           A   472    ;   69	#define SPICMD_SLEEP 5
+                           A   473    ;   70	#define SPICMD_RESET 6
+                           A   474    ;   71	volatile UINT8 spi_tx_buf[16];
+                           A   475    ;   72	volatile UINT8 spi_rx_buf[16];
+                           A   476    ;   73	volatile UINT8 *spi_tx_ptr;
+                           A   477    ;   74	volatile UINT8 *spi_rx_ptr;
+                           A   478    ;   75	volatile UINT8 spi_tx_cnt;
+                           A   479    ;   76	volatile UINT8 spi_rx_cnt;
+                           A   480    ;   77	void (*p_touch_gui)(INT16 x,INT16 y,UIN
+                           A   481    ;   78	
+                           A   482    ;   79	enum {SpiIdle,SpiStatus,SpiCalibrate,Sp
+                           A   483    	SEGMENT CODE
+                           A   484    ;   80	
+                           A   485    ;   81	extern void spi_pin_isr(void);
+                           A   486    ;   82	extern void spi_isr(void);
+                           A   487    ;   83	void SpiIsrTask(void);
+                           A   488    ;   84	
+                           A   489    ;   85	void spi_open(void(*touch_gui)(INT16 x,
+                           A   490    ;   86	{
+000000                     A   491    _spi_open:
+                           A   492    .DEFINE "_spi_open"
+                           A   493    
+                           A   494    .VALUE _spi_open
+                           A   495    
+                           A   496    .CLASS 2
+                           A   497    
+                           A   498    .TYPE 65
+                           A   499    
+                           A   500    .ENDEF
+                           A   501    
+                           A   502    .BEGFUNC "spi_open",86,"_spi_open"
+                           A   503    
+                           A   504    .LINE 86
+                           A   505    
+                           A   506    .DEFINE "touch_gui"
+                           A   507    
+                           A   508    .CLASS 65
+                           A   509    
+                           A   510    .VALUE 6
+                           A   511    
+                           A   512    .TYPE 545
+                           A   513    
+                           A   514    .ENDEF
+                           A   515    
+000000 DDE5                A   516    	PUSH	IX
+000002 DD210000 00         A   517    	LD	IX,0
+000007 DD39                A   518    	ADD	IX,SP
+                           A   519    ;   87	//PB3 SCK
+                           A   520    ;   88	//PB2 ~SS input 10k to vdd
+                           A   521    ;   89	//PB6 MISO
+                           A   522    ;   90	//PB7 MOSI
+                           A   523    ;   91	//ALT2-1,ALT1-0,DDR-1,DR-0
+                           A   524    ;   92	//PB4 ~SS output
+                           A   525    ;   93	//ALT2-0,ALT1-1,DDR-0,DR-1
+                           A   526    ;   94	//PB5 IRQ input active High level
+                           A   527    ;   95	//ALT2-1,ALT1-1,DDR-0,DR-1
+                           A   528    ;   96	
+                           A   529    ;   97	//ALT2 or 0xEC and 0xEF	
+                           A   530    ;   98	//ALT1 or 0x30 and 0x33
+                           A   531    ;   99	//DDR or 0xCC and 0xCF
+                           A   532    ;  100	//DR or 0x30 and 0x33
+                           A   533    ;  101		RZKInstallInterruptHandler( (RZK_FN
+                           A   534    .LINE 101
+                           A   535    
+000009 01B40000            A   536    	LD	BC,180
+00000D C5                  A   537    	PUSH	BC
+00000E 01 00 00 00         A   538    	LD	BC,_spi_pin_isr
+000012 C5                  A   539    	PUSH	BC
+000013 CD 00 00 00         A   540    	CALL	_RZKInstallInterruptHandler
+000017 C1                  A   541    	POP	BC
+000018 C1                  A   542    	POP	BC
+                           A   543    ;  102		RZKInstallInterruptHandler( (RZK_FN
+                           A   544    .LINE 102
+                           A   545    
+000019 017C0000            A   546    	LD	BC,124
+00001D C5                  A   547    	PUSH	BC
+00001E 01 00 00 00         A   548    	LD	BC,_spi_isr
+000022 C5                  A   549    	PUSH	BC
+000023 CD 00 00 00         A   550    	CALL	_RZKInstallInterruptHandler
+000027 C1                  A   551    	POP	BC
+000028 C1                  A   552    	POP	BC
+                           A   553    ;  103		PB_DR&=0x33;
+                           A   554    .LINE 103
+                           A   555    
+000029 ED389A              A   556    	IN0	A,(154)
+00002C E633                A   557    	AND	A,%33
+00002E ED399A              A   558    	OUT0	(154),A
+                           A   559    ;  104		PB_DR|=0x30;
+                           A   560    .LINE 104
+                           A   561    
+000031 ED389A              A   562    	IN0	A,(154)
+000034 F630                A   563    	OR	A,%30
+000036 ED399A              A   564    	OUT0	(154),A
+                           A   565    ;  105		PB_DDR&=0xCF;
+                           A   566    .LINE 105
+                           A   567    
+000039 ED389B              A   568    	IN0	A,(155)
+00003C E6CF                A   569    	AND	A,%CF
+00003E ED399B              A   570    	OUT0	(155),A
+                           A   571    ;  106		PB_DDR|=0xCC;
+                           A   572    .LINE 106
+                           A   573    
+000041 ED389B              A   574    	IN0	A,(155)
+000044 F6CC                A   575    	OR	A,%CC
+000046 ED399B              A   576    	OUT0	(155),A
+                           A   577    ;  107		PB_ALT1&=0x33;
+                           A   578    .LINE 107
+                           A   579    
+000049 ED389C              A   580    	IN0	A,(156)
+00004C E633                A   581    	AND	A,%33
+00004E ED399C              A   582    	OUT0	(156),A
+                           A   583    ;  108		PB_ALT1|=0x30;
+                           A   584    .LINE 108
+                           A   585    
+000051 ED389C              A   586    	IN0	A,(156)
+000054 F630                A   587    	OR	A,%30
+000056 ED399C              A   588    	OUT0	(156),A
+                           A   589    ;  109		PB_ALT2&=0xEF;
+                           A   590    .LINE 109
+                           A   591    
+000059 ED389D              A   592    	IN0	A,(157)
+00005C CBA7                A   593    	RES	%4,A
+00005E ED399D              A   594    	OUT0	(157),A
+                           A   595    ;  110		PB_ALT2|=0xEC;
+                           A   596    .LINE 110
+                           A   597    
+000061 ED389D              A   598    	IN0	A,(157)
+000064 F6EC                A   599    	OR	A,%EC
+000066 ED399D              A   600    	OUT0	(157),A
+                           A   601    ;  111		SPI_BRG_L=25;
+                           A   602    .LINE 111
+                           A   603    
+000069 3E19                A   604    	LD	A,%19
+00006B ED39B8              A   605    	OUT0	(184),A
+                           A   606    ;  112		SPI_BRG_H=0;
+                           A   607    .LINE 112
+                           A   608    
+00006E AF                  A   609    	XOR	A,A
+00006F ED39B9              A   610    	OUT0	(185),A
+                           A   611    ;  113		SPI_CTL=0x24;
+                           A   612    .LINE 113
+                           A   613    
+000072 3E24                A   614    	LD	A,%24
+000074 ED39BA              A   615    	OUT0	(186),A
+                           A   616    ;  114		SPI_CTL|=IRQ_EN;
+                           A   617    .LINE 114
+                           A   618    
+000077 ED38BA              A   619    	IN0	A,(186)
+00007A CBFF                A   620    	SET	%7,A
+00007C ED39BA              A   621    	OUT0	(186),A
+                           A   622    ;  115		p_touch_gui=touch_gui;
+                           A   623    .LINE 115
+                           A   624    
+00007F DD0706              A   625    	LD	BC,(IX+%6)
+000082 ED43 2E 00 00       A   626    	LD	(_p_touch_gui),BC
+                           A   627    ;  116		ghSPI_isr = RZKCreateThreadEnhanced
+                           A   628    ;  117						(RZK_PTR_t)SpiIsrTa
+                           A   629    ;  118						NULL,
+                           A   630    ;  119						SPI_ISR_STACK_SIZE,
+                           A   631    ;  120						SPI_ISR_PRIORITY,
+                           A   632    ;  121						0, 
+                           A   633    ;  122						RZK_THREAD_PREEMPTI
+                           A   634    .LINE 122
+                           A   635    
+000087 01000000            A   636    	LD	BC,0
+00008B C5                  A   637    	PUSH	BC
+00008C 01840000            A   638    	LD	BC,132
+000090 C5                  A   639    	PUSH	BC
+000091 01000000            A   640    	LD	BC,0
+000095 C5                  A   641    	PUSH	BC
+000096 01060000            A   642    	LD	BC,6
+00009A C5                  A   643    	PUSH	BC
+00009B 01000400            A   644    	LD	BC,1024
+00009F C5                  A   645    	PUSH	BC
+0000A0 01000000            A   646    	LD	BC,0
+0000A4 C5                  A   647    	PUSH	BC
+0000A5 01 A9 01 00         A   648    	LD	BC,_SpiIsrTask
+0000A9 C5                  A   649    	PUSH	BC
+0000AA 01 00 00 00         A   650    	LD	BC,L__0
+0000AE C5                  A   651    	PUSH	BC
+0000AF CD 00 00 00         A   652    	CALL	_RZKCreateThreadEnhanced
+0000B3 FD211800 00         A   653    	LD	IY,24
+0000B8 FD39                A   654    	ADD	IY,SP
+0000BA FDF9                A   655    	LD	SP,IY
+0000BC 22 03 00 00         A   656    	LD	(_ghSPI_isr),HL
+                           A   657    ;  123		if( ghSPI_isr == NULL )
+                           A   658    .LINE 123
+                           A   659    
+0000C0 2A 03 00 00         A   660    	LD	HL,(_ghSPI_isr)
+0000C4 CD 00 00 00         A   661    	CALL	__icmpzero
+0000C8 20 16               A   662    	JR	NZ,L_1
+                           A   663    ;  124		{
+                           A   664    ;  125			printf("\nUnable to create the 
+                           A   665    .LINE 125
+                           A   666    
+0000CA 01 08 00 00         A   667    	LD	BC,L__2
+0000CE C5                  A   668    	PUSH	BC
+0000CF CD 00 00 00         A   669    	CALL	_printf
+0000D3 C1                  A   670    	POP	BC
+                           A   671    ;  126			RZKFormatError( RZKGetErrorNum(
+                           A   672    .LINE 126
+                           A   673    
+0000D4 CD 00 00 00         A   674    	CALL	_RZKGetErrorNum
+0000D8 E5                  A   675    	PUSH	HL
+0000D9 CD 00 00 00         A   676    	CALL	_RZKFormatError
+0000DD C1                  A   677    	POP	BC
+                           A   678    ;  127			return ;
+                           A   679    .LINE 127
+                           A   680    
+0000DE 18 34               A   681    	JR	L_3
+                           A   682    ;  128		}
+0000E0                     A   683    L_1:
+                           A   684    .LINE 128
+                           A   685    
+                           A   686    ;  129		SpiSemaphore=RZKCreateSemaphore((RZ
+                           A   687    .LINE 129
+                           A   688    
+0000E0 01010000            A   689    	LD	BC,1
+0000E4 C5                  A   690    	PUSH	BC
+0000E5 C5                  A   691    	PUSH	BC
+0000E6 01 34 00 00         A   692    	LD	BC,L__3
+0000EA C5                  A   693    	PUSH	BC
+0000EB CD 00 00 00         A   694    	CALL	_RZKCreateSemaphore
+0000EF C1                  A   695    	POP	BC
+0000F0 C1                  A   696    	POP	BC
+0000F1 C1                  A   697    	POP	BC
+0000F2 22 00 00 00         A   698    	LD	(_SpiSemaphore),HL
+                           A   699    ;  130		if( SpiSemaphore == NULL )
+                           A   700    .LINE 130
+                           A   701    
+0000F6 2A 00 00 00         A   702    	LD	HL,(_SpiSemaphore)
+0000FA CD 00 00 00         A   703    	CALL	__icmpzero
+0000FE 20 14               A   704    	JR	NZ,L_3
+                           A   705    ;  131		{
+                           A   706    ;  132			printf("\nUnable to create the 
+                           A   707    .LINE 132
+                           A   708    
+000100 01 42 00 00         A   709    	LD	BC,L__5
+000104 C5                  A   710    	PUSH	BC
+000105 CD 00 00 00         A   711    	CALL	_printf
+000109 C1                  A   712    	POP	BC
+                           A   713    ;  133			RZKFormatError( RZKGetErrorNum(
+                           A   714    .LINE 133
+                           A   715    
+00010A CD 00 00 00         A   716    	CALL	_RZKGetErrorNum
+00010E E5                  A   717    	PUSH	HL
+00010F CD 00 00 00         A   718    	CALL	_RZKFormatError
+000113 C1                  A   719    	POP	BC
+                           A   720    ;  134			return ;
+                           A   721    ;  135		}
+                           A   722    ;  136	}
+000114                     A   723    L_3:
+                           A   724    .LINE 136
+                           A   725    
+000114 DDF9                A   726    	LD	SP,IX
+000116 DDE1                A   727    	POP	IX
+000118 C9                  A   728    	RET	
+                           A   729    
+                           A   730    
+                           A   731    ;**************************** _spi_open *******
+                           A   732    ;Name                         Addr/Register   S
+                           A   733    ;_SpiSemaphore                       STATIC    
+                           A   734    ;_RZKCreateSemaphore                 IMPORT  --
+                           A   735    ;_RZKGetErrorNum                     IMPORT  --
+                           A   736    ;_RZKFormatError                     IMPORT  --
+                           A   737    ;_printf                             IMPORT  --
+                           A   738    ;_ghSPI_isr                          STATIC    
+                           A   739    ;_SpiIsrTask                         IMPORT  --
+                           A   740    ;_RZKCreateThreadEnhanced            IMPORT  --
+                           A   741    ;_p_touch_gui                        STATIC    
+                           A   742    ;_spi_isr                            IMPORT  --
+                           A   743    ;_spi_pin_isr                        IMPORT  --
+                           A   744    ;_RZKInstallInterruptHandler         IMPORT  --
+                           A   745    ;touch_gui                             IX+6    
+                           A   746    
+                           A   747    
+                           A   748    ; Stack Frame Size: 9 (bytes)
+                           A   749    ;       Spill Code: 0 (instruction)
+                           A   750    
+                           A   751    
+                           A   752    .ENDFUNC "spi_open",136,"_spi_open"
+                           A   753    	SEGMENT STRSECT
+000000                     A   754    L__0:
+000000 5350495F 495352     A   755    	DB	"SPI_ISR"
+000007 00                  A   756    	DB	0
+000008                     A   757    L__2:
+000008 0A                  A   758    	DB	10
+000009 556E6162 6C652074   A   759    	DB	"Unable to create the SPI interrupt thr
+000011 6F206372 65617465 
+000019 20746865 20535049 
+000021 20696E74 65727275 
+000029 70742074 68726561 
+000031 6420 
+000033 00                  A   760    	DB	0
+000034                     A   761    L__3:
+000034 53504920 53454D41   A   762    	DB	"SPI SEMAPHORE"
+00003C 50484F52 45 
+000041 00                  A   763    	DB	0
+000042                     A   764    L__5:
+000042 0A                  A   765    	DB	10
+000043 556E6162 6C652074   A   766    	DB	"Unable to create the SPI semaphore "
+00004B 6F206372 65617465 
+000053 20746865 20535049 
+00005B 2073656D 6170686F 
+000063 726520 
+000066 00                  A   767    	DB	0
+                           A   768    	SEGMENT CODE
+                           A   769    ;  137	
+                           A   770    ;  138	void SpiSendCmd(UINT8 cmd)
+                           A   771    ;  139	{
+000119                     A   772    _SpiSendCmd:
+                           A   773    .DEFINE "_SpiSendCmd"
+                           A   774    
+                           A   775    .VALUE _SpiSendCmd
+                           A   776    
+                           A   777    .CLASS 2
+                           A   778    
+                           A   779    .TYPE 65
+                           A   780    
+                           A   781    .ENDEF
+                           A   782    
+                           A   783    .BEGFUNC "SpiSendCmd",139,"_SpiSendCmd"
+                           A   784    
+                           A   785    .LINE 139
+                           A   786    
+                           A   787    .DEFINE "cmd"
+                           A   788    
+                           A   789    .CLASS 65
+                           A   790    
+                           A   791    .VALUE 6
+                           A   792    
+                           A   793    .TYPE 12
+                           A   794    
+                           A   795    .ENDEF
+                           A   796    
+000119 DDE5                A   797    	PUSH	IX
+00011B DD210000 00         A   798    	LD	IX,0
+000120 DD39                A   799    	ADD	IX,SP
+                           A   800    ;  140		RZKAcquireSemaphore(SpiSemaphore,MA
+                           A   801    .LINE 140
+                           A   802    
+000122 01FFFFFF            A   803    	LD	BC,16777215
+000126 C5                  A   804    	PUSH	BC
+000127 ED4B 00 00 00       A   805    	LD	BC,(_SpiSemaphore)
+00012C C5                  A   806    	PUSH	BC
+00012D CD 00 00 00         A   807    	CALL	_RZKAcquireSemaphore
+000131 C1                  A   808    	POP	BC
+000132 C1                  A   809    	POP	BC
+                           A   810    ;  141		switch(cmd)
+                           A   811    .LINE 141
+                           A   812    
+000133 DD7E06              A   813    	LD	A,(IX+%6)
+000136 B7ED62              A   814    	UEXT	HL
+000139 6F                  A   815    	LD	L,A
+00013A CD 00 00 00         A   816    	CALL	__seqcaseD
+00013E E9                  A   817    	JP	(HL)
+00013F                     A   818    L__7:
+00013F 0600                A   819    	DW	6
+000141 0100                A   820    	DW	1
+000143 00                  A   821    	DB	0
+000144 590100              A   822    	DW24	L_4	
+                           A   823    
+000147 640100              A   824    	DW24	L_5	
+                           A   825    
+00014A 6F0100              A   826    	DW24	L_6	
+                           A   827    
+00014D 7A0100              A   828    	DW24	L_7	
+                           A   829    
+000150 850100              A   830    	DW24	L_8	
+                           A   831    
+000153 900100              A   832    	DW24	L_9	
+                           A   833    
+000156 9B0100              A   834    	DW24	L_10	
+                           A   835    
+                           A   836    ;  142		{
+                           A   837    ;  143			case SpiStatus:
+000159                     A   838    L_4:
+                           A   839    .LINE 143
+                           A   840    
+                           A   841    ;  144				e_spi_state=SpiStatus;
+                           A   842    .LINE 144
+                           A   843    
+000159 01010000            A   844    	LD	BC,1
+00015D ED43 00 00 00       A   845    	LD	(_e_spi_state),BC
+                           A   846    ;  145				break;
+                           A   847    .LINE 145
+                           A   848    
+000162 18 40               A   849    	JR	L_11
+                           A   850    ;  146			case SpiCalibrate:
+000164                     A   851    L_5:
+                           A   852    .LINE 146
+                           A   853    
+                           A   854    ;  147				e_spi_state=SpiCalibrate;
+                           A   855    .LINE 147
+                           A   856    
+000164 01020000            A   857    	LD	BC,2
+000168 ED43 00 00 00       A   858    	LD	(_e_spi_state),BC
+                           A   859    ;  148				break;
+                           A   860    .LINE 148
+                           A   861    
+00016D 18 35               A   862    	JR	L_11
+                           A   863    ;  149			case SpiIrqEnable:
+00016F                     A   864    L_6:
+                           A   865    .LINE 149
+                           A   866    
+                           A   867    ;  150				e_spi_state=SpiIrqEnable;
+                           A   868    .LINE 150
+                           A   869    
+00016F 01030000            A   870    	LD	BC,3
+000173 ED43 00 00 00       A   871    	LD	(_e_spi_state),BC
+                           A   872    ;  151				break;
+                           A   873    .LINE 151
+                           A   874    
+000178 18 2A               A   875    	JR	L_11
+                           A   876    ;  152			case SpiIrqDisable:
+00017A                     A   877    L_7:
+                           A   878    .LINE 152
+                           A   879    
+                           A   880    ;  153				e_spi_state=SpiIrqDisable;
+                           A   881    .LINE 153
+                           A   882    
+00017A 01040000            A   883    	LD	BC,4
+00017E ED43 00 00 00       A   884    	LD	(_e_spi_state),BC
+                           A   885    ;  154				break;
+                           A   886    .LINE 154
+                           A   887    
+000183 18 1F               A   888    	JR	L_11
+                           A   889    ;  155			case SpiSleep:
+000185                     A   890    L_8:
+                           A   891    .LINE 155
+                           A   892    
+                           A   893    ;  156				e_spi_state=SpiSleep;
+                           A   894    .LINE 156
+                           A   895    
+000185 01050000            A   896    	LD	BC,5
+000189 ED43 00 00 00       A   897    	LD	(_e_spi_state),BC
+                           A   898    ;  157				break;
+                           A   899    .LINE 157
+                           A   900    
+00018E 18 14               A   901    	JR	L_11
+                           A   902    ;  158			case SpiReset:
+000190                     A   903    L_9:
+                           A   904    .LINE 158
+                           A   905    
+                           A   906    ;  159				e_spi_state=SpiReset;
+                           A   907    .LINE 159
+                           A   908    
+000190 01060000            A   909    	LD	BC,6
+000194 ED43 00 00 00       A   910    	LD	(_e_spi_state),BC
+                           A   911    ;  160				break;
+                           A   912    .LINE 160
+                           A   913    
+000199 18 09               A   914    	JR	L_11
+                           A   915    ;  161			default: e_spi_state=SpiIdle;
+00019B                     A   916    L_10:
+                           A   917    .LINE 161
+                           A   918    
+00019B 01000000            A   919    	LD	BC,0
+00019F ED43 00 00 00       A   920    	LD	(_e_spi_state),BC
+                           A   921    ;  162			}
+                           A   922    ;  163	}
+0001A4                     A   923    L_11:
+                           A   924    .LINE 163
+                           A   925    
+0001A4 DDF9                A   926    	LD	SP,IX
+0001A6 DDE1                A   927    	POP	IX
+0001A8 C9                  A   928    	RET	
+                           A   929    
+                           A   930    
+                           A   931    ;**************************** _SpiSendCmd *****
+                           A   932    ;Name                         Addr/Register   S
+                           A   933    ;_e_spi_state                        STATIC    
+                           A   934    ;_SpiSemaphore                       STATIC    
+                           A   935    ;_RZKAcquireSemaphore                IMPORT  --
+                           A   936    ;cmd                                   IX+6    
+                           A   937    
+                           A   938    
+                           A   939    ; Stack Frame Size: 9 (bytes)
+                           A   940    ;       Spill Code: 0 (instruction)
+                           A   941    
+                           A   942    
+                           A   943    .ENDFUNC "SpiSendCmd",163,"_SpiSendCmd"
+                           A   944    ;  164	void SpiIsrTask(void)
+                           A   945    ;  165	{
+0001A9                     A   946    _SpiIsrTask:
+                           A   947    .DEFINE "_SpiIsrTask"
+                           A   948    
+                           A   949    .VALUE _SpiIsrTask
+                           A   950    
+                           A   951    .CLASS 2
+                           A   952    
+                           A   953    .TYPE 65
+                           A   954    
+                           A   955    .ENDEF
+                           A   956    
+0001A9 DDE5                A   957    	PUSH	IX
+0001AB DD210000 00         A   958    	LD	IX,0
+0001B0 DD39                A   959    	ADD	IX,SP
+                           A   960    .BEGFUNC "SpiIsrTask",165,"_SpiIsrTask"
+                           A   961    
+                           A   962    ;  166		while(1)
+0001B2                     A   963    L_19:
+                           A   964    .LINE 166
+                           A   965    
+                           A   966    ;  167		{
+                           A   967    ;  168			switch(e_spi_state)
+                           A   968    .LINE 168
+                           A   969    
+0001B2 2A 00 00 00         A   970    	LD	HL,(_e_spi_state)
+0001B6 CD 00 00 00         A   971    	CALL	__seqcaseD
+0001BA E9                  A   972    	JP	(HL)
+0001BB                     A   973    L__9:
+0001BB 0600                A   974    	DW	6
+0001BD 0100                A   975    	DW	1
+0001BF 00                  A   976    	DB	0
+0001C0 D50100              A   977    	DW24	L_12	
+                           A   978    
+0001C3 FB0100              A   979    	DW24	L_18	
+                           A   980    
+0001C6 FB0100              A   981    	DW24	L_18	
+                           A   982    
+0001C9 FB0100              A   983    	DW24	L_18	
+                           A   984    
+0001CC FB0100              A   985    	DW24	L_18	
+                           A   986    
+0001CF FB0100              A   987    	DW24	L_18	
+                           A   988    
+0001D2 FB0100              A   989    	DW24	L_18	
+                           A   990    
+                           A   991    ;  169			{
+                           A   992    ;  170				case SpiStatus:
+0001D5                     A   993    L_12:
+                           A   994    .LINE 170
+                           A   995    
+                           A   996    ;  171					p_touch_gui(1,2,3);
+                           A   997    .LINE 171
+                           A   998    
+0001D5 FD2A 2E 00 00       A   999    	LD	IY,(_p_touch_gui)
+0001DA 01030000            A  1000    	LD	BC,3
+0001DE C5                  A  1001    	PUSH	BC
+0001DF 01020000            A  1002    	LD	BC,2
+0001E3 C5                  A  1003    	PUSH	BC
+0001E4 01010000            A  1004    	LD	BC,1
+0001E8 C5                  A  1005    	PUSH	BC
+0001E9 CD 00 00 00         A  1006    	CALL	__indcall
+0001ED C1                  A  1007    	POP	BC
+0001EE C1                  A  1008    	POP	BC
+0001EF C1                  A  1009    	POP	BC
+                           A  1010    ;  172					RZKReleaseSemaphore(Spi
+                           A  1011    .LINE 172
+                           A  1012    
+0001F0 ED4B 00 00 00       A  1013    	LD	BC,(_SpiSemaphore)
+0001F5 C5                  A  1014    	PUSH	BC
+0001F6 CD 00 00 00         A  1015    	CALL	_RZKReleaseSemaphore
+0001FA C1                  A  1016    	POP	BC
+                           A  1017    ;  173					break;
+                           A  1018    ;  174				case SpiCalibrate:
+                           A  1019    ;  175					break;
+                           A  1020    ;  176				case SpiIrqEnable:
+                           A  1021    ;  177					break;
+                           A  1022    ;  178				case SpiIrqDisable:
+                           A  1023    ;  179					break;
+                           A  1024    ;  180				case SpiSleep:
+                           A  1025    ;  181					break;
+                           A  1026    ;  182				case SpiReset:
+                           A  1027    ;  183					break;
+                           A  1028    ;  184			}
+0001FB                     A  1029    L_18:
+                           A  1030    .LINE 184
+                           A  1031    
+                           A  1032    ;  185			e_spi_state=SpiIdle;
+                           A  1033    .LINE 185
+                           A  1034    
+0001FB 01000000            A  1035    	LD	BC,0
+0001FF ED43 00 00 00       A  1036    	LD	(_e_spi_state),BC
+                           A  1037    ;  186			RZKSuspendInterruptThread();
+                           A  1038    .LINE 186
+                           A  1039    
+000204 CD 00 00 00         A  1040    	CALL	_RZKSuspendInterruptThread
+                           A  1041    ;  187		}
+                           A  1042    .LINE 187
+                           A  1043    
+000208 18 A8               A  1044    	JR	L_19
+                           A  1045    ;  188	}
+                           A  1046    .LINE 188
+                           A  1047    
+00020A DDF9                A  1048    	LD	SP,IX
+00020C DDE1                A  1049    	POP	IX
+00020E C9                  A  1050    	RET	
+                           A  1051    
+                           A  1052    
+                           A  1053    ;**************************** _SpiIsrTask *****
+                           A  1054    ;Name                         Addr/Register   S
+                           A  1055    ;_RZKSuspendInterruptThread          IMPORT  --
+                           A  1056    ;_SpiSemaphore                       STATIC    
+                           A  1057    ;_RZKReleaseSemaphore                IMPORT  --
+                           A  1058    ;_p_touch_gui                        STATIC    
+                           A  1059    ;_e_spi_state                        STATIC    
+                           A  1060    
+                           A  1061    
+                           A  1062    ; Stack Frame Size: 6 (bytes)
+                           A  1063    ;       Spill Code: 0 (instruction)
+                           A  1064    
+                           A  1065    
+                           A  1066    .ENDFUNC "SpiIsrTask",188,"_SpiIsrTask"
+                           A  1067    	XREF _spi_isr:ROM
+                           A  1068    	XREF _spi_pin_isr:ROM
+                           A  1069    	XREF _RZKReleaseSemaphore:ROM
+                           A  1070    	XREF _RZKAcquireSemaphore:ROM
+                           A  1071    	XREF _RZKCreateSemaphore:ROM
+                           A  1072    	XREF _RZKSuspendInterruptThread:ROM
+                           A  1073    	XREF _RZKFormatError:ROM
+                           A  1074    	XREF _RZKGetErrorNum:ROM
+                           A  1075    	XREF _RZKCreateThreadEnhanced:ROM
+                           A  1076    	XREF _RZKInstallInterruptHandler:ROM
+                           A  1077    	XREF _printf:ROM
+                           A  1078    	XREF __indcall:ROM
+                           A  1079    	XREF __icmpzero:ROM
+                           A  1080    	XREF __seqcaseD:ROM
+                           A  1081    	XDEF _SpiIsrTask
+                           A  1082    	XDEF _SpiSendCmd
+                           A  1083    	XDEF _spi_open
+                           A  1084    	XDEF _e_spi_state
+                           A  1085    	XDEF _p_touch_gui
+                           A  1086    	XDEF _spi_rx_cnt
+                           A  1087    	XDEF _spi_tx_cnt
+                           A  1088    	XDEF _spi_rx_ptr
+                           A  1089    	XDEF _spi_tx_ptr
+                           A  1090    	XDEF _spi_rx_buf
+                           A  1091    	XDEF _spi_tx_buf
+                           A  1092    	XDEF _ghSPI_isr
+                           A  1093    	XDEF _SpiSemaphore
+                           A  1094    	END
+
+
+Errors: 0
+Warnings: 0
+Lines Assembled: 1095

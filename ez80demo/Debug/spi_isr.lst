@@ -1,0 +1,104 @@
+Zilog eZ80 Macro Assembler Version 4.3 (19073001)12-Apr-21     15:39:21     page:   1
+
+
+PC     Object              I  Line    Source 
+                           A     1    ;	.include "kernel.inc"
+                           A     2    ;	.include "ez80F91.inc"
+                           A     3    
+                           A     4    
+                           A     5    	.assume ADL=1
+                           A     6    	.extern _RZKResumeInterruptThread
+                           A     7    	.extern _RZKISRProlog
+                           A     8    	.extern _RZKISREpilog
+                           A     9    	.extern _spi_rx_ptr
+                           A    10    	.extern _spi_tx_ptr
+                           A    11    	.extern _spi_tx_cnt
+                           A    12    	.extern _spi_rx_cnt
+                           A    13    	.extern _ghSPI_isr
+                           A    14    	
+                           A    15    	.def	_spi_isr
+                           A    16    	
+000000 00                  A    17       NOP
+000001                     A    18    _spi_isr:
+000001 F5                  A    19    	PUSH	AF
+000002 ED38BB              A    20    	IN0	A,(00BBH);if(SPI_SR&SPIF)
+000005 E680                A    21    	AND	A,%80
+000007 CA A4 00 00         A    22    	JR	Z,L_20
+00000B C5                  A    23    	PUSH	BC;{
+00000C E5                  A    24    	PUSH	HL
+00000D 3A 00 00 00         A    25    	LD	A,(_spi_tx_cnt);if(spi_tx_cnt)
+000011 B7                  A    26    	OR	A,A
+000012 28 44               A    27    	JR	Z,L_18
+000014 3A 00 00 00         A    28    	LD	A,(_spi_tx_cnt);{
+000018 3D                  A    29    	DEC	A				;	spi_tx_cnt--;
+000019 32 00 00 00         A    30    	LD	(_spi_tx_cnt),A
+00001D B7                  A    31    	OR	A,A				;	if(spi_tx_cnt)
+00001E 28 15               A    32    	JR	Z,L_10
+000020 ED4B 00 00 00       A    33    	LD	BC,(_spi_tx_ptr);	{
+000025 03                  A    34    	INC	BC				;		spi_tx_ptr++;
+000026 ED43 00 00 00       A    35    	LD	(_spi_tx_ptr),BC
+00002B 2A 00 00 00         A    36    	LD	HL,(_spi_tx_ptr);		SPI_TSR==*spi_t
+00002F 7E                  A    37    	LD	A,(HL)
+000030 ED39BC              A    38    	OUT0	(0BCH),A	
+000033 18 6D               A    39    	JR	L_15;				}
+000035                     A    40    L_10:	
+000035 32 00 00 00         A    41    	LD	(_spi_rx_cnt),A
+000039 B7                  A    42    	OR	A,A				
+00003A 28 42               A    43    	JR	Z,L_16;				if(spi_rx_cnt==0) g
+00003C ED389A              A    44    	IN0	A,(09AH);			else
+00003F CBE7                A    45    	SET	%4,A;				{
+000041 ED399A              A    46    	OUT0	(09AH),A;			SPI_SLAVE_PIN_D
+000044 00                  A    47    	NOP;						{
+000045 00                  A    48    	NOP
+000046 00                  A    49    	NOP
+000047 00                  A    50    	NOP
+000048 00                  A    51    	NOP
+000049 ED389A              A    52        IN0	A,(09AH);					SPI_SLAVE_P
+00004C CBA7                A    53    	RES	%4,A
+00004E ED399A              A    54    	OUT0	(09AH),A
+000051 3EAA                A    55    	LD	A,%AA;						SPI_TSR=0xA
+000053 ED39BC              A    56    	OUT0	(0BCH),A
+000056 18 4A               A    57    	JR	L_15;				}
+000058                     A    58    L_18:
+000058 2A 00 00 00         A    59    	LD	HL,(_spi_rx_ptr);else
+00005C ED38BC              A    60    	IN0	A,(0BCH);		{
+00005F 77                  A    61    	LD	(HL),A;				*spi_rx_ptr=SPI_RBR
+000060 ED4B 00 00 00       A    62    	LD	BC,(_spi_rx_ptr);	spi_rx_ptr++;
+000065 03                  A    63    	INC	BC
+000066 ED43 00 00 00       A    64    	LD	(_spi_rx_ptr),BC
+00006B 3A 00 00 00         A    65    	LD	A,(_spi_rx_cnt)
+00006F 3D                  A    66    	DEC	A
+000070 32 00 00 00         A    67    	LD	(_spi_rx_cnt),A;	spi_rx_cnt--;
+000074 B7                  A    68    	OR	A,A;				if(spi_rx_cnt)
+000075 28 07               A    69    	JR	Z,L_16;				{
+000077 3EAA                A    70    	LD	A,%AA
+000079 ED39BC              A    71    	OUT0	(0BCH),A;			SPI_TSR=0xAA;//
+00007C 18 24               A    72    	JR	L_15;				}
+00007E                     A    73    L_16:	
+00007E ED389A              A    74    	IN0	A,(09AH);			else
+000081 CBE7                A    75    	SET	%4,A;				{
+000083 ED399A              A    76    	OUT0	(09AH),A;			SPI_SLAVE_PIN_D
+000086 D5                  A    77    	PUSH	DE
+000087 DDE5                A    78    	PUSH	IX
+000089 FDE5                A    79    	PUSH	IY
+00008B CD 00 00 00         A    80    	CALL	_RZKISRProlog
+00008F 2A 00 00 00         A    81    	LD		HL, (_ghSPI_isr)
+000093 E5                  A    82    	PUSH	HL
+000094 CD 00 00 00         A    83    	CALL	_RZKResumeInterruptThread	;Interr
+000098 E1                  A    84    	POP		HL
+000099 CD 00 00 00         A    85    	CALL	_RZKISREpilog
+00009D FDE1                A    86        POP		IY
+00009F DDE1                A    87    	POP     IX;				}
+0000A1 D1                  A    88    	POP		DE;			}
+0000A2                     A    89    L_15:
+0000A2 E1                  A    90    	POP		HL
+0000A3 C1                  A    91     	POP		BC
+0000A4                     A    92    L_20:
+0000A4 F1                  A    93    	POP		AF
+0000A5 FB                  A    94    	EI
+0000A6 ED4D                A    95    	RETI
+
+
+Errors: 0
+Warnings: 0
+Lines Assembled: 96

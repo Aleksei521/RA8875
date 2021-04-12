@@ -1,0 +1,469 @@
+Zilog eZ80 Macro Assembler Version 4.3 (19073001)12-Apr-21     15:39:22     page:   1
+
+
+PC     Object              I  Line    Source 
+                           A     1    ; Zilog eZ80 ANSI C Compiler Release 3.4
+                           A     2    ; -noglobalopt -nolocalcse -optsize -nomodsect 
+                           A     3    ; -nopadbranch -debug -peephole -const=ROM 
+                           A     4    	FILE	"..\RZK\Conf\uart_conf.c"
+                           A     5    	.assume ADL=1
+                           A     6    .DEBUG "C"
+                           A     7    	SEGMENT CODE
+                           A     8    .BEGREC "devCap",4
+                           A     9    .DEFINE "devType"
+                           A    10    .VALUE 0
+                           A    11    .CLASS 8
+                           A    12    .TYPE 12
+                           A    13    .ENDEF
+                           A    14    .DEFINE "devHdl"
+                           A    15    .VALUE 1
+                           A    16    .CLASS 8
+                           A    17    .TYPE 33
+                           A    18    .ENDEF
+                           A    19    .ENDREC "devCap"
+                           A    20    .BEGREC "RZK_DEVICE_CB_t",54
+                           A    21    .DEFINE "InUse"
+                           A    22    .VALUE 0
+                           A    23    .CLASS 8
+                           A    24    .TYPE 12
+                           A    25    .ENDEF
+                           A    26    .DEFINE "devName"
+                           A    27    .VALUE 1
+                           A    28    .CLASS 8
+                           A    29    .DIM 12
+                           A    30    .TYPE 98
+                           A    31    .ENDEF
+                           A    32    .DEFINE "fnInit"
+                           A    33    .VALUE 13
+                           A    34    .CLASS 8
+                           A    35    .TYPE 549
+                           A    36    .ENDEF
+                           A    37    .DEFINE "fnStop"
+                           A    38    .VALUE 16
+                           A    39    .CLASS 8
+                           A    40    .TYPE 549
+                           A    41    .ENDEF
+                           A    42    .DEFINE "fnOpen"
+                           A    43    .VALUE 19
+                           A    44    .CLASS 8
+                           A    45    .TYPE 549
+                           A    46    .ENDEF
+                           A    47    .DEFINE "fnClose"
+                           A    48    .VALUE 22
+                           A    49    .CLASS 8
+                           A    50    .TYPE 549
+                           A    51    .ENDEF
+                           A    52    .DEFINE "fnRead"
+                           A    53    .VALUE 25
+                           A    54    .CLASS 8
+                           A    55    .TYPE 549
+                           A    56    .ENDEF
+                           A    57    .DEFINE "fnWrite"
+                           A    58    .VALUE 28
+                           A    59    .CLASS 8
+                           A    60    .TYPE 549
+                           A    61    .ENDEF
+                           A    62    .DEFINE "fnSeek"
+                           A    63    .VALUE 31
+                           A    64    .CLASS 8
+                           A    65    .TYPE 549
+                           A    66    .ENDEF
+                           A    67    .DEFINE "fnGetc"
+                           A    68    .VALUE 34
+                           A    69    .CLASS 8
+                           A    70    .TYPE 549
+                           A    71    .ENDEF
+                           A    72    .DEFINE "fnPutc"
+                           A    73    .VALUE 37
+                           A    74    .CLASS 8
+                           A    75    .TYPE 549
+                           A    76    .ENDEF
+                           A    77    .DEFINE "fnIoctl"
+                           A    78    .VALUE 40
+                           A    79    .CLASS 8
+                           A    80    .TYPE 549
+                           A    81    .ENDEF
+                           A    82    .DEFINE "dvintvector"
+                           A    83    .VALUE 43
+                           A    84    .CLASS 8
+                           A    85    .TYPE 33
+                           A    86    .ENDEF
+                           A    87    .DEFINE "dvivec"
+                           A    88    .VALUE 46
+                           A    89    .CLASS 8
+                           A    90    .TYPE 13
+                           A    91    .ENDEF
+                           A    92    .DEFINE "dvinputoutput"
+                           A    93    .VALUE 48
+                           A    94    .CLASS 8
+                           A    95    .TYPE 44
+                           A    96    .ENDEF
+                           A    97    .DEFINE "devMode"
+                           A    98    .VALUE 51
+                           A    99    .CLASS 8
+                           A   100    .TYPE 2
+                           A   101    .ENDEF
+                           A   102    .DEFINE "dvminor"
+                           A   103    .VALUE 52
+                           A   104    .CLASS 8
+                           A   105    .TYPE 13
+                           A   106    .ENDEF
+                           A   107    .ENDREC "RZK_DEVICE_CB_t"
+                           A   108    .BEGREC "serialparam",16
+                           A   109    .DEFINE "baud"
+                           A   110    .VALUE 0
+                           A   111    .CLASS 8
+                           A   112    .TYPE 15
+                           A   113    .ENDEF
+                           A   114    .DEFINE "databits"
+                           A   115    .VALUE 4
+                           A   116    .CLASS 8
+                           A   117    .TYPE 13
+                           A   118    .ENDEF
+                           A   119    .DEFINE "stopbits"
+                           A   120    .VALUE 6
+                           A   121    .CLASS 8
+                           A   122    .TYPE 13
+                           A   123    .ENDEF
+                           A   124    .DEFINE "parity"
+                           A   125    .VALUE 8
+                           A   126    .CLASS 8
+                           A   127    .TYPE 4
+                           A   128    .ENDEF
+                           A   129    .DEFINE "settings"
+                           A   130    .VALUE 11
+                           A   131    .CLASS 8
+                           A   132    .TYPE 13
+                           A   133    .ENDEF
+                           A   134    .DEFINE "readDealy"
+                           A   135    .VALUE 13
+                           A   136    .CLASS 8
+                           A   137    .TYPE 14
+                           A   138    .ENDEF
+                           A   139    .ENDREC "serialparam"
+                           A   140    .BEGREC "UART_BLK_S",34
+                           A   141    .DEFINE "State"
+                           A   142    .VALUE 0
+                           A   143    .CLASS 8
+                           A   144    .TYPE 12
+                           A   145    .ENDEF
+                           A   146    .DEFINE "pDev"
+                           A   147    .VALUE 1
+                           A   148    .CLASS 8
+                           A   149    .TAG "RZK_DEVICE_CB_t"
+                           A   150    .TYPE 40
+                           A   151    .ENDEF
+                           A   152    .DEFINE "serparam"
+                           A   153    .VALUE 4
+                           A   154    .CLASS 8
+                           A   155    .TAG "serialparam"
+                           A   156    .TYPE 40
+                           A   157    .ENDEF
+                           A   158    .DEFINE "TxCount"
+                           A   159    .VALUE 7
+                           A   160    .CLASS 8
+                           A   161    .TYPE 12
+                           A   162    .ENDEF
+                           A   163    .DEFINE "pTxTask"
+                           A   164    .VALUE 8
+                           A   165    .CLASS 8
+                           A   166    .TYPE 33
+                           A   167    .ENDEF
+                           A   168    .DEFINE "TxSem"
+                           A   169    .VALUE 11
+                           A   170    .CLASS 8
+                           A   171    .TYPE 33
+                           A   172    .ENDEF
+                           A   173    .DEFINE "RxSem"
+                           A   174    .VALUE 14
+                           A   175    .CLASS 8
+                           A   176    .TYPE 33
+                           A   177    .ENDEF
+                           A   178    .DEFINE "pRxTask"
+                           A   179    .VALUE 17
+                           A   180    .CLASS 8
+                           A   181    .TYPE 33
+                           A   182    .ENDEF
+                           A   183    .DEFINE "RxBufSize"
+                           A   184    .VALUE 20
+                           A   185    .CLASS 8
+                           A   186    .TYPE 13
+                           A   187    .ENDEF
+                           A   188    .DEFINE "RxAvail"
+                           A   189    .VALUE 22
+                           A   190    .CLASS 8
+                           A   191    .TYPE 13
+                           A   192    .ENDEF
+                           A   193    .DEFINE "pRxBuf"
+                           A   194    .VALUE 24
+                           A   195    .CLASS 8
+                           A   196    .TYPE 44
+                           A   197    .ENDEF
+                           A   198    .DEFINE "pReadBuf"
+                           A   199    .VALUE 27
+                           A   200    .CLASS 8
+                           A   201    .TYPE 44
+                           A   202    .ENDEF
+                           A   203    .DEFINE "pWriteBuf"
+                           A   204    .VALUE 30
+                           A   205    .CLASS 8
+                           A   206    .TYPE 44
+                           A   207    .ENDEF
+                           A   208    .DEFINE "UARTbase"
+                           A   209    .VALUE 33
+                           A   210    .CLASS 8
+                           A   211    .TYPE 12
+                           A   212    .ENDEF
+                           A   213    .ENDREC "UART_BLK_S"
+                           A   214    	SEGMENT DATA
+000000                     A   215    _serparams:
+000000 00C20100            A   216    	DL	115200
+000004 0800                A   217    	DW	8
+000006 0100                A   218    	DW	1
+000008 0200                A   219    	DW	2
+00000A 00                  A   220    	DB	0
+00000B 0000                A   221    	DW	0
+00000D FFFF                A   222    	DW	65535
+00000F FF                  A   223    	DB	255
+000010 00C20100            A   224    	DL	115200
+000014 0800                A   225    	DW	8
+000016 0100                A   226    	DW	1
+000018 0200                A   227    	DW	2
+00001A 00                  A   228    	DB	0
+00001B 0000                A   229    	DW	0
+00001D FFFF                A   230    	DW	65535
+00001F FF                  A   231    	DB	255
+                           A   232    .DEFINE "serparams"
+                           A   233    .ALIAS "_serparams"
+                           A   234    .CLASS 69
+                           A   235    .VALUE _serparams
+                           A   236    .DIM 2
+                           A   237    .TAG "serialparam"
+                           A   238    .TYPE 104
+                           A   239    .ENDEF
+000020                     A   240    _Serial0Dev:
+000020 00                  A   241    	DB	0
+000021 53                  A   242    	DB	83
+000022 45                  A   243    	DB	69
+000023 52                  A   244    	DB	82
+000024 49                  A   245    	DB	73
+000025 41                  A   246    	DB	65
+000026 4C                  A   247    	DB	76
+000027 30                  A   248    	DB	48
+000028 00                  A   249    	DB	0
+000029 00                  A   250    	DB	0
+00002A 00                  A   251    	DB	0
+00002B 00                  A   252    	DB	0
+00002C 00                  A   253    	DB	0
+00002D 000000              A   254    	DW24	_UARTInit
+000030 000000              A   255    	DW24	_IOERR
+000033 000000              A   256    	DW24	_UARTOpen
+000036 000000              A   257    	DW24	_UARTClose
+000039 000000              A   258    	DW24	_UARTRead
+00003C 000000              A   259    	DW24	_UARTWrite
+00003F 000000              A   260    	DW24	_IOERR
+000042 000000              A   261    	DW24	_UARTGetc
+000045 000000              A   262    	DW24	_UARTPutc
+000048 000000              A   263    	DW24	_UARTControl
+00004B 000000              A   264    	DW24	_uart0isr
+00004E 0000                A   265    	DW	0
+000050 000000              A   266    	DW24	_Uart0_Blk
+000053 00                  A   267    	DB	0
+000054 0000                A   268    	DW	0
+                           A   269    .DEFINE "Serial0Dev"
+                           A   270    .ALIAS "_Serial0Dev"
+                           A   271    .CLASS 69
+                           A   272    .VALUE _Serial0Dev
+                           A   273    .TAG "RZK_DEVICE_CB_t"
+                           A   274    .TYPE 8
+                           A   275    .ENDEF
+000056                     A   276    _Serial1Dev:
+000056 00                  A   277    	DB	0
+000057 53                  A   278    	DB	83
+000058 45                  A   279    	DB	69
+000059 52                  A   280    	DB	82
+00005A 49                  A   281    	DB	73
+00005B 41                  A   282    	DB	65
+00005C 4C                  A   283    	DB	76
+00005D 31                  A   284    	DB	49
+00005E 00                  A   285    	DB	0
+00005F 00                  A   286    	DB	0
+000060 00                  A   287    	DB	0
+000061 00                  A   288    	DB	0
+000062 00                  A   289    	DB	0
+000063 000000              A   290    	DW24	_UARTInit
+000066 000000              A   291    	DW24	_IOERR
+000069 000000              A   292    	DW24	_UARTOpen
+00006C 000000              A   293    	DW24	_UARTClose
+00006F 000000              A   294    	DW24	_UARTRead
+000072 000000              A   295    	DW24	_UARTWrite
+000075 000000              A   296    	DW24	_IOERR
+000078 000000              A   297    	DW24	_UARTGetc
+00007B 000000              A   298    	DW24	_UARTPutc
+00007E 000000              A   299    	DW24	_UARTControl
+000081 000000              A   300    	DW24	_uart1isr
+000084 0000                A   301    	DW	0
+000086 000000              A   302    	DW24	_Uart1_Blk
+000089 00                  A   303    	DB	0
+00008A 0100                A   304    	DW	1
+                           A   305    .DEFINE "Serial1Dev"
+                           A   306    .ALIAS "_Serial1Dev"
+                           A   307    .CLASS 69
+                           A   308    .VALUE _Serial1Dev
+                           A   309    .TAG "RZK_DEVICE_CB_t"
+                           A   310    .TYPE 8
+                           A   311    .ENDEF
+00008C                     A   312    _b_uart0_iv:
+00008C 70                  A   313    	DB	112
+                           A   314    .DEFINE "b_uart0_iv"
+                           A   315    .ALIAS "_b_uart0_iv"
+                           A   316    .CLASS 69
+                           A   317    .VALUE _b_uart0_iv
+                           A   318    .TYPE 12
+                           A   319    .ENDEF
+00008D                     A   320    _b_uart1_iv:
+00008D 74                  A   321    	DB	116
+                           A   322    .DEFINE "b_uart1_iv"
+                           A   323    .ALIAS "_b_uart1_iv"
+                           A   324    .CLASS 69
+                           A   325    .VALUE _b_uart1_iv
+                           A   326    .TYPE 12
+                           A   327    .ENDEF
+00008E                     A   328    _UART0_TASK_PRIO:
+00008E 06                  A   329    	DB	6
+                           A   330    .DEFINE "UART0_TASK_PRIO"
+                           A   331    .ALIAS "_UART0_TASK_PRIO"
+                           A   332    .CLASS 69
+                           A   333    .VALUE _UART0_TASK_PRIO
+                           A   334    .TYPE 12
+                           A   335    .ENDEF
+00008F                     A   336    _UART0_TASK_STACK_SIZE:
+00008F 0004                A   337    	DW	1024
+000091 00                  A   338    	DB	0
+                           A   339    .DEFINE "UART0_TASK_STACK_SIZE"
+                           A   340    .ALIAS "_UART0_TASK_STACK_SIZE"
+                           A   341    .CLASS 69
+                           A   342    .VALUE _UART0_TASK_STACK_SIZE
+                           A   343    .TYPE 14
+                           A   344    .ENDEF
+000092                     A   345    _UART1_TASK_PRIO:
+000092 06                  A   346    	DB	6
+                           A   347    .DEFINE "UART1_TASK_PRIO"
+                           A   348    .ALIAS "_UART1_TASK_PRIO"
+                           A   349    .CLASS 69
+                           A   350    .VALUE _UART1_TASK_PRIO
+                           A   351    .TYPE 12
+                           A   352    .ENDEF
+000093                     A   353    _UART1_TASK_STACK_SIZE:
+000093 0008                A   354    	DW	2048
+000095 00                  A   355    	DB	0
+                           A   356    .DEFINE "UART1_TASK_STACK_SIZE"
+                           A   357    .ALIAS "_UART1_TASK_STACK_SIZE"
+                           A   358    .CLASS 69
+                           A   359    .VALUE _UART1_TASK_STACK_SIZE
+                           A   360    .TYPE 14
+                           A   361    .ENDEF
+                           A   362    	XREF _uart1isr:ROM
+                           A   363    	XREF _uart0isr:ROM
+                           A   364    	XREF _IOERR:ROM
+                           A   365    	XREF _Uart1_Blk:ROM
+                           A   366    	XREF _Uart0_Blk:ROM
+                           A   367    	XREF _UARTPutc:ROM
+                           A   368    	XREF _UARTGetc:ROM
+                           A   369    	XREF _UARTControl:ROM
+                           A   370    	XREF _UARTWrite:ROM
+                           A   371    	XREF _UARTRead:ROM
+                           A   372    	XREF _UARTClose:ROM
+                           A   373    	XREF _UARTOpen:ROM
+                           A   374    	XREF _UARTInit:ROM
+                           A   375    	XDEF _UART1_TASK_STACK_SIZE
+                           A   376    	XDEF _UART1_TASK_PRIO
+                           A   377    	XDEF _UART0_TASK_STACK_SIZE
+                           A   378    	XDEF _UART0_TASK_PRIO
+                           A   379    	XDEF _b_uart1_iv
+                           A   380    	XDEF _b_uart0_iv
+                           A   381    	XDEF _Serial1Dev
+                           A   382    	XDEF _Serial0Dev
+                           A   383    	XDEF _serparams
+                           A   384    ;    1	/**************************************
+                           A   385    ;    2	 * File       : uart_conf.c
+                           A   386    ;    3	 *
+                           A   387    ;    4	 * Description: Defines the configurabl
+                           A   388    ;    5	 *
+                           A   389    ;    6	 * Copyright 2016 ZiLOG Inc.  ALL RIGHT
+                           A   390    ;    7	 *
+                           A   391    ;    8	 * This file contains unpublished confi
+                           A   392    ;    9	 * of ZiLOG, Inc.
+                           A   393    ;   10	 * NO PART OF THIS WORK MAY BE DUPLICAT
+                           A   394    ;   11	 * IN ANY FORM WITHOUT THE PRIOR WRITTE
+                           A   395    ;   12	 * This is not a license and no use of 
+                           A   396    ;   13	 * in the absence of a written license 
+                           A   397    ;   14	 * sole discretion 
+                           A   398    ;   15	 **************************************
+                           A   399    ;   16	
+                           A   400    ;   17	#include "serial.h"
+                           A   401    ;   18	#include "ZTypes.h"
+                           A   402    ;   19	#include "ZSysgen.h"
+                           A   403    ;   20	#include "ZDevice.h"
+                           A   404    ;   21	#include "_ez80.h"
+                           A   405    ;   22	
+                           A   406    ;   23	#define UART0_THD_STACK_SIZEH          
+                           A   407    ;   24	#define UART0_TASK_PRIOH               
+                           A   408    ;   25	
+                           A   409    ;   26	#define UART1_THD_STACK_SIZEH          
+                           A   410    ;   27	#define UART1_TASK_PRIOH               
+                           A   411    ;   28	
+                           A   412    ;   29	
+                           A   413    ;   30	extern UART_DVIOBLK Uart0_Blk ;
+                           A   414    ;   31	extern UART_DVIOBLK Uart1_Blk ;
+                           A   415    ;   32	extern DDF_STATUS_t IOERR( void );
+                           A   416    ;   33	extern void uart0isr( void );
+                           A   417    ;   34	extern void uart1isr( void );
+                           A   418    ;   35	
+                           A   419    ;   36	/* CR#6571 */
+                           A   420    ;   37	struct serialparam serparams[2] = {{115
+                           A   421    ;   38	                                   {115
+                           A   422    ;   39										};
+                           A   423    ;   40	
+                           A   424    ;   41	/* UART0 Device Control Block Initializ
+                           A   425    ;   42	RZK_DEVICE_CB_t Serial0Dev =
+                           A   426    ;   43	{ 
+                           A   427    ;   44		RZK_FALSE, "SERIAL0",
+                           A   428    ;   45		UARTInit, (FNPTR_RZKDEV_STOP)IOERR,
+                           A   429    ;   46		(FNPTR_RZKDEV_READ)UARTRead, (FNPTR
+                           A   430    ;   47		(FNPTR_RZKDEV_GETC)UARTGetc, (FNPTR
+                           A   431    ;   48		(RZK_PTR_t)uart0isr, 0000, (UINT8*)
+                           A   432    ;   49		 0,0
+                           A   433    ;   50	};
+                           A   434    ;   51	
+                           A   435    ;   52	/* UART1 Device Control Block Initializ
+                           A   436    ;   53	RZK_DEVICE_CB_t Serial1Dev =
+                           A   437    ;   54	{ 
+                           A   438    ;   55		RZK_FALSE, "SERIAL1",
+                           A   439    ;   56		UARTInit, (FNPTR_RZKDEV_STOP)IOERR,
+                           A   440    ;   57		(FNPTR_RZKDEV_READ)UARTRead, (FNPTR
+                           A   441    ;   58		(FNPTR_RZKDEV_GETC)UARTGetc, (FNPTR
+                           A   442    ;   59		(RZK_PTR_t)uart1isr, 0000, (UINT8*)
+                           A   443    ;   60		 0,1
+                           A   444    ;   61	};
+                           A   445    ;   62	
+                           A   446    ;   63	
+                           A   447    ;   64	// **************************
+                           A   448    ;   65	// DO NOT CHANGE ANYTHING BELOW IN THIS
+                           A   449    ;   66	// **************************
+                           A   450    ;   67	
+                           A   451    ;   68	UINT8	b_uart0_iv		= IV_UART0 ;
+                           A   452    ;   69	UINT8	b_uart1_iv		= IV_UART1 ;
+                           A   453    ;   70	
+                           A   454    ;   71	UINT8   UART0_TASK_PRIO					
+                           A   455    ;   72	UINT	UART0_TASK_STACK_SIZE	      	
+                           A   456    ;   73	
+                           A   457    ;   74	
+                           A   458    ;   75	UINT8   UART1_TASK_PRIO      		   
+                           A   459    ;   76	UINT	UART1_TASK_STACK_SIZE        	
+                           A   460    	END
+
+
+Errors: 0
+Warnings: 0
+Lines Assembled: 461

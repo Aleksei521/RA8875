@@ -1,0 +1,50 @@
+Zilog eZ80 Macro Assembler Version 4.3 (19073001)12-Apr-21     15:39:21     page:   1
+
+
+PC     Object              I  Line    Source 
+                           A     1    ;	.include "kernel.inc"
+                           A     2    ;	.include "ez80F91.inc"
+                           A     3    
+                           A     4    
+                           A     5    	.assume ADL=1
+                           A     6    	.extern _spi_rx_ptr
+                           A     7    	.extern _spi_rx_buf
+                           A     8    	.extern _spi_tx_cnt
+                           A     9    	.extern _spi_rx_cnt
+                           A    10    	.extern _e_spi_state
+                           A    11    
+                           A    12    	.def	_spi_pin_isr
+                           A    13    	
+000000 00                  A    14       NOP
+000001                     A    15    _spi_pin_isr:
+000001 F5                  A    16    	PUSH	AF
+                           A    17    	
+                           A    18    	; Disable PB5 interrupt
+000002 ED389D              A    19    	IN0		A,	(009DH)
+000005 CBAF                A    20    	RES		%5,A
+000007 ED399D              A    21        OUT0	(009DH), A
+00000A C5                  A    22    	PUSH	BC
+00000B 01 00 00 00         A    23    	LD	BC,_spi_rx_buf
+00000F ED43 00 00 00       A    24    	LD	(_spi_rx_ptr),BC
+000014 3E01                A    25    	LD	A,%1
+000016 32 00 00 00         A    26    	LD	(_spi_tx_cnt),A
+00001A 3E05                A    27    	LD	A,%5
+00001C 32 00 00 00         A    28    	LD	(_spi_rx_cnt),A
+000020 01000000            A    29    	LD	BC,0
+000024 ED43 00 00 00       A    30    	LD	(_e_spi_state),BC
+000029 C1                  A    31     	POP		BC
+                           A    32    	;SELECT SLAVE PIN
+00002A ED389A              A    33    	IN0		A,	(009AH)
+00002D CBA7                A    34    	RES		%4,A
+00002F ED399A              A    35    	OUT0	(009AH), A
+                           A    36    	;TRANSMIT CMD BYTE
+000032 3E01                A    37    	LD		A,%1
+000034 ED39BC              A    38    	OUT0	(00BCH), A
+000037 F1                  A    39    	POP		AF
+000038 FB                  A    40    	EI
+000039 ED4D                A    41    	RETI
+
+
+Errors: 0
+Warnings: 0
+Lines Assembled: 42

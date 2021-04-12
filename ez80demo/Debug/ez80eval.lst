@@ -1,0 +1,765 @@
+Zilog eZ80 Macro Assembler Version 4.3 (19073001)12-Apr-21     15:39:22     page:   1
+
+
+PC     Object              I  Line    Source 
+                           A     1    ; Zilog eZ80 ANSI C Compiler Release 3.4
+                           A     2    ; -noglobalopt -nolocalcse -optsize -nomodsect 
+                           A     3    ; -nopadbranch -debug -peephole -const=ROM 
+                           A     4    	FILE	"..\RZK\Conf\ez80eval.c"
+                           A     5    	.assume ADL=1
+                           A     6    .DEBUG "C"
+                           A     7    	SEGMENT CODE
+                           A     8    .BEGREC "devCap",4
+                           A     9    .DEFINE "devType"
+                           A    10    .VALUE 0
+                           A    11    .CLASS 8
+                           A    12    .TYPE 12
+                           A    13    .ENDEF
+                           A    14    .DEFINE "devHdl"
+                           A    15    .VALUE 1
+                           A    16    .CLASS 8
+                           A    17    .TYPE 33
+                           A    18    .ENDEF
+                           A    19    .ENDREC "devCap"
+                           A    20    .BEGREC "RZK_DEVICE_CB_t",54
+                           A    21    .DEFINE "InUse"
+                           A    22    .VALUE 0
+                           A    23    .CLASS 8
+                           A    24    .TYPE 12
+                           A    25    .ENDEF
+                           A    26    .DEFINE "devName"
+                           A    27    .VALUE 1
+                           A    28    .CLASS 8
+                           A    29    .DIM 12
+                           A    30    .TYPE 98
+                           A    31    .ENDEF
+                           A    32    .DEFINE "fnInit"
+                           A    33    .VALUE 13
+                           A    34    .CLASS 8
+                           A    35    .TYPE 549
+                           A    36    .ENDEF
+                           A    37    .DEFINE "fnStop"
+                           A    38    .VALUE 16
+                           A    39    .CLASS 8
+                           A    40    .TYPE 549
+                           A    41    .ENDEF
+                           A    42    .DEFINE "fnOpen"
+                           A    43    .VALUE 19
+                           A    44    .CLASS 8
+                           A    45    .TYPE 549
+                           A    46    .ENDEF
+                           A    47    .DEFINE "fnClose"
+                           A    48    .VALUE 22
+                           A    49    .CLASS 8
+                           A    50    .TYPE 549
+                           A    51    .ENDEF
+                           A    52    .DEFINE "fnRead"
+                           A    53    .VALUE 25
+                           A    54    .CLASS 8
+                           A    55    .TYPE 549
+                           A    56    .ENDEF
+                           A    57    .DEFINE "fnWrite"
+                           A    58    .VALUE 28
+                           A    59    .CLASS 8
+                           A    60    .TYPE 549
+                           A    61    .ENDEF
+                           A    62    .DEFINE "fnSeek"
+                           A    63    .VALUE 31
+                           A    64    .CLASS 8
+                           A    65    .TYPE 549
+                           A    66    .ENDEF
+                           A    67    .DEFINE "fnGetc"
+                           A    68    .VALUE 34
+                           A    69    .CLASS 8
+                           A    70    .TYPE 549
+                           A    71    .ENDEF
+                           A    72    .DEFINE "fnPutc"
+                           A    73    .VALUE 37
+                           A    74    .CLASS 8
+                           A    75    .TYPE 549
+                           A    76    .ENDEF
+                           A    77    .DEFINE "fnIoctl"
+                           A    78    .VALUE 40
+                           A    79    .CLASS 8
+                           A    80    .TYPE 549
+                           A    81    .ENDEF
+                           A    82    .DEFINE "dvintvector"
+                           A    83    .VALUE 43
+                           A    84    .CLASS 8
+                           A    85    .TYPE 33
+                           A    86    .ENDEF
+                           A    87    .DEFINE "dvivec"
+                           A    88    .VALUE 46
+                           A    89    .CLASS 8
+                           A    90    .TYPE 13
+                           A    91    .ENDEF
+                           A    92    .DEFINE "dvinputoutput"
+                           A    93    .VALUE 48
+                           A    94    .CLASS 8
+                           A    95    .TYPE 44
+                           A    96    .ENDEF
+                           A    97    .DEFINE "devMode"
+                           A    98    .VALUE 51
+                           A    99    .CLASS 8
+                           A   100    .TYPE 2
+                           A   101    .ENDEF
+                           A   102    .DEFINE "dvminor"
+                           A   103    .VALUE 52
+                           A   104    .CLASS 8
+                           A   105    .TYPE 13
+                           A   106    .ENDEF
+                           A   107    .ENDREC "RZK_DEVICE_CB_t"
+                           A   108    .BEGREC "RZK_INTERRUPT_CB",53
+                           A   109    .DEFINE "CB"
+                           A   110    .VALUE 0
+                           A   111    .CLASS 8
+                           A   112    .DIM 53
+                           A   113    .TYPE 108
+                           A   114    .ENDEF
+                           A   115    .ENDREC "RZK_INTERRUPT_CB"
+                           A   116    .BEGREC "serialparam",16
+                           A   117    .DEFINE "baud"
+                           A   118    .VALUE 0
+                           A   119    .CLASS 8
+                           A   120    .TYPE 15
+                           A   121    .ENDEF
+                           A   122    .DEFINE "databits"
+                           A   123    .VALUE 4
+                           A   124    .CLASS 8
+                           A   125    .TYPE 13
+                           A   126    .ENDEF
+                           A   127    .DEFINE "stopbits"
+                           A   128    .VALUE 6
+                           A   129    .CLASS 8
+                           A   130    .TYPE 13
+                           A   131    .ENDEF
+                           A   132    .DEFINE "parity"
+                           A   133    .VALUE 8
+                           A   134    .CLASS 8
+                           A   135    .TYPE 4
+                           A   136    .ENDEF
+                           A   137    .DEFINE "settings"
+                           A   138    .VALUE 11
+                           A   139    .CLASS 8
+                           A   140    .TYPE 13
+                           A   141    .ENDEF
+                           A   142    .DEFINE "readDealy"
+                           A   143    .VALUE 13
+                           A   144    .CLASS 8
+                           A   145    .TYPE 14
+                           A   146    .ENDEF
+                           A   147    .ENDREC "serialparam"
+                           A   148    .BEGREC "UART_BLK_S",34
+                           A   149    .DEFINE "State"
+                           A   150    .VALUE 0
+                           A   151    .CLASS 8
+                           A   152    .TYPE 12
+                           A   153    .ENDEF
+                           A   154    .DEFINE "pDev"
+                           A   155    .VALUE 1
+                           A   156    .CLASS 8
+                           A   157    .TAG "RZK_DEVICE_CB_t"
+                           A   158    .TYPE 40
+                           A   159    .ENDEF
+                           A   160    .DEFINE "serparam"
+                           A   161    .VALUE 4
+                           A   162    .CLASS 8
+                           A   163    .TAG "serialparam"
+                           A   164    .TYPE 40
+                           A   165    .ENDEF
+                           A   166    .DEFINE "TxCount"
+                           A   167    .VALUE 7
+                           A   168    .CLASS 8
+                           A   169    .TYPE 12
+                           A   170    .ENDEF
+                           A   171    .DEFINE "pTxTask"
+                           A   172    .VALUE 8
+                           A   173    .CLASS 8
+                           A   174    .TYPE 33
+                           A   175    .ENDEF
+                           A   176    .DEFINE "TxSem"
+                           A   177    .VALUE 11
+                           A   178    .CLASS 8
+                           A   179    .TYPE 33
+                           A   180    .ENDEF
+                           A   181    .DEFINE "RxSem"
+                           A   182    .VALUE 14
+                           A   183    .CLASS 8
+                           A   184    .TYPE 33
+                           A   185    .ENDEF
+                           A   186    .DEFINE "pRxTask"
+                           A   187    .VALUE 17
+                           A   188    .CLASS 8
+                           A   189    .TYPE 33
+                           A   190    .ENDEF
+                           A   191    .DEFINE "RxBufSize"
+                           A   192    .VALUE 20
+                           A   193    .CLASS 8
+                           A   194    .TYPE 13
+                           A   195    .ENDEF
+                           A   196    .DEFINE "RxAvail"
+                           A   197    .VALUE 22
+                           A   198    .CLASS 8
+                           A   199    .TYPE 13
+                           A   200    .ENDEF
+                           A   201    .DEFINE "pRxBuf"
+                           A   202    .VALUE 24
+                           A   203    .CLASS 8
+                           A   204    .TYPE 44
+                           A   205    .ENDEF
+                           A   206    .DEFINE "pReadBuf"
+                           A   207    .VALUE 27
+                           A   208    .CLASS 8
+                           A   209    .TYPE 44
+                           A   210    .ENDEF
+                           A   211    .DEFINE "pWriteBuf"
+                           A   212    .VALUE 30
+                           A   213    .CLASS 8
+                           A   214    .TYPE 44
+                           A   215    .ENDEF
+                           A   216    .DEFINE "UARTbase"
+                           A   217    .VALUE 33
+                           A   218    .CLASS 8
+                           A   219    .TYPE 12
+                           A   220    .ENDEF
+                           A   221    .ENDREC "UART_BLK_S"
+                           A   222    ;    1	/**************************************
+                           A   223    ;    2	 * File       : eZ80eval.c
+                           A   224    ;    3	 *
+                           A   225    ;    4	 * Description: This file contains rout
+                           A   226    ;    5	 *              onto the console and to
+                           A   227    ;    6	 *
+                           A   228    ;    7	 * Copyright 2016 ZiLOG Inc.  ALL RIGHT
+                           A   229    ;    8	 *
+                           A   230    ;    9	 * This file contains unpublished confi
+                           A   231    ;   10	 * of ZiLOG, Inc.
+                           A   232    ;   11	 * NO PART OF THIS WORK MAY BE DUPLICAT
+                           A   233    ;   12	 * IN ANY FORM WITHOUT THE PRIOR WRITTE
+                           A   234    ;   13	 * This is not a license and no use of 
+                           A   235    ;   14	 * in the absence of a written license 
+                           A   236    ;   15	 * sole discretion 
+                           A   237    ;   16	 **************************************
+                           A   238    ;   17	
+                           A   239    ;   18	#include "ZDevice.h"
+                           A   240    ;   19	#include "ZTypes.h"
+                           A   241    ;   20	#include "ZSysgen.h"
+                           A   242    ;   21	#include "ZInterrupt.h"
+                           A   243    ;   22	#include "serial.h"
+                           A   244    ;   23	
+                           A   245    ;   24	extern RZK_DEVICE_CB_t *CONSOLE ;
+                           A   246    ;   25	 
+                           A   247    ;   26	
+                           A   248    ;   27	/* Function			:	putch
+                           A   249    ;   28	*
+                           A   250    ;   29	* Description		:	puts characters
+                           A   251    ;   30	* 
+                           A   252    ;   31	* Inputs			:	int
+                           A   253    ;   32	*							
+                           A   254    ;   33	* Outputs			:	int
+                           A   255    ;   34	*
+                           A   256    ;   35	* Dependencies		:	Serial driver.
+                           A   257    ;   36	*/
+                           A   258    ;   37	
+                           A   259    ;   38	INT putch(INT nch)
+                           A   260    ;   39	{
+000000                     A   261    _putch:
+                           A   262    .DEFINE "_putch"
+                           A   263    
+                           A   264    .VALUE _putch
+                           A   265    
+                           A   266    .CLASS 2
+                           A   267    
+                           A   268    .TYPE 68
+                           A   269    
+                           A   270    .ENDEF
+                           A   271    
+                           A   272    .BEGFUNC "putch",39,"_putch"
+                           A   273    
+                           A   274    .LINE 39
+                           A   275    
+                           A   276    .DEFINE "nch"
+                           A   277    
+                           A   278    .CLASS 65
+                           A   279    
+                           A   280    .VALUE 6
+                           A   281    
+                           A   282    .TYPE 4
+                           A   283    
+                           A   284    .ENDEF
+                           A   285    
+                           A   286    .DEFINE "pDev"
+                           A   287    
+                           A   288    .CLASS 65
+                           A   289    
+                           A   290    .VALUE -3
+                           A   291    
+                           A   292    .TAG "RZK_DEVICE_CB_t"
+                           A   293    
+                           A   294    .TYPE 40
+                           A   295    
+                           A   296    .ENDEF
+                           A   297    
+                           A   298    .DEFINE "nStatus"
+                           A   299    
+                           A   300    .CLASS 65
+                           A   301    
+                           A   302    .VALUE -7
+                           A   303    
+                           A   304    .TYPE 5
+                           A   305    
+                           A   306    .ENDEF
+                           A   307    
+                           A   308    .DEFINE "uIntmask"
+                           A   309    
+                           A   310    .CLASS 65
+                           A   311    
+                           A   312    .VALUE -10
+                           A   313    
+                           A   314    .TYPE 14
+                           A   315    
+                           A   316    .ENDEF
+                           A   317    
+000000 DDE5                A   318    	PUSH	IX
+000002 DD210000 00         A   319    	LD	IX,0
+000007 DD39                A   320    	ADD	IX,SP
+000009 C5                  A   321    	PUSH	BC
+00000A C5                  A   322    	PUSH	BC
+00000B C5                  A   323    	PUSH	BC
+00000C 3B                  A   324    	DEC	SP
+                           A   325    ;   40	DDF_STATUS_t        nStatus =0;
+                           A   326    .LINE 40
+                           A   327    
+00000D 01000000            A   328    	LD	BC,0
+000011 AF                  A   329    	XOR	A,A
+000012 DD0FF9              A   330    	LD	(IX+%FFFFFFF9),BC
+000015 DD77FC              A   331    	LD	(IX+%FFFFFFFC),A
+                           A   332    ;   41	RZK_DEVICE_CB_t     *pDev ;
+                           A   333    ;   42	UINTRMASK           uIntmask ;
+                           A   334    ;   43	
+                           A   335    ;   44		uIntmask = RZKDisableInterrupts() ;
+                           A   336    .LINE 44
+                           A   337    
+000018 CD 00 00 00         A   338    	CALL	_RZKDisableInterrupts
+00001C DD2FF6              A   339    	LD	(IX+%FFFFFFF6),HL
+                           A   340    ;   45		pDev = CONSOLE ;
+                           A   341    .LINE 45
+                           A   342    
+00001F ED4B 00 00 00       A   343    	LD	BC,(_CONSOLE)
+000024 DD0FFD              A   344    	LD	(IX+%FFFFFFFD),BC
+                           A   345    ;   46		RZKEnableInterrupts(uIntmask) ;
+                           A   346    .LINE 46
+                           A   347    
+000027 DD07F6              A   348    	LD	BC,(IX+%FFFFFFF6)
+00002A C5                  A   349    	PUSH	BC
+00002B CD 00 00 00         A   350    	CALL	_RZKEnableInterrupts
+00002F C1                  A   351    	POP	BC
+                           A   352    ;   47		
+                           A   353    ;   48		if(pDev)
+                           A   354    .LINE 48
+                           A   355    
+000030 DD27FD              A   356    	LD	HL,(IX+%FFFFFFFD)
+000033 CD 00 00 00         A   357    	CALL	__icmpzero
+000037 28 58               A   358    	JR	Z,L_2
+                           A   359    ;   49		{
+                           A   360    ;   50			nStatus = pDev->fnWrite(pDev, 
+                           A   361    ;   51	                               (RZK_DEV
+                           A   362    ;   52	                               1 
+                           A   363    ;   53	                               ) ;
+                           A   364    .LINE 53
+                           A   365    
+000039 DD31FD              A   366    	LD	IY,(IX+%FFFFFFFD)
+00003C FD371C              A   367    	LD	IY,(IY+%1C)
+00003F 01000000            A   368    	LD	BC,0
+000043 C5                  A   369    	PUSH	BC
+000044 01010000            A   370    	LD	BC,1
+000048 C5                  A   371    	PUSH	BC
+000049 ED6506              A   372    	PEA	IX+%6
+00004C DD07FD              A   373    	LD	BC,(IX+%FFFFFFFD)
+00004F C5                  A   374    	PUSH	BC
+000050 CD 00 00 00         A   375    	CALL	__indcall
+000054 C1                  A   376    	POP	BC
+000055 C1                  A   377    	POP	BC
+000056 C1                  A   378    	POP	BC
+000057 C1                  A   379    	POP	BC
+000058 DD2FF9              A   380    	LD	(IX+%FFFFFFF9),HL
+00005B DD73FC              A   381    	LD	(IX+%FFFFFFFC),E
+                           A   382    ;   54	
+                           A   383    ;   55			if ((UINT8)nch == '\n')
+                           A   384    .LINE 55
+                           A   385    
+00005E DD7E06              A   386    	LD	A,(IX+%6)
+000061 FE0A                A   387    	CP	A,%A
+000063 20 2C               A   388    	JR	NZ,L_2
+                           A   389    ;   56			{
+                           A   390    ;   57				nch = (UINT8)'\r' ;
+                           A   391    .LINE 57
+                           A   392    
+000065 010D0000            A   393    	LD	BC,13
+000069 DD0F06              A   394    	LD	(IX+%6),BC
+                           A   395    ;   58				nStatus = pDev->fnWrite(pDe
+                           A   396    ;   59	                                    (RZ
+                           A   397    ;   60	                                    1 
+                           A   398    ;   61	                                    ) ;
+                           A   399    .LINE 61
+                           A   400    
+00006C DD31FD              A   401    	LD	IY,(IX+%FFFFFFFD)
+00006F FD371C              A   402    	LD	IY,(IY+%1C)
+000072 01000000            A   403    	LD	BC,0
+000076 C5                  A   404    	PUSH	BC
+000077 01010000            A   405    	LD	BC,1
+00007B C5                  A   406    	PUSH	BC
+00007C ED6506              A   407    	PEA	IX+%6
+00007F DD07FD              A   408    	LD	BC,(IX+%FFFFFFFD)
+000082 C5                  A   409    	PUSH	BC
+000083 CD 00 00 00         A   410    	CALL	__indcall
+000087 C1                  A   411    	POP	BC
+000088 C1                  A   412    	POP	BC
+000089 C1                  A   413    	POP	BC
+00008A C1                  A   414    	POP	BC
+00008B DD2FF9              A   415    	LD	(IX+%FFFFFFF9),HL
+00008E DD73FC              A   416    	LD	(IX+%FFFFFFFC),E
+                           A   417    ;   62			}
+                           A   418    ;   63		}
+000091                     A   419    L_2:
+                           A   420    .LINE 63
+                           A   421    
+                           A   422    ;   64		
+                           A   423    ;   65		return nStatus ;
+                           A   424    .LINE 65
+                           A   425    
+000091 DD27F9              A   426    	LD	HL,(IX+%FFFFFFF9)
+                           A   427    ;   66	}
+                           A   428    .LINE 66
+                           A   429    
+000094 DDF9                A   430    	LD	SP,IX
+000096 DDE1                A   431    	POP	IX
+000098 C9                  A   432    	RET	
+                           A   433    
+                           A   434    
+                           A   435    ;**************************** _putch **********
+                           A   436    ;Name                         Addr/Register   S
+                           A   437    ;_RZKEnableInterrupts                IMPORT  --
+                           A   438    ;_CONSOLE                            IMPORT    
+                           A   439    ;_RZKDisableInterrupts               IMPORT  --
+                           A   440    ;uIntmask                             IX-10    
+                           A   441    ;nStatus                               IX-7    
+                           A   442    ;pDev                                  IX-3    
+                           A   443    ;nch                                   IX+6    
+                           A   444    
+                           A   445    
+                           A   446    ; Stack Frame Size: 19 (bytes)
+                           A   447    ;       Spill Code: 0 (instruction)
+                           A   448    
+                           A   449    
+                           A   450    .ENDFUNC "putch",66,"_putch"
+                           A   451    ;   67	
+                           A   452    ;   68	INT putchar(INT ch)
+                           A   453    ;   69	{
+000099                     A   454    _putchar:
+                           A   455    .DEFINE "_putchar"
+                           A   456    
+                           A   457    .VALUE _putchar
+                           A   458    
+                           A   459    .CLASS 2
+                           A   460    
+                           A   461    .TYPE 68
+                           A   462    
+                           A   463    .ENDEF
+                           A   464    
+                           A   465    .BEGFUNC "putchar",69,"_putchar"
+                           A   466    
+                           A   467    .LINE 69
+                           A   468    
+                           A   469    .DEFINE "ch"
+                           A   470    
+                           A   471    .CLASS 65
+                           A   472    
+                           A   473    .VALUE 6
+                           A   474    
+                           A   475    .TYPE 4
+                           A   476    
+                           A   477    .ENDEF
+                           A   478    
+000099 DDE5                A   479    	PUSH	IX
+00009B DD210000 00         A   480    	LD	IX,0
+0000A0 DD39                A   481    	ADD	IX,SP
+                           A   482    ;   70	  putch(ch);
+                           A   483    .LINE 70
+                           A   484    
+0000A2 DD0706              A   485    	LD	BC,(IX+%6)
+0000A5 C5                  A   486    	PUSH	BC
+0000A6 CD 00 00 00         A   487    	CALL	_putch
+0000AA C1                  A   488    	POP	BC
+                           A   489    ;   71	  return ch;
+                           A   490    .LINE 71
+                           A   491    
+0000AB DD2706              A   492    	LD	HL,(IX+%6)
+                           A   493    ;   72	}
+                           A   494    .LINE 72
+                           A   495    
+0000AE DDF9                A   496    	LD	SP,IX
+0000B0 DDE1                A   497    	POP	IX
+0000B2 C9                  A   498    	RET	
+                           A   499    
+                           A   500    
+                           A   501    ;**************************** _putchar ********
+                           A   502    ;Name                         Addr/Register   S
+                           A   503    ;ch                                    IX+6    
+                           A   504    
+                           A   505    
+                           A   506    ; Stack Frame Size: 9 (bytes)
+                           A   507    ;       Spill Code: 0 (instruction)
+                           A   508    
+                           A   509    
+                           A   510    .ENDFUNC "putchar",72,"_putchar"
+                           A   511    ;   73	
+                           A   512    ;   74	/* Function			:	getch
+                           A   513    ;   75	*
+                           A   514    ;   76	* Description		:	gets characters
+                           A   515    ;   77	* 
+                           A   516    ;   78	* Inputs			:	void
+                           A   517    ;   79	*							
+                           A   518    ;   80	* Outputs			:	int
+                           A   519    ;   81	*
+                           A   520    ;   82	* Dependencies		:	Serial Driver.
+                           A   521    ;   83	*/
+                           A   522    ;   84	INT
+                           A   523    ;   85	getch(void)
+                           A   524    ;   86	{
+0000B3                     A   525    _getch:
+                           A   526    .DEFINE "_getch"
+                           A   527    
+                           A   528    .VALUE _getch
+                           A   529    
+                           A   530    .CLASS 2
+                           A   531    
+                           A   532    .TYPE 68
+                           A   533    
+                           A   534    .ENDEF
+                           A   535    
+                           A   536    .BEGFUNC "getch",86,"_getch"
+                           A   537    
+                           A   538    .LINE 86
+                           A   539    
+                           A   540    .DEFINE "pDev"
+                           A   541    
+                           A   542    .CLASS 65
+                           A   543    
+                           A   544    .VALUE -3
+                           A   545    
+                           A   546    .TAG "RZK_DEVICE_CB_t"
+                           A   547    
+                           A   548    .TYPE 40
+                           A   549    
+                           A   550    .ENDEF
+                           A   551    
+                           A   552    .DEFINE "nCh"
+                           A   553    
+                           A   554    .CLASS 65
+                           A   555    
+                           A   556    .VALUE -6
+                           A   557    
+                           A   558    .TYPE 4
+                           A   559    
+                           A   560    .ENDEF
+                           A   561    
+                           A   562    .DEFINE "uIntmask"
+                           A   563    
+                           A   564    .CLASS 65
+                           A   565    
+                           A   566    .VALUE -9
+                           A   567    
+                           A   568    .TYPE 14
+                           A   569    
+                           A   570    .ENDEF
+                           A   571    
+0000B3 DDE5                A   572    	PUSH	IX
+0000B5 DD210000 00         A   573    	LD	IX,0
+0000BA DD39                A   574    	ADD	IX,SP
+0000BC C5                  A   575    	PUSH	BC
+0000BD C5                  A   576    	PUSH	BC
+0000BE C5                  A   577    	PUSH	BC
+                           A   578    ;   87	
+                           A   579    ;   88	INT                 nCh ;
+                           A   580    ;   89	RZK_DEVICE_CB_t     *pDev ;
+                           A   581    ;   90	UINTRMASK           uIntmask ;
+                           A   582    ;   91	
+                           A   583    ;   92		uIntmask = RZKDisableInterrupts() ;
+                           A   584    .LINE 92
+                           A   585    
+0000BF CD 00 00 00         A   586    	CALL	_RZKDisableInterrupts
+0000C3 DD2FF7              A   587    	LD	(IX+%FFFFFFF7),HL
+                           A   588    ;   93		pDev = CONSOLE ;
+                           A   589    .LINE 93
+                           A   590    
+0000C6 ED4B 00 00 00       A   591    	LD	BC,(_CONSOLE)
+0000CB DD0FFD              A   592    	LD	(IX+%FFFFFFFD),BC
+                           A   593    ;   94		RZKEnableInterrupts(uIntmask) ;
+                           A   594    .LINE 94
+                           A   595    
+0000CE DD07F7              A   596    	LD	BC,(IX+%FFFFFFF7)
+0000D1 C5                  A   597    	PUSH	BC
+0000D2 CD 00 00 00         A   598    	CALL	_RZKEnableInterrupts
+0000D6 C1                  A   599    	POP	BC
+                           A   600    ;   95		if(pDev)
+                           A   601    .LINE 95
+                           A   602    
+0000D7 DD27FD              A   603    	LD	HL,(IX+%FFFFFFFD)
+0000DA CD 00 00 00         A   604    	CALL	__icmpzero
+0000DE 28 1F               A   605    	JR	Z,L_6
+                           A   606    ;   96		{
+                           A   607    ;   97			pDev->fnRead(pDev, (RZK_DEV_BUF
+                           A   608    .LINE 97
+                           A   609    
+0000E0 DD31FD              A   610    	LD	IY,(IX+%FFFFFFFD)
+0000E3 FD3719              A   611    	LD	IY,(IY+%19)
+0000E6 01000000            A   612    	LD	BC,0
+0000EA C5                  A   613    	PUSH	BC
+0000EB 01010000            A   614    	LD	BC,1
+0000EF C5                  A   615    	PUSH	BC
+0000F0 ED65FA              A   616    	PEA	IX+%FFFFFFFA
+0000F3 DD07FD              A   617    	LD	BC,(IX+%FFFFFFFD)
+0000F6 C5                  A   618    	PUSH	BC
+0000F7 CD 00 00 00         A   619    	CALL	__indcall
+0000FB C1                  A   620    	POP	BC
+0000FC C1                  A   621    	POP	BC
+0000FD C1                  A   622    	POP	BC
+0000FE C1                  A   623    	POP	BC
+                           A   624    ;   98		}
+0000FF                     A   625    L_6:
+                           A   626    .LINE 98
+                           A   627    
+                           A   628    ;   99		return nCh ;
+                           A   629    .LINE 99
+                           A   630    
+0000FF DD27FA              A   631    	LD	HL,(IX+%FFFFFFFA)
+                           A   632    ;  100	
+                           A   633    ;  101	}
+                           A   634    .LINE 101
+                           A   635    
+000102 DDF9                A   636    	LD	SP,IX
+000104 DDE1                A   637    	POP	IX
+000106 C9                  A   638    	RET	
+                           A   639    
+                           A   640    
+                           A   641    ;**************************** _getch **********
+                           A   642    ;Name                         Addr/Register   S
+                           A   643    ;_RZKEnableInterrupts                IMPORT  --
+                           A   644    ;_CONSOLE                            IMPORT    
+                           A   645    ;_RZKDisableInterrupts               IMPORT  --
+                           A   646    ;uIntmask                              IX-9    
+                           A   647    ;nCh                                   IX-6    
+                           A   648    ;pDev                                  IX-3    
+                           A   649    
+                           A   650    
+                           A   651    ; Stack Frame Size: 15 (bytes)
+                           A   652    ;       Spill Code: 0 (instruction)
+                           A   653    
+                           A   654    
+                           A   655    .ENDFUNC "getch",101,"_getch"
+                           A   656    ;  102	
+                           A   657    ;  103	/* Function			:	InitUART
+                           A   658    ;  104	*
+                           A   659    ;  105	* Description		:	Initializes UAR
+                           A   660    ;  106	* 
+                           A   661    ;  107	* Inputs			:	void
+                           A   662    ;  108	*							
+                           A   663    ;  109	* Outputs			:	void
+                           A   664    ;  110	*							
+                           A   665    ;  111	*
+                           A   666    ;  112	* Dependencies		:	Serial Driver.
+                           A   667    ;  113	*/
+                           A   668    ;  114	void InitUART ( void ) 
+                           A   669    ;  115	{ 
+000107                     A   670    _InitUART:
+                           A   671    .DEFINE "_InitUART"
+                           A   672    
+                           A   673    .VALUE _InitUART
+                           A   674    
+                           A   675    .CLASS 2
+                           A   676    
+                           A   677    .TYPE 65
+                           A   678    
+                           A   679    .ENDEF
+                           A   680    
+                           A   681    .BEGFUNC "InitUART",115,"_InitUART"
+                           A   682    
+                           A   683    .LINE 115
+                           A   684    
+                           A   685    .DEFINE "cMode"
+                           A   686    
+                           A   687    .CLASS 65
+                           A   688    
+                           A   689    .VALUE -1
+                           A   690    
+                           A   691    .TYPE 2
+                           A   692    
+                           A   693    .ENDEF
+                           A   694    
+000107 DDE5                A   695    	PUSH	IX
+000109 DD210000 00         A   696    	LD	IX,0
+00010E DD39                A   697    	ADD	IX,SP
+000110 3B                  A   698    	DEC	SP
+                           A   699    ;  116	
+                           A   700    ;  117	    INT8 cMode ;
+                           A   701    ;  118	
+                           A   702    ;  119	    AddUART1() ;
+                           A   703    .LINE 119
+                           A   704    
+000111 CD 00 00 00         A   705    	CALL	_AddUART1
+                           A   706    ;  120	
+                           A   707    ;  121	    CONSOLE = RZKDevOpen( 
+                           A   708    ;  122				 (RZK_DEV_NAME_t *)"SERIAL1
+                           A   709    ;  123				 &cMode
+                           A   710    ;  124				 );
+                           A   711    .LINE 124
+                           A   712    
+000115 ED65FF              A   713    	PEA	IX+%FFFFFFFF
+000118 01 00 00 00         A   714    	LD	BC,L__6
+00011C C5                  A   715    	PUSH	BC
+00011D CD 00 00 00         A   716    	CALL	_RZKDevOpen
+000121 C1                  A   717    	POP	BC
+000122 C1                  A   718    	POP	BC
+000123 22 00 00 00         A   719    	LD	(_CONSOLE),HL
+                           A   720    ;  125	}
+                           A   721    .LINE 125
+                           A   722    
+000127 DDF9                A   723    	LD	SP,IX
+000129 DDE1                A   724    	POP	IX
+00012B C9                  A   725    	RET	
+                           A   726    
+                           A   727    
+                           A   728    ;**************************** _InitUART *******
+                           A   729    ;Name                         Addr/Register   S
+                           A   730    ;_CONSOLE                            IMPORT    
+                           A   731    ;_RZKDevOpen                         IMPORT  --
+                           A   732    ;_AddUART1                           IMPORT  --
+                           A   733    ;cMode                                 IX-1    
+                           A   734    
+                           A   735    
+                           A   736    ; Stack Frame Size: 7 (bytes)
+                           A   737    ;       Spill Code: 0 (instruction)
+                           A   738    
+                           A   739    
+                           A   740    .ENDFUNC "InitUART",125,"_InitUART"
+                           A   741    	SEGMENT STRSECT
+000000                     A   742    L__6:
+000000 53455249 414C31     A   743    	DB	"SERIAL1"
+000007 00                  A   744    	DB	0
+                           A   745    	XREF _CONSOLE:ROM
+                           A   746    	XREF _AddUART1:ROM
+                           A   747    	XREF _RZKDisableInterrupts:ROM
+                           A   748    	XREF _RZKEnableInterrupts:ROM
+                           A   749    	XREF _RZKDevOpen:ROM
+                           A   750    	XREF __indcall:ROM
+                           A   751    	XREF __icmpzero:ROM
+                           A   752    	XDEF _InitUART
+                           A   753    	XDEF _getch
+                           A   754    	XDEF _putchar
+                           A   755    	XDEF _putch
+                           A   756    	END
+
+
+Errors: 0
+Warnings: 0
+Lines Assembled: 757
